@@ -29,6 +29,29 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <div class="mt-4">
+                <x-jet-label for="date_of_birth" value="{{ __('Date of Birth') }}" />
+                <x-jet-input id="dob" class="block mt-1 w-full" type="date" name="tgl_lahir" :value="old('tgl_lahir')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="gender" value="{{ __('Gender') }}" />
+                <select id="gender" class="block mt-1 w-full" name="jenis_kelamin" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div>
+                <x-jet-label for="address" value="{{ __('Address') }}" />
+                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="alamat" :value="old('alamat')" required autofocus autocomplete="address" />
+            </div>
+
+            <div>
+                <x-jet-label for="profile" value="{{ __('Profile Picture') }}" />
+                <x-jet-input id="profile" class="block mt-1 w-full" type="file" name="profile_photo_path" />
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
