@@ -18,7 +18,9 @@ Neon - Register
                     <div class="card">
                         <div class="card-body">
                             <div class="p-3">
-                                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('register.custom') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+
                                     <div class="text-center mb-3">
                                         <h4 class="text-black">Create New Account</h4>
                                         <p class="text-muted">Already have an account? <a href="{{url('/page-login')}}">Sign in</a> Here</p>
@@ -27,7 +29,7 @@ Neon - Register
                                         <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="email" placeholder="Email" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="nama" value="{{ old('nama') }}" class="form-control" id="name" placeholder="Name" required>
+                                        <input type="text" name="name" value="{{ old('nama') }}" class="form-control" id="name" placeholder="Name" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
@@ -45,7 +47,7 @@ Neon - Register
                                         <input type="text" name="alamat" value="{{ old('alamat') }}" class="form-control" id="address" placeholder="Alamat" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" name="foto_profil" class="form-control" id="profile" placeholder="Photo Profile" required>
+                                        <input type="file" name="profile_photo_path" class="form-control" id="profile" placeholder="Photo Profile" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">

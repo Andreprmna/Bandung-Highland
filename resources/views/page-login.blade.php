@@ -19,15 +19,17 @@ Neon - Login
                     <div class="card">
                         <div class="card-body">
                             <div class="p-3">
-                                <form action="#">
+                                <form method="POST" action="{{ route('login.custom') }}">
+                                    @csrf
+
                                     <div class="text-center mb-3">
                                         <h4 class="text-black">Sign In !</h4>
                                     </div>                                        
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-6">
