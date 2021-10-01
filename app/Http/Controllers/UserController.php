@@ -49,6 +49,7 @@ class UserController extends Controller
         ]);
            
         $data = $request->all();
+        $data['profile_photo_path'] = $request->file('profile_photo_path')->store('public/image');
         $check = $this->create($data);
          
         return redirect("dashboard")->withSuccess('You have signed-in');
