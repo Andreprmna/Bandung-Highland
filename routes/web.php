@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/page-register', function () {
+    return view('page-register');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
