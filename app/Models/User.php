@@ -33,6 +33,7 @@ class User extends Authenticatable
         'jenis_kelamin', 
         'alamat', 
         'status',
+        'profile_photo_path'
     ];
 
     /**

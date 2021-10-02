@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,16 +41,14 @@ class UserController extends Controller
     }
       
 
-    public function customRegistration(Request $request)
+    public function customRegistration(UserRequest $request)
     {  
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-        ]);
-           
         $data = $request->all();
+
         $data['profile_photo_path'] = $request->file('profile_photo_path')->store('public/image');
+
+        // User::create($data);
+           
         $check = $this->create($data);
          
         return redirect("dashboard")->withSuccess('You have signed-in');
@@ -65,6 +64,7 @@ class UserController extends Controller
         'tgl_lahir' => $data['tgl_lahir'],
         'jenis_kelamin' => $data['jenis_kelamin'],
         'alamat' => $data['alamat'],
+        'profile_photo_path' => $data['profile_photo_path']
       ]);
     }    
     

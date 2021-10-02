@@ -26,28 +26,31 @@ Neon - Register
                                         <p class="text-muted">Already have an account? <a href="{{url('/page-login')}}">Sign in</a> Here</p>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="email" placeholder="Email" required>
+                                        <input id="email" class="form-control" type="email" name="email" placeholder="Email" :value="old('email')" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="name" value="{{ old('nama') }}" class="form-control" id="name" placeholder="Name" required>
+                                        <input id="name" class="form-control" type="text" name="name" placeholder="Name" :value="old('name')" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                                        <input id="password" class="form-control" type="password" name="password" placeholder="Password" required autocomplete="new-password">
                                     </div>
                                     <div class="form-group">
-                                        <input type="date" name="tgl_lahir" class="form-control" id="ttl" placeholder="Date of Birth" required>
+                                        <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation" required autocomplete="new-password">
                                     </div>
                                     <div class="form-group">
-                                        <select name="jenis_kelamin" id="gender" class="form-control">
+                                        <input id="dob" class="form-control" type="date" name="tgl_lahir" :value="old('tgl_lahir')" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="gender" class="form-control" name="jenis_kelamin" required>
                                             <option value="Male">Laki-laki</option>
                                             <option value="Female">Wanita</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="alamat" value="{{ old('alamat') }}" class="form-control" id="address" placeholder="Alamat" required>
+                                        <input id="address" class="form-control" type="text" name="alamat" placeholder="Alamat" :value="old('alamat')" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" name="profile_photo_path" class="form-control" id="profile" placeholder="Photo Profile" required>
+                                        <input id="profile" class="form-control" type="file" name="profile_photo_path">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
