@@ -13,6 +13,10 @@ class UserController extends Controller
 {
     public function index()
     {
+        if(Auth::check()){
+            return redirect('/');
+        }
+
         return view('page-login');
     }  
       
@@ -26,7 +30,7 @@ class UserController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('/')
                         ->withSuccess('Signed in');
         }
   
@@ -45,7 +49,7 @@ class UserController extends Controller
     {  
         $data = $request->all();
 
-        $data['profile_photo_path'] = $request->file('profile_photo_path')->store('public/image');
+        $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
 
         // User::create($data);
            
@@ -83,6 +87,6 @@ class UserController extends Controller
         Session::flush();
         Auth::logout();
   
-        return Redirect('login');
+        return Redirect('/');
     }
 }

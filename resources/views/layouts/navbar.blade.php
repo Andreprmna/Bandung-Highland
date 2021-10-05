@@ -145,26 +145,30 @@
                                     </div>
                                 </div>
                             </li> --}}
+                            
+                            @guest
                             <li class="list-inline-item">
-                                <a href="{{url('/page-login')}}"><span class="text-white">Login</span></a>          
+                                <a href="{{ route('login') }}"><span class="text-white">Login</span></a>          
                             </li>
                             <li class="list-inline-item mr-0">
-                                <a href="{{url('/page-register')}}" class="text-white">Register</a>        
+                                <a href="{{ route('register-user') }}" class="text-white">Register</a>        
                             </li>
-                            
-                            {{-- <li class="list-inline-item mr-0">
+                            @else
+                            <li class="list-inline-item mr-0">
                                 <div class="dropdown xp-userprofile">
-                                    <a class="dropdown-toggle " href="#" role="button" id="xp-userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/topbar/user.jpg" alt="user-profile" class="rounded-circle img-fluid"><span class="xp-user-live"></span></a>
+                                    <a class="dropdown-toggle " href="#" role="button" id="xp-userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{-- <img src="{{url('storage/'.auth()->user()->profile_photo_path)}}" alt="user-profile" class="rounded-circle">
+                                        <span class="xp-user-live"></span> --}}
+                                        <img src="assets/images/ui-media/media-image-8.jpg" alt="user-profile" class="rounded-circle img-fluid"><span class="xp-social-profile-live"></span>
+                                    </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-userprofile">
-                                        <a class="dropdown-item py-3 text-white text-center font-16" href="#">Welcome, John Doe</a>
+                                        <a class="dropdown-item py-3 text-white text-center font-16" href="#">Welcome, {{ auth()->user()->name }}</a>
                                         <a class="dropdown-item" href="#"><i class="icon-user text-primary mr-2"></i> Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="icon-wallet text-success mr-2"></i> Billing</a>
-                                        <a class="dropdown-item" href="#"><i class="icon-settings text-warning mr-2"></i> Setting</a>
-                                        <a class="dropdown-item" href="#"><i class="icon-lock text-info mr-2"></i> Lock Screen</a>
-                                        <a class="dropdown-item" href="#"><i class="icon-power text-danger mr-2"></i> Logout</a>
+                                        <a class="dropdown-item" href="{{ route('signout') }}"><i class="icon-power text-danger mr-2"></i> Logout</a>
                                     </div>
                                 </div>                                   
-                            </li> --}}
+                            </li>
+                            @endguest
                             <li class="list-inline-item xp-horizontal-menu-toggle">
                                 <button type="button" class="navbar-toggle bg-transparent" data-toggle="collapse" data-target="#navbar-menu">
                                     <i class="icon-menu font-20 text-white"></i>

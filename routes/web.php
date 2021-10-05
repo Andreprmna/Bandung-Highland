@@ -25,6 +25,6 @@ Route::get('registration', [UserController::class, 'registration'])->name('regis
 Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
