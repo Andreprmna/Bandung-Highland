@@ -11,7 +11,13 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
+    //protected $except = [
+    //
+    //];
+
+    protected $addHttpCookie = true;
+
     protected $except = [
-        //
+        'http://127.0.0.1:8000/regis-penerbit',
     ];
 }
