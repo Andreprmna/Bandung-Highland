@@ -6,7 +6,9 @@ use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
+use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,8 @@ Route::post('regis-toy', [ToyController::class, 'regisToy'])->name('regis.toy');
 Route::post('regis-audio', [AudioController::class, 'regisAudio'])->name('regis.audio');
 Route::post('regis-atk', [atkController::class, 'regisAtk'])->name('regis.atk');
 Route::post('regis-Coworking_Space', [Coworking_spaceController::class, 'regisCoworking_space'])->name('regis.coworking_space');
+Route::post('regis-csp', [Coworking_space_propertiesController::class, 'regis_CSP'])->name('regis.csp');
+Route::post('regis-properties', [PropertiesController::class, 'regisProperties'])->name('regis.properties');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
