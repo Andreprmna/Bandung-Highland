@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\atkController;
 use App\Http\Controllers\AudioController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
@@ -36,6 +37,7 @@ Route::post('regis-buku', [BukuController::class, 'regisBuku'])->name('regis.buk
 Route::post('regis-video', [VideoController::class, 'regisVideo'])->name('regis.video');
 Route::post('regis-toy', [ToyController::class, 'regisToy'])->name('regis.toy');
 Route::post('regis-audio', [AudioController::class, 'regisAudio'])->name('regis.audio');
+Route::post('regis-atk', [atkController::class, 'regisAtk'])->name('regis.atk');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
