@@ -3,6 +3,7 @@
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::post('custom-registration', [UserController::class, 'customRegistration']
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
 Route::post('regis-pengarang', [PengarangController::class, 'regisPengarang'])->name('regis.pengarang');
 Route::post('regis-penerbit', [PenerbitController::class, 'regisPenerbit'])->name('regis.penerbit');
+Route::post('regis-buku', [BukuController::class, 'regisBuku'])->name('regis.buku');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
