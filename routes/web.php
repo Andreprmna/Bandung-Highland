@@ -4,6 +4,7 @@ use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::post('regis-pengarang', [PengarangController::class, 'regisPengarang'])->
 Route::post('regis-penerbit', [PenerbitController::class, 'regisPenerbit'])->name('regis.penerbit');
 Route::post('regis-buku', [BukuController::class, 'regisBuku'])->name('regis.buku');
 Route::post('regis-video', [VideoController::class, 'regisVideo'])->name('regis.video');
+Route::post('regis-toy', [ToyController::class, 'regisToy'])->name('regis.toy');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
