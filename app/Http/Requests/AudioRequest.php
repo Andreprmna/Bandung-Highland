@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ToyRequest extends FormRequest
+class AudioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,12 @@ class ToyRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_toy'  => ['required', 'string', 'max:255'],
-            'jenis'     => ['required', 'integer'],
-            'genre'     => ['required', 'string', 'max:255'],
-            'kondisi'   => ['required', 'integer']
+            'judul' => ['required', 'string', 'max:255'],
+            'pengisi_suara' => ['required', 'string', 'max:255'],
+            'tahun_rilis' => ['required', 'integer'],
+            'genre' => ['required', 'string', 'max:25'],
+            'durasi' => ['required', 'string', 'max:25'],
+            'format' => ['required', 'string', 'max:10']
         ];
     }
 }
