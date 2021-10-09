@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\atkController;
 use App\Http\Controllers\AudioController;
+use App\Http\Controllers\Booking_toyController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
+use App\Http\Controllers\pinjam_toyController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
@@ -44,6 +46,8 @@ Route::post('regis-atk', [atkController::class, 'regisAtk'])->name('regis.atk');
 Route::post('regis-Coworking_Space', [Coworking_spaceController::class, 'regisCoworking_space'])->name('regis.coworking_space');
 Route::post('regis-csp', [Coworking_space_propertiesController::class, 'regis_CSP'])->name('regis.csp');
 Route::post('regis-properties', [PropertiesController::class, 'regisProperties'])->name('regis.properties');
+Route::post('regis-Ptoy', [pinjam_toyController::class, 'regisPinjam_toy'])->name('regis.ptoy');
+Route::post('regis-Btoy', [Booking_toyController::class, 'regisBooking_toy'])->name('regis.btoy');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
