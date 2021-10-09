@@ -29,7 +29,7 @@ class Booking_toy extends Model
     {
         return $this->hasOne(User::class, 'id', 'id_member');
     }
-    public function pengarang()
+    public function admin()
     {
         return $this->hasOne(User::class, 'id', 'id_admin');
     }
