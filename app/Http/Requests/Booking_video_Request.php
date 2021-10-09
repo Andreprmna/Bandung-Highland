@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Booking_toyRequest extends FormRequest
+class Booking_video_Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

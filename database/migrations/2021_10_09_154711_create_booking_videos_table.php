@@ -15,6 +15,11 @@ class CreateBookingVideosTable extends Migration
     {
         Schema::create('booking_videos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_member');
+            $table->integer('id_admin');
+            $table->integer('id_video');
+            $table->date('waktu_mulai');
+            $table->date('waktu_selesai');
             $table->timestamps();
         });
     }

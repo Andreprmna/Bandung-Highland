@@ -3,6 +3,7 @@
 use App\Http\Controllers\atkController;
 use App\Http\Controllers\AudioController;
 use App\Http\Controllers\Booking_toyController;
+use App\Http\Controllers\Booking_video_Controller;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
@@ -48,6 +49,7 @@ Route::post('regis-csp', [Coworking_space_propertiesController::class, 'regis_CS
 Route::post('regis-properties', [PropertiesController::class, 'regisProperties'])->name('regis.properties');
 Route::post('regis-Ptoy', [pinjam_toyController::class, 'regisPinjam_toy'])->name('regis.ptoy');
 Route::post('regis-Btoy', [Booking_toyController::class, 'regisBooking_toy'])->name('regis.btoy');
+Route::post('regis-Bvideo', [Booking_video_Controller::class, 'regisBooking_video'])->name('regis.bvideo');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
