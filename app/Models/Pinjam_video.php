@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class pinjam_toy extends Model
+class Pinjam_video extends Model
 {
     use HasFactory;
     protected $fillable = [
         'id_member',
         'id_admin',
-        'id_toy',
+        'id_video',
         'waktu_mulai',
         'waktu_selesai',
         'tgl_pengembalian',
@@ -29,22 +29,22 @@ class pinjam_toy extends Model
     }
     public function member()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'id_member');
+        return $this->hasOne(Booking_video::class, 'id', 'id_member');
     }
     public function admin()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'id_admin');
+        return $this->hasOne(Booking_video::class, 'id', 'id_admin');
     }
     public function toy()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'id_toy');
+        return $this->hasOne(Booking_video::class, 'id', 'id_video');
     }
     public function waktu_pinjam()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'waktu_mulai');
+        return $this->hasOne(Booking_video::class, 'id', 'waktu_mulai');
     }
     public function waktu_pengembalian()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'waktu_selesai');
+        return $this->hasOne(Booking_video::class, 'id', 'waktu_selesai');
     }
 }

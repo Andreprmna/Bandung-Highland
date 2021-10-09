@@ -11,6 +11,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
 use App\Http\Controllers\pinjam_toyController;
+use App\Http\Controllers\Pinjam_videoController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
@@ -50,6 +51,7 @@ Route::post('regis-properties', [PropertiesController::class, 'regisProperties']
 Route::post('regis-Ptoy', [pinjam_toyController::class, 'regisPinjam_toy'])->name('regis.ptoy');
 Route::post('regis-Btoy', [Booking_toyController::class, 'regisBooking_toy'])->name('regis.btoy');
 Route::post('regis-Bvideo', [Booking_video_Controller::class, 'regisBooking_video'])->name('regis.bvideo');
+Route::post('regis-Pvideo', [Pinjam_videoController::class, 'regisPinjam_video'])->name('regis.pvideo');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
