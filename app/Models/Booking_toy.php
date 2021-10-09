@@ -13,7 +13,8 @@ class Booking_toy extends Model
         'id_member',
         'id_admin',
         'id_toy',
-        'waktu_mulai'
+        'waktu_mulai',
+        'waktu_selesai'
     ];
     public function getCreatedAtAttribute($value)
     {

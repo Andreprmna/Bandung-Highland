@@ -25,8 +25,9 @@ class Booking_toyController extends Controller
         return Booking_toy::create([
             'id_member'  => $data['id_member'],
             'id_admin'   => $data['id_admin'],
-            'id_toy'         => $data['id_toy'],
-            'waktu_mulai'   => $data['waktu_mulai']
+            'id_toy'     => $data['id_toy'],
+            'waktu_mulai'   => $data['waktu_mulai'],
+            'waktu_selesai' => $data['waktu_selesai']
         ]);
     }
 }

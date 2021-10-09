@@ -13,8 +13,10 @@ class pinjam_toy extends Model
         'id_member',
         'id_admin',
         'id_toy',
-        'waktu_pinjam',
-        'waktu_pengembalian'
+        'waktu_mulai',
+        'waktu_selesai',
+        'tgl_pengembalian',
+        'denda'
     ];
     public function getCreatedAtAttribute($value)
     {
@@ -37,8 +39,12 @@ class pinjam_toy extends Model
     {
         return $this->hasOne(Booking_toy::class, 'id', 'id_toy');
     }
-    public function waktu()
+    public function waktu_pinjam()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'waktu_pinjam');
+        return $this->hasOne(Booking_toy::class, 'id', 'waktu_mulai');
+    }
+    public function waktu_pengembalian()
+    {
+        return $this->hasOne(Booking_toy::class, 'id', 'waktu_selesai');
     }
 }

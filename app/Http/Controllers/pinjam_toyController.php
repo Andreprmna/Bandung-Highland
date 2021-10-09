@@ -26,8 +26,10 @@ class pinjam_toyController extends Controller
             'id_member'  => $data['id_member'],
             'id_admin'   => $data['id_admin'],
             'id_toy'         => $data['id_toy'],
-            'waktu_pinjam'   => $data['waktu_pinjam'],
-            'waktu_pengembalian'       => $data['waktu_pengembalian']
+            'waktu_mulai'   => $data['waktu_mulai'],
+            'waktu_selesai'       => $data['waktu_selesai'],
+            'tgl_pengembalian'  => $data['tgl_pengembalian'],
+            'denda'     => $data['denda']
 
         ]);
     }
