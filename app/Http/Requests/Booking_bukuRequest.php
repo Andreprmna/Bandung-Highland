@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Coworking_space_propertiesRequest extends FormRequest
+class Booking_bukuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class Coworking_space_propertiesRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_property'   => ['required', 'integer'],
-            'id_cs'
+            'tgl_mulai' => ['required', 'date'],
+            'tgl_selesai' => ['required', 'date']
         ];
     }
 }
