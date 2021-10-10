@@ -35,7 +35,7 @@ class Pinjam_video extends Model
     {
         return $this->hasOne(Booking_video::class, 'id', 'id_admin');
     }
-    public function toy()
+    public function video()
     {
         return $this->hasOne(Booking_video::class, 'id', 'id_video');
     }
