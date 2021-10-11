@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Pinjam_videoRequest extends FormRequest
+class point_of_sellRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class Pinjam_videoRequest extends FormRequest
     public function rules()
     {
         return [
-            'waktu_mulai' => ['required', 'date'],
-            'waktu_selesai' => ['required', 'date'],
-            'tgl_pengembalian' => ['required', 'date'],
+            'jumlah_pos' => ['required', 'integer'],
+            'tgl_pos' => ['required', 'date'],
         ];
     }
 }

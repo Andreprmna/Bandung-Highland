@@ -17,6 +17,7 @@ use App\Http\Controllers\Pinjam_audioController;
 use App\Http\Controllers\Pinjam_bukuController;
 use App\Http\Controllers\pinjam_toyController;
 use App\Http\Controllers\Pinjam_videoController;
+use App\Http\Controllers\point_of_sellController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
@@ -63,6 +64,7 @@ Route::post('regis-Pbuku', [Pinjam_bukuController::class, 'regisPinjam_Buku'])->
 Route::post('regis-Baudio', [Booking_audioController::class, 'regisBooking_video'])->name('regis.baudio');
 Route::post('regis-BCws', [Booking_Coworking_spaceController::class, 'regisBooking_cws'])->name('regis.bcws');
 Route::post('regis-Paudio', [Pinjam_audioController::class, 'regisPinjam_audio'])->name('regis.paudio');
+Route::post('regis-POS', [point_of_sellController::class, 'regisPoint_off_sell'])->name('regis.pos');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
