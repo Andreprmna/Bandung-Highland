@@ -27,4 +27,13 @@ class PenerbitController extends Controller
 
         ]);
     }
+    public function getPenerbit()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Penerbit::all();
+        return $data;
+    }
 }

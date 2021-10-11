@@ -30,4 +30,13 @@ class Booking_toyController extends Controller
             'waktu_selesai' => $data['waktu_selesai']
         ]);
     }
+    public function getBooking_toy()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Booking_toy::all();
+        return $data;
+    }
 }

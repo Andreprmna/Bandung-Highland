@@ -30,4 +30,13 @@ class ToyController extends Controller
 
         ]);
     }
+    public function getToy()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Toy::all();
+        return $data;
+    }
 }

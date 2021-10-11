@@ -32,4 +32,13 @@ class PengarangController extends Controller
 
         ]);
     }
+    public function getPengarang()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = pengarang::all();
+        return $data;
+    }
 }

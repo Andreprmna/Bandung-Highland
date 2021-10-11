@@ -28,4 +28,13 @@ class Coworking_space_propertiesController extends Controller
 
         ]);
     }
+    public function getCSP()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Coworking_space_properties::all();
+        return $data;
+    }
 }

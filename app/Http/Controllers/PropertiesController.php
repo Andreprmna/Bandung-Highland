@@ -27,4 +27,13 @@ class PropertiesController extends Controller
 
         ]);
     }
+    public function getproperties()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = properties::all();
+        return $data;
+    }
 }

@@ -33,4 +33,13 @@ class Pinjam_bukuController extends Controller
 
         ]);
     }
+    public function getPinjam_buku()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Pinjam_buku::all();
+        return $data;
+    }
 }

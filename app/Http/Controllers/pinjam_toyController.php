@@ -33,4 +33,13 @@ class pinjam_toyController extends Controller
 
         ]);
     }
+    public function getPinjam_toy()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = pinjam_toy::all();
+        return $data;
+    }
 }

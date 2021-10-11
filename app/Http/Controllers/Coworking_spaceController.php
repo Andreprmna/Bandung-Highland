@@ -27,4 +27,13 @@ class Coworking_spaceController extends Controller
 
         ]);
     }
+    public function getCWS()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Coworking_space::all();
+        return $data;
+    }
 }
