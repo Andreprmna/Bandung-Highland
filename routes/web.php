@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\atkController;
 use App\Http\Controllers\AudioController;
+use App\Http\Controllers\Booking_audioController;
 use App\Http\Controllers\Booking_bukuController;
 use App\Http\Controllers\Booking_toyController;
 use App\Http\Controllers\Booking_video_Controller;
@@ -57,7 +58,7 @@ Route::post('regis-Bvideo', [Booking_video_Controller::class, 'regisBooking_vide
 Route::post('regis-Pvideo', [Pinjam_videoController::class, 'regisPinjam_video'])->name('regis.pvideo');
 Route::post('regis-Bbuku', [Booking_bukuController::class, 'regisBooking_buku'])->name('regis.bbuku');
 Route::post('regis-Pbuku', [Pinjam_bukuController::class, 'regisPinjam_Buku'])->name('regis.pbuku');
-
+Route::post('regis-Baudio', [Booking_audioController::class, 'regisBooking_video'])->name('regis.baudio');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
