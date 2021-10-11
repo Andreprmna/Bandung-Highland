@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Pinjam_buku extends Model
+class Pinjam_audio extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -35,7 +35,7 @@ class Pinjam_buku extends Model
     {
         return $this->hasOne(Booking_audio::class, 'id', 'id_admin');
     }
-    public function buku()
+    public function audio()
     {
         return $this->hasOne(Booking_audio::class, 'id', 'id_audio');
     }

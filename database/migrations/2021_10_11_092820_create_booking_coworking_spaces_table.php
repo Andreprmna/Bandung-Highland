@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePinjamAudiosTable extends Migration
+class CreateBookingCoworkingSpacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreatePinjamAudiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinjam_audios', function (Blueprint $table) {
+        Schema::create('booking_coworking_spaces', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_cs');
             $table->integer('id_member');
             $table->integer('id_admin');
-            $table->integer('id_audio');
-            $table->date('tgl_pinjam');
-            $table->date('tgl_kembali');
-            $table->date('tgl_pengembalian');
-            $table->float('denda');
-            $table->integer('status')->default(0);
+            $table->date('tgl_mulai');
+            $table->date('tgl_selesai');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreatePinjamAudiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinjam_audios');
+        Schema::dropIfExists('booking_coworking_spaces');
     }
 }

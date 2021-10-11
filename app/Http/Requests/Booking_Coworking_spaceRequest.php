@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Pinjam_audioRequest extends FormRequest
+class Booking_Coworking_spaceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class Pinjam_audioRequest extends FormRequest
     public function rules()
     {
         return [
-            'tgl_pinjam' => ['required', 'date'],
-            'tgl_kembali' => ['required', 'date'],
-            'tgl_pengembalian' => ['required', 'date']
+            'tgl_mulai' => ['required', 'date'],
+            'tgl_selesai' => ['required', 'date']
         ];
     }
 }
