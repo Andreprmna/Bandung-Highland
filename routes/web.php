@@ -1,8 +1,27 @@
 <?php
 
+use App\Http\Controllers\atkController;
+use App\Http\Controllers\AudioController;
+use App\Http\Controllers\Booking_audioController;
+use App\Http\Controllers\Booking_bukuController;
+use App\Http\Controllers\Booking_Coworking_spaceController;
+use App\Http\Controllers\Booking_toyController;
+use App\Http\Controllers\Booking_video_Controller;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\Coworking_space_propertiesController;
+use App\Http\Controllers\Coworking_spaceController;
+use App\Http\Controllers\Pinjam_audioController;
+use App\Http\Controllers\Pinjam_bukuController;
+use App\Http\Controllers\pinjam_toyController;
+use App\Http\Controllers\Pinjam_videoController;
+use App\Http\Controllers\point_of_sellController;
+use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\ToyController;
+use App\Http\Controllers\VideoController;
+use App\Models\Booking_buku;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +52,24 @@ Route::post('custom-registration', [UserController::class, 'customRegistration']
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
 Route::post('regis-pengarang', [PengarangController::class, 'regisPengarang'])->name('regis.pengarang');
 Route::post('regis-penerbit', [PenerbitController::class, 'regisPenerbit'])->name('regis.penerbit');
-
+Route::post('regis-buku', [BukuController::class, 'regisBuku'])->name('regis.buku');
+Route::post('regis-video', [VideoController::class, 'regisVideo'])->name('regis.video');
+Route::post('regis-toy', [ToyController::class, 'regisToy'])->name('regis.toy');
+Route::post('regis-audio', [AudioController::class, 'regisAudio'])->name('regis.audio');
+Route::post('regis-atk', [atkController::class, 'regisAtk'])->name('regis.atk');
+Route::post('regis-Coworking_Space', [Coworking_spaceController::class, 'regisCoworking_space'])->name('regis.coworking_space');
+Route::post('regis-csp', [Coworking_space_propertiesController::class, 'regis_CSP'])->name('regis.csp');
+Route::post('regis-properties', [PropertiesController::class, 'regisProperties'])->name('regis.properties');
+Route::post('regis-Ptoy', [pinjam_toyController::class, 'regisPinjam_toy'])->name('regis.ptoy');
+Route::post('regis-Btoy', [Booking_toyController::class, 'regisBooking_toy'])->name('regis.btoy');
+Route::post('regis-Bvideo', [Booking_video_Controller::class, 'regisBooking_video'])->name('regis.bvideo');
+Route::post('regis-Pvideo', [Pinjam_videoController::class, 'regisPinjam_video'])->name('regis.pvideo');
+Route::post('regis-Bbuku', [Booking_bukuController::class, 'regisBooking_buku'])->name('regis.bbuku');
+Route::post('regis-Pbuku', [Pinjam_bukuController::class, 'regisPinjam_Buku'])->name('regis.pbuku');
+Route::post('regis-Baudio', [Booking_audioController::class, 'regisBooking_video'])->name('regis.baudio');
+Route::post('regis-BCws', [Booking_Coworking_spaceController::class, 'regisBooking_cws'])->name('regis.bcws');
+Route::post('regis-Paudio', [Pinjam_audioController::class, 'regisPinjam_audio'])->name('regis.paudio');
+Route::post('regis-POS', [point_of_sellController::class, 'regisPoint_off_sell'])->name('regis.pos');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');

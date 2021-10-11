@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BukuRequest;
-use App\Models\Buku;
+use App\Http\Requests\VideoRequest;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
-class BukuController extends Controller
+class VideoController extends Controller
 {
-    public function regisBuku(BukuRequest $request)
+    public function regisVideo(VideoRequest $request)
     {
         $data = $request->all();
 
@@ -18,20 +18,17 @@ class BukuController extends Controller
 
         return $this->create($data);
     }
-
-
     public function create(array $data)
     {
-        return Buku::create([
-            'id_pengarang'  => $data['id_pengarang'],
-            'id_penerbit'   => $data['id_penerbit'],
+        return Video::create([
             'judul'         => $data['judul'],
             'tahun_rilis'   => $data['tahun_rilis'],
-            'halaman'       => $data['halaman'],
-            'isbn'          => $data['isbn'],
+            'genre'         => $data['genre'],
+            'durasi'        => $data['durasi'],
+            'format'        => $data['format'],
             'deskripsi'     => $data['deskripsi'],
-            'sampul_photo'  => $data['sampul_photo'],
-            'bentuk'        => $data['bentuk'],
+            'cover'         => $data['cover'],
+            'trailer'       => $data['trailer'],
 
         ]);
     }
