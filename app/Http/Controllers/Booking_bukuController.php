@@ -30,4 +30,13 @@ class Booking_bukuController extends Controller
             'tgl_selesai' => $data['tgl_selesai']
         ]);
     }
+    public function getBooking_buku()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Booking_buku::all();
+        return $data;
+    }
 }

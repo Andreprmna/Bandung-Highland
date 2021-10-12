@@ -1,120 +1,70 @@
 @extends('admin.layouts.main')
-@section('title', 'Users Create')
 
 @section('content')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                @if ($errors->any())
-                <div class="mb-5" role="alert">
-                    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                        There is something wrong
-                    </div>
-                    <div class="border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 textred-700">
-                        <p>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </p>
-                    </div>
-                </div>
-                @endif
-                <form action="#" class="w-full" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Name
-                            </label>
-                            <input value="{{ old('name') }}" name="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User Name">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Email
-                            </label>
-                            <input value="{{ old('email') }}" name="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email" placeholder="User Email">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Image
-                            </label>
-                            <input name="profile_photo_path" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="file" placeholder="User Image">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Password
-                            </label>
-                            <input value="{{ old('password') }}" name="password" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Password Confirmation
-                            </label>
-                            <input value="{{ old('password_confirmation') }}" name="password_confirmation" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password Confirmation">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Address
-                            </label>
-                            <input value="{{ old('address') }}" name="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User Address">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Roles
-                            </label>
-                            <select name="roles" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="USER">User</option>
-                                <option value="ADMIN">Admin</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                House Number
-                            </label>
-                            <input value="{{ old('houseNumber') }}" name="houseNumber" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User House Number">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Phone Number
-                            </label>
-                            <input value="{{ old('phoneNumber') }}" name="phoneNumber" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User Phone Number">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                City
-                            </label>
-                            <input value="{{ old('city') }}" name="city" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User City">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3 text-right">
-                            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                Save User
-                            </button>
-                        </div>
-                    </div>
-                </form>
+<div class="content-header">
+<div class="container-fluid">
+    <div class="row mb-2">
+    <div class="col-sm-6">
+        <h1 class="m-0">
+            User &raquo; Create
+        </h1>
+    </div><!-- /.col -->
+    
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
+</div>
+    <div class="px-4">
+        <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" name="email" placeholder="Email" :value="old('email')" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" class="form-control" type="text" name="name" placeholder="Name" :value="old('name')" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" class="form-control" type="password" name="password" placeholder="Password" required autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label for="password_confirmation">Password Confirmation</label>
+                <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation" required autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input id="dob" class="form-control" type="date" name="tgl_lahir" :value="old('tgl_lahir')" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Address</label>
+                <input id="address" class="form-control" type="text" name="alamat" placeholder="Alamat" :value="old('alamat')" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control" name="jenis_kelamin" required>
+                    <option value="Male">Laki-laki</option>
+                    <option value="Female">Wanita</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" class="form-control" name="role" required>
+                    <option value="0">Super Admin</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Member</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="gender">Photo Profile</label>
+                <input id="profile" class="form-control" type="file" name="profile_photo_path">
+            </div>             
+            <div class="float-right">
+                <button type="submit" class="btn btn-primary">Create</button>    
+            </div>
+            <br>        
+            <br>    
+            
+        </form>
     </div>
 @endsection

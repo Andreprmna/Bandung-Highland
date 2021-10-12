@@ -30,4 +30,13 @@ class Booking_Coworking_spaceController extends Controller
             'tgl_selesai' => $data['tgl_selesai']
         ]);
     }
+    public function getBooking_cws()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Booking_Coworking_space::all();
+        return $data;
+    }
 }

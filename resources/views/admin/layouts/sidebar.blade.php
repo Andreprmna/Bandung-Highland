@@ -8,19 +8,19 @@
             </a>
             </li>
             <li class="nav-item {{ request()->is('users') ? 'menu-open' : ''}}">
-            <a href="/cms/users" class="nav-link {{ request()->is('cms/users') ? 'active' : ''}}">
+            <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('cms/users*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>Users</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('penerbits.index') }}" class="nav-link {{ request()->is('cms/penerbits*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>Penerbit</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('pengarangs.index') }}" class="nav-link {{ request()->is('cms/pengarangs*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>Pengarang</p>
             </a>

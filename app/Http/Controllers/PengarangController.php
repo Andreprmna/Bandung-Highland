@@ -3,33 +3,116 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PengarangRequest;
-use App\Http\Requests\UserRequest;
-use App\Models\pengarang;
+use App\Models\Penerbit;
+use App\Models\Pengarang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 class PengarangController extends Controller
 {
-    public function regisPengarang(PengarangRequest $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if(Auth::check()){
+            $pengarang = Pengarang::paginate();
+
+            return view('admin.pengarang.pengarangs', [
+                'pengarang' => $pengarang
+            ]);
+        }
+        
+        return redirect('cms');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.pengarang.create-pengarang');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(PengarangRequest $request)
     {
         $data = $request->all();
 
-        // $check = $this->create($data);
+        $check = $this->createPengarang($data);
 
-        // return redirect("dashboard")->withSuccess('You have signed-in');
-
-        return $this->create($data);
+        return redirect()->route("pengarangs.index");
     }
 
-
-    public function create(array $data)
+    public function createPengarang(array $data)
     {
         return Pengarang::create([
             'nama_pengarang' => $data['nama_pengarang'],
 
         ]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Pengarang $pengarang)
+    {
+        return view('admin.pengarang.edit-pengarang', [
+            'item' => $pengarang
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Pengarang $pengarang)
+    {
+        $data = $request->all();
+
+        $pengarang->update($data);
+
+        return redirect()->route('pengarangs.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Pengarang $pengarang)
+    {
+        $pengarang->delete();
+
+        return redirect()->route('pengarangs.index');
+    }
 }
+

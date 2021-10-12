@@ -34,4 +34,13 @@ class Pinjam_videoController extends Controller
 
         ]);
     }
+    public function getPinjam_video()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Pinjam_video::all();
+        return $data;
+    }
 }

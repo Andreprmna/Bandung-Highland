@@ -15,13 +15,13 @@ class UserController extends Controller
 
     public function index()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect('/');
         }
 
         return view('page-login');
-    }  
-      
+    }
+
 
     public function customLogin(Request $request)
     {
@@ -29,13 +29,13 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/')
-                        ->withSuccess('Signed in');
+                ->withSuccess('Signed in');
         }
-  
+
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
@@ -45,50 +45,60 @@ class UserController extends Controller
     {
         return view('page-register');
     }
-      
+
 
     public function customRegistration(UserRequest $request)
-    {  
+    {
         $data = $request->all();
 
         $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
 
         // User::create($data);
-           
+
         $check = $this->create($data);
-         
+
         return redirect("dashboard")->withSuccess('You have signed-in');
     }
 
 
     public function create(array $data)
     {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-        'tgl_lahir' => $data['tgl_lahir'],
-        'jenis_kelamin' => $data['jenis_kelamin'],
-        'alamat' => $data['alamat'],
-        'profile_photo_path' => $data['profile_photo_path']
-      ]);
-    }    
-    
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'tgl_lahir' => $data['tgl_lahir'],
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'alamat' => $data['alamat'],
+            'profile_photo_path' => $data['profile_photo_path']
+        ]);
+    }
+
 
     public function dashboard()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('index');
         }
-  
+
         return redirect("login")->withSuccess('You are not allowed to access');
     }
-    
 
-    public function signOut() {
+
+    public function signOut()
+    {
         Session::flush();
         Auth::logout();
-  
+
         return Redirect('/');
+    }
+    public function getuser()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = User::all();
+        return $data;
     }
 }

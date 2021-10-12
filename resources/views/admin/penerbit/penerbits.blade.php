@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
-@section('title', 'Users')
+@section('title', 'Penerbit')
 
 @section('content')
     <div class="px-4 py-10">
-        <a class="btn btn-success" href="{{ route('users.create') }}" role="button">+ Create User</a>
+        <a class="btn btn-success" href="{{ route('penerbits.create') }}" role="button">+ Create Penerbit</a>
     </div>
     <div class="py-12 my-4">
         <div class="overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">
@@ -12,40 +12,20 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Gender</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (is_array($user) || is_object($user))
-                            @forelse ($user as $item)
+                        @if (is_array($penerbit) || is_object($penerbit))
+                            @forelse ($penerbit as $item)
                                 <tr>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->email}}</td>
-                                    @if ($item->role == 0)
-                                        <td>Super Admin</td>
-                                        @elseif ($item->role == 1)
-                                        <td>Admin</td>
-                                        @elseif ($item->role == 2)
-                                        <td>Member</td>
-                                    @endif
-                                    <td>{{$item->jenis_kelamin}}</td>
-                                    @if ($item->status == 0)
-                                        <td>Unverified</td>
-                                        @elseif ($item->status == 1)
-                                        <td>Active</td>
-                                        @elseif ($item->status == 2)
-                                        <td>Inactive</td>
-                                    @endif
+                                    <td>{{$item->nama_penerbit}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('users.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('penerbits.edit', $item->id) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('penerbits.destroy', $item->id) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

@@ -29,4 +29,13 @@ class atkController extends Controller
             'deskripsi_atk' => $data['deskripsi_atk']
         ]);
     }
+    public function get_atk()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Atk::all();
+        return $data;
+    }
 }

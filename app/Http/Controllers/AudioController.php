@@ -32,4 +32,13 @@ class AudioController extends Controller
             'cover'         => $data['cover']
         ]);
     }
+    public function getAudio()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Audio::all();
+        return $data;
+    }
 }

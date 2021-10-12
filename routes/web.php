@@ -8,12 +8,12 @@ use App\Http\Controllers\Booking_bukuController;
 use App\Http\Controllers\Booking_Coworking_spaceController;
 use App\Http\Controllers\Booking_toyController;
 use App\Http\Controllers\Booking_video_Controller;
-use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
+use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\Pinjam_audioController;
 use App\Http\Controllers\Pinjam_bukuController;
 use App\Http\Controllers\pinjam_toyController;
@@ -23,6 +23,7 @@ use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
 use App\Models\Booking_buku;
+use App\Models\Booking_toy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,11 +44,13 @@ Route::get('/', function () {
 Route::prefix('cms')
     ->group(function() {
         Route::get('/', [AdminUserController::class, 'indexAdmin']);
+        Route::resource('users', AdminUserController::class);
         Route::get('admin-dashboard', [AdminUserController::class, 'dashboardAdmin']);
         Route::post('custom-admin-login', [AdminUserController::class, 'customAdminLogin'])->name('login.admin');
         Route::get('admin-signout', [AdminUserController::class, 'signOutAdmin'])->name('signout.admin');
-        Route::get('users', [AdminUserController::class, 'getUser']);
-        Route::get('create-users', [AdminUserController::class, 'createUser']);
+        
+        Route::resource('penerbits', PenerbitController::class);
+        Route::resource('pengarangs', PengarangController::class);
     });
 
 
@@ -57,6 +60,7 @@ Route::post('custom-login', [UserController::class, 'customLogin'])->name('login
 Route::get('registration', [UserController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
+
 Route::post('regis-pengarang', [PengarangController::class, 'regisPengarang'])->name('regis.pengarang');
 Route::post('regis-penerbit', [PenerbitController::class, 'regisPenerbit'])->name('regis.penerbit');
 Route::post('regis-buku', [BukuController::class, 'regisBuku'])->name('regis.buku');
@@ -77,6 +81,29 @@ Route::post('regis-Baudio', [Booking_audioController::class, 'regisBooking_video
 Route::post('regis-BCws', [Booking_Coworking_spaceController::class, 'regisBooking_cws'])->name('regis.bcws');
 Route::post('regis-Paudio', [Pinjam_audioController::class, 'regisPinjam_audio'])->name('regis.paudio');
 Route::post('regis-POS', [point_of_sellController::class, 'regisPoint_off_sell'])->name('regis.pos');
+
+Route::get('get-baudio', [Booking_audioController::class, 'getBooking'])->name('get.baudio');
+Route::get('get-atk', [atkController::class, 'get_atk'])->name('get.atk');
+Route::get('get-audio', [AudioController::class, 'getAudio'])->name('get.audio');
+Route::get('get-Bbuku', [Booking_bukuController::class, 'getBooking_buku'])->name('get.bbuku');
+Route::get('get-Bcws', [Booking_Coworking_spaceController::class, 'getBooking_cws'])->name('get.cws');
+Route::get('get-Btoy', [Booking_toyController::class, 'getBooking_toy'])->name('get.btoy');
+Route::get('get-Bvideo', [Booking_video_Controller::class, 'getBooking_video'])->name('get.bvideo');
+Route::get('get-buku', [BukuController::class, 'getBuku'])->name('get.buku');
+Route::get('get-CSP', [Coworking_space_propertiesController::class, 'getCSP'])->name('get.csp');
+Route::get('get-CWS', [Coworking_spaceController::class, 'getCWS'])->name('name.cws');
+Route::get('get-Penerbit', [PenerbitController::class, 'getPenerbit'])->name('get.penerbit');
+Route::get('get-Pengarang', [PengarangController::class, 'getPengarang'])->name('get.pengarang');
+Route::get('get-PAudio', [Pinjam_audioController::class, 'getPinjam_audio'])->name('get.paudio');
+Route::get('get-PBuku', [Pinjam_bukuController::class, 'getPinjam_buku'])->name('get.pbuku');
+Route::get('get-Ptoy', [pinjam_toyController::class, 'getPinjam_toy'])->name('get.ptoy');
+Route::get('get-Pvideo', [Pinjam_videoController::class, 'getPinjam_video'])->name('get.pvideo');
+Route::get('get-POS', [point_of_sellController::class, 'getPOS'])->name('get.pos');
+Route::get('get-properties', [PropertiesController::class, 'getProperties'])->name('get.properties');
+Route::get('get-toy', [ToyController::class, 'getToy'])->name('get.toy');
+Route::get('get-user', [UserController::class, 'getuser'])->name('get.user');
+Route::get('get-video', [VideoController::class, 'getVideo'])->name('get.video');
+
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

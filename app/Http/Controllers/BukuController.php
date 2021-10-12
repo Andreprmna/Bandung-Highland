@@ -35,4 +35,13 @@ class BukuController extends Controller
 
         ]);
     }
+    public function getBuku()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Buku::all();
+        return $data;
+    }
 }

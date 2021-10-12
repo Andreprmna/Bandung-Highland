@@ -30,4 +30,13 @@ class Booking_audioController extends Controller
             'tgl_selesai' => $data['tgl_selesai']
         ]);
     }
+    public function getBooking()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Booking_audio::all();
+        return $data;
+    }
 }

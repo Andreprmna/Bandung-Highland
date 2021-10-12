@@ -32,4 +32,13 @@ class point_of_sellController extends Controller
 
         ]);
     }
+    public function getPOS()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Point_of_sell::all();
+        return $data;
+    }
 }

@@ -32,4 +32,13 @@ class VideoController extends Controller
 
         ]);
     }
+    public function getVideo()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Video::all();
+        return $data;
+    }
 }

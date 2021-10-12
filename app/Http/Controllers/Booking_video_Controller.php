@@ -30,4 +30,13 @@ class Booking_video_Controller extends Controller
             'waktu_selesai' => $data['waktu_selesai']
         ]);
     }
+    public function getBooking_video()
+    {
+        return $this->tampil();
+    }
+    public function tampil()
+    {
+        $data = Booking_video::all();
+        return $data;
+    }
 }
