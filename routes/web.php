@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\atkController;
 use App\Http\Controllers\AudioController;
 use App\Http\Controllers\Booking_audioController;
@@ -35,14 +36,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('index');
 });
-Route::view('/users', 'admin.users');
+
+Route::prefix('cms')
+    ->group(function() {
+        Route::get('/', [AdminUserController::class, 'indexAdmin']);
+        Route::get('admin-dashboard', [AdminUserController::class, 'dashboardAdmin']);
+        Route::post('custom-admin-login', [AdminUserController::class, 'customAdminLogin'])->name('login.admin');
+        Route::get('admin-signout', [AdminUserController::class, 'signOutAdmin'])->name('signout.admin');
+        Route::get('users', [AdminUserController::class, 'getUser']);
+        Route::get('create-users', [AdminUserController::class, 'createUser']);
+    });
+
 
 Route::get('dashboard', [UserController::class, 'dashboard']);
 Route::get('login', [UserController::class, 'index'])->name('login');
@@ -70,6 +77,7 @@ Route::post('regis-Baudio', [Booking_audioController::class, 'regisBooking_video
 Route::post('regis-BCws', [Booking_Coworking_spaceController::class, 'regisBooking_cws'])->name('regis.bcws');
 Route::post('regis-Paudio', [Pinjam_audioController::class, 'regisPinjam_audio'])->name('regis.paudio');
 Route::post('regis-POS', [point_of_sellController::class, 'regisPoint_off_sell'])->name('regis.pos');
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');

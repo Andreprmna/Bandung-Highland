@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+    // Client Side
+
     public function index()
     {
         if(Auth::check()){

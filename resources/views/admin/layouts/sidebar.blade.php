@@ -2,13 +2,13 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-item {{ request()->is('/') ? 'menu-open' : ''}}">
-            <a href="/" class="nav-link {{ request()->is('/') ? 'active' : ''}}">
+            <a href="/cms/admin-dashboard" class="nav-link {{ request()->is('cms/admin-dashboard') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Dashboard</p>
             </a>
             </li>
             <li class="nav-item {{ request()->is('users') ? 'menu-open' : ''}}">
-            <a href="/users" class="nav-link {{ request()->is('users') ? 'active' : ''}}">
+            <a href="/cms/users" class="nav-link {{ request()->is('cms/users') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>Users</p>
             </a>
@@ -23,6 +23,12 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>Pengarang</p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{{ route('signout.admin') }}" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>Logout</p>
             </a>
             </li>
             <li class="nav-item">
