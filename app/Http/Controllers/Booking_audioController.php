@@ -47,12 +47,12 @@ class Booking_audioController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPenerbit($data);
+        $check = $this->CreateBooking_audio($data);
 
         return redirect()->route("booking_audios.index");
     }
 
-    public function createPenerbit(array $data)
+    public function CreateBooking_audio(array $data)
     {
         return Booking_audio::create([
             'id_member'  => $data['id_member'],

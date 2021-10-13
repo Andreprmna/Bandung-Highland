@@ -47,12 +47,12 @@ class atkController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPenerbit($data);
+        $check = $this->createAtk($data);
 
         return redirect()->route("atks.index");
     }
 
-    public function createPenerbit(array $data)
+    public function createAtk(array $data)
     {
         return Atk::create([
             'nama_atk' => $data['nama_atk'],

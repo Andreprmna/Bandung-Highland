@@ -47,12 +47,12 @@ class AudioController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPenerbit($data);
+        $check = $this->CreateAudio($data);
 
         return redirect()->route("audios.index");
     }
 
-    public function createPenerbit(array $data)
+    public function CreateAudio(array $data)
     {
         return Audio::create([
             'judul' => $data['judul'],

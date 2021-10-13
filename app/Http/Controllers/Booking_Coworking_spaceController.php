@@ -48,12 +48,12 @@ class Booking_Coworking_spaceController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPenerbit($data);
+        $check = $this->createBCWS($data);
 
         return redirect()->route("booking_coworking_spaces.index");
     }
 
-    public function createPenerbit(array $data)
+    public function createBCWS(array $data)
     {
         return Booking_Coworking_space::create([
             'id_cs' => $data['id_cs'],

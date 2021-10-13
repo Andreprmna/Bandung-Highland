@@ -47,12 +47,12 @@ class Booking_bukuController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPenerbit($data);
+        $check = $this->createBooking_buku($data);
 
         return redirect()->route("booking_bukus.index");
     }
 
-    public function createPenerbit(array $data)
+    public function createBooking_buku(array $data)
     {
         return Booking_buku::create([
             'id_member'  => $data['id_member'],
