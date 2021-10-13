@@ -5,20 +5,54 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VideoRequest;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
-    public function regisVideo(VideoRequest $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Auth::check()) {
+            $video = Video::paginate();
+
+            return view('admin.video.video', [
+                'video' => $video
+            ]);
+        }
+
+        return redirect('cms');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.video.create-video');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(VideoRequest $request)
     {
         $data = $request->all();
 
-        // $check = $this->create($data);
+        $check = $this->createVideo($data);
 
-        // return redirect("dashboard")->withSuccess('You have signed-in');
-
-        return $this->create($data);
+        return redirect()->route("videos.index");
     }
-    public function create(array $data)
+
+    public function createToy(array $data)
     {
         return Video::create([
             'judul'         => $data['judul'],
@@ -28,17 +62,59 @@ class VideoController extends Controller
             'format'        => $data['format'],
             'deskripsi'     => $data['deskripsi'],
             'cover'         => $data['cover'],
-            'trailer'       => $data['trailer'],
-
+            'trailer'       => $data['trailer']
         ]);
     }
-    public function getVideo()
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return $this->tampil();
+        //
     }
-    public function tampil()
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Video $video)
     {
-        $data = Video::all();
-        return $data;
+        return view('admin.video.edit-video', [
+            'item' => $video
+        ]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Video $video)
+    {
+        $data = $request->all();
+
+        $video->update($data);
+
+        return redirect()->route('videos.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Video $video)
+    {
+        $video->delete();
+
+        return redirect()->route('videos.index');
     }
 }

@@ -18,6 +18,6 @@ class VerifyCsrfToken extends Middleware
     protected $addHttpCookie = true;
 
     protected $except = [
-        'http://127.0.0.1:8000/get-audio',
+        'http://127.0.0.1:8000/cms/coworking_space_properties',
     ];
 }

@@ -5,36 +5,111 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Coworking_space_propertiesRequest;
 use App\Models\Coworking_space_properties;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Coworking_space_propertiesController extends Controller
 {
-    public function regis_CSP(Coworking_space_propertiesRequest $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Auth::check()) {
+            $coworking_space_properties = Coworking_space_properties::paginate();
+
+            return view('admin.coworking_space_properties.coworking_space_properties', [
+                'coworking_space_properties' => $coworking_space_properties
+            ]);
+        }
+
+        return redirect('cms');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.coworking_space_properties.create-coworking_space_properties');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Coworking_space_propertiesRequest $request)
     {
         $data = $request->all();
 
-        // $check = $this->create($data);
+        $check = $this->createCSP($data);
 
-        // return redirect("dashboard")->withSuccess('You have signed-in');
-
-        return $this->create($data);
+        return redirect()->route("coworking_space_properties.index");
     }
 
-
-    public function create(array $data)
+    public function createCSP(array $data)
     {
         return Coworking_space_properties::create([
-            'id_property'  => $data['id_property'],
-            'id_cs'   => $data['id_cs']
-
+            'nomor_cs'  => $data['nomor_cs'],
+            'deskripsi_cs'   => $data['deskripsi_cs'],
+            'daya_tampung' => $data['daya_tampung']
         ]);
     }
-    public function getCSP()
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return $this->tampil();
+        //
     }
-    public function tampil()
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Coworking_space_properties $coworking_space_properties)
     {
-        $data = Coworking_space_properties::all();
-        return $data;
+        return view('admin.coworking_space_properties.edit-coworking_space_properties', [
+            'item' => $coworking_space_properties
+        ]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Coworking_space_properties $coworking_space_properties)
+    {
+        $data = $request->all();
+
+        $coworking_space_properties->update($data);
+
+        return redirect()->route('coworking_space_properties.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Coworking_space_properties $coworking_space_properties)
+    {
+        $coworking_space_properties->delete();
+
+        return redirect()->route('coworking_space_properties.index');
     }
 }

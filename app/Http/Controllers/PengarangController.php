@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PengarangRequest;
-use App\Models\Penerbit;
 use App\Models\Pengarang;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,14 +16,14 @@ class PengarangController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $pengarang = Pengarang::paginate();
 
             return view('admin.pengarang.pengarangs', [
                 'pengarang' => $pengarang
             ]);
         }
-        
+
         return redirect('cms');
     }
 
@@ -115,4 +113,3 @@ class PengarangController extends Controller
         return redirect()->route('pengarangs.index');
     }
 }
-
