@@ -11,14 +11,17 @@
                 <table class="table table-sm table-hover" id="example" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                         <tr>
+                            <th>No</th>
                             <th>Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (is_array($penerbit) || is_object($penerbit))
+                        <?php $no=1; ?>
                             @forelse ($penerbit as $item)
                                 <tr>
+                                    <td>{{$no++}}</td>
                                     <td>{{$item->nama_penerbit}}</td>
                                     <td>
                                         <div class="row">

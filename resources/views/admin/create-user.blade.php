@@ -56,7 +56,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="gender">Photo Profile</label>
+                <label for="profile">Photo Profile</label>
                 <input id="profile" class="form-control" type="file" name="profile_photo_path">
             </div>             
             <div class="float-right">

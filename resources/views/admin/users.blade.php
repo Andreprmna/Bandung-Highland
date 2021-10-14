@@ -11,6 +11,7 @@
                 <table class="table table-sm table-hover" id="example" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                         <tr>
+                            <th>No</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -21,8 +22,10 @@
                     </thead>
                     <tbody>
                         @if (is_array($user) || is_object($user))
+                        <?php $no=1; ?>
                             @forelse ($user as $item)
                                 <tr>
+                                    <td>{{$no++}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->email}}</td>
                                     @if ($item->role == 0)
