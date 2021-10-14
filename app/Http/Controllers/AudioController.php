@@ -47,6 +47,8 @@ class AudioController extends Controller
     {
         $data = $request->all();
 
+        $data['cover'] = $request->file('cover')->store('assets/audio', 'public');
+
         $check = $this->CreateAudio($data);
 
         return redirect()->route("audios.index");

@@ -65,7 +65,7 @@ Route::prefix('cms')
         Route::resource('point_of_sells', point_of_sellController::class);
         Route::resource('properties', PropertiesController::class);
         Route::resource('toys', ToyController::class);
-        Route::resource('Users', UserController::class);
+        // Route::resource('Users', UserController::class);
         Route::resource('videos', VideoController::class);
     });
 

@@ -48,98 +48,58 @@
             </li>
             
             <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('cms/toys*') ? 'active' : ''}}">
+            <a href="{{ route('toys.index') }}" class="nav-link {{ request()->is('cms/toys*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-gamepad"></i>
                 <p>Toy</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('cms/videos*') ? 'active' : ''}}">
+            <a href="{{ route('videos.index') }}" class="nav-link {{ request()->is('cms/videos*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-video"></i>
                 <p>Video</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('cms/audios*') ? 'active' : ''}}">
+            <a href="{{ route('audios.index') }}" class="nav-link {{ request()->is('cms/audios*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-audio-description"></i>
                 <p>Audio</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('cms/cospaces*') ? 'active' : ''}}">
+            <a href="{{ route('coworking_spaces.index') }}" class="nav-link {{ request()->is('cms/coworking_spaces*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-laptop-house"></i>
                 <p>Coworking Space</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('cms/properties*') ? 'active' : ''}}">
+            <a href="{{ route('properties.index') }}" class="nav-link {{ request()->is('cms/properties*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-house-damage"></i>
                 <p>Property</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('cms/atks*') ? 'active' : ''}}">
+            <a href="{{ route('coworking_space_properties.index') }}" class="nav-link {{ request()->is('cms/coworking_space_properties*') ? 'active' : ''}}">
+                <i class="nav-icon fas fa-house-damage"></i>
+                <p>Coworking Property</p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{{ route('atks.index') }}" class="nav-link {{ request()->is('cms/atks*') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-mail-bulk"></i>
                 <p>Alat Tulis Kantor</p>
             </a>
             </li>
             <li class="nav-header">ACCOUNT</li>
             <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>Profile</p>
+            </a>
+            </li>
+            <li class="nav-item">
             <a href="{{ route('signout.admin') }}" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>Logout</p>
             </a>
-            </li>
-            <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-circle"></i>
-                <p>
-                Level 1
-                <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                    Level 2
-                    <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                    </a>
-                    </li>
-                </ul>
-                </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                </a>
-                </li>
-            </ul>
             </li>
         </ul>

@@ -16,9 +16,10 @@ class CreateToysTable extends Migration
         Schema::create('toys', function (Blueprint $table) {
             $table->id();
             $table->string('nama_toy');
-            $table->integer('jenis');
+            $table->string('jenis');
             $table->string('genre');
-            $table->integer('kondisi');
+            $table->string('deskripsi');
+            $table->integer('kondisi')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();
         });

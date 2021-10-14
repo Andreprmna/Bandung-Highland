@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PropertiesRequest;
-use App\Models\properties;
+use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +19,7 @@ class PropertiesController extends Controller
         if (Auth::check()) {
             $properties = properties::paginate();
 
-            return view('admin.properties.properties', [
+            return view('admin.property.properties', [
                 'properties' => $properties
             ]);
         }
@@ -34,7 +34,7 @@ class PropertiesController extends Controller
      */
     public function create()
     {
-        return view('admin.properties.create-properties');
+        return view('admin.property.create-property');
     }
 
     /**
@@ -71,18 +71,20 @@ class PropertiesController extends Controller
         //
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(properties $properties)
+    public function edit(Properties $property)
     {
-        return view('admin.properties.edit-properties', [
-            'item' => $properties
+        return view('admin.property.edit-property', [
+            'item' => $property
         ]);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -90,11 +92,11 @@ class PropertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, properties $properties)
+    public function update(Request $request, Properties $property)
     {
         $data = $request->all();
 
-        $properties->update($data);
+        $property->update($data);
 
         return redirect()->route('properties.index');
     }
@@ -105,9 +107,9 @@ class PropertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(properties $properties)
+    public function destroy(Properties $property)
     {
-        $properties->delete();
+        $property->delete();
 
         return redirect()->route('properties.index');
     }

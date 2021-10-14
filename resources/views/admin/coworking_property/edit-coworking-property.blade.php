@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Coworking Space &raquo; {{ $item->name }} &raquo; Edit
+            Coworking Property &raquo; {{ $item->name }} &raquo; Edit
         </h1>
     </div><!-- /.col -->
     
@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('coworking_spaces.update', $item->id)}}" method="POST">
+        <form action="{{route('coworking_space_properties.update', $item->id)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">

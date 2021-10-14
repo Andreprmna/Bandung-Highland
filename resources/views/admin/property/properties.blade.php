@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="px-4 py-10">
-        <a class="btn btn-success" href="{{ route('properties.create') }}" role="button">+ Create Penerbit</a>
+        <a class="btn btn-success" href="{{ route('properties.create') }}" role="button">+ Create Property</a>
     </div>
     <div class="py-12 my-4">
         <div class="overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">
@@ -17,9 +17,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (is_array($property) || is_object($property))
+                        @if (is_array($properties) || is_object($properties))
                         <?php $no=1; ?>
-                            @forelse ($property as $item)
+                            @forelse ($properties as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->nama_property}}</td>

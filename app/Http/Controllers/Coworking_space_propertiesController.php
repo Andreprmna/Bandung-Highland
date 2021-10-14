@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Coworking_space_propertiesRequest;
+use App\Models\Coworking_space;
 use App\Models\Coworking_space_properties;
+use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +21,7 @@ class Coworking_space_propertiesController extends Controller
         if (Auth::check()) {
             $coworking_space_properties = Coworking_space_properties::paginate();
 
-            return view('admin.coworking_space_properties.coworking_space_properties', [
+            return view('admin.coworking_property.coworking-property', [
                 'coworking_space_properties' => $coworking_space_properties
             ]);
         }
@@ -34,7 +36,13 @@ class Coworking_space_propertiesController extends Controller
      */
     public function create()
     {
-        return view('admin.coworking_space_properties.create-coworking_space_properties');
+        $coworking_space = Coworking_space::paginate();
+        $property = Properties::paginate();
+
+        return view('admin.coworking_property.create-coworking-property', [
+                'coworking_space' => $coworking_space,
+                'property' => $property
+            ]);
     }
 
     /**
@@ -55,9 +63,8 @@ class Coworking_space_propertiesController extends Controller
     public function createCSP(array $data)
     {
         return Coworking_space_properties::create([
-            'nomor_cs'  => $data['nomor_cs'],
-            'deskripsi_cs'   => $data['deskripsi_cs'],
-            'daya_tampung' => $data['daya_tampung']
+            'id_cs'  => $data['id_cs'],
+            'id_property'   => $data['id_property'],
         ]);
     }
 
@@ -78,10 +85,10 @@ class Coworking_space_propertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coworking_space_properties $coworking_space_properties)
+    public function edit(Coworking_space_properties $coworking_space_property)
     {
-        return view('admin.coworking_space_properties.edit-coworking_space_properties', [
-            'item' => $coworking_space_properties
+        return view('admin.coworking_property.edit-coworking-property', [
+            'item' => $coworking_space_property
         ]);
     }
     /**
@@ -91,11 +98,11 @@ class Coworking_space_propertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coworking_space_properties $coworking_space_properties)
+    public function update(Request $request, Coworking_space_properties $coworking_space_property)
     {
         $data = $request->all();
 
-        $coworking_space_properties->update($data);
+        $coworking_space_property->update($data);
 
         return redirect()->route('coworking_space_properties.index');
     }

@@ -19,7 +19,7 @@
             @method('PUT')
             <div class="form-group">
                 <label for="name">Name</label>
-                <input id="name" class="form-control" type="text" name="nama_penerbit" placeholder="Name" value="{{old('name') ?? $item->nama_penerbit}}" required>
+                <input id="name" class="form-control" type="text" name="nama_penerbit" placeholder="Name" value="{{old('name') ?? $item->nama_toy}}" required>
             </div>
             <div class="form-group">
                 <label for="jenis">Jenis</label>

@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="px-4 py-10">
-        <a class="btn btn-success" href="{{ route('cospaces.create') }}" role="button">+ Create Audio</a>
+        <a class="btn btn-success" href="{{ route('coworking_spaces.create') }}" role="button">+ Create Coworking Space</a>
     </div>
     <div class="py-12 my-4">
         <div class="overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">
@@ -19,20 +19,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (is_array($cospace) || is_object($cospace))
+                        @if (is_array($coworking_space) || is_object($coworking_space))
                         <?php $no=1; ?>
-                            @forelse ($cospace as $item)
+                            @forelse ($coworking_space as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->nomor}}</td>
+                                    <td>{{$item->nomor_cs}}</td>
                                     <td>{{$item->daya_tampung}}</td>
-                                    <td>{{$item->deskripsi}}</td>
+                                    <td>{{$item->deskripsi_cs}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('cospaces.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('coworking_spaces.edit', $item->id) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('cospaces.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('coworking_spaces.destroy', $item->id) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('audios.store')}}" method="POST">
+        <form action="{{route('audios.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div class="form-group">

@@ -19,7 +19,7 @@ class VideoController extends Controller
         if (Auth::check()) {
             $video = Video::paginate();
 
-            return view('admin.video.video', [
+            return view('admin.video.videos', [
                 'video' => $video
             ]);
         }
@@ -47,12 +47,14 @@ class VideoController extends Controller
     {
         $data = $request->all();
 
+        $data['cover'] = $request->file('cover')->store('assets/video', 'public');
+
         $check = $this->createVideo($data);
 
         return redirect()->route("videos.index");
     }
 
-    public function createToy(array $data)
+    public function createVideo(array $data)
     {
         return Video::create([
             'judul'         => $data['judul'],
@@ -62,7 +64,6 @@ class VideoController extends Controller
             'format'        => $data['format'],
             'deskripsi'     => $data['deskripsi'],
             'cover'         => $data['cover'],
-            'trailer'       => $data['trailer']
         ]);
     }
 

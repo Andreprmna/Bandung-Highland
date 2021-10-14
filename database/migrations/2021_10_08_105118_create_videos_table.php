@@ -22,7 +22,6 @@ class CreateVideosTable extends Migration
             $table->integer('format');
             $table->string('deskripsi');
             $table->text('cover');
-            $table->text('trailer');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

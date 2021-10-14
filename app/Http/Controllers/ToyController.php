@@ -19,7 +19,7 @@ class ToyController extends Controller
         if (Auth::check()) {
             $toy = Toy::paginate();
 
-            return view('admin.toy.toy', [
+            return view('admin.toy.toys', [
                 'toy' => $toy
             ]);
         }
@@ -58,7 +58,7 @@ class ToyController extends Controller
             'nama_toy'  => $data['nama_toy'],
             'jenis'     => $data['jenis'],
             'genre'     => $data['genre'],
-            'kondisi'   => $data['kondisi']
+            'deskripsi'   => $data['deskripsi']
         ]);
     }
 

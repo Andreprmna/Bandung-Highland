@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
-                <input id="deskripsi" class="form-control" type="text" name="deskripsi" placeholder="Deskripsi" :value="old('deskripsi')" required>
+                <input id="deskripsi" class="form-control" type="text" name="deskripsi_atk" placeholder="Deskripsi" :value="old('deskripsi')" required>
             </div>
                       
             <div class="float-right">

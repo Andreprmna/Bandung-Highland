@@ -19,7 +19,7 @@ class Coworking_spaceController extends Controller
         if (Auth::check()) {
             $coworking_space = Coworking_space::paginate();
 
-            return view('admin.coworking_space.coworking_space', [
+            return view('admin.coworking_space.coworking-space', [
                 'coworking_space' => $coworking_space
             ]);
         }
@@ -34,7 +34,7 @@ class Coworking_spaceController extends Controller
      */
     public function create()
     {
-        return view('admin.coworking_space.create-coworking_space');
+        return view('admin.coworking_space.create-coworking-space');
     }
 
     /**
@@ -56,7 +56,8 @@ class Coworking_spaceController extends Controller
     {
         return Coworking_space::create([
             'nomor_cs'  => $data['nomor_cs'],
-            'id_property'   => $data['id_property']
+            'daya_tampung'   => $data['daya_tampung'],
+            'deskripsi_cs'   => $data['deskripsi_cs']
 
         ]);
     }
@@ -80,7 +81,7 @@ class Coworking_spaceController extends Controller
      */
     public function edit(Coworking_space $coworking_space)
     {
-        return view('admin.coworking_space.edit-coworking_space', [
+        return view('admin.coworking_space.edit-coworking-space', [
             'item' => $coworking_space
         ]);
     }

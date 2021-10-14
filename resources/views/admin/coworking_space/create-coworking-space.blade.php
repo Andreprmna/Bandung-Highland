@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('cospaces.store')}}" method="POST">
+        <form action="{{route('coworking_spaces.store')}}" method="POST">
             @csrf
             
             <div class="form-group">
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
-                <input id="deskripsi" class="form-control" type="text" name="deskripsi" placeholder="Deskripsi" :value="old('deskripsi')" required>
+                <input id="deskripsi" class="form-control" type="text" name="deskripsi_cs" placeholder="Deskripsi" :value="old('deskripsi')" required>
             </div>
                       
             <div class="float-right">
