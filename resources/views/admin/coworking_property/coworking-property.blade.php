@@ -23,8 +23,8 @@
                             @forelse ($coworking_space_properties as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->nomor_cs}}</td>
-                                    <td>{{$item->nama_property}}</td>
+                                    <td>{{$item->coworking_space->nomor_cs}}</td>
+                                    <td>{{$item->properties->nama_property}}</td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('coworking_space_properties.edit', $item->id) }}" class="inline-block px-2">

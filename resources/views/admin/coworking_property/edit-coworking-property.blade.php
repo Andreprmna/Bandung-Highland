@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Coworking Property &raquo; {{ $item->name }} &raquo; Edit
+            Coworking Property Edit
         </h1>
     </div><!-- /.col -->
     
@@ -18,16 +18,26 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="nomor_cs">Nomor CS</label>
-                <input id="nomor_cs" class="form-control" type="text" name="nomor_cs" placeholder="Nomor CS" value="{{old('nomor_cs') ?? $item->nomor_cs}}" required>
+                <label for="nomor_cs">Nomor Coworking Space</label>
+                <select id="nomor_cs" class="form-control" name="id_cs" required>
+                    
+                    @forelse ($coworking_space as $item2)
+                        <option value="{{$item2->id}}" @if ($item->id_cs == $item2->id) selected @endif>{{$item2->nomor_cs}}</option>
+                    @empty
+                        <option value="-">-</option>
+                    @endforelse
+                </select>
             </div>
+
             <div class="form-group">
-                <label for="daya_tampung">Daya Tampung</label>
-                <input id="daya_tampung" class="form-control" type="text" name="daya_tampung" placeholder="Daya Tampung" value="{{old('daya_tampung') ?? $item->daya_tampung}}" required>
-            </div>
-            <div class="form-group">
-                <label for="deskripsi">Deskripsi</label>
-                <input id="deskripsi" class="form-control" type="text" name="deskripsi_cs" placeholder="Deskripsi" value="{{old('deskripsi') ?? $item->deskripsi_cs}}" required>
+                <label for="nama_property">Nama Property</label>
+                <select id="nama_property" class="form-control" name="id_property" required> 
+                    @forelse ($property as $item3)
+                        <option value="{{$item3->id}}" @if ($item->id_property == $item3->id) selected @endif>{{$item3->nama_property}}</option> 
+                    @empty
+                        <option value="-">-</option>
+                    @endforelse
+                </select>
             </div>
                       
             <div class="float-right">
