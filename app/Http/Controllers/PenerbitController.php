@@ -17,14 +17,14 @@ class PenerbitController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $penerbit = Penerbit::paginate();
 
             return view('admin.penerbit.penerbits', [
                 'penerbit' => $penerbit
             ]);
         }
-        
+
         return redirect('cms');
     }
 
@@ -114,4 +114,3 @@ class PenerbitController extends Controller
         return redirect()->route('penerbits.index');
     }
 }
-

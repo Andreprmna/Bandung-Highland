@@ -6,41 +6,116 @@ use App\Http\Requests\pinjam_toyRequest;
 use App\Http\Requests\Pinjam_videoRequest;
 use App\Models\Pinjam_video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Pinjam_videoController extends Controller
 {
-    public function regisPinjam_video(Pinjam_videoRequest $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Auth::check()) {
+            $pinjam_video = Pinjam_video::paginate();
+
+            return view('admin.pinjam_video.pinjam_video', [
+                'pinjam_video' => $pinjam_video
+            ]);
+        }
+
+        return redirect('cms');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.pinjam_video.create-pinjam_video');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Pinjam_videoRequest $request)
     {
         $data = $request->all();
 
-        // $check = $this->create($data);
+        $check = $this->createPinjam_Video($data);
 
-        // return redirect("dashboard")->withSuccess('You have signed-in');
-
-        return $this->create($data);
+        return redirect()->route("pinjam_videos.index");
     }
 
-
-    public function create(array $data)
+    public function createPinjam_Video(array $data)
     {
         return Pinjam_video::create([
             'id_member'  => $data['id_member'],
             'id_admin'   => $data['id_admin'],
             'id_video'         => $data['id_video'],
-            'waktu_mulai'   => $data['waktu_mulai'],
-            'waktu_selesai'       => $data['waktu_selesai'],
+            'tgl_pinjam'   => $data['tgl_pinjam'],
+            'tgl_kembali'       => $data['tgl_kembali'],
             'tgl_pengembalian'  => $data['tgl_pengembalian'],
             'denda'     => $data['denda']
 
         ]);
     }
-    public function getPinjam_video()
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return $this->tampil();
+        //
     }
-    public function tampil()
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Pinjam_video $pinjam_video)
     {
-        $data = Pinjam_video::all();
-        return $data;
+        return view('admin.pinjam_toy.edit-pinjam_toy', [
+            'item' => $pinjam_video
+        ]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Pinjam_video $pinjam_video)
+    {
+        $data = $request->all();
+
+        $pinjam_video->update($data);
+
+        return redirect()->route('pinjam_videos.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Pinjam_video $pinjam_video)
+    {
+        $pinjam_video->delete();
+
+        return redirect()->route('pinjam_videos.index');
     }
 }

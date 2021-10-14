@@ -22,8 +22,6 @@ use App\Http\Controllers\point_of_sellController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\ToyController;
 use App\Http\Controllers\VideoController;
-use App\Models\Booking_buku;
-use App\Models\Booking_toy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,15 +40,33 @@ Route::get('/', function () {
 });
 
 Route::prefix('cms')
-    ->group(function() {
+    ->group(function () {
         Route::get('/', [AdminUserController::class, 'indexAdmin']);
         Route::resource('users', AdminUserController::class);
         Route::get('admin-dashboard', [AdminUserController::class, 'dashboardAdmin']);
         Route::post('custom-admin-login', [AdminUserController::class, 'customAdminLogin'])->name('login.admin');
         Route::get('admin-signout', [AdminUserController::class, 'signOutAdmin'])->name('signout.admin');
-        
+
         Route::resource('penerbits', PenerbitController::class);
         Route::resource('pengarangs', PengarangController::class);
+        Route::resource('atks', atkController::class);
+        Route::resource('audios', AudioController::class);
+        Route::resource('booking_bukus', Booking_bukuController::class);
+        Route::resource('booking_coworking_spaces', Booking_Coworking_spaceController::class);
+        Route::resource('booking_toys', Booking_toyController::class);
+        Route::resource('booking_videos', Booking_video_Controller::class);
+        Route::resource('bukus', BukuController::class);
+        Route::resource('coworking_space_properties', Coworking_space_propertiesController::class);
+        Route::resource('coworking_spaces', Coworking_spaceController::class);
+        Route::resource('pinjam_audios', Pinjam_audioController::class);
+        Route::resource('pinjam_bukus', Pinjam_bukuController::class);
+        Route::resource('pinjam_toys', pinjam_toyController::class);
+        Route::resource('pinjam_videos', Pinjam_videoController::class);
+        Route::resource('point_of_sells', point_of_sellController::class);
+        Route::resource('properties', PropertiesController::class);
+        Route::resource('toys', ToyController::class);
+        Route::resource('Users', UserController::class);
+        Route::resource('videos', VideoController::class);
     });
 
 

@@ -5,35 +5,110 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PropertiesRequest;
 use App\Models\properties;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PropertiesController extends Controller
 {
-    public function regisProperties(PropertiesRequest $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Auth::check()) {
+            $properties = properties::paginate();
+
+            return view('admin.properties.properties', [
+                'properties' => $properties
+            ]);
+        }
+
+        return redirect('cms');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.properties.create-properties');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(PropertiesRequest $request)
     {
         $data = $request->all();
 
-        // $check = $this->create($data);
+        $check = $this->createProperties($data);
 
-        // return redirect("dashboard")->withSuccess('You have signed-in');
-
-        return $this->create($data);
+        return redirect()->route("properties.index");
     }
 
-
-    public function create(array $data)
+    public function createProperties(array $data)
     {
         return properties::create([
-            'nama_property' => $data['nama_property'],
+            'nama_property' => $data['nama_property']
 
         ]);
     }
-    public function getproperties()
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return $this->tampil();
+        //
     }
-    public function tampil()
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(properties $properties)
     {
-        $data = properties::all();
-        return $data;
+        return view('admin.properties.edit-properties', [
+            'item' => $properties
+        ]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, properties $properties)
+    {
+        $data = $request->all();
+
+        $properties->update($data);
+
+        return redirect()->route('properties.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(properties $properties)
+    {
+        $properties->delete();
+
+        return redirect()->route('properties.index');
     }
 }
