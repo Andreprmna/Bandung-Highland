@@ -36,13 +36,7 @@ class Coworking_space_propertiesController extends Controller
      */
     public function create()
     {
-        $coworking_space = Coworking_space::paginate();
-        $property = Properties::paginate();
-
-        return view('admin.coworking_property.create-coworking-property', [
-                'coworking_space' => $coworking_space,
-                'property' => $property
-            ]);
+        return view('admin.coworking_property.create-coworking-property');
     }
 
     /**
