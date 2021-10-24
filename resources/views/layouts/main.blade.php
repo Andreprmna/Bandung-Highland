@@ -11,6 +11,9 @@
         <title> @yield('title') </title>
         <!-- Fevicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('admin_template/') }}/plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Start CSS -->   
         @yield('style')
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">

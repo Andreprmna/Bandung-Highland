@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\point_of_sellRequest;
+use App\Models\Penerbit;
+use App\Models\Pengarang;
 use App\Models\Point_of_sell;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +19,9 @@ class point_of_sellController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $point_of_sell = Point_of_sell::paginate();
+            $point_of_sell = Point_of_sell::with('pengarang', 'penerbit')->paginate();
 
-            return view('admin.point_of_sell.point_of_sell', [
+            return view('admin.atk.list-atk', [
                 'point_of_sell' => $point_of_sell
             ]);
         }
@@ -34,7 +36,13 @@ class point_of_sellController extends Controller
      */
     public function create()
     {
-        return view('admin.point_of_sell.create-point_of_sell');
+        $pengarang = Pengarang::paginate();
+        $penerbit = Penerbit::paginate();
+        
+        return view('admin.atk.beli-atk', [
+            'pengarang' => $pengarang,
+            'penerbit' => $penerbit
+        ]);
     }
 
     /**
@@ -84,8 +92,13 @@ class point_of_sellController extends Controller
      */
     public function edit(Point_of_sell $point_of_sell)
     {
-        return view('admin.point_of_sells.edit-point_of_sells', [
-            'item' => $point_of_sell
+        $pengarang = Pengarang::paginate();
+        $penerbit = Penerbit::paginate();
+
+        return view('admin.atk.edit-atks', [
+            'item' => $point_of_sell,
+            'pengarang' => $pengarang,
+            'penerbit' => $penerbit,
         ]);
     }
     /**

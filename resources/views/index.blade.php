@@ -10,7 +10,7 @@ Neon - Home
 @endsection 
 @section('content')
 <!-- Start XP Breadcrumbbar -->                    
-{{-- <div class="bg-transparent" style="height: 128px"></div> --}}
+<div class="bg-transparent spacer"></div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -19,13 +19,13 @@ Neon - Home
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-        <img class="d-block w-100" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="First slide">
+        <img class="d-block w-100 img-fluid" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="First slide">
         </div>
         <div class="carousel-item">
-        <img class="d-block w-100" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="Second slide">
+        <img class="d-block w-100 img-fluid" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="Second slide">
         </div>
         <div class="carousel-item">
-        <img class="d-block w-100" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="Third slide">
+        <img class="d-block w-100 img-fluid" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -36,6 +36,92 @@ Neon - Home
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+<div class="container-fluid my-5 welcome">
+    <div class="mx-3">
+        <h2><strong>Selamat</strong> Datang</h2>
+    </div>
+    <div class="my-4 welcome-intro">
+        <p>Selamat datang di Pusat Pembelajaran dan Perpustakaan Klasik Sophia Wisdom House!</p>
+        <p class="mx-5 my-3">Pembelajaran Klasik adalah proses pemupukan kecintaan akan kebenaran, keindahan, dan kebajikan dalam berbagai kebudayaan 
+            manusia melalui pembelajaran dialogis dan pemaparan terhadap berbagai budaya 
+            manusia yang teragung dalam konteks perkembangan sejarahnya.</p>
+        <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+        <hr class="mx-3">
+    </div>
+</div>
+<div class="container-fluid my-5 service">
+    <div class="mx-3">
+        <h2><strong>Layanan</strong> Kami</h2>
+    </div>
+    <div class="my-4 mx-5 service-intro">
+        <div class="row">                   
+            <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="card-body">
+                    <div class="row">
+                        <span class="service-icon"><i class="nav-icon fas fa-users fa-2x"></i></span>
+                        <div class="col text-left">
+                            <h3 class="mx-3 my-1 font-20"><strong>Kursus</strong></h3>
+                            <p class="mb-3 mt-3 mx-3 text-justify">Menyediakan kursus pelajaran matematika, ilmu pengetahuan alam, logika, dan bahasa Inggris, 
+                            untuk kurikulum klasik, nasional, Cambridge, dan persiapan olimpiade.
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <hr>
+                </div>
+            </div>
+            <!-- End XP Col -->
+            <!-- Start XP Col -->
+            <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="card-body">
+                    <div class="row">
+                        <span class="service-icon"><i class="nav-icon fas fa-book fa-2x"></i></span>
+                        <div class="col text-left">
+                            <h3 class="mx-3 my-1 font-20"><strong>Perpustakaan</strong></h3>
+                            <p class="mb-3 mt-3 mx-3 text-justify">Menyediakan buku dan media yang mendukung pembelajaran klasik. Buku-buku anak yang telah 
+                                tersedia diseleksi untuk mengembangkan imajinasi, moral, dan minat baca anak-anak.
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <hr>
+                </div>
+            </div>
+            <!-- End XP Col -->
+            <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="card-body">
+                    <div class="row">
+                        <span class="service-icon"><i class="nav-icon fas fa-building fa-2x"></i></span>
+                        <div class="col text-left">
+                            <h3 class="mx-3 my-1 font-20"><strong>Ruang Belajar</strong></h3>
+                            <p class="mb-3 mt-3 mx-3 text-justify">Tersedia ruang belajar yang nyaman, aman, dan kondusif untuk belajar bersama. 
+                                Fasilitas: koneksi internet wi-fi, AC, papan tulis, TV berkoneksi HDMI, dan CCTV yang dipantau. 
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="card-body">
+                    <div class="row">
+                        <span class="service-icon"><i class="nav-icon fas fa-user-plus fa-2x"></i></span>
+                        <div class="col text-left">
+                            <h3 class="mx-3 my-1 font-20"><strong>Pelatihan Guru</strong></h3>
+                            <p class="mb-3 mt-3 mx-3 text-justify">Menyediakan pelatihan guru yang bertujuan untuk 
+                                memperkenalkan guru kepada kurikulum dan pedagogi klasik.
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mx-3">
 </div>
 <!-- End XP Breadcrumbbar -->
 <!-- Start XP Contentbar -->    

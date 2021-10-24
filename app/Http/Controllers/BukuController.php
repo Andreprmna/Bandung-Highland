@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BukuRequest;
 use App\Models\Buku;
+use App\Models\Penerbit;
+use App\Models\Pengarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,9 +19,9 @@ class BukuController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $buku = Buku::paginate();
+            $buku = Buku::with('pengarang', 'penerbit')->paginate();
 
-            return view('admin.buku.buku', [
+            return view('admin.buku.bukus', [
                 'buku' => $buku
             ]);
         }
@@ -34,7 +36,13 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('admin.buku.create-buku');
+        $pengarang = Pengarang::paginate();
+        $penerbit = Penerbit::paginate();
+
+        return view('admin.buku.create-buku', [
+                'pengarang' => $pengarang,
+                'penerbit' => $penerbit
+            ]);
     }
 
     /**
@@ -46,6 +54,8 @@ class BukuController extends Controller
     public function store(BukuRequest $request)
     {
         $data = $request->all();
+
+        $data['sampul'] = $request->file('sampul')->store('assets/buku', 'public');
 
         $check = $this->createBuku($data);
 
@@ -62,7 +72,7 @@ class BukuController extends Controller
             'halaman'       => $data['halaman'],
             'isbn'          => $data['isbn'],
             'deskripsi'     => $data['deskripsi'],
-            'sampul_photo'  => $data['sampul_photo'],
+            'sampul'        => $data['sampul'],
             'bentuk'        => $data['bentuk']
 
         ]);
@@ -87,8 +97,13 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
+        $pengarang = Pengarang::paginate();
+        $penerbit = Penerbit::paginate();
+
         return view('admin.buku.edit-buku', [
-            'item' => $buku
+            'item' => $buku,
+            'pengarang' => $pengarang,
+            'penerbit' => $penerbit,
         ]);
     }
     /**

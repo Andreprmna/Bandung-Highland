@@ -17,7 +17,7 @@ class Buku extends Model
         'halaman',
         'isbn',
         'deskripsi',
-        'sampul_photo',
+        'sampul',
         'bentuk',
     ];
     public function getCreatedAtAttribute($value)
