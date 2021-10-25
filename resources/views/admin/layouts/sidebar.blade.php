@@ -65,10 +65,10 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/audios*'))
+            <li class="nav-item @if (request()->is('cms/audios*') || request()->is('cms/pinjam_audios*') || request()->is('cms/booking_audios*'))
                     menu-is-opening menu-open
                 @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/audios*'))
+                <a href="#" class="nav-link @if (request()->is('cms/audios*') || request()->is('cms/pinjam_audios*') || request()->is('cms/booking_audios*'))
                     active
                 @endif">
                     <i class="nav-icon fas fa-audio-description"></i>
@@ -87,14 +87,14 @@
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('audios.index') }}" class="nav-link {{ request()->is('cms/audios*') ? 'active' : ''}}">
+                    <a href="{{ route('pinjam_audios.index') }}" class="nav-link {{ request()->is('cms/pinjam_audios*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>Pinjam Audio</p>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('audios.index') }}" class="nav-link {{ request()->is('cms/audios*') ? 'active' : ''}}">
+                    <a href="{{ route('booking_audios.index') }}" class="nav-link {{ request()->is('cms/booking_audios*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>Booking Audio</p>
                     </a>

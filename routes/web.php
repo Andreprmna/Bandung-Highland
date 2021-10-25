@@ -52,6 +52,7 @@ Route::prefix('cms')
         Route::resource('pengarangs', PengarangController::class);
         Route::resource('atks', atkController::class);
         Route::resource('audios', AudioController::class);
+        Route::resource('booking_audios', Booking_audioController::class);
         Route::resource('booking_bukus', Booking_bukuController::class);
         Route::resource('booking_coworking_spaces', Booking_Coworking_spaceController::class);
         Route::resource('booking_toys', Booking_toyController::class);

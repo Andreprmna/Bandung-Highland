@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_audioRequest;
+use App\Models\Audio;
 use App\Models\Booking_audio;
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,9 +20,9 @@ class Booking_audioController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_audio = Booking_audio::paginate();
+            $booking_audio = Booking_audio::with('member', 'admin', 'audio')->paginate();
 
-            return view('admin.booking_audio.booking_audios', [
+            return view('admin.audio.list-booking-audio', [
                 'booking_audio' => $booking_audio
             ]);
         }
@@ -34,7 +37,15 @@ class Booking_audioController extends Controller
      */
     public function create()
     {
-        return view('admin.booking_audio.create-booking_audio');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $audio = Audio::paginate();
+
+        return view('admin.audio.booking-audio', [
+            'member' => $member,
+            'user' => $user,
+            'audio' => $audio
+        ]);
     }
 
     /**
@@ -83,8 +94,15 @@ class Booking_audioController extends Controller
      */
     public function edit(Booking_audio $booking_audio)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $audio = Audio::paginate();
+
         return view('admin.booking_audio.edit-booking_audio', [
-            'item' => $booking_audio
+            'item' => $booking_audio,
+            'member' => $member,
+            'user' => $user,
+            'audio' => $audio
         ]);
     }
 

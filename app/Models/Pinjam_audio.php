@@ -29,22 +29,14 @@ class Pinjam_audio extends Model
     }
     public function member()
     {
-        return $this->hasOne(Booking_audio::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id', 'id_member');
     }
     public function admin()
     {
-        return $this->hasOne(Booking_audio::class, 'id', 'id_admin');
+        return $this->hasOne(User::class, 'id', 'id_admin');
     }
     public function audio()
     {
-        return $this->hasOne(Booking_audio::class, 'id', 'id_audio');
-    }
-    public function waktu_pinjam()
-    {
-        return $this->hasOne(Booking_audio::class, 'id', 'waktu_mulai');
-    }
-    public function waktu_pengembalian()
-    {
-        return $this->hasOne(Booking_audio::class, 'id', 'waktu_selesai');
+        return $this->hasOne(Audio::class, 'id', 'id_audio');
     }
 }

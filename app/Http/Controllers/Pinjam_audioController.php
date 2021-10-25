@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Pinjam_audioRequest;
 use App\Models\Audio;
+use App\Models\Member;
 use App\Models\Pinjam_audio;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +20,9 @@ class Pinjam_audioController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pinjam_audio = Pinjam_audio::paginate();
+            $pinjam_audio = Pinjam_audio::with('member', 'admin', 'audio')->paginate();
 
-            return view('admin.pinjam_audio.pinjam_audio', [
+            return view('admin.audio.list-pinjam-audio', [
                 'pinjam_audio' => $pinjam_audio
             ]);
         }
@@ -35,7 +37,15 @@ class Pinjam_audioController extends Controller
      */
     public function create()
     {
-        return view('admin.pinjam_audio.create-pinjam_audio');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $audio = Audio::paginate();
+        
+        return view('admin.audio.pinjam-audio', [
+            'member' => $member,
+            'user' => $user,
+            'audio' => $audio
+        ]);
     }
 
     /**
@@ -86,8 +96,15 @@ class Pinjam_audioController extends Controller
      */
     public function edit(Pinjam_audio $pinjam_audio)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $audio = Audio::paginate();
+
         return view('admin.pinjam_audio.edit-pinjam_audio', [
-            'item' => $pinjam_audio
+            'item' => $pinjam_audio,
+            'member' => $member,
+            'user' => $user,
+            'audio' => $audio
         ]);
     }
     /**
