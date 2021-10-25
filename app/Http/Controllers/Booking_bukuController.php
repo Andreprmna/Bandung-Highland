@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_bukuRequest;
 use App\Models\Booking_buku;
+use App\Models\Buku;
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +20,7 @@ class Booking_bukuController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_buku = Booking_buku::paginate();
+            $booking_buku = Booking_buku::with('member', 'user', 'buku')->paginate();
 
             return view('admin.booking_buku.booking_bukus', [
                 'booking_bukus' => $booking_buku
@@ -34,7 +37,14 @@ class Booking_bukuController extends Controller
      */
     public function create()
     {
-        return view('admin.booking_buku.create-booking_buku');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $buku = Buku::paginate();
+        return view('admin.booking_buku.create-booking_buku', [
+            'member' => $member,
+            'user' => $user,
+            'buku' => $buku,
+        ]);
     }
 
     /**
@@ -83,8 +93,14 @@ class Booking_bukuController extends Controller
      */
     public function edit(Booking_buku $booking_buku)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $buku = Buku::paginate();
         return view('admin.booking_buku.edit-booking_buku', [
-            'item' => $booking_buku
+            'item' => $booking_buku,
+            'member' => $member,
+            'user' => $user,
+            'buku' => $buku,
         ]);
     }
     /**

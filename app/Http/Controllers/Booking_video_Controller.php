@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_video_Request;
 use App\Models\Booking_video;
+use App\Models\Member;
+use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +20,7 @@ class Booking_video_Controller extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_video = Booking_video::paginate();
+            $booking_video = Booking_video::with('member', 'user', 'video')->paginate();
 
             return view('admin.booking_video.booking_video', [
                 'booking_video' => $booking_video
@@ -34,7 +37,14 @@ class Booking_video_Controller extends Controller
      */
     public function create()
     {
-        return view('admin.booking_video.create-booking_video');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $video = Video::paginate();
+        return view('admin.booking_video.create-booking_video', [
+            'member' => $member,
+            'user' => $user,
+            'video' => $video
+        ]);
     }
 
     /**
@@ -83,8 +93,14 @@ class Booking_video_Controller extends Controller
      */
     public function edit(Booking_video $booking_video)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $video = Video::paginate();
         return view('admin.booking_video.edit-booking_video', [
-            'item' => $booking_video
+            'item' => $booking_video,
+            'member' => $member,
+            'user' => $user,
+            'video' => $video
         ]);
     }
 

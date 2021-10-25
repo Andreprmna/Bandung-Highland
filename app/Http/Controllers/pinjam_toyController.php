@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\pinjam_toyRequest;
+use App\Models\Member;
 use App\Models\pinjam_toy;
+use App\Models\Toy;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +20,7 @@ class pinjam_toyController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pinjam_toy = pinjam_toy::paginate();
+            $pinjam_toy = pinjam_toy::with('member', 'user', 'toy')->paginate();
 
             return view('admin.pinjam_toy.pinjam_toy', [
                 'pinjam_toy' => $pinjam_toy
@@ -34,7 +37,14 @@ class pinjam_toyController extends Controller
      */
     public function create()
     {
-        return view('admin.pinjam_toy.create-pinjam_toy');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $toy = Toy::paginate();
+        return view('admin.pinjam_toy.create-pinjam_toy', [
+            'member' => $member,
+            'user' => $user,
+            'toy' => $toy
+        ]);
     }
 
     /**
@@ -85,8 +95,14 @@ class pinjam_toyController extends Controller
      */
     public function edit(pinjam_toy $pinjam_toy)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $toy = Toy::paginate();
         return view('admin.pinjam_toy.edit-pinjam_toy', [
-            'item' => $pinjam_toy
+            'item' => $pinjam_toy,
+            'member' => $member,
+            'user' => $user,
+            'toy' => $toy
         ]);
     }
     /**
