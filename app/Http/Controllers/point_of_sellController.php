@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\point_of_sellRequest;
-use App\Models\Penerbit;
-use App\Models\Pengarang;
+use App\Models\Atk;
+use App\Models\Member;
 use App\Models\Point_of_sell;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,7 @@ class point_of_sellController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $point_of_sell = Point_of_sell::with('pengarang', 'penerbit')->paginate();
+            $point_of_sell = Point_of_sell::with('member', 'admin', 'atk')->paginate();
 
             return view('admin.atk.list-atk', [
                 'point_of_sell' => $point_of_sell
@@ -36,12 +37,14 @@ class point_of_sellController extends Controller
      */
     public function create()
     {
-        $pengarang = Pengarang::paginate();
-        $penerbit = Penerbit::paginate();
+        $member = Member::paginate();
+        $user = User::paginate();
+        $atk = Atk::paginate();
         
         return view('admin.atk.beli-atk', [
-            'pengarang' => $pengarang,
-            'penerbit' => $penerbit
+            'member' => $member,
+            'user' => $user,
+            'atk' => $atk
         ]);
     }
 
@@ -92,13 +95,15 @@ class point_of_sellController extends Controller
      */
     public function edit(Point_of_sell $point_of_sell)
     {
-        $pengarang = Pengarang::paginate();
-        $penerbit = Penerbit::paginate();
+        $member = Member::paginate();
+        $user = User::paginate();
+        $atk = Atk::paginate();
 
         return view('admin.atk.edit-atks', [
             'item' => $point_of_sell,
-            'pengarang' => $pengarang,
-            'penerbit' => $penerbit,
+            'member' => $member,
+            'user' => $user,
+            'atk' => $atk
         ]);
     }
     /**

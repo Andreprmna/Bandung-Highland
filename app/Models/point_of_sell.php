@@ -28,11 +28,11 @@ class Point_of_sell extends Model
     }
     public function member()
     {
-        return $this->hasOne(Booking_video::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id', 'id_member');
     }
     public function admin()
     {
-        return $this->hasOne(Booking_video::class, 'id', 'id_admin');
+        return $this->hasOne(User::class, 'id', 'id_admin');
     }
     public function atk()
     {

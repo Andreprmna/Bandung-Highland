@@ -22,13 +22,14 @@
                 <input id="nama_atk" class="form-control" type="text" name="nama_atk" placeholder="Nama Alat Tulis Kantor" value="{{old('nama_atk') ?? $item->nama_atk}}" required>
             </div>
             <div class="form-group">
-                <label for="harga">Harga</label>
-                <input id="harga" class="form-control" type="text" name="harga" placeholder="Harga" value="{{old('harga') ?? $item->harga}}" required>
-            </div>
-            <div class="form-group">
                 <label for="jumlah">Jumlah</label>
                 <input id="jumlah" class="form-control" type="text" name="jumlah" placeholder="Jumlah" value="{{old('jumlah') ?? $item->jumlah}}" required>
             </div>
+            <div class="form-group">
+                <label for="harga">Harga</label>
+                <input id="harga" class="form-control" type="text" name="harga" placeholder="Harga" value="{{old('harga') ?? $item->harga}}" required>
+            </div>
+            
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
                 <input id="deskripsi" class="form-control" type="text" name="deskripsi_atk" placeholder="Deskripsi" value="{{old('deskripsi') ?? $item->deskripsi_atk}}" required>

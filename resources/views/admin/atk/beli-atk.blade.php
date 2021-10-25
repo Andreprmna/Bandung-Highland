@@ -18,11 +18,11 @@
             @csrf
             
             <div class="form-group">
-                <label for="nama_pengarang">Nama Member</label>
-                <select id="nama_pengarang" class="form-control" name="id_pengarang" required>
-                    @if (is_array($pengarang) || is_object($pengarang))
-                        @forelse ($pengarang as $item)
-                            <option value="{{$item->id}}">{{$item->nama_pengarang}}</option>
+                <label for="nama_member">Nama Member</label>
+                <select id="nama_member" class="form-control" name="id_member" required>
+                    @if (is_array($member) || is_object($member))
+                        @forelse ($member as $item)
+                            <option value="{{$item->id}}">{{$item->nama}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -30,11 +30,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="nama_penerbit">Nama Admin</label>
-                <select id="nama_penerbit" class="form-control" name="id_penerbit" required>
-                    @if (is_array($penerbit) || is_object($penerbit))
-                        @forelse ($penerbit as $item)
-                            <option value="{{$item->id}}">{{$item->nama_penerbit}}</option>
+                <label for="nama_admin">Nama Admin</label>
+                <select id="nama_admin" class="form-control" name="id_admin" required>
+                    @if (is_array($user) || is_object($user))
+                        @forelse ($user as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -42,11 +42,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="nama_pengarang">Nama Alat Tulis Kantor</label>
-                <select id="nama_pengarang" class="form-control" name="id_pengarang" required>
-                    @if (is_array($pengarang) || is_object($pengarang))
-                        @forelse ($pengarang as $item)
-                            <option value="{{$item->id}}">{{$item->nama_pengarang}}</option>
+                <label for="nama_atk">Nama Alat Tulis Kantor</label>
+                <select id="nama_atk" class="form-control" name="id_atk" required>
+                    @if (is_array($atk) || is_object($atk))
+                        @forelse ($atk as $item)
+                            <option value="{{$item->id}}">{{$item->nama_atk}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -58,7 +58,7 @@
                 <input id="jumlah_pos" class="form-control" type="text" name="jumlah_pos" placeholder="Jumlah" :value="old('jumlah_pos')" required>
             </div>
             <div class="form-group">
-                <label for="total_harga">Total harga</label>
+                <label for="total_harga">Total Harga</label>
                 <input id="total_harga" class="form-control" type="text" name="total_harga" placeholder="Total Harga" :value="old('total_harga')" required>
             </div>
             

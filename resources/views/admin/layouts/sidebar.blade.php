@@ -34,10 +34,10 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/atks*'))
+            <li class="nav-item @if (request()->is('cms/atks*') || request()->is('cms/point_of_sells*'))
                     menu-is-opening menu-open
                 @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/atks*'))
+                <a href="#" class="nav-link @if (request()->is('cms/atks*') || request()->is('cms/point_of_sells*'))
                     active
                 @endif">
                     <i class="nav-icon fas fa-mail-bulk"></i>
@@ -56,7 +56,7 @@
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('point_of_sells.index') }}" class="nav-link {{ request()->is('cms/atks*') ? 'active' : ''}}">
+                    <a href="{{ route('point_of_sells.index') }}" class="nav-link {{ request()->is('cms/point_of_sells*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>Beli Alat Tulis Kantor</p>
                     </a>
@@ -214,7 +214,7 @@
                 <ul class="nav nav-treeview">
 
                     <li class="nav-item {{ request()->is('members') ? 'menu-open' : ''}}">
-                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('cms/members*') ? 'active' : ''}}">
+                    <a href="{{ route('members.index') }}" class="nav-link {{ request()->is('cms/members*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-address-card"></i>
                         <p>Manage Member</p>
                     </a>

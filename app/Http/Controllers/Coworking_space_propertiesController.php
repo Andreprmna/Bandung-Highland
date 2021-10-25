@@ -43,6 +43,7 @@ class Coworking_space_propertiesController extends Controller
                 'coworking_space' => $coworking_space,
                 'property' => $property
             ]);
+        return view('admin.coworking_property.create-coworking-property');
     }
 
     /**

@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\Pinjam_audioController;
 use App\Http\Controllers\Pinjam_bukuController;
@@ -65,6 +66,7 @@ Route::prefix('cms')
         Route::resource('point_of_sells', point_of_sellController::class);
         Route::resource('properties', PropertiesController::class);
         Route::resource('toys', ToyController::class);
+        Route::resource('members', MemberController::class);
         // Route::resource('Users', UserController::class);
         Route::resource('videos', VideoController::class);
     });
