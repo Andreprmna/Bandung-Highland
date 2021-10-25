@@ -13,8 +13,8 @@ class Pinjam_video extends Model
         'id_member',
         'id_admin',
         'id_video',
-        'waktu_mulai',
-        'waktu_selesai',
+        'tgl_pinjam',
+        'tgl_kembali',
         'tgl_pengembalian',
         'denda'
     ];

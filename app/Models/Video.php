@@ -17,6 +17,7 @@ class Video extends Model
         'format',
         'deskripsi',
         'cover',
+        'trailer'
 
     ];
     public function getCreatedAtAttribute($value)

@@ -24,8 +24,8 @@ class Pinjam_videoRequest extends FormRequest
     public function rules()
     {
         return [
-            'waktu_mulai' => ['required', 'date'],
-            'waktu_selesai' => ['required', 'date'],
+            'tgl_pinjam' => ['required', 'date'],
+            'tgl_kembali' => ['required', 'date'],
             'tgl_pengembalian' => ['required', 'date'],
         ];
     }

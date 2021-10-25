@@ -14,7 +14,7 @@ class CreateAudioTable extends Migration
     public function up()
     {
         Schema::create('audio', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_audio');
             $table->string('judul');
             $table->string('pengisi_suara');
             $table->integer('tahun_rilis');

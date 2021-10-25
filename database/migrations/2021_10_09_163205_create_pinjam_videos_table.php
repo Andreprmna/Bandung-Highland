@@ -14,12 +14,12 @@ class CreatePinjamVideosTable extends Migration
     public function up()
     {
         Schema::create('pinjam_videos', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pinjam_video');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_video');
-            $table->date('waktu_mulai');
-            $table->date('waktu_selesai');
+            $table->date('tgl_pinjam');
+            $table->date('tgl_kembali');
             $table->date('tgl_pengembalian');
             $table->float('denda');
             $table->integer('status')->default(0);

@@ -14,7 +14,7 @@ class CreateToysTable extends Migration
     public function up()
     {
         Schema::create('toys', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_toy');
             $table->string('nama_toy');
             $table->string('jenis');
             $table->string('genre');

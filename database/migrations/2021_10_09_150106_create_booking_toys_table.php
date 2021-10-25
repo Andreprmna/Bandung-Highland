@@ -14,7 +14,7 @@ class CreateBookingToysTable extends Migration
     public function up()
     {
         Schema::create('booking_toys', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_booking_toy');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_toy');

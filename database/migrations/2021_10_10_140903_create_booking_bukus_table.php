@@ -14,7 +14,7 @@ class CreateBookingBukusTable extends Migration
     public function up()
     {
         Schema::create('booking_bukus', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_booking_buku');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_buku');

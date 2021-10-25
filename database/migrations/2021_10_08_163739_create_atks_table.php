@@ -19,7 +19,7 @@ class CreateAtksTable extends Migration
             $table->integer('harga');
             $table->integer('jumlah');
             $table->string('deskripsi_atk');
-            $table->integer('status')->default(0);
+            $table->integer('status_atk')->default(0);
             $table->timestamps();
         });
     }

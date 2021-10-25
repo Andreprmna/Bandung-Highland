@@ -14,7 +14,7 @@ class CreateBookingVideosTable extends Migration
     public function up()
     {
         Schema::create('booking_videos', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_booking_video');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_video');
