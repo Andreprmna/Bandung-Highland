@@ -14,7 +14,7 @@ class CreateAtksTable extends Migration
     public function up()
     {
         Schema::create('atks', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_atk');
             $table->string('nama_atk');
             $table->integer('harga');
             $table->integer('jumlah');

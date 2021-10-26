@@ -24,10 +24,10 @@ class Coworking_space_properties extends Model
     }
     public function coworking_space()
     {
-        return $this->hasOne(coworking_space::class, 'id', 'id_cs');
+        return $this->hasOne(coworking_space::class, 'id_cs', 'id_cs');
     }
     public function properties()
     {
-        return $this->hasOne(properties::class, 'id', 'id_property');
+        return $this->hasOne(properties::class, 'id_property', 'id_property');
     }
 }

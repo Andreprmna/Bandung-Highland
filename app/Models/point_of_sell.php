@@ -32,10 +32,10 @@ class Point_of_sell extends Model
     }
     public function admin()
     {
-        return $this->hasOne(User::class, 'id', 'id_admin');
+        return $this->hasOne(User::class, 'id_admin', 'id_admin');
     }
     public function atk()
     {
-        return $this->hasOne(Atk::class, 'id', 'id_atk');
+        return $this->hasOne(Atk::class, 'id_admin', 'id_atk');
     }
 }

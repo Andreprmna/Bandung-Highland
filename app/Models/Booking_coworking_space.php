@@ -27,14 +27,14 @@ class Booking_coworking_space extends Model
     }
     public function member()
     {
-        return $this->hasOne(Member::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id_member', 'id_member');
     }
     public function admin()
     {
         return $this->hasOne(User::class, 'id', 'id_admin');
     }
-    public function buku()
+    public function coworking_space()
     {
-        return $this->hasOne(Coworking_space::class, 'id', 'id_cs');
+        return $this->hasOne(Coworking_space::class, 'id_cs', 'id_cs');
     }
 }

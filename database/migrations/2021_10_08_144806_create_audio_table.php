@@ -21,7 +21,7 @@ class CreateAudioTable extends Migration
             $table->string('genre');
             $table->string('durasi');
             $table->string('format');
-            $table->text('cover');
+            $table->binary('cover');
             $table->integer('status')->default(0);
             $table->timestamps();
         });
