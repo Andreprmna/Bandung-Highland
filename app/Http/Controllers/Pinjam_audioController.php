@@ -60,7 +60,7 @@ class Pinjam_audioController extends Controller
 
         $check = $this->createPinjam_audio($data);
 
-        return $data;
+        return redirect()->route("pinjam_audios.index");
     }
 
     public function createPinjam_audio(array $data)
