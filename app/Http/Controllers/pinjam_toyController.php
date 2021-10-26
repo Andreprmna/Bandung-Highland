@@ -20,7 +20,7 @@ class pinjam_toyController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pinjam_toy = pinjam_toy::with('member', 'user', 'toy')->paginate();
+            $pinjam_toy = pinjam_toy::with('member', 'admin', 'toy')->paginate();
 
             return view('admin.pinjam_toy.pinjam_toy', [
                 'pinjam_toy' => $pinjam_toy

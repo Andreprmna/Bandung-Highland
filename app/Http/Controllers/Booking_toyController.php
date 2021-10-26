@@ -20,7 +20,7 @@ class Booking_toyController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_toy = Booking_toy::with('member', 'user', 'toy')->paginate();
+            $booking_toy = Booking_toy::with('member', 'admin', 'toy')->paginate();
 
             return view('admin.booking_toy.booking_toy', [
                 'booking_toy' => $booking_toy

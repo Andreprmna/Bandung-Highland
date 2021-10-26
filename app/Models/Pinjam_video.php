@@ -29,22 +29,14 @@ class Pinjam_video extends Model
     }
     public function member()
     {
-        return $this->hasOne(Booking_video::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id', 'id_member');
     }
     public function admin()
     {
-        return $this->hasOne(Booking_video::class, 'id', 'id_admin');
+        return $this->hasOne(User::class, 'id', 'id_admin');
     }
     public function video()
     {
-        return $this->hasOne(Booking_video::class, 'id', 'id_video');
-    }
-    public function waktu_pinjam()
-    {
-        return $this->hasOne(Booking_video::class, 'id', 'waktu_mulai');
-    }
-    public function waktu_pengembalian()
-    {
-        return $this->hasOne(Booking_video::class, 'id', 'waktu_selesai');
+        return $this->hasOne(Video::class, 'id', 'id_video');
     }
 }
