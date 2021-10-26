@@ -25,10 +25,10 @@
                                     <td>{{$item->nama_pengarang}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('pengarangs.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('pengarangs.edit', $item->id_pengarang) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('pengarangs.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('pengarangs.destroy', $item->id_pengarang) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

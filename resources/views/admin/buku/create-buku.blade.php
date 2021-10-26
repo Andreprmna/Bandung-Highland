@@ -26,7 +26,7 @@
                 <select id="nama_pengarang" class="form-control" name="id_pengarang" required>
                     @if (is_array($pengarang) || is_object($pengarang))
                         @forelse ($pengarang as $item)
-                            <option value="{{$item->id}}">{{$item->nama_pengarang}}</option>
+                            <option value="{{$item->id_pengarang}}">{{$item->nama_pengarang}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -38,7 +38,7 @@
                 <select id="nama_penerbit" class="form-control" name="id_penerbit" required>
                     @if (is_array($penerbit) || is_object($penerbit))
                         @forelse ($penerbit as $item)
-                            <option value="{{$item->id}}">{{$item->nama_penerbit}}</option>
+                            <option value="{{$item->id_penerbit}}">{{$item->nama_penerbit}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse

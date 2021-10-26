@@ -31,10 +31,10 @@ class Buku extends Model
     }
     public function penerbit()
     {
-        return $this->hasOne(Penerbit::class, 'id', 'id_penerbit');
+        return $this->hasOne(Penerbit::class, 'id_penerbit', 'id_penerbit');
     }
     public function pengarang()
     {
-        return $this->hasOne(Pengarang::class, 'id', 'id_pengarang');
+        return $this->hasOne(Pengarang::class, 'id_pengarang', 'id_pengarang');
     }
 }

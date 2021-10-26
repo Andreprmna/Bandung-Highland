@@ -28,7 +28,7 @@
                                     <td>{{$item->nama_atk}}</td>
                                     <td>{{$item->harga}}</td>
                                     <td>{{$item->jumlah}}</td>
-                                    <td>{{$item->deskripsi}}</td>
+                                    <td>{{$item->deskripsi_atk}}</td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('atks.edit', $item->id) }}" class="inline-block px-2">

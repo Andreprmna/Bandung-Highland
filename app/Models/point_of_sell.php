@@ -28,7 +28,7 @@ class Point_of_sell extends Model
     }
     public function member()
     {
-        return $this->hasOne(Member::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id_member', 'id_member');
     }
     public function admin()
     {

@@ -27,7 +27,7 @@ class Booking_audio extends Model
     }
     public function member()
     {
-        return $this->hasOne(Member::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id_member', 'id_member');
     }
     public function admin()
     {
@@ -35,6 +35,6 @@ class Booking_audio extends Model
     }
     public function audio()
     {
-        return $this->hasOne(Audio::class, 'id', 'id_audio');
+        return $this->hasOne(Audio::class, 'id_audio', 'id_audio');
     }
 }

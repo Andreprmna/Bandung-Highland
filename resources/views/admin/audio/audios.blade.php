@@ -32,15 +32,21 @@
                                     <td>{{$item->pengisi_suara}}</td>
                                     <td>{{$item->tahun_rilis}}</td>
                                     <td>{{$item->genre}}</td>
-                                    <td>{{$item->durasi}}</td>
-                                    <td>{{$item->format}}</td>
+                                    <td>{{$item->durasi}} Menit</td>
+                                    @if ($item->format == 0)
+                                        <td>Kaset</td>
+                                        @elseif ($item->format == 1)
+                                        <td>VCD</td>
+                                        @elseif ($item->format == 2)
+                                        <td>Mp3</td>
+                                    @endif
                                     <td><img src="{{url('storage/'.$item->cover)}}" width="100px"></td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('audios.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('audios.edit', $item->id_audio) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('audios.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('audios.destroy', $item->id_audio) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

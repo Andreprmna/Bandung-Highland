@@ -39,10 +39,10 @@
                                     <td><img src="{{url('storage/'.$item->foto_profil)}}" width="100px"></td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('members.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('members.edit', $item->id_member) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('members.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('members.destroy', $item->id_member) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
