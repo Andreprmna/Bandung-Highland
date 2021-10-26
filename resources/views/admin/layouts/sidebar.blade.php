@@ -10,28 +10,11 @@
             
             <li class="nav-header">MASTER DATA</li>
 
-            <li class="nav-item @if (request()->is('cms/users*'))
-                    menu-is-opening menu-open
-                @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/users*'))
-                    active
-                @endif">
-                    <i class="nav-icon fas fa-user"></i>
-                    <p>
-                    Admin
-                    <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-
-                    <li class="nav-item {{ request()->is('users') ? 'menu-open' : ''}}">
+            <li class="nav-item {{ request()->is('users') ? 'menu-open' : ''}}">
                     <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('cms/users*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-user"></i>
-                        <p>Manage Admin</p>
+                        <p>Admin</p>
                     </a>
-                    </li>
-
-                </ul>
             </li>
 
             <li class="nav-item @if (request()->is('cms/atks*') || request()->is('cms/point_of_sells*'))

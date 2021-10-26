@@ -153,7 +153,7 @@ code {
 
 .xp-rightbar {
     overflow: hidden;
-    min-height: 500px;
+    /* min-height: 500px; */
     transition: all 0.3s ease;
 }
 
@@ -171,13 +171,18 @@ code {
 }
 
 .xp-footerbar {
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
     left: 0;
     padding: 20px 30px;
     text-align: center;
     border-top: 1px solid #e1e4e9;
+    background-color: #242424;
+}
+
+.xp-footerbar footer p {
+    color: #dee7f2;
 }
 
 .xp-toggle-menu .xp-footerbar {
@@ -6553,5 +6558,34 @@ table.focus-on tfoot tr.focused td {
 
 .service-icon {
     color: #007ee5;
+}
+
+.service-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0)
+    );
+}
+
+.vimis-intro {
+    text-align: center;
+}
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 50%;
+    position: relative;
+    height: 0;
+}
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 /*# sourceMappingURL=style.css.map */
