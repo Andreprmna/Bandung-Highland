@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_toyRequest;
 use App\Models\Booking_toy;
+use App\Models\Member;
+use App\Models\Toy;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +20,7 @@ class Booking_toyController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_toy = Booking_toy::paginate();
+            $booking_toy = Booking_toy::with('member', 'user', 'toy')->paginate();
 
             return view('admin.booking_toy.booking_toy', [
                 'booking_toy' => $booking_toy
@@ -34,7 +37,14 @@ class Booking_toyController extends Controller
      */
     public function create()
     {
-        return view('admin.booking_toy.create-booking_toy');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $toy = Toy::paginate();
+        return view('admin.booking_toy.create-booking_toy', [
+            'member' => $member,
+            'user' => $user,
+            'audio' => $toy
+        ]);
     }
 
     /**
@@ -83,8 +93,14 @@ class Booking_toyController extends Controller
      */
     public function edit(Booking_toy $booking_toy)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $toy = Toy::paginate();
         return view('admin.booking_toy.edit-booking_toy', [
-            'item' => $booking_toy
+            'item' => $booking_toy,
+            'member' => $member,
+            'user' => $user,
+            'toy' => $toy
         ]);
     }
     /**

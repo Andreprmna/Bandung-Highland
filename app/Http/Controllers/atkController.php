@@ -83,7 +83,7 @@ class atkController extends Controller
     public function edit(Atk $atk)
     {
         return view('admin.atk.edit-atk', [
-            'item' => $atk
+            'item' => $atk,
         ]);
     }
 

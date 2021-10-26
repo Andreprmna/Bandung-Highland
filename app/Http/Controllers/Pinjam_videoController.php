@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\pinjam_toyRequest;
 use App\Http\Requests\Pinjam_videoRequest;
+use App\Models\Member;
 use App\Models\Pinjam_video;
+use App\Models\Toy;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +21,7 @@ class Pinjam_videoController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pinjam_video = Pinjam_video::paginate();
+            $pinjam_video = Pinjam_video::with('member', 'user', 'video')->paginate();
 
             return view('admin.pinjam_video.pinjam_video', [
                 'pinjam_video' => $pinjam_video
@@ -35,7 +38,14 @@ class Pinjam_videoController extends Controller
      */
     public function create()
     {
-        return view('admin.pinjam_video.create-pinjam_video');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $toy = Toy::paginate();
+        return view('admin.pinjam_video.create-pinjam_video', [
+            'member' => $member,
+            'user' => $user,
+            'toy' => $toy
+        ]);
     }
 
     /**

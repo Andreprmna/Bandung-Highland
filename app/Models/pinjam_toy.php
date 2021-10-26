@@ -29,22 +29,14 @@ class pinjam_toy extends Model
     }
     public function member()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id', 'id_member');
     }
     public function admin()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'id_admin');
+        return $this->hasOne(User::class, 'id', 'id_admin');
     }
     public function toy()
     {
-        return $this->hasOne(Booking_toy::class, 'id', 'id_toy');
-    }
-    public function waktu_pinjam()
-    {
-        return $this->hasOne(Booking_toy::class, 'id', 'waktu_mulai');
-    }
-    public function waktu_pengembalian()
-    {
-        return $this->hasOne(Booking_toy::class, 'id', 'waktu_selesai');
+        return $this->hasOne(Toy::class, 'id', 'id_toy');
     }
 }

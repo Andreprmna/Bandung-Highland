@@ -14,7 +14,7 @@ class CreateBukusTable extends Migration
     public function up()
     {
         Schema::create('bukus', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_buku');
             $table->integer('id_pengarang');
             $table->integer('id_penerbit');
             $table->string('judul');
@@ -22,7 +22,8 @@ class CreateBukusTable extends Migration
             $table->integer('halaman');
             $table->string('isbn');
             $table->string('deskripsi');
-            $table->text('sampul');
+            $table->binary('sampul_depan');
+            $table->binary('sampul_belakang');
             $table->string('bentuk');
             $table->integer('kondisi')->default(0);
             $table->integer('status')->default(0);

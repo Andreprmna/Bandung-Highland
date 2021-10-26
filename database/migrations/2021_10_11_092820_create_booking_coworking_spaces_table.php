@@ -14,7 +14,7 @@ class CreateBookingCoworkingSpacesTable extends Migration
     public function up()
     {
         Schema::create('booking_coworking_spaces', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_bcs');
             $table->integer('id_cs');
             $table->integer('id_member');
             $table->integer('id_admin');

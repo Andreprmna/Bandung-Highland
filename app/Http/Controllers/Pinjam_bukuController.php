@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Pinjam_bukuRequest;
+use App\Models\Buku;
+use App\Models\Member;
 use App\Models\Pinjam_buku;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +20,7 @@ class Pinjam_bukuController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pinjam_buku = Pinjam_buku::paginate();
+            $pinjam_buku = Pinjam_buku::with('member', 'user', 'buku')->paginate();
 
             return view('admin.pinjam_buku.pinjam_buku', [
                 'pinjam_buku' => $pinjam_buku
@@ -34,7 +37,14 @@ class Pinjam_bukuController extends Controller
      */
     public function create()
     {
-        return view('admin.pinjam_buku.create-pinjam_buku');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $buku = Buku::paginate();
+        return view('admin.pinjam_buku.create-pinjam_buku', [
+            'member' => $member,
+            'user' => $user,
+            'buku' => $buku
+        ]);
     }
 
     /**
@@ -85,8 +95,14 @@ class Pinjam_bukuController extends Controller
      */
     public function edit(Pinjam_buku $pinjam_buku)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $buku = Buku::paginate();
         return view('admin.pinjam_buku.edit-pinjam_buku', [
-            'item' => $pinjam_buku
+            'item' => $pinjam_buku,
+            'member' => $member,
+            'user' => $user,
+            'buku' => $buku
         ]);
     }
     /**

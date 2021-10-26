@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Booking_Coworking_spaceRequest;
 use App\Models\Booking_Coworking_space;
 use App\Models\Booking_coworking_space as ModelsBooking_coworking_space;
+use App\Models\Coworking_space;
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +21,7 @@ class Booking_Coworking_spaceController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_coworking_space = Booking_Coworking_space::paginate();
+            $booking_coworking_space = Booking_Coworking_space::with('member', 'user', 'coworking_space')->paginate();
 
             return view('admin.booking_coworking_space.booking_coworking_spaces', [
                 'booking_coworking_spaces' => $booking_coworking_space
@@ -35,7 +38,14 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function create()
     {
-        return view('admin.booking_coworking_space.create-booking_coworking_space');
+        $member = Member::paginate();
+        $user = User::paginate();
+        $coworking_space = Coworking_space::paginate();
+        return view('admin.booking_coworking_space.create-booking_coworking_space', [
+            'member' => $member,
+            'user' => $user,
+            'coworking_space' => $coworking_space
+        ]);
     }
 
     /**
@@ -84,8 +94,14 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function edit(Booking_Coworking_space $booking_coworking_space)
     {
+        $member = Member::paginate();
+        $user = User::paginate();
+        $coworking_space = Coworking_space::paginate();
         return view('admin.booking_coworking_space.edit-booking_coworking_space', [
-            'item' => $booking_coworking_space
+            'item' => $booking_coworking_space,
+            'member' => $member,
+            'user' => $user,
+            'coworking_space' => $coworking_space
         ]);
     }
     /**

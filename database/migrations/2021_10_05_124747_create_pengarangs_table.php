@@ -14,7 +14,7 @@ class CreatePengarangsTable extends Migration
     public function up()
     {
         Schema::create('pengarangs', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pengarang');
             $table->string('nama_pengarang');
             $table->timestamps();
         });

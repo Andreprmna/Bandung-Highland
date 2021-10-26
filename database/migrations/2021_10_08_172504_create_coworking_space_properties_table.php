@@ -14,7 +14,7 @@ class CreateCoworkingSpacePropertiesTable extends Migration
     public function up()
     {
         Schema::create('coworking_space_properties', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_csp');
             $table->integer('id_cs');
             $table->integer('id_property');
             $table->timestamps();

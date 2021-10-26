@@ -27,7 +27,7 @@ class Booking_coworking_space extends Model
     }
     public function member()
     {
-        return $this->hasOne(User::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id', 'id_member');
     }
     public function admin()
     {
