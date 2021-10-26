@@ -20,7 +20,7 @@ class Booking_bukuController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_buku = Booking_buku::with('member', 'user', 'buku')->paginate();
+            $booking_buku = Booking_buku::with('member', 'admin', 'buku')->paginate();
 
             return view('admin.booking_buku.booking_bukus', [
                 'booking_bukus' => $booking_buku

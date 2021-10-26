@@ -20,7 +20,7 @@ class Pinjam_bukuController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pinjam_buku = Pinjam_buku::with('member', 'user', 'buku')->paginate();
+            $pinjam_buku = Pinjam_buku::with('member', 'admin', 'buku')->paginate();
 
             return view('admin.pinjam_buku.pinjam_buku', [
                 'pinjam_buku' => $pinjam_buku

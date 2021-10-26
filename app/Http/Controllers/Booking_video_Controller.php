@@ -20,7 +20,7 @@ class Booking_video_Controller extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $booking_video = Booking_video::with('member', 'user', 'video')->paginate();
+            $booking_video = Booking_video::with('member', 'admin', 'video')->paginate();
 
             return view('admin.booking_video.booking_video', [
                 'booking_video' => $booking_video
