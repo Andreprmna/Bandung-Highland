@@ -22,7 +22,7 @@ class Pinjam_bukuController extends Controller
         if (Auth::check()) {
             $pinjam_buku = Pinjam_buku::with('member', 'admin', 'buku')->paginate();
 
-            return view('admin.pinjam_buku.pinjam_buku', [
+            return view('admin.buku.list-pinjam-buku', [
                 'pinjam_buku' => $pinjam_buku
             ]);
         }
@@ -40,7 +40,7 @@ class Pinjam_bukuController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $buku = Buku::paginate();
-        return view('admin.pinjam_buku.create-pinjam_buku', [
+        return view('admin.buku.pinjam-buku', [
             'member' => $member,
             'user' => $user,
             'buku' => $buku

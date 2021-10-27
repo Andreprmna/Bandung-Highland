@@ -22,7 +22,7 @@ class pinjam_toyController extends Controller
         if (Auth::check()) {
             $pinjam_toy = pinjam_toy::with('member', 'admin', 'toy')->paginate();
 
-            return view('admin.pinjam_toy.pinjam_toy', [
+            return view('admin.toy.list-pinjam-toy', [
                 'pinjam_toy' => $pinjam_toy
             ]);
         }
@@ -40,7 +40,7 @@ class pinjam_toyController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $toy = Toy::paginate();
-        return view('admin.pinjam_toy.create-pinjam_toy', [
+        return view('admin.toy.pinjam-toy', [
             'member' => $member,
             'user' => $user,
             'toy' => $toy

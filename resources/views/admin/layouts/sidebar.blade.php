@@ -86,10 +86,10 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/bukus*') || request()->is('cms/penerbits*') || request()->is('cms/pengarangs*'))
+            <li class="nav-item @if (request()->is('cms/bukus*') || request()->is('cms/penerbits*') || request()->is('cms/pengarangs*') || request()->is('cms/pinjam_bukus*') || request()->is('cms/booking_bukus*'))
                     menu-is-opening menu-open
                 @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/bukus*') || request()->is('cms/penerbits*') || request()->is('cms/pengarangs*'))
+                <a href="#" class="nav-link @if (request()->is('cms/bukus*') || request()->is('cms/penerbits*') || request()->is('cms/pengarangs*') || request()->is('cms/pinjam_bukus*') || request()->is('cms/booking_bukus*'))
                     active
                 @endif">
                     <i class="nav-icon fas fa-book-open"></i>
@@ -122,14 +122,14 @@
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('penerbits.index') }}" class="nav-link {{ request()->is('cms/penerbits*') ? 'active' : ''}}">
+                    <a href="{{ route('pinjam_bukus.index') }}" class="nav-link {{ request()->is('cms/pinjam_bukus*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>Pinjam Buku</p>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('penerbits.index') }}" class="nav-link {{ request()->is('cms/penerbits*') ? 'active' : ''}}">
+                    <a href="{{ route('booking_bukus.index') }}" class="nav-link {{ request()->is('cms/booking_bukus*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>Booking Buku</p>
                     </a>
@@ -138,10 +138,10 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/coworking_spaces*') || request()->is('cms/properties*') || request()->is('cms/coworking_space_properties*'))
+            <li class="nav-item @if (request()->is('cms/coworking_spaces*') || request()->is('cms/properties*') || request()->is('cms/coworking_space_properties*') || request()->is('cms/booking_coworking_spaces*'))
                     menu-is-opening menu-open
                 @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/coworking_spaces*') || request()->is('cms/properties*') || request()->is('cms/coworking_space_properties*'))
+                <a href="#" class="nav-link @if (request()->is('cms/coworking_spaces*') || request()->is('cms/properties*') || request()->is('cms/coworking_space_properties*') || request()->is('cms/booking_coworking_spaces*'))
                     active
                 @endif">
                     <i class="nav-icon fas fa-laptop-house"></i>
@@ -174,7 +174,7 @@
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('coworking_space_properties.index') }}" class="nav-link {{ request()->is('cms/coworking_space_properties*') ? 'active' : ''}}">
+                    <a href="{{ route('booking_coworking_spaces.index') }}" class="nav-link {{ request()->is('cms/booking_coworking_spaces*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>Booking Coworking Space</p>
                     </a>
@@ -182,34 +182,17 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/members*'))
-                    menu-is-opening menu-open
-                @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/members*'))
-                    active
-                @endif">
+            <li class="nav-item {{ request()->is('members') ? 'menu-open' : ''}}">
+                <a href="{{ route('members.index') }}" class="nav-link {{ request()->is('cms/members*') ? 'active' : ''}}">
                     <i class="nav-icon fas fa-address-card"></i>
-                    <p>
-                    Member
-                    <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Member</p>
                 </a>
-                <ul class="nav nav-treeview">
-
-                    <li class="nav-item {{ request()->is('members') ? 'menu-open' : ''}}">
-                    <a href="{{ route('members.index') }}" class="nav-link {{ request()->is('cms/members*') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-address-card"></i>
-                        <p>Manage Member</p>
-                    </a>
-                    </li>
-
-                </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/toys*'))
+            <li class="nav-item @if (request()->is('cms/toys*') || request()->is('cms/pinjam_toys*') || request()->is('cms/booking_toys*'))
                     menu-is-opening menu-open
                 @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/toys*'))
+                <a href="#" class="nav-link @if (request()->is('cms/toys*') || request()->is('cms/pinjam_toys*') || request()->is('cms/booking_toys*'))
                     active
                 @endif">
                     <i class="nav-icon fas fa-gamepad"></i>
@@ -228,14 +211,14 @@
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('toys.index') }}" class="nav-link {{ request()->is('cms/toys*') ? 'active' : ''}}">
+                    <a href="{{ route('pinjam_toys.index') }}" class="nav-link {{ request()->is('cms/pinjam_toys*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>Pinjam Toy</p>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('toys.index') }}" class="nav-link {{ request()->is('cms/toys*') ? 'active' : ''}}">
+                    <a href="{{ route('booking_toys.index') }}" class="nav-link {{ request()->is('cms/booking_toys*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>Booking Toy</p>
                     </a>
@@ -244,10 +227,10 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if (request()->is('cms/videos*'))
+            <li class="nav-item @if (request()->is('cms/videos*') || request()->is('cms/pinjam_videos*') || request()->is('cms/booking_videos*'))
                     menu-is-opening menu-open
                 @endif">
-                <a href="#" class="nav-link @if (request()->is('cms/videos*'))
+                <a href="#" class="nav-link @if (request()->is('cms/videos*') || request()->is('cms/pinjam_videos*') || request()->is('cms/booking_videos*'))
                     active
                 @endif">
                     <i class="nav-icon fas fa-video"></i>
@@ -267,14 +250,14 @@
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('videos.index') }}" class="nav-link {{ request()->is('cms/videos*') ? 'active' : ''}}">
+                    <a href="{{ route('pinjam_videos.index') }}" class="nav-link {{ request()->is('cms/pinjam_videos*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>Pinjam Video</p>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                    <a href="{{ route('videos.index') }}" class="nav-link {{ request()->is('cms/videos*') ? 'active' : ''}}">
+                    <a href="{{ route('booking_videos.index') }}" class="nav-link {{ request()->is('cms/booking_videos*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>Booking Video</p>
                     </a>

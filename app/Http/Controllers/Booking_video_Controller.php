@@ -22,7 +22,7 @@ class Booking_video_Controller extends Controller
         if (Auth::check()) {
             $booking_video = Booking_video::with('member', 'admin', 'video')->paginate();
 
-            return view('admin.booking_video.booking_video', [
+            return view('admin.video.list-booking-video', [
                 'booking_video' => $booking_video
             ]);
         }
@@ -40,7 +40,7 @@ class Booking_video_Controller extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $video = Video::paginate();
-        return view('admin.booking_video.create-booking_video', [
+        return view('admin.video.booking-video', [
             'member' => $member,
             'user' => $user,
             'video' => $video

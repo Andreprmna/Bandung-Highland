@@ -22,8 +22,8 @@ class Booking_bukuController extends Controller
         if (Auth::check()) {
             $booking_buku = Booking_buku::with('member', 'admin', 'buku')->paginate();
 
-            return view('admin.booking_buku.booking_bukus', [
-                'booking_bukus' => $booking_buku
+            return view('admin.buku.list-booking-buku', [
+                'booking_buku' => $booking_buku
             ]);
         }
 
@@ -40,7 +40,7 @@ class Booking_bukuController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $buku = Buku::paginate();
-        return view('admin.booking_buku.create-booking_buku', [
+        return view('admin.buku.booking-buku', [
             'member' => $member,
             'user' => $user,
             'buku' => $buku,

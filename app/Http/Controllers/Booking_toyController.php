@@ -22,7 +22,7 @@ class Booking_toyController extends Controller
         if (Auth::check()) {
             $booking_toy = Booking_toy::with('member', 'admin', 'toy')->paginate();
 
-            return view('admin.booking_toy.booking_toy', [
+            return view('admin.toy.list-booking-toy', [
                 'booking_toy' => $booking_toy
             ]);
         }
@@ -40,10 +40,10 @@ class Booking_toyController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $toy = Toy::paginate();
-        return view('admin.booking_toy.create-booking_toy', [
+        return view('admin.toy.booking-toy', [
             'member' => $member,
             'user' => $user,
-            'audio' => $toy
+            'toy' => $toy
         ]);
     }
 

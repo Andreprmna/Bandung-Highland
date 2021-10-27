@@ -23,8 +23,8 @@ class Booking_Coworking_spaceController extends Controller
         if (Auth::check()) {
             $booking_coworking_space = Booking_Coworking_space::with('member', 'admin', 'coworking_space')->paginate();
 
-            return view('admin.booking_coworking_space.booking_coworking_spaces', [
-                'booking_coworking_spaces' => $booking_coworking_space
+            return view('admin.coworking_space.list-booking-coworking-space', [
+                'booking_coworking_space' => $booking_coworking_space
             ]);
         }
 
@@ -41,7 +41,7 @@ class Booking_Coworking_spaceController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $coworking_space = Coworking_space::paginate();
-        return view('admin.booking_coworking_space.create-booking_coworking_space', [
+        return view('admin.coworking_space.booking-coworking-space', [
             'member' => $member,
             'user' => $user,
             'coworking_space' => $coworking_space
