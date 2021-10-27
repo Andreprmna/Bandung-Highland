@@ -27,7 +27,7 @@ class Booking_toy extends Model
     }
     public function member()
     {
-        return $this->hasOne(Member::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id_member', 'id_member');
     }
     public function admin()
     {
@@ -35,6 +35,6 @@ class Booking_toy extends Model
     }
     public function toy()
     {
-        return $this->hasOne(Toy::class, 'id', 'id_toy');
+        return $this->hasOne(Toy::class, 'id_toy', 'id_toy');
     }
 }

@@ -14,7 +14,7 @@ class CreatePinjamToysTable extends Migration
     public function up()
     {
         Schema::create('pinjam_toys', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pinjam_toy');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_toy');

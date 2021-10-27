@@ -28,7 +28,7 @@ class Booking_video extends Model
     }
     public function member()
     {
-        return $this->hasOne(Member::class, 'id', 'id_member');
+        return $this->hasOne(Member::class, 'id_member', 'id_member');
     }
     public function admin()
     {
@@ -36,6 +36,6 @@ class Booking_video extends Model
     }
     public function video()
     {
-        return $this->hasOne(Video::class, 'id', 'id_video');
+        return $this->hasOne(Video::class, 'id_video', 'id_video');
     }
 }
