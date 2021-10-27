@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Audio extends Model
 {
+    protected $primaryKey = 'id_audio';
     use HasFactory;
     protected $fillable = [
         'judul',

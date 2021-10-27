@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Point_of_sell extends Model
 {
+    protected $primaryKey = 'id_pos';
     use HasFactory;
     protected $fillable = [
         'id_member',
@@ -32,10 +33,10 @@ class Point_of_sell extends Model
     }
     public function admin()
     {
-        return $this->hasOne(User::class, 'id_admin', 'id_admin');
+        return $this->hasOne(User::class, 'id', 'id_admin');
     }
     public function atk()
     {
-        return $this->hasOne(Atk::class, 'id_admin', 'id_atk');
+        return $this->hasOne(Atk::class, 'id_atk', 'id_atk');
     }
 }
