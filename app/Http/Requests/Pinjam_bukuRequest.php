@@ -25,8 +25,7 @@ class Pinjam_bukuRequest extends FormRequest
     {
         return [
             'tgl_pinjam' => ['required', 'date'],
-            'tgl_kembali' => ['required', 'date'],
-            'tgl_pengembalian' => ['required', 'date']
+            'tgl_kembali' => ['required', 'date']
         ];
     }
 }

@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('audios.update', $item->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('audios.update', $item->id_audio)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">

@@ -99,7 +99,7 @@ class point_of_sellController extends Controller
         $user = User::paginate();
         $atk = Atk::paginate();
 
-        return view('admin.atk.edit-atks', [
+        return view('admin.atk.edit-atk', [
             'item' => $point_of_sell,
             'member' => $member,
             'user' => $user,

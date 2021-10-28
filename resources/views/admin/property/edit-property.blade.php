@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('properties.update', $item->id)}}" method="POST">
+        <form action="{{route('properties.update', $item->id_property)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">

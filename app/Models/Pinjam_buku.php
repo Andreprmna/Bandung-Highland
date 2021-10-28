@@ -38,6 +38,6 @@ class Pinjam_buku extends Model
     }
     public function buku()
     {
-        return $this->hasOne(Booking_buku::class, 'id_buku', 'id_buku');
+        return $this->hasOne(Buku::class, 'id_buku', 'id_buku');
     }
 }

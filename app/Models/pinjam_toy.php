@@ -16,8 +16,6 @@ class pinjam_toy extends Model
         'id_toy',
         'waktu_mulai',
         'waktu_selesai',
-        'tgl_pengembalian',
-        'denda'
     ];
     public function getCreatedAtAttribute($value)
     {

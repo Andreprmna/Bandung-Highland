@@ -26,7 +26,6 @@ class pinjam_toyRequest extends FormRequest
         return [
             'waktu_mulai' => ['required', 'date'],
             'waktu_selesai' => ['required', 'date'],
-            'tgl_pengembalian' => ['required', 'date'],
         ];
     }
 }

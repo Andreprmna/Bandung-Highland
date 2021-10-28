@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('coworking_spaces.update', $item->id)}}" method="POST">
+        <form action="{{route('coworking_spaces.update', $item->id_cs)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">

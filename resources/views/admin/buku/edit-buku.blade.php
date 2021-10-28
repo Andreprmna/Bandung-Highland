@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('bukus.update', $item->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('bukus.update', $item->id_buku)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -25,7 +25,7 @@
                 <label for="nama_pengarang">Nama Pengarang</label>
                 <select id="nama_pengarang" class="form-control" name="id_pengarang" required>
                     @forelse ($pengarang as $item2)
-                        <option value="{{$item2->id}}" @if ($item->id_pengarang == $item2->id) selected @endif>{{$item2->nama_pengarang}}</option>
+                        <option value="{{$item2->id_pengarang}}" @if ($item->id_pengarang == $item2->id_pengarang) selected @endif>{{$item2->nama_pengarang}}</option>
                     @empty
                         <option value="-">-</option>
                     @endforelse
@@ -35,7 +35,7 @@
                 <label for="nama_penerbit">Nama Penerbit</label>
                 <select id="nama_penerbit" class="form-control" name="id_penerbit" required>
                     @forelse ($penerbit as $item3)
-                        <option value="{{$item3->id}}" @if ($item->id_penerbit == $item3->id) selected @endif>{{$item3->nama_penerbit}}</option>
+                        <option value="{{$item3->id_penerbit}}" @if ($item->id_penerbit == $item3->id_penerbit) selected @endif>{{$item3->nama_penerbit}}</option>
                     @empty
                         <option value="-">-</option>
                     @endforelse

@@ -68,8 +68,8 @@ class Booking_toyController extends Controller
             'id_member'  => $data['id_member'],
             'id_admin'   => $data['id_admin'],
             'id_toy'    => $data['id_toy'],
-            'tgl_mulai'   => $data['tgl_mulai'],
-            'tgl_selesai' => $data['tgl_selesai']
+            'waktu_mulai'   => $data['waktu_mulai'],
+            'waktu_selesai' => $data['waktu_selesai']
 
         ]);
     }

@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('videos.update', $item->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('videos.update', $item->id_video)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -50,12 +50,12 @@
                             <option value="1" selected>VCD</option>
                             <option value="2">Mp4</option>
                             <option value="3">mkv</option>
-                        @elseif ($item->role == 2)
+                        @elseif ($item->format == 2)
                             <option value="0">Kaset</option>
                             <option value="1">VCD</option>
                             <option value="2" selected>Mp4</option>
                             <option value="3">mkv</option>
-                        @elseif ($item->role == 3)
+                        @elseif ($item->format == 3)
                             <option value="0">Kaset</option>
                             <option value="1">VCD</option>
                             <option value="2">Mp4</option>

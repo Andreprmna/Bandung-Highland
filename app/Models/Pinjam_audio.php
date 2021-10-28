@@ -16,8 +16,6 @@ class Pinjam_audio extends Model
         'id_audio',
         'tgl_pinjam',
         'tgl_kembali',
-        'tgl_pengembalian',
-        'denda'
     ];
     public function getCreatedAtAttribute($value)
     {

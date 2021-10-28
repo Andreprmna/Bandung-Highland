@@ -27,10 +27,10 @@
                                     <td>{{$item->properties->nama_property}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('coworking_space_properties.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('coworking_space_properties.edit', $item->id_property) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('coworking_space_properties.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('coworking_space_properties.destroy', $item->id_property) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

@@ -72,8 +72,6 @@ class Pinjam_videoController extends Controller
             'id_video'         => $data['id_video'],
             'tgl_pinjam'   => $data['tgl_pinjam'],
             'tgl_kembali'       => $data['tgl_kembali'],
-            'tgl_pengembalian'  => $data['tgl_pengembalian'],
-            'denda'     => $data['denda']
 
         ]);
     }

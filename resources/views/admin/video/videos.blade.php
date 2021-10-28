@@ -33,14 +33,22 @@
                                     <td>{{$item->genre}}</td>
                                     <td>{{$item->durasi}}</td>
                                     <td>{{$item->deskripsi}}</td>
-                                    <td>{{$item->format}}</td>
+                                    @if ($item->format == 0)
+                                        <td>Kaset</td>
+                                        @elseif ($item->format == 1)
+                                        <td>VCD</td>
+                                        @elseif ($item->format == 2)
+                                        <td>Mp4</td>
+                                        @elseif ($item->format == 3)
+                                        <td>mkv</td>
+                                    @endif
                                     <td><img src="{{url('storage/'.$item->cover)}}" width="100px"></td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('videos.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('videos.edit', $item->id_video) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('videos.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('videos.destroy', $item->id_video) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

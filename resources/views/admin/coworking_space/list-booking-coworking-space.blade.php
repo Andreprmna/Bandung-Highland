@@ -33,10 +33,10 @@
                                     <td>{{$item->tgl_selesai}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('booking_coworking_spaces.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('booking_coworking_spaces.edit', $item->id_bcs) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('booking_coworking_spaces.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('booking_coworking_spaces.destroy', $item->id_bcs) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

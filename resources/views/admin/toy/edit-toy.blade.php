@@ -14,12 +14,12 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('toys.update', $item->id)}}" method="POST">
+        <form action="{{route('toys.update', $item->id_toy)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <label for="name">Name</label>
-                <input id="name" class="form-control" type="text" name="nama_penerbit" placeholder="Name" value="{{old('name') ?? $item->nama_toy}}" required>
+                <input id="name" class="form-control" type="text" name="nama_toy" placeholder="Name" value="{{old('nama_toy') ?? $item->nama_toy}}" required>
             </div>
             <div class="form-group">
                 <label for="jenis">Jenis</label>

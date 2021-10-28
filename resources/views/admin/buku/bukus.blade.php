@@ -37,7 +37,11 @@
                                     <td>{{$item->halaman}}</td>
                                     <td>{{$item->isbn}}</td>
                                     <td>{{$item->deskripsi}}</td>
-                                    <td>{{$item->bentuk}}</td>
+                                    @if ($item->bentuk == 0)
+                                        <td>Fisik</td>
+                                        @elseif ($item->bentuk == 1)
+                                        <td>E-Book</td>
+                                    @endif
                                     <td><img src="{{url('storage/'.$item->sampul)}}" width="100px"></td>
                                     <td>
                                         <div class="row">

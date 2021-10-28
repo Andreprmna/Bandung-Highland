@@ -41,6 +41,7 @@ class Booking_Coworking_spaceController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $coworking_space = Coworking_space::paginate();
+
         return view('admin.coworking_space.booking-coworking-space', [
             'member' => $member,
             'user' => $user,
@@ -97,6 +98,7 @@ class Booking_Coworking_spaceController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $coworking_space = Coworking_space::paginate();
+        
         return view('admin.booking_coworking_space.edit-booking_coworking_space', [
             'item' => $booking_coworking_space,
             'member' => $member,

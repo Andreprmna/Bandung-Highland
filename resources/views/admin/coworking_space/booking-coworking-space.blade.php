@@ -22,7 +22,7 @@
                 <select id="nama_member" class="form-control" name="id_member" required>
                     @if (is_array($member) || is_object($member))
                         @forelse ($member as $item)
-                            <option value="{{$item->id}}">{{$item->nama}}</option>
+                            <option value="{{$item->id_member}}">{{$item->nama}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -46,7 +46,7 @@
                 <select id="no_cs" class="form-control" name="id_cs" required>
                     @if (is_array($coworking_space) || is_object($coworking_space))
                         @forelse ($coworking_space as $item)
-                            <option value="{{$item->id}}">{{$item->no_cs}}</option>
+                            <option value="{{$item->id_cs}}">{{$item->nomor_cs}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse

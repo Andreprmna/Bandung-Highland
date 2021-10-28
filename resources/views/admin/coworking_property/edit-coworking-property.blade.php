@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('coworking_space_properties.update', $item->id)}}" method="POST">
+        <form action="{{route('coworking_space_properties.update', $item->id_csp)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -22,7 +22,7 @@
                 <select id="nomor_cs" class="form-control" name="id_cs" required>
                     
                     @forelse ($coworking_space as $item2)
-                        <option value="{{$item2->id}}" @if ($item->id_cs == $item2->id) selected @endif>{{$item2->nomor_cs}}</option>
+                        <option value="{{$item2->id_cs}}" @if ($item->id_cs == $item2->id_cs) selected @endif>{{$item2->nomor_cs}}</option>
                     @empty
                         <option value="-">-</option>
                     @endforelse
@@ -33,7 +33,7 @@
                 <label for="nama_property">Nama Property</label>
                 <select id="nama_property" class="form-control" name="id_property" required> 
                     @forelse ($property as $item3)
-                        <option value="{{$item3->id}}" @if ($item->id_property == $item3->id) selected @endif>{{$item3->nama_property}}</option> 
+                        <option value="{{$item3->id_property}}" @if ($item->id_property == $item3->id_property) selected @endif>{{$item3->nama_property}}</option> 
                     @empty
                         <option value="-">-</option>
                     @endforelse

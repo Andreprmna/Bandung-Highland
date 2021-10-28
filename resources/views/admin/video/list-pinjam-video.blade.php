@@ -33,10 +33,10 @@
                                     <td>{{$item->tgl_kembali}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('pinjam_videos.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('pinjam_videos.edit', $item->id_pinjam_video) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
                                         </form>
-                                        <form action="{{ route('pinjam_videos.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('pinjam_videos.destroy', $item->id_pinjam_video) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

@@ -22,7 +22,7 @@
                 <select id="nama_member" class="form-control" name="id_member" required>
                     @if (is_array($member) || is_object($member))
                         @forelse ($member as $item)
-                            <option value="{{$item->id}}">{{$item->nama}}</option>
+                            <option value="{{$item->id_member}}">{{$item->nama}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -46,7 +46,7 @@
                 <select id="nama_toy" class="form-control" name="id_toy" required>
                     @if (is_array($toy) || is_object($toy))
                         @forelse ($toy as $item)
-                            <option value="{{$item->id}}">{{$item->nama_toy}}</option>
+                            <option value="{{$item->id_toy}}">{{$item->nama_toy}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
@@ -56,12 +56,12 @@
             
             <div class="form-group">
                 <label for="date_mulai">Tanggal Mulai</label>
-                <input id="date_mulai" class="form-control" type="date" name="tgl_mulai" :value="old('tgl_mulai')" required>
+                <input id="date_mulai" class="form-control" type="date" name="waktu_mulai" :value="old('tgl_mulai')" required>
             </div>
 
             <div class="form-group">
                 <label for="date_selesai">Tanggal Selesai</label>
-                <input id="date_selesai" class="form-control" type="date" name="tgl_selesai" :value="old('tgl_selesai')" required>
+                <input id="date_selesai" class="form-control" type="date" name="waktu_selesai" :value="old('tgl_selesai')" required>
             </div>
                       
             <div class="float-right">
