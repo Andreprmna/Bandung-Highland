@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Pinjam_buku extends Model
 {
+    protected $primaryKey = 'id_pinjam_buku';
     use HasFactory;
     protected $fillable = [
         'id_member',

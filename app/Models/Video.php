@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Video extends Model
 {
+    protected $primaryKey = 'id_video';
     use HasFactory;
     protected $fillable = [
         'judul',

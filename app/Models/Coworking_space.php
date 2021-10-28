@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Coworking_space extends Model
 {
+    protected $primaryKey = 'id_cs';
     use HasFactory;
     protected $fillable = [
         'nomor_cs',

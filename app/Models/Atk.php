@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Atk extends Model
 {
+    protected $primaryKey = 'id_atk';
     use HasFactory;
     protected $fillable = [
         'nama_atk',

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Booking_toy extends Model
 {
+    protected $primaryKey = 'id_booking_toy';
     use HasFactory;
     protected $fillable = [
         'id_member',

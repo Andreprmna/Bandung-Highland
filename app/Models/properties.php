@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class properties extends Model
 {
+    protected $primaryKey = 'id_property';
     use HasFactory;
     protected $fillable = [
         'nama_property'

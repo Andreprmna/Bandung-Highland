@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Pinjam_video extends Model
 {
+    protected $primaryKey = 'id_pinjam_video';
     use HasFactory;
     protected $fillable = [
         'id_member',

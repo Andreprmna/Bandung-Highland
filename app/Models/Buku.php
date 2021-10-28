@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Buku extends Model
 {
+    protected $primaryKey = 'id_buku';
     use HasFactory;
     protected $fillable = [
         'id_pengarang',
