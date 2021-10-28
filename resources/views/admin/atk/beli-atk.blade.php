@@ -46,7 +46,7 @@
                 <select id="nama_atk" class="form-control" name="id_atk" required>
                     @if (is_array($atk) || is_object($atk))
                         @forelse ($atk as $item)
-                            <option value="{{$item->id}}">{{$item->nama_atk}}</option>
+                            <option value="{{$item->id_atk}}">{{$item->nama_atk}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse

@@ -14,7 +14,7 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
-        <form action="{{route('atks.update', $item->id)}}" method="POST">
+        <form action="{{route('atks.update', $item->id_atk)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
