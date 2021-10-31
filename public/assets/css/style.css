@@ -43,7 +43,7 @@
 39. Print
 40. Responsive
 */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,700");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 /* 
 ===============
     General
@@ -55,7 +55,7 @@ html {
 }
 
 body {
-    font-family: "Comfortaa", cursive;
+    font-family: "Roboto", sans-serif;
     margin: 0;
     background: #ffffff;
     font-size: 15px;
@@ -1049,7 +1049,7 @@ code {
 }
 .xp-horizontal-nav ul li a {
     display: block;
-    font-family: "Comfortaa", cursive;
+    font-family: "Roboto", sans-serif;
     text-transform: capitalize;
     line-height: 20px;
     text-decoration: none;
@@ -6588,4 +6588,5 @@ table.focus-on tfoot tr.focused td {
     width: 100%;
     position: absolute;
 }
+
 /*# sourceMappingURL=style.css.map */

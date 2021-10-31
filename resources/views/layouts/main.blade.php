@@ -30,11 +30,7 @@
             <!-- End XP Rightbar -->   
         </div>
         <!-- Start XP Footerbar -->
-        <div class="xp-footerbar">
-            <footer class="footer">
-                <p class="mb-0">© 2021 Community Center - All Rights Reserved.</p>
-            </footer>
-        </div>
+        @yield('footer')
         <!-- End XP Footerbar -->
         <!-- End XP Container --> 
         <!-- Start JS -->        

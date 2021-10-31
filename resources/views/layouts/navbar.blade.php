@@ -87,51 +87,34 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="xp-horizontal-menu">
                         <li class="scroll"><a href="{{url('/')}}"></i><span>Beranda</span></a></li>
-                        <li class="dropdown menu-item-has-mega-menu">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Layanan</span></a>
-                            <div class="mega-menu dropdown-menu">
-                                <ul class="mega-menu-row" role="menu">
-                                    <li class="mega-menu-col col-md-4">
-                                        <ul class="sub-menu">
-                                            <li><a href="{{url('/ui-kits-alerts')}}">Alerts</a></li>
-                                            <li><a href="{{url('/ui-kits-badges')}}">Badges</a></li>
-                                            <li><a href="{{url('/ui-kits-buttons')}}">Buttons</a></li>
-                                            <li><a href="{{url('/ui-kits-cards')}}">Cards</a></li>
-                                            <li><a href="{{url('/ui-kits-carousel')}}">Carousel</a></li>
-                                            <li><a href="{{url('/ui-kits-collapse')}}">Collapse</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="mega-menu-col col-md-4">
-                                        <ul class="sub-menu">
-                                            <li><a href="{{url('/ui-kits-dropdowns')}}">Dropdowns</a></li>
-                                            <li><a href="{{url('/ui-kits-grids')}}">Grids</a></li>
-                                            <li><a href="{{url('/ui-kits-images')}}">Images</a></li>
-                                            <li><a href="{{url('/ui-kits-media')}}">Media</a></li>
-                                            <li><a href="{{url('/ui-kits-modals')}}">Modals</a></li>                                
-                                            <li><a href="{{url('/ui-kits-paginations')}}">Paginations</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="mega-menu-col col-md-4">
-                                        <ul class="sub-menu">
-                                            <li><a href="{{url('/ui-kits-popovers')}}">Popovers</a></li>                                
-                                            <li><a href="{{url('/ui-kits-progressbars')}}">Progress Bars</a></li>
-                                            <li><a href="{{url('/ui-kits-tabs')}}">Tabs</a></li>    
-                                            <li><a href="{{url('/ui-kits-tooltips')}}">Tooltips</a></li>
-                                            <li><a href="{{url('/ui-kits-typography')}}">Typography</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Khusus</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{url('/email-inbox')}}">Profil Pengajar</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{url('/components-ratings')}}">Ruang Belajar</a></li>
+                                <li><a href="{{url('/components-range-slider')}}">Perpustakaan</a></li>
+                                <li><a href="{{url('/components-switchery')}}">Pelatihan Guru</a></li>
+                            </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Tentang Kami</span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{url('/components-nestable')}}">Nestable</a></li>
-                                <li><a href="{{url('/components-ratings')}}">Ratings</a></li>
-                                <li><a href="{{url('/components-range-slider')}}">Range Slider</a></li>
-                                <li><a href="{{url('/components-switchery')}}">Switchery</a></li>
-                                <li><a href="{{url('/components-treeview')}}">Tree View</a></li>
-                                <li><a href="{{url('/components-widgets')}}">Widgets</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Pendidikan Klasik</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{url('/email-inbox')}}">Apa itu Pendidikan Klasik?</a></li>
+                                        <li><a href="{{url('/email-open')}}">7 Karakteristik Pendidikan Klasik</a></li>
+                                        <li><a href="{{url('/email-compose')}}">Novem Artes Humanitatis</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{url('/components-ratings')}}">Visi, Misi, & Nilai-Nilai Utama</a></li>
+                                <li><a href="{{url('/components-range-slider')}}">Arti dan Moto SWH</a></li>
+                                <li><a href="{{url('/components-switchery')}}">Hubungi Kami</a></li>
                             </ul>
                         </li>
                         <li class="scroll"><a href="{{url('/events')}}"><span>Artikel</span></a></li>
