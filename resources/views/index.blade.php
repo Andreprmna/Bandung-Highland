@@ -34,20 +34,18 @@ Community Center - Home
         <span class="sr-only">Next</span>
     </a>
 </div>
-<div class="container-fluid my-5 welcome">
+<div class="container my-5 welcome">
     <div class="mx-3">
         <h2><strong>Selamat</strong> Datang</h2>
     </div>
     <div class="my-4 welcome-intro">
-        <p>Selamat datang di Pusat Pembelajaran dan Perpustakaan Klasik Sophia Wisdom House!</p>
-        <p class="mx-5 my-3">Pembelajaran Klasik adalah proses pemupukan kecintaan akan kebenaran, keindahan, dan kebajikan dalam berbagai kebudayaan 
-            manusia melalui pembelajaran dialogis dan pemaparan terhadap berbagai budaya 
-            manusia yang teragung dalam konteks perkembangan sejarahnya.</p>
-        <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+        <p class="mx-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, culpa.</p>
+        <p class="mx-5 my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ad debitis cum voluptate obcaecati, velit numquam tenetur error ex corporis? Nulla tempora porro accusantium laudantium explicabo nemo obcaecati ratione. Ratione.</p>
+        <button type="button" class="btn btn-primary my-3">See More</button>
         <hr class="mx-3">
     </div>
 </div>
-<div class="container-fluid my-5 service">
+<div class="container my-5 service">
     <div class="mx-3">
         <h2><strong>Layanan</strong> Kami</h2>
     </div>
@@ -59,12 +57,11 @@ Community Center - Home
                         <span class="service-icon"><i class="nav-icon fas fa-users fa-2x"></i></span>
                         <div class="col text-left">
                             <h3 class="mx-3 my-1 font-20"><strong>Kursus</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Menyediakan kursus pelajaran matematika, ilmu pengetahuan alam, logika, dan bahasa Inggris, 
-                            untuk kurikulum klasik, nasional, Cambridge, dan persiapan olimpiade.
+                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam commodi minima quis ad nostrum rem soluta ducimus, reiciendis eligendi, aliquid corrupti ea nisi alias labore expedita aspernatur.
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <button type="button" class="btn btn-primary my-3">See More</button>
                     <hr class="service-hr">
                 </div>
             </div>
@@ -76,12 +73,11 @@ Community Center - Home
                         <span class="service-icon"><i class="nav-icon fas fa-book fa-2x"></i></span>
                         <div class="col text-left">
                             <h3 class="mx-3 my-1 font-20"><strong>Perpustakaan</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Menyediakan buku dan media yang mendukung pembelajaran klasik. Buku-buku anak yang telah 
-                                tersedia diseleksi untuk mengembangkan imajinasi, moral, dan minat baca anak-anak.
+                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore praesentium magni reprehenderit facilis, molestias exercitationem minus suscipit aliquam corrupti deserunt alias.
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <button type="button" class="btn btn-primary my-3">See More</button>
                     <hr class="service-hr">
                 </div>
             </div>
@@ -92,12 +88,11 @@ Community Center - Home
                         <span class="service-icon"><i class="nav-icon fas fa-building fa-2x"></i></span>
                         <div class="col text-left">
                             <h3 class="mx-3 my-1 font-20"><strong>Ruang Belajar</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Tersedia ruang belajar yang nyaman, aman, dan kondusif untuk belajar bersama. 
-                                Fasilitas: koneksi internet wi-fi, AC, papan tulis, TV berkoneksi HDMI, dan CCTV yang dipantau. 
+                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam voluptatem, minima commodi tempora quia necessitatibus consequatur, doloremque magnam voluptatum dicta ipsum architecto Eaque?
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <button type="button" class="btn btn-primary my-3">See More</button>
                     <hr class="service-hr">
                 </div>
             </div>
@@ -107,12 +102,11 @@ Community Center - Home
                         <span class="service-icon"><i class="nav-icon fas fa-user-plus fa-2x"></i></span>
                         <div class="col text-left">
                             <h3 class="mx-3 my-1 font-20"><strong>Pelatihan Guru</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Menyediakan pelatihan guru yang bertujuan untuk 
-                                memperkenalkan guru kepada kurikulum dan pedagogi klasik.
+                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cumque eum saepe fugit dolores at ullam veritatis quisquam modi odit? Corrupti quod quaerat animi veritatis nemo officia?
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">Selengkapnya...</button>
+                    <button type="button" class="btn btn-primary my-3">See More</button>
                     <hr class="service-hr">
                 </div>
             </div>
@@ -120,7 +114,7 @@ Community Center - Home
     </div>
     <hr class="mx-3">
 </div>
-<div class="container-fluid my-5 vimis">
+<div class="container my-5 vimis">
     <div class="mx-3">
         <h2><strong>Visi, Misi,</strong> dan Nilai-Nilai Utama</h2>
     </div>
@@ -132,7 +126,7 @@ Community Center - Home
                         <span class="service-icon"><i class="nav-icon fas fa-users fa-2x"></i></span>
                         <div class="col text-left">
                             <h3 class="mx-3 my-1 font-20"><strong>Visi</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Berkembangnya komunitas pembelajar yang mencintai kebenaran, keindahan, dan kebajikan, melalui penghargaan akan berbagai bentuk kebijaksanaan dalam pergerakan sejarah kebudayaan dan peradaban manusia, demi membudidayakan kemanusiaan yang lebih baik pada masa kini.
+                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium consequuntur ut delectus iure labore in hic voluptatibus illo facere provident quaerat, ullam aperiam voluptatem mollitia dolore, sint veniam quia facilis officiis, molestiae quas. Blanditiis pariatur ex quia et voluptas ducimus?
                             </p>
                         </div>
                     </div>
@@ -144,11 +138,11 @@ Community Center - Home
                             <h3 class="mx-3 my-1 font-20"><strong>Nilai-Nilai Utama</strong></h3>
                             <div class="mb-3 mt-3 text-justify">
                                 <ol>
-                                    <li>Penghargaan terhadap dignitas manusia</li>
-                                    <li>Edifikasi</li>
-                                    <li>Integritas</li>
-                                    <li>Akuntabilitas</li>
-                                    <li>Pengembangan dan reformasi yang berkelanjutan</li>
+                                    <li>Lorem ipsum dolor sit.  </li>
+                                    <li>Lorem.</li>
+                                    <li>Lorem, ipsum.</li>
+                                    <li>Lorem, ipsum dolor.</li>
+                                    <li>Lorem ipsum dolor sit amet consectetur.</li>
                                 </ol>
                             </div>
                         </div>
@@ -166,12 +160,12 @@ Community Center - Home
                             <h3 class="mx-3 my-1 font-20"><strong>Misi</strong></h3>
                             <div class="mb-3 mt-3 text-justify">
                                 <ol>
-                                    <li>Memberikan pelayanan kursus berdasarkan kurikulum dan pedagogi pendidikan klasik.</li>
-                                    <li>Memperkembangkan wawasan dan seni pedagogi guru melalui pengenalan dan pelatihan akan pendidikan klasik.</li>
-                                    <li>Menyediakan ruangan yang aman dan nyaman untuk belajar dan membaca, baik secara individu maupun berkelompok.</li>
-                                    <li>Mengadakan berbagai kegiatan edukatif yang mendorong pengembangan diri dan penghargaan akan keagungan berbagai kebudayaan klasik manusia.</li>
-                                    <li>Menyediakan perpustakaan yang mendukung pendidikan klasik.</li>
-                                    <li>Menerjemahkan karya-karya literatur klasik ke dalam bahasa Indonesia.</li>
+                                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, culpa vitae!</li>
+                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore et minus adipisci.</li>
+                                    <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore itaque autem sapiente amet error totam, voluptatem veniam laboriosam numquam modi.</li>
+                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptas maxime, tempora eveniet fuga explicabo sed dignissimos adipisci eum quidem?</li>
+                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod asperiores id inventore.</li>
+                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora.</li>
                                 </ol>
                             </div>
                         </div>
@@ -182,7 +176,7 @@ Community Center - Home
         <hr class="mx-3">
     </div>
 </div>
-<div class="container-fluid my-5 contact">
+<div class="container my-5 contact">
     <div class="mx-3">
         <h2><strong>Hubungi</strong> Kami</h2>
     </div>
@@ -193,7 +187,7 @@ Community Center - Home
                 <hr class="service-hr">
                 <div class="container-fluid">
                     <div class="map-responsive">
-                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="800" height="650" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
                 </div>
                 <hr class="service-hr">
@@ -206,7 +200,7 @@ Community Center - Home
                             <span class="service-icon"><i class="nav-icon fas fa-map fa-lg"></i></span>
                         </div>
                         <div class="col text-left">
-                            <span class="my-1"><strong>Alamat:</strong> Jl.Melong Asih No.11A, Cijerah, Kota Bandung</span>
+                            <span class="my-1"><strong>Alamat:</strong> Jl. Lorem ipsum dolor sit amet consectetur.</span>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -214,7 +208,7 @@ Community Center - Home
                             <span class="service-icon"><i class="nav-icon fas fa-phone-alt fa-lg"></i></span>
                         </div>
                         <div class="col text-left">
-                            <span class="my-1"><strong>Phone:</strong> +6222 20575464, WA: +62 812 2183 3183</span>
+                            <span class="my-1"><strong>Phone:</strong> +6281 1234 5678, WA: +6281 1234 56789</span>
                         </div>
                     </div>
                     <div class="row">
@@ -222,7 +216,7 @@ Community Center - Home
                             <span class="service-icon"><i class="nav-icon fas fa-envelope fa-lg"></i></span>
                         </div>
                         <div class="col text-left">
-                            <span class="my-1"><strong>E-mail:</strong> admin@sophiawisdomhouse.com</span>
+                            <span class="my-1"><strong>E-mail:</strong> admin@communitycenter.com</span>
                         </div>
                     </div>
                     <div class="row py-4">
