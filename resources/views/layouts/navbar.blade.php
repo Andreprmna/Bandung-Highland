@@ -12,20 +12,20 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex mr-auto">
-                    <a href="#" class="d-flex align-items-center mr-4">
+                    <a href="#" class="d-flex align-items-center mr-4 top-nav">
                         <span class="icon-envelope mr-2"></span>
                         <span class="d-none d-md-inline-block">info@domain.com</span>
                     </a>
-                    <a href="#" class="d-flex align-items-center mr-auto">
+                    <a href="#" class="d-flex align-items-center mr-auto top-nav">
                         <span class="icon-phone mr-2"></span>
                         <span class="d-none d-md-inline-block">+1 234 4567 8910</span>
                     </a>
                 </div>
                 <div class="d-flex justify-content-end align-items-center">
-                    <a href="#" class="p-2 pl-0"><span class="icon-twitter"></span></a>
-                    <a href="#" class="p-2 pl-0"><span class="icon-facebook"></span></a>
-                    <a href="#" class="p-2 pl-0"><span class="icon-linkedin"></span></a>
-                    <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a>
+                    <a href="#" class="p-2 pl-0 top-nav"><span class="icon-twitter"></span></a>
+                    <a href="#" class="p-2 pl-0 top-nav"><span class="icon-facebook"></span></a>
+                    <a href="#" class="p-2 pl-0 top-nav"><span class="icon-linkedin"></span></a>
+                    {{-- <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a> --}}
                     @guest
                     <a href="/login" class="top-nav ml-4">LOGIN</a>
                     <a href="/registration" class="nav-link top-nav">REGISTER</a>
@@ -33,9 +33,9 @@
                         <li class="list-inline-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle nav-link" href="#" role="button" id="xp-userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{-- <img src="{{url('storage/'.auth()->user()->profile_photo_path)}}" alt="user-profile" class="rounded-circle">
-                                    <span class="xp-user-live"></span> --}}
-                                    <img src="assets/images/ui-media/media-image-8.jpg" alt="user-profile" width="40" height="40" class="rounded-circle img-fluid">
+                                    <img src="{{url('storage/'.auth()->user()->profile_photo_path)}}" height="40" width="40" alt="user-profile" class="rounded-circle">
+                                    {{-- <span class="xp-user-live"></span> --}}
+                                    {{-- <img src="assets/images/ui-media/media-image-8.jpg" alt="user-profile" width="40" height="40" class="rounded-circle img-fluid"> --}}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-userprofile">
                                     <a class="dropdown-item py-3 text-center font-16" href="#">Welcome, {{ auth()->user()->name }}</a>
@@ -81,54 +81,56 @@
                                     </li>
                                     @endguest
                                 </div>
-                                <li class="active"><a href="#" class="nav-link">Beranda</a></li>
+                                <li class="{{ request()->is('/') ? 'active' : ''}}"><a href="/" class="nav-link">Beranda</a></li>
                                 <li class="has-children">
                                     <a href="#" class="nav-link">Layanan</a>
                                     <ul class="dropdown arrow-top">
                                     <li class="has-children">
-                                        <a href="#">Kursus</a>
+                                        <a href="#">Beli</a>
                                         <ul class="dropdown">
-                                        <li><a href="#">Profile Pengajar</a></li>
+                                        <li><a href="#">Alat Tulis Kantor</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#" class="nav-link">Ruang Belajar</a></li>
-                                    <li><a href="#" class="nav-link">Perpustakaan</a></li>
-                                    <li><a href="#" class="nav-link">Pelatihan Guru</a></li>
-                                    
+                                    <li class="has-children">
+                                        <a href="#">Booking</a>
+                                        <ul class="dropdown">
+                                        <li><a href="#">Audio</a></li>
+                                        <li><a href="#">Buku</a></li>
+                                        <li><a href="#">Coworking Space</a></li>
+                                        <li><a href="#">Mainan</a></li>
+                                        <li><a href="#">Video</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="#">Pinjam</a>
+                                        <ul class="dropdown">
+                                        <li><a href="#">Audio</a></li>
+                                        <li><a href="#">Buku</a></li>
+                                        <li><a href="#">Mainan</a></li>
+                                        <li><a href="#">Video</a></li>
+                                        </ul>
+                                    </li>
                                     </ul>
                                 </li>
-                                <li class="has-children">
+                                <li class="has-children {{ request()->is('about*') ? 'active' : ''}}">
                                     <a href="#" class="nav-link">Tentang Kami</a>
                                     <ul class="dropdown arrow-top">
-                                    <li class="has-children">
-                                        <a href="#">Pendidikan Klasik</a>
-                                        <ul class="dropdown">
-                                        <li><a href="#">Apa itu Pendidikan Klasik?</a></li>
-                                        <li><a href="#">7 Karakteristik Pendidikan Klasik</a></li>
-                                        <li><a href="#">Novem Artes Humanitatis</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#" class="nav-link">Ruang Belajar</a></li>
-                                    <li><a href="#" class="nav-link">Perpustakaan</a></li>
-                                    <li><a href="#" class="nav-link">Pelatihan Guru</a></li>
+                                    <li class="{{ request()->is('about/visi-misi') ? 'active' : ''}}"><a href="{{ route('visi-misi') }}" class="nav-link">Visi & Misi</a></li>
+                                    <li><a href="#" class="nav-link">Filosofi & Motto</a></li>
+                                    <li class="{{ request()->is('about/contact-us') ? 'active' : ''}}"><a href="{{ route('contact-us') }}" class="nav-link">Hubungi Kami</a></li>
                                     
                                     </ul>
                                 </li>
-                                <li><a href="#" class="nav-link">Artikel</a></li>
-                                <li><a href="#" class="nav-link">Testimonial</a></li>
-                                <li><a href="#" class="nav-link">Lowongan Kerja</a></li>
-                                <div class="fixed-bottom mb-5">
-                                    <div class="d-flex d-inline-block d-lg-none justify-content-center">
+                                <li class="d-inline-block d-lg-none">
+                                    <div class="d-flex justify-content-center mt-3 mb-5">
                                         <a href="#" class="p-2 pl-0"><span class="icon-envelope"></span></a>
                                         <a href="#" class="p-2 pl-0"><span class="icon-phone"></span></a>
-                                    </div>
-                                    <div class="d-flex d-inline-block d-lg-none justify-content-center">
                                         <a href="#" class="p-2 pl-0"><span class="icon-twitter"></span></a>
                                         <a href="#" class="p-2 pl-0"><span class="icon-facebook"></span></a>
                                         <a href="#" class="p-2 pl-0"><span class="icon-linkedin"></span></a>
-                                        <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a>
+                                        {{-- <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a> --}}
                                     </div>
-                                </div>
+                                    </li>
                             </ul>
                     </nav>
                 </div>

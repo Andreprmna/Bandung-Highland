@@ -16,13 +16,13 @@ Community Center - Home
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-        <img class="d-block w-100 img-fluid" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="First slide">
+        <img class="d-block w-100 img-fluid" src="https://cdn3.photoblogstop.com/wp-content/uploads/2012/07/Sierra_HDR_Panorama_DFX8048_2280x819_Q40_wm_mini.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
-        <img class="d-block w-100 img-fluid" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="Second slide">
+        <img class="d-block w-100 img-fluid" src="https://images.unsplash.com/photo-1513735539099-cf6e5d559d82?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFub3JhbWF8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80" alt="Second slide">
         </div>
         <div class="carousel-item">
-        <img class="d-block w-100 img-fluid" src="https://www.ngopibareng.id/images/uploads/2021/2021-06-19/view-gunung-semeru-jadi-daya-tarik-pengunjung--thumbnail-393.webp" alt="Third slide">
+        <img class="d-block w-100 img-fluid" src="https://cloudflare1.360gigapixels.com/pano/misha/01715841_14k_Llanthony_07.jpgLEFT/equirect_crop_3_1/6.jpg" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -35,29 +35,29 @@ Community Center - Home
     </a>
 </div>
 <div class="container my-5 welcome">
-    <div class="mx-3">
-        <h2><strong>Selamat</strong> Datang</h2>
+    <div class="">
+        <h3>Selamat Datang</h3>
     </div>
     <div class="my-4 welcome-intro">
-        <p class="mx-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, culpa.</p>
-        <p class="mx-5 my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ad debitis cum voluptate obcaecati, velit numquam tenetur error ex corporis? Nulla tempora porro accusantium laudantium explicabo nemo obcaecati ratione. Ratione.</p>
+        <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, culpa.</p>
+        <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ad debitis cum voluptate obcaecati, velit numquam tenetur error ex corporis? Nulla tempora porro accusantium laudantium explicabo nemo obcaecati ratione. Ratione.</p>
         <button type="button" class="btn btn-primary my-3">See More</button>
-        <hr class="mx-3">
+        <hr>
     </div>
 </div>
 <div class="container my-5 service">
-    <div class="mx-3">
-        <h2><strong>Layanan</strong> Kami</h2>
+    <div class="">
+        <h3>Layanan Kami</h3>
     </div>
-    <div class="my-4 mx-5 service-intro">
+    <div class="my-4 service-intro">
         <div class="row">                   
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card-body">
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-users fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Kursus</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam commodi minima quis ad nostrum rem soluta ducimus, reiciendis eligendi, aliquid corrupti ea nisi alias labore expedita aspernatur.
+                            <h3 class="my-1 font-20">Kursus</h3>
+                            <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam commodi minima quis ad nostrum rem soluta ducimus, reiciendis eligendi, aliquid corrupti ea nisi alias labore expedita aspernatur.
                             </p>
                         </div>
                     </div>
@@ -72,8 +72,8 @@ Community Center - Home
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-book fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Perpustakaan</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore praesentium magni reprehenderit facilis, molestias exercitationem minus suscipit aliquam corrupti deserunt alias.
+                            <h3 class="my-1 font-20">Perpustakaan</h3>
+                            <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore praesentium magni reprehenderit facilis, molestias exercitationem minus suscipit aliquam corrupti deserunt alias.
                             </p>
                         </div>
                     </div>
@@ -87,8 +87,8 @@ Community Center - Home
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-building fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Ruang Belajar</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam voluptatem, minima commodi tempora quia necessitatibus consequatur, doloremque magnam voluptatum dicta ipsum architecto Eaque?
+                            <h3 class="my-1 font-20">Ruang Belajar</h3>
+                            <p class="mb-3 mt-3 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam voluptatem, minima commodi tempora quia necessitatibus consequatur, doloremque magnam voluptatum dicta ipsum architecto Eaque?
                             </p>
                         </div>
                     </div>
@@ -101,8 +101,8 @@ Community Center - Home
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-user-plus fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Pelatihan Guru</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cumque eum saepe fugit dolores at ullam veritatis quisquam modi odit? Corrupti quod quaerat animi veritatis nemo officia?
+                            <h3 class="my-1 font-20">Pelatihan Guru</h3>
+                            <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cumque eum saepe fugit dolores at ullam veritatis quisquam modi odit? Corrupti quod quaerat animi veritatis nemo officia?
                             </p>
                         </div>
                     </div>
@@ -112,21 +112,21 @@ Community Center - Home
             </div>
         </div>
     </div>
-    <hr class="mx-3">
+    <hr>
 </div>
 <div class="container my-5 vimis">
-    <div class="mx-3">
-        <h2><strong>Visi, Misi,</strong> dan Nilai-Nilai Utama</h2>
+    <div class="">
+        <h3>Visi, Misi, dan Nilai-Nilai Utama</h3>
     </div>
-    <div class="my-4 mx-5 vimis-intro">
+    <div class="my-4 vimis-intro">
         <div class="row">                   
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card-body">
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-users fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Visi</strong></h3>
-                            <p class="mb-3 mt-3 mx-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium consequuntur ut delectus iure labore in hic voluptatibus illo facere provident quaerat, ullam aperiam voluptatem mollitia dolore, sint veniam quia facilis officiis, molestiae quas. Blanditiis pariatur ex quia et voluptas ducimus?
+                            <h3 class="my-1 font-20">Visi</h3>
+                            <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium consequuntur ut delectus iure labore in hic voluptatibus illo facere provident quaerat, ullam aperiam voluptatem mollitia dolore, sint veniam quia facilis officiis, molestiae quas. Blanditiis pariatur ex quia et voluptas ducimus?
                             </p>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ Community Center - Home
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-book fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Nilai-Nilai Utama</strong></h3>
+                            <h3 class="my-1 font-20">Nilai-Nilai Utama</h3>
                             <div class="mb-3 mt-3 text-justify">
                                 <ol>
                                     <li>Lorem ipsum dolor sit.  </li>
@@ -157,7 +157,7 @@ Community Center - Home
                     <div class="row">
                         <span class="service-icon"><i class="nav-icon fas fa-building fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="mx-3 my-1 font-20"><strong>Misi</strong></h3>
+                            <h3 class="my-1 font-20">Misi</h3>
                             <div class="mb-3 mt-3 text-justify">
                                 <ol>
                                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, culpa vitae!</li>
@@ -173,14 +173,14 @@ Community Center - Home
                 </div>
             </div>
         </div>
-        <hr class="mx-3">
+        <hr>
     </div>
 </div>
 <div class="container my-5 contact">
-    <div class="mx-3">
-        <h2><strong>Hubungi</strong> Kami</h2>
+    <div class="">
+        <h3>Hubungi Kami</h3>
     </div>
-    <div class="my-4 mx-5 vimis-intro">
+    <div class="my-4 vimis-intro">
         <div class="row">                   
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <!--Google map-->

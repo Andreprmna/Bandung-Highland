@@ -80,6 +80,16 @@ Route::get('registration', [UserController::class, 'registration'])->name('regis
 Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
 
+Route::prefix('about')
+    ->group(function () {
+        Route::get('/visi-misi', function () {
+            return view('visi-misi');
+        })->name('visi-misi');
+        Route::get('/contact-us', function () {
+            return view('contact-us');
+        })->name('contact-us');
+    });
+
 Route::post('regis-pengarang', [PengarangController::class, 'regisPengarang'])->name('regis.pengarang');
 Route::post('regis-penerbit', [PenerbitController::class, 'regisPenerbit'])->name('regis.penerbit');
 Route::post('regis-buku', [BukuController::class, 'regisBuku'])->name('regis.buku');
