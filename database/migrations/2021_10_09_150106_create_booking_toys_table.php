@@ -18,8 +18,7 @@ class CreateBookingToysTable extends Migration
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_toy');
-            $table->date('waktu_mulai');
-            $table->date('waktu_selesai');
+            $table->date('tgl_mulai');
             $table->timestamps();
         });
     }

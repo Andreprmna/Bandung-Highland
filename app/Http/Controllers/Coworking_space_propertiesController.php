@@ -65,6 +65,7 @@ class Coworking_space_propertiesController extends Controller
         return Coworking_space_properties::create([
             'id_cs'  => $data['id_cs'],
             'id_property'   => $data['id_property'],
+            'jumlah' => $data['jumlah']
         ]);
     }
 

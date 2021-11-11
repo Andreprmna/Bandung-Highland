@@ -28,8 +28,8 @@ class VideoRequest extends FormRequest
             'tahun_rilis' => ['required', 'integer'],
             'genre' => ['required', 'string'],
             'durasi' => ['required', 'string', 'max:255'],
-            'format' => ['required', 'integer'],
-            'deskripsi' => ['required', 'string', 'max:255']
+            'deskripsi' => ['required', 'string', 'max:255'],
+            'format' => ['required', 'integer']
         ];
     }
 }

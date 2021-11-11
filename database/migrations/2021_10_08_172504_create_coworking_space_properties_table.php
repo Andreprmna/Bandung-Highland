@@ -17,6 +17,7 @@ class CreateCoworkingSpacePropertiesTable extends Migration
             $table->id('id_csp');
             $table->integer('id_cs');
             $table->integer('id_property');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

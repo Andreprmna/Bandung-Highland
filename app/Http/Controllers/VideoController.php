@@ -61,9 +61,10 @@ class VideoController extends Controller
             'tahun_rilis'   => $data['tahun_rilis'],
             'genre'         => $data['genre'],
             'durasi'        => $data['durasi'],
-            'format'        => $data['format'],
             'deskripsi'     => $data['deskripsi'],
-            'cover'         => $data['cover'],
+            'format'        => $data['format'],
+            'cover'         => $data['cover']
+
         ]);
     }
 

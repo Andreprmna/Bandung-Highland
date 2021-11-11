@@ -16,6 +16,7 @@ class CreatePengarangsTable extends Migration
         Schema::create('pengarangs', function (Blueprint $table) {
             $table->id('id_pengarang');
             $table->string('nama_pengarang');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

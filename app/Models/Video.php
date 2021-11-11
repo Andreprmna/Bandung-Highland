@@ -15,10 +15,9 @@ class Video extends Model
         'tahun_rilis',
         'genre',
         'durasi',
-        'format',
         'deskripsi',
+        'format',
         'cover',
-        'trailer'
 
     ];
     public function getCreatedAtAttribute($value)
