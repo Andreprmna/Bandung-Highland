@@ -13,7 +13,7 @@ class CreateAtksTable extends Migration
      */
     public function up()
     {
-        Schema::create('atks', function (Blueprint $table) {
+        Schema::create('atk', function (Blueprint $table) {
             $table->id('id_atk');
             $table->string('nama_atk');
             $table->integer('harga');

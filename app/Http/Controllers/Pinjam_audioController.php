@@ -72,7 +72,7 @@ class Pinjam_audioController extends Controller
             'tgl_pinjam'   => $data['tgl_pinjam'],
             'tgl_kembali'       => $data['tgl_kembali'],
             'tgl_pengembalian' => $data['tgl_pengembalian'],
-            'denda' => $data['data']
+            'denda' => $data['denda']
 
         ]);
     }

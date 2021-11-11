@@ -18,8 +18,8 @@ class CreateBookingVideosTable extends Migration
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_video');
-            $table->date('waktu_mulai');
-            $table->date('waktu_selesai');
+            $table->date('tgl_mulai');
+            $table->date('tgl_selesai');
             $table->timestamps();
         });
     }

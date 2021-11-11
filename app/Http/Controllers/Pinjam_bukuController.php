@@ -70,7 +70,8 @@ class Pinjam_bukuController extends Controller
             'id_buku'         => $data['id_buku'],
             'tgl_pinjam'   => $data['tgl_pinjam'],
             'tgl_kembali'       => $data['tgl_kembali'],
-
+            'tgl_pengembalian' => $data['tgl_pengembalian'],
+            'denda' => $data['denda']
         ]);
     }
 

@@ -24,8 +24,8 @@ class Booking_video_Request extends FormRequest
     public function rules()
     {
         return [
-            'waktu_mulai' => ['required', 'date'],
-            'waktu_selesai' => ['required', 'date']
+            'tgl_mulai' => ['required', 'date'],
+            'tgl_selesai' => ['required', 'date']
         ];
     }
 }

@@ -13,7 +13,7 @@ class CreatePointOfSellsTable extends Migration
      */
     public function up()
     {
-        Schema::create('point_of_sells', function (Blueprint $table) {
+        Schema::create('point_of_sell', function (Blueprint $table) {
             $table->id('id_pos');
             $table->integer('id_member');
             $table->integer('id_admin');

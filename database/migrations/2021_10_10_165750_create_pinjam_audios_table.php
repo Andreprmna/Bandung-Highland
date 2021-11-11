@@ -13,7 +13,7 @@ class CreatePinjamAudiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinjam_audios', function (Blueprint $table) {
+        Schema::create('pinjam_audio', function (Blueprint $table) {
             $table->id('id_pinjam_audio');
             $table->integer('id_member');
             $table->integer('id_admin');

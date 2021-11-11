@@ -13,7 +13,7 @@ class CreateCoworkingSpacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('coworking_spaces', function (Blueprint $table) {
+        Schema::create('coworking_space', function (Blueprint $table) {
             $table->id('id_cs');
             $table->string('nomor_cs');
             $table->string('deskripsi_cs');

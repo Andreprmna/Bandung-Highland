@@ -13,7 +13,7 @@ class CreateBukusTable extends Migration
      */
     public function up()
     {
-        Schema::create('bukus', function (Blueprint $table) {
+        Schema::create('buku', function (Blueprint $table) {
             $table->id('id_buku');
             $table->integer('id_pengarang');
             $table->integer('id_penerbit');

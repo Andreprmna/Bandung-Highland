@@ -13,7 +13,7 @@ class CreateBookingAudiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking_audios', function (Blueprint $table) {
+        Schema::create('booking_audio', function (Blueprint $table) {
             $table->id('id_booking_audio');
             $table->integer('id_member');
             $table->integer('id_admin');

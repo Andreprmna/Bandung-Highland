@@ -26,6 +26,7 @@ class Pinjam_videoRequest extends FormRequest
         return [
             'tgl_pinjam' => ['required', 'date'],
             'tgl_kembali' => ['required', 'date'],
+            'tgl_pengembalian' => ['required', 'date']
         ];
     }
 }

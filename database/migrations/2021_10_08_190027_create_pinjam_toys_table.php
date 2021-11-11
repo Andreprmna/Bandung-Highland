@@ -13,7 +13,7 @@ class CreatePinjamToysTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinjam_toys', function (Blueprint $table) {
+        Schema::create('pinjam_toy', function (Blueprint $table) {
             $table->id('id_pinjam_toy');
             $table->integer('id_member');
             $table->integer('id_admin');
