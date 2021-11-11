@@ -11,6 +11,9 @@ use App\Http\Controllers\Booking_video_Controller;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\Client\BookingAudioController;
+use App\Http\Controllers\Client\BookingBukuController;
+use App\Http\Controllers\Client\BookingVideoController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
 use App\Http\Controllers\MemberController;
@@ -79,6 +82,13 @@ Route::post('custom-login', [UserController::class, 'customLogin'])->name('login
 Route::get('registration', [UserController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
+
+Route::prefix('layanan')
+    ->group(function () {
+        Route::resource('booking/buku', BookingBukuController::class);
+        Route::resource('booking/audio', BookingAudioController::class);
+        Route::resource('booking/video', BookingVideoController::class);
+    });
 
 Route::prefix('about')
     ->group(function () {

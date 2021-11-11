@@ -55,7 +55,7 @@
             <div class="d-flex justify-content-between">
                 <div class="row align-items-center">
                     <div class="container-fluid">
-                        <h1 class="my-0 site-logo"><a href="index.html">Community Center</a></h1>
+                        <h1 class="my-0 site-logo"><a href="/">Community Center</a></h1>
                     </div>
                 </div>
                 <div class="">
@@ -82,32 +82,17 @@
                                     @endguest
                                 </div>
                                 <li class="{{ request()->is('/') ? 'active' : ''}}"><a href="/" class="nav-link">Beranda</a></li>
-                                <li class="has-children">
+                                <li class="has-children {{ request()->is('layanan*') ? 'active' : ''}}">
                                     <a href="#" class="nav-link">Layanan</a>
                                     <ul class="dropdown arrow-top">
-                                    <li class="has-children">
-                                        <a href="#">Beli</a>
-                                        <ul class="dropdown">
-                                        <li><a href="#">Alat Tulis Kantor</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children">
+                                    <li class="has-children {{ request()->is('layanan/booking*') ? 'active' : ''}}">
                                         <a href="#">Booking</a>
                                         <ul class="dropdown">
-                                        <li><a href="#">Audio</a></li>
-                                        <li><a href="#">Buku</a></li>
+                                        <li class="{{ request()->is('layanan/booking/audio') ? 'active' : ''}}"><a href="{{ route('audio.index') }}">Audio</a></li>
+                                        <li class="{{ request()->is('layanan/booking/buku') ? 'active' : ''}}"><a href="{{ route('buku.index') }}">Buku</a></li>
                                         <li><a href="#">Coworking Space</a></li>
                                         <li><a href="#">Mainan</a></li>
-                                        <li><a href="#">Video</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children">
-                                        <a href="#">Pinjam</a>
-                                        <ul class="dropdown">
-                                        <li><a href="#">Audio</a></li>
-                                        <li><a href="#">Buku</a></li>
-                                        <li><a href="#">Mainan</a></li>
-                                        <li><a href="#">Video</a></li>
+                                        <li class="{{ request()->is('layanan/booking/video') ? 'active' : ''}}"><a href="{{ route('video.index') }}">Video</a></li>
                                         </ul>
                                     </li>
                                     </ul>
@@ -116,7 +101,6 @@
                                     <a href="#" class="nav-link">Tentang Kami</a>
                                     <ul class="dropdown arrow-top">
                                     <li class="{{ request()->is('about/visi-misi') ? 'active' : ''}}"><a href="{{ route('visi-misi') }}" class="nav-link">Visi & Misi</a></li>
-                                    <li><a href="#" class="nav-link">Filosofi & Motto</a></li>
                                     <li class="{{ request()->is('about/contact-us') ? 'active' : ''}}"><a href="{{ route('contact-us') }}" class="nav-link">Hubungi Kami</a></li>
                                     
                                     </ul>
