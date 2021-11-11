@@ -24,8 +24,7 @@ class Booking_toyRequest extends FormRequest
     public function rules()
     {
         return [
-            'waktu_mulai' => ['required', 'date'],
-            'waktu_selesai' => ['required', 'date']
+            'tgl_mulai' => ['required', 'date']
         ];
     }
 }

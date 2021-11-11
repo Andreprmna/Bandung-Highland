@@ -12,7 +12,8 @@ class Coworking_space_properties extends Model
     use HasFactory;
     protected $fillable = [
         'id_cs',
-        'id_property'
+        'id_property',
+        'jumlah'
     ];
     public function getCreatedAtAttribute($value)
     {

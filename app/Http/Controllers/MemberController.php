@@ -17,7 +17,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $member = Member::paginate();
 
             return view('admin.member.members', [
@@ -35,7 +35,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('admin.member.create-member');
         }
         return redirect('cms');
@@ -62,13 +62,13 @@ class MemberController extends Controller
     public function createUser(array $data)
     {
         return Member::create([
-            'nama' => $data['nama'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'nama' => $data['nama'],
             'tgl_lahir' => $data['tgl_lahir'],
             'jenis_kelamin' => $data['jenis_kelamin'],
             'alamat' => $data['alamat'],
-            'foto_profil' => $data['foto_profil']
+            'foto_profil' => $data['foto_profil'],
+            'password' => Hash::make($data['password'])
         ]);
     }
 
@@ -107,7 +107,7 @@ class MemberController extends Controller
     {
         $data = $request->all();
 
-        if($request->file('foto_profil')) {
+        if ($request->file('foto_profil')) {
             $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
         }
 

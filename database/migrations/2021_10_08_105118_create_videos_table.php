@@ -19,10 +19,9 @@ class CreateVideosTable extends Migration
             $table->integer('tahun_rilis');
             $table->string('genre');
             $table->string('durasi');
-            $table->integer('format');
             $table->string('deskripsi');
+            $table->string('format');
             $table->binary('cover');
-            $table->binary('trailer');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

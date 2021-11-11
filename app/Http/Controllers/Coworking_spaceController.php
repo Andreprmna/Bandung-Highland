@@ -56,8 +56,9 @@ class Coworking_spaceController extends Controller
     {
         return Coworking_space::create([
             'nomor_cs'  => $data['nomor_cs'],
-            'daya_tampung'   => $data['daya_tampung'],
-            'deskripsi_cs'   => $data['deskripsi_cs']
+            'deskripsi_cs'   => $data['deskripsi_cs'],
+            'daya_tampung'   => $data['daya_tampung']
+
 
         ]);
     }

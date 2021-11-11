@@ -16,6 +16,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id('id_property');
             $table->string('nama_property');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

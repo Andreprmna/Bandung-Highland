@@ -19,7 +19,6 @@ class CreateToysTable extends Migration
             $table->string('jenis');
             $table->string('genre');
             $table->string('deskripsi');
-            $table->integer('kondisi')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();
         });

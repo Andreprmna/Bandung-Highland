@@ -40,7 +40,7 @@ class Pinjam_audioController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $audio = Audio::paginate();
-        
+
         return view('admin.audio.pinjam-audio', [
             'member' => $member,
             'user' => $user,
@@ -71,6 +71,8 @@ class Pinjam_audioController extends Controller
             'id_audio'         => $data['id_audio'],
             'tgl_pinjam'   => $data['tgl_pinjam'],
             'tgl_kembali'       => $data['tgl_kembali'],
+            'tgl_pengembalian' => $data['tgl_pengembalian'],
+            'denda' => $data['data']
 
         ]);
     }
