@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Pinjam_audio extends Model
 {
+    public $table = "pinjam_audio";
     protected $primaryKey = 'id_pinjam_audio';
     use HasFactory;
     protected $fillable = [

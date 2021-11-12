@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Booking_audio extends Model
 {
+    public $table = "booking_audio";
     protected $primaryKey = 'id_booking_audio';
     use HasFactory;
     protected $fillable = [
