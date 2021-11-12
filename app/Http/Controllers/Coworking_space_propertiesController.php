@@ -64,7 +64,8 @@ class Coworking_space_propertiesController extends Controller
     {
         return Coworking_space_properties::create([
             'id_cs'  => $data['id_cs'],
-            'id_property'   => $data['id_property']
+            'id_property'   => $data['id_property'],
+            'jumlah'   => $data['jumlah']
         ]);
     }
 
@@ -118,9 +119,9 @@ class Coworking_space_propertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coworking_space_properties $coworking_space_properties)
+    public function destroy(Coworking_space_properties $coworking_space_property)
     {
-        $coworking_space_properties->delete();
+        $coworking_space_property->delete();
 
         return redirect()->route('coworking_space_properties.index');
     }

@@ -18,6 +18,7 @@
                             <th>Durasi</th>
                             <th>Deskripsi</th>
                             <th>Format</th>
+                            <th>Status</th>
                             <th>Cover</th>
                             <th>Action</th>
                         </tr>
@@ -28,11 +29,11 @@
                             @forelse ($video as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->judul}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->judul}}</td>
                                     <td>{{$item->tahun_rilis}}</td>
                                     <td>{{$item->genre}}</td>
                                     <td>{{$item->durasi}}</td>
-                                    <td>{{$item->deskripsi}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->deskripsi}}</td>
                                     @if ($item->format == 0)
                                         <td>Kaset</td>
                                         @elseif ($item->format == 1)
@@ -42,15 +43,19 @@
                                         @elseif ($item->format == 3)
                                         <td>mkv</td>
                                     @endif
+                                    <td>{{$item->status}}</td>
                                     <td><img src="{{url('storage/'.$item->cover)}}" width="100px"></td>
                                     <td>
-                                        <div class="row">
-                                        <form action="{{ route('videos.edit', $item->id_video) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                        <div class="d-flex justify-content-around">
+                                        <form action="{{ route('videos.edit', $item->id_video) }}">
+                                            <button type="submit" class="btn btn-primary"><i class="far fa-eye"></i></button>
                                         </form>
-                                        <form action="{{ route('videos.destroy', $item->id_video) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('videos.edit', $item->id_video) }}">
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
+                                        </form>
+                                        <form action="{{ route('videos.destroy', $item->id_video) }}" method="POST">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

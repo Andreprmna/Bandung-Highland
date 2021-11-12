@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Member &raquo; {{ $item->name }} &raquo; Edit
+            Member &raquo; {{ $item->nama }} &raquo; Edit
         </h1>
     </div><!-- /.col -->
     
@@ -65,7 +65,7 @@
             @endif
             <div class="form-group">
                 <label for="gender">Photo Profile</label>
-                <input id="profile" class="form-control" type="file" name="profile_photo_path">
+                <input id="profile" class="form-control" type="file" name="foto_profil">
             </div>             
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Update</button>    

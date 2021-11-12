@@ -59,7 +59,8 @@ class Pinjam_videoController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPinjam_Video($data);
+        Pinjam_video::create($data);
+        // $check = $this->createPinjam_Video($data);
 
         return redirect()->route("pinjam_videos.index");
     }

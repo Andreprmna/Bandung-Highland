@@ -17,7 +17,8 @@
                             <th>Nama ATK</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
-                            <th>Action</th>
+                            <th>Tanggal</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +32,8 @@
                                     <td>{{$item->atk->nama_atk}}</td>
                                     <td>{{$item->jumlah_pos}}</td>
                                     <td>{{$item->total_harga}}</td>
-                                    <td>
+                                    <td>{{date("d M Y", strtotime($item->tgl_pos))}}</td>
+                                    {{-- <td>
                                         <div class="row">
                                         <form action="{{ route('point_of_sells.edit', $item->id_pos) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success">Edit</button>
@@ -41,7 +43,7 @@
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @empty
                                 <tr>

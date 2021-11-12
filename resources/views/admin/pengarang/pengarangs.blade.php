@@ -13,6 +13,7 @@
                         <tr>
                             <th>No</th>
                             <th>Name</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -23,14 +24,15 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->nama_pengarang}}</td>
+                                    <td>{{$item->status}}</td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('pengarangs.edit', $item->id_pengarang) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('pengarangs.destroy', $item->id_pengarang) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

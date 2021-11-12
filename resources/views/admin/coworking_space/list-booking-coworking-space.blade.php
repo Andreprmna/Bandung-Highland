@@ -17,6 +17,7 @@
                             <th>No Coworking Space</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -28,17 +29,18 @@
                                     <td>{{$no++}}</td>
                                     <td>{{$item->member->nama}}</td>
                                     <td>{{$item->admin->name}}</td>
-                                    <td>{{$item->coworking_space->no_cs}}</td>
-                                    <td>{{$item->tgl_mulai}}</td>
-                                    <td>{{$item->tgl_selesai}}</td>
+                                    <td>{{$item->coworking_space->nomor_cs}}</td>
+                                    <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
+                                    <td>{{date("d M Y", strtotime($item->tgl_selesai))}}</td>
+                                    <td>{{$item->status}}</td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('booking_coworking_spaces.edit', $item->id_bcs) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('booking_coworking_spaces.destroy', $item->id_bcs) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

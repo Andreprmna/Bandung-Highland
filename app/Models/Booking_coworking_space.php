@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Booking_coworking_space extends Model
 {
+    public $table = "booking_coworking_space";
     protected $primaryKey = 'id_bcs';
 
     use HasFactory;

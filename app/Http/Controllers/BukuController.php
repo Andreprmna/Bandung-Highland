@@ -55,9 +55,12 @@ class BukuController extends Controller
     {
         $data = $request->all();
 
-        $data['sampul'] = $request->file('sampul')->store('assets/buku', 'public');
+        if ($request->file('sampul') != null) {
+            $data['sampul'] = $request->file('sampul')->store('assets/buku', 'public');
+        }
 
-        $check = $this->createBuku($data);
+        Buku::create($data);
+        // $check = $this->createBuku($data);
 
         return redirect()->route("bukus.index");
     }
@@ -116,6 +119,10 @@ class BukuController extends Controller
     public function update(Request $request, Buku $buku)
     {
         $data = $request->all();
+
+        if ($request->file('sampul') != null) {
+            $data['sampul'] = $request->file('sampul')->store('assets/buku', 'public');
+        }
 
         $buku->update($data);
 

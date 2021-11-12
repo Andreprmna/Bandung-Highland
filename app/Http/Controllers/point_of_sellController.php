@@ -58,12 +58,12 @@ class point_of_sellController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPinjam_Video($data);
+        $check = $this->createPOS($data);
 
         return redirect()->route("point_of_sells.index");
     }
 
-    public function createPinjam_Video(array $data)
+    public function createPOS(array $data)
     {
         return Point_of_sell::create([
             'id_member'  => $data['id_member'],
@@ -95,16 +95,16 @@ class point_of_sellController extends Controller
      */
     public function edit(Point_of_sell $point_of_sell)
     {
-        $member = Member::paginate();
-        $user = User::paginate();
-        $atk = Atk::paginate();
+        // $member = Member::paginate();
+        // $user = User::paginate();
+        // $atk = Atk::paginate();
 
-        return view('admin.atk.edit-atk', [
-            'item' => $point_of_sell,
-            'member' => $member,
-            'user' => $user,
-            'atk' => $atk
-        ]);
+        // return view('admin.atk.edit-atk', [
+        //     'item' => $point_of_sell,
+        //     'member' => $member,
+        //     'user' => $user,
+        //     'atk' => $atk
+        // ]);
     }
     /**
      * Update the specified resource in storage.
@@ -115,11 +115,11 @@ class point_of_sellController extends Controller
      */
     public function update(Request $request, Point_of_sell $point_of_sell)
     {
-        $data = $request->all();
+        // $data = $request->all();
 
-        $point_of_sell->update($data);
+        // $point_of_sell->update($data);
 
-        return redirect()->route('point_of_sells.index');
+        // return redirect()->route('point_of_sells.index');
     }
 
     /**
@@ -130,8 +130,8 @@ class point_of_sellController extends Controller
      */
     public function destroy(Point_of_sell $point_of_sell)
     {
-        $point_of_sell->delete();
+        // $point_of_sell->delete();
 
-        return redirect()->route('point_of_sells.index');
+        // return redirect()->route('point_of_sells.index');
     }
 }

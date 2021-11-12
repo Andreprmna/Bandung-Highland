@@ -56,12 +56,7 @@
             
             <div class="form-group">
                 <label for="date_mulai">Tanggal Mulai</label>
-                <input id="date_mulai" class="form-control" type="date" name="waktu_mulai" :value="old('tgl_mulai')" required>
-            </div>
-
-            <div class="form-group">
-                <label for="date_selesai">Tanggal Selesai</label>
-                <input id="date_selesai" class="form-control" type="date" name="waktu_selesai" :value="old('tgl_selesai')" required>
+                <input id="date_mulai" class="form-control" type="date" name="tgl_mulai" :value="old('tgl_mulai')" required>
             </div>
                       
             <div class="float-right">

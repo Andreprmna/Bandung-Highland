@@ -51,9 +51,13 @@ class MemberController extends Controller
     {
         $data = $request->all();
 
-        $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
+        if ($request->file('foto_profil') != null) {
+            $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
+        }
 
-        $check = $this->createUser($data);
+        Member::create($data);
+
+        // $check = $this->createUser($data);
 
         return redirect()->route("members.index")->withSuccess('You have signed-in');
     }
@@ -107,7 +111,7 @@ class MemberController extends Controller
     {
         $data = $request->all();
 
-        if ($request->file('foto_profil')) {
+        if ($request->file('foto_profil') != null) {
             $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
         }
 

@@ -68,8 +68,8 @@ class Booking_video_Controller extends Controller
             'id_member'  => $data['id_member'],
             'id_admin'   => $data['id_admin'],
             'id_video'    => $data['id_video'],
-            'tgl_mulai'   => $data['waktu_mulai'],
-            'tgl_selesai' => $data['waktu_selesai']
+            'tgl_mulai'   => $data['tgl_mulai'],
+            'tgl_selesai' => $data['tgl_selesai']
 
         ]);
     }
