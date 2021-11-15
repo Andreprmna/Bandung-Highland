@@ -14,6 +14,15 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{route('properties.update', $item->id_property)}}" method="POST">
             @csrf
             @method('PUT')
