@@ -13,13 +13,14 @@ class CreateBookingCoworkingSpacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking_coworking_spaces', function (Blueprint $table) {
+        Schema::create('booking_coworking_space', function (Blueprint $table) {
             $table->id('id_bcs');
             $table->integer('id_cs');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
+            $table->integer('status');
             $table->timestamps();
         });
     }

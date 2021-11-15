@@ -29,7 +29,8 @@ class VideoRequest extends FormRequest
             'genre' => ['required', 'string'],
             'durasi' => ['required', 'string', 'max:255'],
             'deskripsi' => ['required', 'string', 'max:255'],
-            'format' => ['required', 'integer']
+            'format' => ['required', 'string'],
+            'cover' => ['required', 'binary']
         ];
     }
 }

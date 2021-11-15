@@ -24,16 +24,16 @@ class Admin extends Authenticate
      *
      * @var string[]
      */
+    protected $primaryKey = 'id_admin';
     protected $fillable = [
+        'id_role',
         'email',
-        'name',
-        'role',
         'password',
+        'nama',
         'tgl_lahir',
         'jenis_kelamin',
         'alamat',
-        'status',
-        'profile_photo_path'
+        'foto_profil'
     ];
 
     /**

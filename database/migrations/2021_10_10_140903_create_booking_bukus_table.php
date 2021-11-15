@@ -20,6 +20,7 @@ class CreateBookingBukusTable extends Migration
             $table->integer('id_buku');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

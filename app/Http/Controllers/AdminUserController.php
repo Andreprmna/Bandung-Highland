@@ -18,7 +18,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $user = User::paginate();
 
             return view('admin.users', [
@@ -31,12 +31,12 @@ class AdminUserController extends Controller
 
     public function indexAdmin()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect('cms/admin-dashboard');
         }
 
         return view('auth.login');
-    } 
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +45,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('admin.create-user');
         }
         return redirect('cms');
@@ -61,7 +61,7 @@ class AdminUserController extends Controller
     {
         $data = $request->all();
 
-        $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
+        $data['foto_profil'] = $request->file('foto_profil')->store('assets/user', 'public');
 
         $check = $this->createUser($data);
 
@@ -72,14 +72,13 @@ class AdminUserController extends Controller
     public function createUser(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'id_role' => $data['id_role'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'nama' => $data['nama'],
             'tgl_lahir' => $data['tgl_lahir'],
             'jenis_kelamin' => $data['jenis_kelamin'],
-            'role' => $data['role'],
-            'alamat' => $data['alamat'],
-            'profile_photo_path' => $data['profile_photo_path']
+            'alamat' => $data['alamat']
         ]);
     }
 
@@ -89,36 +88,36 @@ class AdminUserController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+
         $credentials = array(
-            'email' => $request->get('email'), 
+            'email' => $request->get('email'),
             'password' => $request->get('password'),
             'role' => 0,
         );
 
         $credentials2 = array(
-            'email' => $request->get('email'), 
+            'email' => $request->get('email'),
             'password' => $request->get('password'),
             'role' => 1,
         );
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('cms/admin-dashboard')
-                        ->withSuccess('Signed in');
+                ->withSuccess('Signed in');
         } elseif (Auth::attempt($credentials2)) {
             return redirect()->intended('cms/admin-dashboard')
-                        ->withSuccess('Signed in');
+                ->withSuccess('Signed in');
         }
-  
+
         return redirect("cms")->withSuccess('Login details are not valid');
     }
 
     public function dashboardAdmin()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('admin.dashboard');
         }
-  
+
         return redirect("cms")->withSuccess('You are not allowed to access');
     }
 
@@ -157,7 +156,7 @@ class AdminUserController extends Controller
     {
         $data = $request->all();
 
-        if($request->file('profile_photo_path')) {
+        if ($request->file('profile_photo_path')) {
             $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
         }
 
@@ -179,10 +178,11 @@ class AdminUserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function signOutAdmin() {
+    public function signOutAdmin()
+    {
         Session::flush();
         Auth::logout();
-  
+
         return Redirect('cms');
     }
 }

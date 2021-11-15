@@ -13,13 +13,14 @@ class CreateBookingVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking_videos', function (Blueprint $table) {
+        Schema::create('booking_video', function (Blueprint $table) {
             $table->id('id_booking_video');
             $table->integer('id_member');
             $table->integer('id_admin');
             $table->integer('id_video');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
