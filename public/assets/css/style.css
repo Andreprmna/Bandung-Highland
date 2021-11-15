@@ -6310,9 +6310,6 @@ table.focus-on tfoot tr.focused td {
     .welcome {
         text-align: center;
     }
-    .media {
-        display: inline-block;
-    }
 }
 
 .carousel img {
@@ -6392,8 +6389,7 @@ a:hover {
 }
 
 .site-navbar-top {
-    border-bottom: 1px solid #e7e9ed;
-    background-color: #e9eaed;
+    background-color: #f5f5f5;
     height: 60px;
 }
 
@@ -6527,7 +6523,7 @@ a:hover {
     list-style: none;
     padding: 0;
     margin: 0;
-    min-width: 200px;
+    min-width: 180px;
 }
 .site-navbar
     .site-navigation
@@ -6929,4 +6925,8 @@ a:hover {
 
 #searchQuerySubmit:hover {
     cursor: pointer;
+}
+
+.head-info {
+    color: #7e7e7e;
 }

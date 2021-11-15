@@ -1,5 +1,5 @@
 @section('title') 
-Community Center - Buku
+Community Center - Mainan
 @endsection 
 @extends('layouts.main')
 @section('style')
@@ -19,7 +19,7 @@ Community Center - Buku
                     <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="icon-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="#">Layanan</a></li>
                     <li class="breadcrumb-item"><a href="#">Booking</a></li>
-                    <li class="breadcrumb-item active mr-3" aria-current="page">Buku</li>
+                    <li class="breadcrumb-item active mr-3" aria-current="page">Mainan</li>
                 </ol>
             </div>
         </div>
@@ -29,9 +29,8 @@ Community Center - Buku
 <!-- Start List Card -->
 <div class="container my-3 pb-5">
     <div class="media py-3">
-        <img src="/storage/{{$item->sampul}}" class="img-fluid mr-4 mb-4" alt="Responsive image" width="450" height="350">
         <div class="media-body">
-            <h3 class="mt-0">{{$item->judul}}</h3>
+            <h3 class="mt-0">{{$item->nama_toy}}</h3>
             <div class="desc text-justify">
                 <p>{{$item->deskripsi}}</p>
             </div>
@@ -40,39 +39,14 @@ Community Center - Buku
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <td class="p-0 pb-2 head-info">Pengarang</td>
+                                <td class="p-0 pb-2 head-info">Jenis</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->pengarang->nama_pengarang}}</td>
+                                <td class="p-0">{{$item->jenis}}</td>
                             </tr>
                             <tr>
-                                <td class="p-0 pb-2 head-info">Penerbit</td>
+                                <td class="p-0 pb-2 head-info">Genre</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->penerbit->nama_penerbit}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-0 pb-2 head-info">Bentuk</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->bentuk}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-0 pb-2 head-info">Kondisi</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->kondisi}}</td>
-                            </tr>
-                            <tr class="d-lg-none">
-                                <td class="p-0 pb-2 head-info">ISBN</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->isbn}}</td>
-                            </tr>
-                            <tr class="d-lg-none">
-                                <td class="p-0 pb-2 head-info">Halaman</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->halaman}}</td>
-                            </tr>
-                            <tr class="d-lg-none">
-                                <td class="p-0 pb-2 head-info">Tahun Terbit</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->tahun_rilis}}</td>
+                                <td class="p-0">{{$item->genre}}</td>
                             </tr>
                             <tr class="d-lg-none">
                                 <td class="p-0 pb-2 head-info">Status</td>
@@ -85,21 +59,6 @@ Community Center - Buku
                 <div class="d-none d-lg-block">
                     <table class="table table-borderless">
                         <tbody>
-                            <tr>
-                                <td class="p-0 pb-2 head-info">ISBN</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->isbn}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-0 pb-2 head-info">Halaman</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->halaman}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-0 pb-2 head-info">Tahun Terbit</td>
-                                <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->tahun_rilis}}</td>
-                            </tr>
                             <tr>
                                 <td class="p-0 pb-2 head-info">Status</td>
                                 <td class="p-0 px-3">:</td>

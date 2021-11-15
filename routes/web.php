@@ -13,6 +13,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Client\BookingAudioController;
 use App\Http\Controllers\Client\BookingBukuController;
+use App\Http\Controllers\Client\BookingCoSpaceController;
+use App\Http\Controllers\Client\BookingToyController;
 use App\Http\Controllers\Client\BookingVideoController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
@@ -88,6 +90,8 @@ Route::prefix('layanan')
         Route::resource('booking/buku', BookingBukuController::class);
         Route::resource('booking/audio', BookingAudioController::class);
         Route::resource('booking/video', BookingVideoController::class);
+        Route::resource('booking/coworking-space', BookingCoSpaceController::class);
+        Route::resource('booking/toy', BookingToyController::class);
     });
 
 Route::prefix('about')
