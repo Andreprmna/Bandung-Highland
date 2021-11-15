@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_Coworking_spaceRequest;
 use App\Models\Booking_Coworking_space;
-use App\Models\Booking_coworking_space as ModelsBooking_coworking_space;
 use App\Models\Coworking_space;
 use App\Models\Member;
 use App\Models\User;
@@ -119,7 +118,7 @@ class Booking_Coworking_spaceController extends Controller
 
         $booking_Coworking_space->update($data);
 
-        return redirect()->route('booking_Coworking_spaces.index');
+        return redirect()->route('booking_coworking_spaces.index');
     }
 
     /**
@@ -128,10 +127,10 @@ class Booking_Coworking_spaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking_Coworking_space $booking_Coworking_space)
+    public function destroy(Booking_Coworking_space $booking_coworking_space)
     {
-        $booking_Coworking_space->delete();
+        $booking_coworking_space->delete();
 
-        return redirect()->route('booking_Coworking_spaces.index');
+        return redirect()->route('booking_coworking_spaces.index');
     }
 }

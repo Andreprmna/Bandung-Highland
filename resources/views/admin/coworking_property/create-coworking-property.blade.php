@@ -43,6 +43,11 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="jumlah">Jumlah</label>
+                <input id="jumlah" class="form-control" type="text" name="jumlah" placeholder="Jumlah" :value="old('jumlah')" required>
+            </div>
+
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Create</button>    
             </div>

@@ -55,13 +55,8 @@
             </div>
             
             <div class="form-group">
-                <label for="date_pinjam">Tanggal Mulai</label>
-                <input id="date_pinjam" class="form-control" type="date" name="waktu_mulai" :value="old('tgl_pinjam')" required>
-            </div>
-
-            <div class="form-group">
-                <label for="date_kembali">Tanggal Selesai</label>
-                <input id="date_kembali" class="form-control" type="date" name="waktu_selesai" :value="old('tgl_kembali')" required>
+                <label for="date_pinjam">Tanggal Pinjam</label>
+                <input id="date_pinjam" class="form-control" type="date" name="tgl_pinjam" :value="old('tgl_pinjam')" required>
             </div>
                       
             <div class="float-right">

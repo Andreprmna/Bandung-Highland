@@ -14,6 +14,7 @@
                             <th>No</th>
                             <th>Nomor Coworking Space</th>
                             <th>Nama Property</th>
+                            <th>Jumlah</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -25,14 +26,15 @@
                                     <td>{{$no++}}</td>
                                     <td>{{$item->coworking_space->nomor_cs}}</td>
                                     <td>{{$item->properties->nama_property}}</td>
+                                    <td>{{$item->jumlah}}</td>
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('coworking_space_properties.edit', $item->id_property) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                        <form action="{{ route('coworking_space_properties.edit', $item->id_csp) }}" class="inline-block px-2">
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
-                                        <form action="{{ route('coworking_space_properties.destroy', $item->id_property) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('coworking_space_properties.destroy', $item->id_csp) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

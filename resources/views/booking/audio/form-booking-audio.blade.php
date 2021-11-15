@@ -1,5 +1,5 @@
 @section('title') 
-Community Center - Buku
+Community Center - Audio
 @endsection 
 @extends('layouts.main')
 @section('style')
@@ -34,14 +34,61 @@ Community Center - Buku
             <h3 class="mt-0">{{$item->judul}}</h3>
             <div class="d-flex justify-content-between">
                 <div class="d-inline-block">
-                    <span class="px-0"><p>Pengisi Suara: {{$item->pengisi_suara}}</p></span>
-                    <span class="px-0"><p>Genre: {{$item->genre}}</p></span>
-                    <span class="px-0"><p>Format: {{$item->format}}</p></span>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="p-0 pb-2 head-info">Pengisi Suara</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->pengisi_suara}}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-0 pb-2 head-info">Genre</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->genre}}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-0 pb-2 head-info">Format</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->format}}</td>
+                            </tr>
+                            <tr class="d-lg-none">
+                                <td class="p-0 pb-2 head-info">Durasi</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->durasi}}</td>
+                            </tr>
+                            <tr class="d-lg-none">
+                                <td class="p-0 pb-2 head-info">Tahun Rilis</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->tahun_rilis}}</td>
+                            </tr>
+                            <tr class="d-lg-none">
+                                <td class="p-0 pb-2 head-info">Status</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="d-inline-block text-right">
-                    <span class="px-0"><p>Durasi: {{$item->durasi}}</p></span>
-                    <span class="px-0"><p>Tahun Rilis: {{$item->tahun_rilis}}</p></span>
-                    <span class="px-0"><p>Status: {{$item->status}}</p></span>
+                <div class="d-none d-lg-block">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="p-0 pb-2 head-info">Durasi</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->durasi}}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-0 pb-2 head-info">Tahun Rilis</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->tahun_rilis}}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-0 pb-2 head-info">Status</td>
+                                <td class="p-0 px-3">:</td>
+                                <td class="p-0">{{$item->status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <h3>Booking</h3>

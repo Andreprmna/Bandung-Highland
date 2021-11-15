@@ -16,7 +16,8 @@
                             <th>Nama Admin</th>
                             <th>Judul Toy</th>
                             <th>Tanggal Pinjam</th>
-                            <th>Tanggal Kembali</th>
+                            <th>Tanggal Pengembalian</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,18 +30,29 @@
                                     <td>{{$item->member->nama}}</td>
                                     <td>{{$item->admin->name}}</td>
                                     <td>{{$item->toy->nama_toy}}</td>
-                                    <td>{{$item->tgl_pinjam}}</td>
-                                    <td>{{$item->tgl_kembali}}</td>
+                                    <td>{{date("d M Y", strtotime($item->tgl_pinjam))}}</td>
                                     <td>
-                                        <div class="row">
-                                        <form action="{{ route('pinjam_toys.edit', $item->id_pinjam_toy) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
-                                        </form>
-                                        <form action="{{ route('pinjam_toys.destroy', $item->id_pinjam_toy) }}" method="POST" class="inline-block">
-                                            {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                        </div>
+                                        @if ($item->tgl_pengembalian != null)
+                                            {{date("d M Y", strtotime($item->tgl_pengembalian))}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>{{$item->status}}</td>
+                                    <td>
+                                        @if ($item->status != 2)
+                                            <div class="row">
+                                            <form action="{{ route('pinjam_toys.edit', $item->id_pinjam_toy) }}" class="inline-block px-2">
+                                                <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
+                                            </form>
+                                            {{-- <form action="{{ route('pinjam_bukus.destroy', $item->id_pinjam_buku) }}" method="POST" class="inline-block">
+                                                {!! method_field('delete') . csrf_field() !!}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form> --}}
+                                            </div>
+                                        @else
+                                            Returned
+                                        @endif
                                     </td>
                                 </tr>
                             @empty

@@ -90,8 +90,8 @@
                                         <ul class="dropdown">
                                         <li class="{{ request()->is('layanan/booking/audio') ? 'active' : ''}}"><a href="{{ route('audio.index') }}">Audio</a></li>
                                         <li class="{{ request()->is('layanan/booking/buku') ? 'active' : ''}}"><a href="{{ route('buku.index') }}">Buku</a></li>
-                                        <li><a href="#">Coworking Space</a></li>
-                                        <li><a href="#">Mainan</a></li>
+                                        <li class="{{ request()->is('layanan/booking/coworking-space') ? 'active' : ''}}"><a href="{{ route('coworking-space.index') }}">Coworking Space</a></li>
+                                        <li class="{{ request()->is('layanan/booking/toy') ? 'active' : ''}}"><a href="{{ route('toy.index') }}">Mainan</a></li>
                                         <li class="{{ request()->is('layanan/booking/video') ? 'active' : ''}}"><a href="{{ route('video.index') }}">Video</a></li>
                                         </ul>
                                     </li>

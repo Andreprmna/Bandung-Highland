@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Point_of_sell extends Model
 {
+    public $table = "point_of_sell";
     protected $primaryKey = 'id_pos';
     use HasFactory;
     protected $fillable = [

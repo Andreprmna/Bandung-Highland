@@ -8,8 +8,8 @@ Community Center - Buku
 @include('layouts.navbar')
 <!-- Start Content -->
 <!-- Start XP Breadcrumbbar -->                    
-<div class="xp-breadcrumbbar">
-    <div class="container container-fluid breadcrumb-post">
+<div class="container xp-breadcrumbbar">
+    <div class="container-fluid breadcrumb-post">
         <div>
             <h4 class="xp-page-title">Layanan</h4>
         </div>
@@ -37,29 +37,26 @@ Community Center - Buku
 <div class="container my-3 pb-5">
     @if (is_array($buku) || is_object($buku))
         @forelse ($buku as $item)
-            <div class="media py-3">
+            <div class="d-block d-lg-flex py-3">
                 <a href="{{ route('buku.show', $item->id_buku) }}">
                     <div class="image-asset mr-3 mb-4" style="background-image: url('/storage/{{$item->sampul}}')"></div>
                 </a>
                 <a href="{{ route('buku.show', $item->id_buku) }}" class="text-black">
-                    <div class="media-body">
+                    <div class="d-block">
                         <h5 class="mt-0">{{$item->judul}}</h5>
                         <div class="desc text-justify">
                             <p>{{$item->deskripsi}}</p>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex justify-content-start">
-                                <span class="px-0"><p>Pengarang: {{$item->pengarang->nama_pengarang}}</p></span>
-                                <span class="pl-3"><p>Penerbit: {{$item->penerbit->nama_penerbit}}</p></span>
-                            </div>
-                            <div class="d-flex justify-content-start">
-                                <span class="px-0"><p>Halaman: {{$item->halaman}}</p></span>
-                                <span class="pl-3"><p>Tahun Terbit: {{$item->tahun_rilis}}</p></span>
-                            </div>
+                        <div class="d-block d-sm-flex">
+                            <p class="px-0">Pengarang: {{$item->pengarang->nama_pengarang}}</p>
+                            <p class="pl-sm-3">Penerbit: {{$item->penerbit->nama_penerbit}}</p>
+                            <p class="pl-sm-3">Halaman: {{$item->halaman}}</p>
+                            <p class="pl-sm-3">Tahun Terbit: {{$item->tahun_rilis}}</p>
                         </div>
                     </div>
                 </a>
             </div>
+            <hr class="service-hr">
         @empty
             Data tidak ditemukan
         @endforelse

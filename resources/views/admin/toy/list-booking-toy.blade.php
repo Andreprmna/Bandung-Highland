@@ -16,7 +16,7 @@
                             <th>Nama Admin</th>
                             <th>Judul Toy</th>
                             <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,16 +29,16 @@
                                     <td>{{$item->member->nama}}</td>
                                     <td>{{$item->admin->name}}</td>
                                     <td>{{$item->toy->nama_toy}}</td>
-                                    <td>{{$item->tgl_mulai}}</td>
-                                    <td>{{$item->tgl_selesai}}</td>
+                                    <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
+                                    <td>{{$item->status}}</td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('booking_toys.edit', $item->id_booking_toy) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('booking_toys.destroy', $item->id_booking_toy) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

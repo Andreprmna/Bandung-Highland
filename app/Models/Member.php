@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Member extends Model
 {
+    public $table = "member";
     protected $primaryKey = 'id_member';
     use HasFactory;
     protected $fillable = [

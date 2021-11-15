@@ -24,7 +24,6 @@ class pinjam_toyRequest extends FormRequest
     public function rules()
     {
         return [
-
             'tgl_pinjam' => ['required', 'date'],
         ];
     }

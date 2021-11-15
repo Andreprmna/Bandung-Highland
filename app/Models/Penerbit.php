@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Penerbit extends Model
 {
+    public $table = "penerbit";
     protected $primaryKey = 'id_penerbit';
     use HasFactory;
     protected $fillable = [

@@ -15,6 +15,7 @@
                             <th>Nomor CS</th>
                             <th>Daya Tampung</th>
                             <th>Deskripsi</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -27,14 +28,15 @@
                                     <td>{{$item->nomor_cs}}</td>
                                     <td>{{$item->daya_tampung}}</td>
                                     <td>{{$item->deskripsi_cs}}</td>
+                                    <td>{{$item->status}}</td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('coworking_spaces.edit', $item->id_cs) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('coworking_spaces.destroy', $item->id_cs) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

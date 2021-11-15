@@ -57,7 +57,8 @@ class Pinjam_bukuController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPinjam_Buku($data);
+        Pinjam_buku::create($data);
+        // $check = $this->createPinjam_Buku($data);
 
         return redirect()->route("pinjam_bukus.index");
     }

@@ -57,7 +57,8 @@ class pinjam_toyController extends Controller
     {
         $data = $request->all();
 
-        $check = $this->createPinjam_Toy($data);
+        pinjam_toy::create($data);
+        // $check = $this->createPinjam_Toy($data);
 
         return redirect()->route("pinjam_toys.index");
     }

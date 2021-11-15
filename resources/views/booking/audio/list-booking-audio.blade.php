@@ -1,5 +1,5 @@
 @section('title') 
-Community Center - Buku
+Community Center - Audio
 @endsection 
 @extends('layouts.main')
 @section('style')
@@ -8,8 +8,8 @@ Community Center - Buku
 @include('layouts.navbar')
 <!-- Start Content -->
 <!-- Start XP Breadcrumbbar -->                    
-<div class="xp-breadcrumbbar">
-    <div class="container container-fluid breadcrumb-post">
+<div class="container xp-breadcrumbbar">
+    <div class="container-fluid breadcrumb-post">
         <div>
             <h4 class="xp-page-title">Layanan</h4>
         </div>
@@ -37,12 +37,12 @@ Community Center - Buku
 <div class="container my-3 pb-5">
     @if (is_array($audio) || is_object($audio))
         @forelse ($audio as $item)
-            <div class="media py-3">
+            <div class="d-block d-lg-flex py-3">
                 <a href="{{ route('audio.show', $item->id_audio) }}">
                     <div class="image-asset mr-3 mb-4" style="background-image: url('/storage/{{$item->cover}}')"></div>
                 </a>
                 <a href="{{ route('audio.show', $item->id_audio) }}" class="text-black">
-                    <div class="media-body">
+                    <div class="d-block">
                         <h5 class="mt-0">{{$item->judul}}</h5>
                         <span class="px-0"><p>Pengisi Suara: {{$item->pengisi_suara}}</p></span>
                         <span class="px-0"><p>Genre: {{$item->genre}}</p></span>
@@ -51,6 +51,7 @@ Community Center - Buku
                     </div>
                 </a>
             </div>
+            <hr class="service-hr">
         @empty
             Data tidak ditemukan
         @endforelse

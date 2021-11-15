@@ -18,6 +18,7 @@
                             <th>Genre</th>
                             <th>Durasi</th>
                             <th>Format</th>
+                            <th>Status</th>
                             <th>Cover</th>
                             <th>Action</th>
                         </tr>
@@ -28,11 +29,11 @@
                             @forelse ($audio as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->judul}}</td>
-                                    <td>{{$item->pengisi_suara}}</td>
-                                    <td>{{$item->tahun_rilis}}</td>
-                                    <td>{{$item->genre}}</td>
-                                    <td>{{$item->durasi}} Menit</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->judul}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->pengisi_suara}}</td>
+                                    <td >{{$item->tahun_rilis}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->genre}}</td>
+                                    <td>{{$item->durasi}}</td>
                                     @if ($item->format == 0)
                                         <td>Kaset</td>
                                         @elseif ($item->format == 1)
@@ -40,15 +41,16 @@
                                         @elseif ($item->format == 2)
                                         <td>Mp3</td>
                                     @endif
+                                    <td>{{$item->status}}</td>
                                     <td><img src="{{url('storage/'.$item->cover)}}" width="100px"></td>
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('audios.edit', $item->id_audio) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success">Edit</button>
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('audios.destroy', $item->id_audio) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         </div>
                                     </td>

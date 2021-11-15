@@ -1,5 +1,5 @@
 @section('title') 
-Community Center - Video
+Community Center - Coworking Space
 @endsection 
 @extends('layouts.main')
 @section('style')
@@ -8,8 +8,8 @@ Community Center - Video
 @include('layouts.navbar')
 <!-- Start Content -->
 <!-- Start XP Breadcrumbbar -->                    
-<div class="xp-breadcrumbbar">
-    <div class="container container-fluid breadcrumb-post">
+<div class="container xp-breadcrumbbar">
+    <div class="container-fluid breadcrumb-post">
         <div>
             <h4 class="xp-page-title">Layanan</h4>
         </div>
@@ -19,7 +19,7 @@ Community Center - Video
                     <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="icon-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="#">Layanan</a></li>
                     <li class="breadcrumb-item"><a href="#">Booking</a></li>
-                    <li class="breadcrumb-item active mr-3" aria-current="page">Video</li>
+                    <li class="breadcrumb-item active mr-3" aria-current="page">Coworking Space</li>
                 </ol>
             </div>
             <div class="searchBar pt-3 pr-lg-3">
@@ -35,24 +35,17 @@ Community Center - Video
 <!-- End XP Breadcrumbbar -->
 <!-- Start List Card -->
 <div class="container my-3 pb-5">
-    @if (is_array($video) || is_object($video))
-        @forelse ($video as $item)
+    @if (is_array($coworking_space) || is_object($coworking_space))
+        @forelse ($coworking_space as $item)
             <div class="d-block d-lg-flex py-3">
-                <a href="{{ route('video.show', $item->id_video) }}">
-                    <div class="image-asset mr-3 mb-4" style="background-image: url('/storage/{{$item->cover}}')"></div>
-                </a>
-                <a href="{{ route('video.show', $item->id_video) }}" class="text-black">
+                <a href="{{ route('coworking-space.show', $item->id_cs) }}" class="text-black">
                     <div class="d-block">
-                        <h5 class="mt-0">{{$item->judul}}</h5>
+                        <h5 class="mt-0">{{$item->nomor_cs}}</h5>
                         <div class="desc text-justify">
-                            <p>{{$item->deskripsi}}</p>
+                            <p>{{$item->deskripsi_cs}}</p>
                         </div>
-                        <div class="d-block d-sm-flex">
-                            <p class="px-0">Genre: {{$item->genre}}</p>
-                            <p class="pl-sm-3">Format: {{$item->format}}</p>
-                            <p class="pl-sm-3">Durasi: {{$item->durasi}}</p>
-                            <p class="pl-sm-3">Tahun Rilis: {{$item->tahun_rilis}}</p>
-                        </div>
+                        <span class="px-0"><p>Daya Tampung: {{$item->daya_tampung}}</p></span>
+                        <span class="px-0"><p>Status: {{$item->status}}</p></span>
                     </div>
                 </a>
             </div>
@@ -62,7 +55,7 @@ Community Center - Video
         @endforelse
     @endif
     <div class="d-flex justify-content-center mt-5">
-        {{ $video->links() }}
+        {{ $coworking_space->links() }}
     </div>
 </div>
 <!-- End List Card -->

@@ -47,9 +47,12 @@ class VideoController extends Controller
     {
         $data = $request->all();
 
-        $data['cover'] = $request->file('cover')->store('assets/video', 'public');
+        if ($request->file('cover') != null) {
+            $data['cover'] = $request->file('cover')->store('assets/video', 'public');
+        }
 
-        $check = $this->createVideo($data);
+        Video::create($data);
+        // $check = $this->createVideo($data);
 
         return redirect()->route("videos.index");
     }
@@ -102,6 +105,10 @@ class VideoController extends Controller
     {
         $data = $request->all();
 
+        if ($request->file('cover') != null) {
+            $data['cover'] = $request->file('cover')->store('assets/video', 'public');
+        }
+        
         $video->update($data);
 
         return redirect()->route('videos.index');

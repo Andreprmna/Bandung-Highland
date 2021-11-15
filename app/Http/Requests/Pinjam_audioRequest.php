@@ -25,7 +25,7 @@ class Pinjam_audioRequest extends FormRequest
     {
         return [
             'tgl_pinjam' => ['required', 'date'],
-            'tgl_kembali' => ['required', 'date'],
+            'tgl_kembali' => ['required', 'date']
         ];
     }
 }
