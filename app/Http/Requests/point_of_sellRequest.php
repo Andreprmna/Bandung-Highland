@@ -28,4 +28,16 @@ class point_of_sellRequest extends FormRequest
             'tgl_pos' => ['required', 'date'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'jumlah_pos.integer' => 'Jumlah harus berupa angka/nomor!'
+        ];
+    }
 }

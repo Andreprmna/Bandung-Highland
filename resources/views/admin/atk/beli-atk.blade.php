@@ -14,6 +14,15 @@
 </div><!-- /.container-fluid -->
 </div>
     <div class="px-4">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{route('point_of_sells.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             
@@ -43,23 +52,34 @@
             </div>
             <div class="form-group">
                 <label for="nama_atk">Nama Alat Tulis Kantor</label>
-                <select id="nama_atk" class="form-control" name="id_atk" required>
+                <select id="nama_atk" class="form-control select" name="id_atk" required>
                     @if (is_array($atk) || is_object($atk))
                         @forelse ($atk as $item)
-                            <option value="{{$item->id_atk}}">{{$item->nama_atk}}</option>
+                            <option value="{{$item->id_atk}}" data-price="{{$item->harga}}">{{$item->nama_atk}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse
                     @endif
                 </select>
             </div>
-            <div class="form-group">
-                <label for="jumlah_pos">Jumlah</label>
-                <input id="jumlah_pos" class="form-control" type="text" name="jumlah_pos" placeholder="Jumlah" :value="old('jumlah_pos')" required>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="jumlah_pos">Jumlah</label>
+                        <input id="jumlah" class="form-control" type="text" name="jumlah_pos" placeholder="Jumlah" :value="old('jumlah_pos')" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input id="harga" class="form-control" type="text" name="harga" placeholder="Harga" value="500" readonly="true">
+                    </div>
+                </div>
             </div>
+            
             <div class="form-group">
                 <label for="total_harga">Total Harga</label>
-                <input id="total_harga" class="form-control" type="text" name="total_harga" placeholder="Total Harga" :value="old('total_harga')" required>
+                <input id="total" class="form-control" type="text" name="total_harga" placeholder="Total Harga" :value="old('total_harga')" readonly="true" required>
             </div>
             
             <div class="form-group">
@@ -71,8 +91,29 @@
                 <button type="submit" class="btn btn-primary">Beli</button>    
             </div>
             <br>        
-            <br>    
-            
+            <br>
         </form>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#jumlah, #harga").keyup(function() {
+                var harga  = $("#harga").val();
+                var jumlah = $("#jumlah").val();
+
+                var total = parseInt(harga) * parseInt(jumlah);
+                $("#total").val(total);
+            });
+        });
+
+        $(".select").change(function () {
+            newPrice = $(this).children(':selected').data('price');
+            
+            $('#harga').val(newPrice);
+            $('#jumlah').val("");
+            $('#total').val("");
+        });
+    </script>
 @endsection
