@@ -63,12 +63,13 @@ class MemberController extends Controller
     {
         return Member::create([
             'email' => $data['email'],
+            'password' => Hash::make($data['password']),
             'nama' => $data['nama'],
             'tgl_lahir' => $data['tgl_lahir'],
             'jenis_kelamin' => $data['jenis_kelamin'],
             'alamat' => $data['alamat'],
             'foto_profil' => $data['foto_profil'],
-            'password' => Hash::make($data['password'])
+
         ]);
     }
 

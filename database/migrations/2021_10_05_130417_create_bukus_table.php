@@ -21,8 +21,8 @@ class CreateBukusTable extends Migration
             $table->integer('tahun_rilis');
             $table->integer('halaman');
             $table->string('isbn');
-            $table->string('deskripsi');
-            $table->binary('sampul');
+            $table->text('deskripsi')->nullable();
+            $table->binary('sampul')->nullable();
             $table->string('bentuk');
             $table->integer('kondisi')->default(0);
             $table->integer('status')->default(0);

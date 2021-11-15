@@ -25,7 +25,8 @@ class Coworking_space_propertiesRequest extends FormRequest
     {
         return [
             'id_property'   => ['required', 'integer'],
-            'id_cs'         => ['required', 'integer']
+            'id_cs'         => ['required', 'integer'],
+            'jumlah'    => ['required', 'jumlah']
         ];
     }
 }

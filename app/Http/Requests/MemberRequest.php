@@ -30,7 +30,7 @@ class MemberRequest extends FormRequest
             'nama' => ['required', 'string', 'max:255'],
             'tgl_lahir' => ['required', 'date'],
             'jenis_kelamin' => ['required', 'string'],
-            'alamat' => ['required', 'string'],
+            'alamat' => ['required', 'text'],
             'password' => $this->passwordRules(),
 
         ];

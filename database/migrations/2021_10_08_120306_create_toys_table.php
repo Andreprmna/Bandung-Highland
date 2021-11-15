@@ -18,7 +18,7 @@ class CreateToysTable extends Migration
             $table->string('nama_toy');
             $table->string('jenis');
             $table->string('genre');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

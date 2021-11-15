@@ -21,7 +21,7 @@ class CreateVideosTable extends Migration
             $table->string('durasi');
             $table->string('deskripsi');
             $table->string('format');
-            $table->binary('cover');
+            $table->binary('cover')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

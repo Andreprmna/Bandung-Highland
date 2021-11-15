@@ -20,7 +20,7 @@ class CreatePinjamAudiosTable extends Migration
             $table->integer('id_audio');
             $table->date('tgl_pinjam');
             $table->date('tgl_kembali');
-            $table->date('tgl_pengembalian');
+            $table->date('tgl_pengembalian')->nullable();
             $table->float('denda');
             $table->integer('status')->default(0);
             $table->timestamps();

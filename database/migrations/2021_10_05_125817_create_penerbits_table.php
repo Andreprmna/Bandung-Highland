@@ -16,6 +16,7 @@ class CreatePenerbitsTable extends Migration
         Schema::create('penerbits', function (Blueprint $table) {
             $table->id('id_penerbit');
             $table->string('nama_penerbit');
+            $table->integer('status');
             $table->timestamps();
         });
     }
