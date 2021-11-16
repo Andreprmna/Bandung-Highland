@@ -92,7 +92,7 @@ Community Center - Audio
                 </div>
             </div>
             <h3>Booking</h3>
-            <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('audio.store')}}" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>

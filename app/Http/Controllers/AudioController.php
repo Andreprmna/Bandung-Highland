@@ -110,7 +110,7 @@ class AudioController extends Controller
         if ($request->file('cover') != null) {
             $data['cover'] = $request->file('cover')->store('assets/audio', 'public');
         }
-        
+
         $audio->update($data);
 
         return redirect()->route('audios.index');
@@ -124,7 +124,8 @@ class AudioController extends Controller
      */
     public function destroy(Audio $audio)
     {
-        $audio->delete();
+        $audio->status = 0;
+        $audio->save();
 
         return redirect()->route('audios.index');
     }
