@@ -10,8 +10,8 @@
             
             <li class="nav-header">MASTER DATA</li>
 
-            <li class="nav-item {{ request()->is('users') ? 'menu-open' : ''}}">
-                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('cms/users*') ? 'active' : ''}}">
+            <li class="nav-item {{ request()->is('admins') ? 'menu-open' : ''}}">
+                    <a href="{{ route('admins.index') }}" class="nav-link {{ request()->is('cms/admins*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Admin</p>
                     </a>

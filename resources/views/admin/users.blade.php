@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
-@section('title', 'Users')
+@section('title', 'Admin')
 
 @section('content')
     <div class="px-4 py-10">
-        <a class="btn btn-success" href="{{ route('users.create') }}" role="button">+ Create User</a>
+        <a class="btn btn-success" href="{{ route('admins.create') }}" role="button">+ Create Admin</a>
     </div>
     <div class="py-12 my-4">
         <div class="overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">
@@ -26,15 +26,9 @@
                             @forelse ($user as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->nama}}</td>
                                     <td>{{$item->email}}</td>
-                                    @if ($item->role == 0)
-                                        <td>Super Admin</td>
-                                        @elseif ($item->role == 1)
-                                        <td>Admin</td>
-                                        @elseif ($item->role == 2)
-                                        <td>Member</td>
-                                    @endif
+                                    <td>{{$item->role->nama_role}}</td>
                                     <td>{{$item->jenis_kelamin}}</td>
                                     @if ($item->status == 0)
                                         <td>Unverified</td>
@@ -45,10 +39,10 @@
                                     @endif
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('users.edit', $item->id) }}" class="inline-block px-2">
+                                        <form action="{{ route('admins.edit', $item->id_admin) }}" class="inline-block px-2">
                                             <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
-                                        <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('admins.destroy', $item->id_admin) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>

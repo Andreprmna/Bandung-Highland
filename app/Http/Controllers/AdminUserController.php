@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Models\Admin;
+use App\Models\Role;
+use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,11 +20,11 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $user = User::paginate();
+        if (Auth::guard('admin')->check()) {
+            $admin = Admin::with('role')->paginate();
 
             return view('admin.users', [
-                'user' => $user
+                'user' => $admin
             ]);
         }
 
@@ -31,7 +33,7 @@ class AdminUserController extends Controller
 
     public function indexAdmin()
     {
-        if (Auth::check()) {
+        if (Auth::guard('admin')->check()) {
             return redirect('cms/admin-dashboard');
         }
 
@@ -45,7 +47,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        if (Auth::check()) {
+        if (Auth::guard('admin')->check()) {
             return view('admin.create-user');
         }
         return redirect('cms');
@@ -61,17 +63,19 @@ class AdminUserController extends Controller
     {
         $data = $request->all();
 
-        $data['foto_profil'] = $request->file('foto_profil')->store('assets/user', 'public');
+        if ($request->file('foto_profil') != null) {
+            $data['foto_profil'] = $request->file('foto_profil')->store('assets/admin', 'public');
+        }
 
         $check = $this->createUser($data);
 
-        return redirect()->route("users.index")->withSuccess('You have signed-in');
+        return redirect()->route("admins.index")->withSuccess('You have signed-in');
     }
 
 
     public function createUser(array $data)
     {
-        return User::create([
+        return Admin::create([
             'id_role' => $data['id_role'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -92,21 +96,13 @@ class AdminUserController extends Controller
         $credentials = array(
             'email' => $request->get('email'),
             'password' => $request->get('password'),
-            'role' => 0,
         );
 
-        $credentials2 = array(
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
-            'role' => 1,
-        );
-
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->intended('cms/admin-dashboard')
                 ->withSuccess('Signed in');
-        } elseif (Auth::attempt($credentials2)) {
-            return redirect()->intended('cms/admin-dashboard')
-                ->withSuccess('Signed in');
+        } else {
+            return $credentials;
         }
 
         return redirect("cms")->withSuccess('Login details are not valid');
@@ -114,7 +110,7 @@ class AdminUserController extends Controller
 
     public function dashboardAdmin()
     {
-        if (Auth::check()) {
+        if (Auth::guard('admin')->check()) {
             return view('admin.dashboard');
         }
 
@@ -138,10 +134,13 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Admin $admin)
     {
+        $role = Role::paginate();
+
         return view('admin.edit-user', [
-            'item' => $user
+            'item' => $admin,
+            'role' => $role
         ]);
     }
 
@@ -152,17 +151,17 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Admin $admin)
     {
         $data = $request->all();
 
-        if ($request->file('profile_photo_path')) {
-            $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
+        if ($request->file('foto_profil')) {
+            $data['foto_profil'] = $request->file('foto_profil')->store('assets/admin', 'public');
         }
 
-        $user->update($data);
+        $admin->update($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('admins.index');
     }
 
     /**
@@ -171,17 +170,17 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Admin $admin)
     {
-        $user->delete();
+        $admin->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('admins.index');
     }
 
     public function signOutAdmin()
     {
         Session::flush();
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
         return Redirect('cms');
     }

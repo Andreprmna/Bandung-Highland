@@ -48,7 +48,7 @@ Route::get('/', function () {
 Route::prefix('cms')
     ->group(function () {
         Route::get('/', [AdminUserController::class, 'indexAdmin']);
-        Route::resource('users', AdminUserController::class);
+        Route::resource('admins', AdminUserController::class);
         Route::get('admin-dashboard', [AdminUserController::class, 'dashboardAdmin']);
         Route::post('custom-admin-login', [AdminUserController::class, 'customAdminLogin'])->name('login.admin');
         Route::get('admin-signout', [AdminUserController::class, 'signOutAdmin'])->name('signout.admin');

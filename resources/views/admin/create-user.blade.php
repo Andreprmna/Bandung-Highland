@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admins.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="email">Email</label>
@@ -61,12 +61,11 @@
                 <select id="role" class="form-control" name="role" required>
                     <option value="0">Super Admin</option>
                     <option value="1">Admin</option>
-                    <option value="2">Member</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="profile">Photo Profile</label>
-                <input id="profile" class="form-control" type="file" name="profile_photo_path">
+                <input id="profile" class="form-control" type="file" name="foto_profil">
             </div>             
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Create</button>    

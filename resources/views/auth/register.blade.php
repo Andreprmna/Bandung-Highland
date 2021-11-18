@@ -6,12 +6,12 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('admins.store') }}">
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-label for="nama" value="{{ __('Nama') }}" />
+                <x-jet-input id="nama" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')" required />
             </div>
 
             <div class="mt-4">
@@ -44,12 +44,20 @@
 
             <div>
                 <x-jet-label for="address" value="{{ __('Address') }}" />
-                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="alamat" :value="old('alamat')" required autofocus autocomplete="address" />
+                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="alamat" :value="old('alamat')" required autocomplete="address" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="role" value="{{ __('Role') }}" />
+                <select id="role" class="block mt-1 w-full" name="id_role" required>
+                    <option value="0">Super Admin</option>
+                    <option value="1">Admin</option>
+                </select>
             </div>
 
             <div>
                 <x-jet-label for="profile" value="{{ __('Profile Picture') }}" />
-                <x-jet-input id="profile" class="block mt-1 w-full" type="file" name="profile_photo_path" />
+                <x-jet-input id="profile" class="block mt-1 w-full" type="file" name="foto_profil" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
