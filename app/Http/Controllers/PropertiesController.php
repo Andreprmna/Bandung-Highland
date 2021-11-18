@@ -16,15 +16,11 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $properties = properties::paginate();
+        $properties = properties::paginate();
 
-            return view('admin.property.properties', [
-                'properties' => $properties
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.property.properties', [
+            'properties' => $properties
+        ]);
     }
 
     /**

@@ -19,15 +19,11 @@ class Booking_bukuController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $booking_buku = Booking_buku::with('member', 'admin', 'buku')->paginate();
+        $booking_buku = Booking_buku::with('member', 'admin', 'buku')->paginate();
 
-            return view('admin.buku.list-booking-buku', [
-                'booking_buku' => $booking_buku
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.buku.list-booking-buku', [
+            'booking_buku' => $booking_buku
+        ]);
     }
 
     /**

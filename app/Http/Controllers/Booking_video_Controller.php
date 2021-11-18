@@ -19,15 +19,11 @@ class Booking_video_Controller extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $booking_video = Booking_video::with('member', 'admin', 'video')->paginate();
+        $booking_video = Booking_video::with('member', 'admin', 'video')->paginate();
 
-            return view('admin.video.list-booking-video', [
-                'booking_video' => $booking_video
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.video.list-booking-video', [
+            'booking_video' => $booking_video
+        ]);
     }
 
     /**

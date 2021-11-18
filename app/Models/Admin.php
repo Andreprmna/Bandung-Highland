@@ -33,7 +33,8 @@ class Admin extends Authenticatable
         'tgl_lahir',
         'jenis_kelamin',
         'alamat',
-        'foto_profil'
+        'foto_profil',
+        'status'
     ];
 
     /**

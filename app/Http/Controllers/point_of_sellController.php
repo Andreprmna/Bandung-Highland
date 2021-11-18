@@ -19,15 +19,11 @@ class point_of_sellController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $point_of_sell = Point_of_sell::with('member', 'admin', 'atk')->paginate();
+        $point_of_sell = Point_of_sell::with('member', 'admin', 'atk')->paginate();
 
-            return view('admin.atk.list-atk', [
-                'point_of_sell' => $point_of_sell
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.atk.list-atk', [
+            'point_of_sell' => $point_of_sell
+        ]);
     }
 
     /**

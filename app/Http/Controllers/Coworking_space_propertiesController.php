@@ -18,15 +18,11 @@ class Coworking_space_propertiesController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $coworking_space_properties = Coworking_space_properties::with('coworking_space', 'properties')->paginate();
+        $coworking_space_properties = Coworking_space_properties::with('coworking_space', 'properties')->paginate();
 
-            return view('admin.coworking_property.coworking-property', [
-                'coworking_space_properties' => $coworking_space_properties
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.coworking_property.coworking-property', [
+            'coworking_space_properties' => $coworking_space_properties
+        ]);
     }
 
     /**

@@ -19,15 +19,11 @@ class Pinjam_audioController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $pinjam_audio = Pinjam_audio::with('member', 'admin', 'audio')->paginate();
+        $pinjam_audio = Pinjam_audio::with('member', 'admin', 'audio')->paginate();
 
-            return view('admin.audio.list-pinjam-audio', [
-                'pinjam_audio' => $pinjam_audio
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.audio.list-pinjam-audio', [
+            'pinjam_audio' => $pinjam_audio
+        ]);
     }
 
     /**

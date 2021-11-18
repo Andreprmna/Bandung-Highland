@@ -19,15 +19,11 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $booking_coworking_space = Booking_Coworking_space::with('member', 'admin', 'coworking_space')->paginate();
+        $booking_coworking_space = Booking_Coworking_space::with('member', 'admin', 'coworking_space')->paginate();
 
-            return view('admin.coworking_space.list-booking-coworking-space', [
-                'booking_coworking_space' => $booking_coworking_space
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.coworking_space.list-booking-coworking-space', [
+            'booking_coworking_space' => $booking_coworking_space
+        ]);
     }
 
     /**

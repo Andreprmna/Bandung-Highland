@@ -17,15 +17,11 @@ class MemberController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
             $member = Member::paginate();
 
             return view('admin.member.members', [
                 'member' => $member
             ]);
-        }
-
-        return redirect('cms');
     }
 
     /**
@@ -35,10 +31,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        if (Auth::check()) {
-            return view('admin.member.create-member');
-        }
-        return redirect('cms');
+        return view('admin.member.create-member');
     }
 
     /**

@@ -16,15 +16,11 @@ class VideoController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $video = Video::paginate();
+        $video = Video::paginate();
 
-            return view('admin.video.videos', [
-                'video' => $video
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.video.videos', [
+            'video' => $video
+        ]);
     }
 
     /**

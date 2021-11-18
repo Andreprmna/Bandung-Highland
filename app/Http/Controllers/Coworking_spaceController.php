@@ -16,15 +16,11 @@ class Coworking_spaceController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $coworking_space = Coworking_space::paginate();
+        $coworking_space = Coworking_space::paginate();
 
-            return view('admin.coworking_space.coworking-space', [
-                'coworking_space' => $coworking_space
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.coworking_space.coworking-space', [
+            'coworking_space' => $coworking_space
+        ]);
     }
 
     /**

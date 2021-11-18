@@ -47,7 +47,7 @@
                 <input id="dob" class="form-control" type="date" name="tgl_lahir" value="{{old('tgl_lahir') ?? $item->tgl_lahir}}" required>
             </div>
             <div class="form-group">
-                <label for="gender">Address</label>
+                <label for="address">Address</label>
                 <input id="address" class="form-control" type="text" name="alamat" placeholder="Alamat" value="{{old('alamat') ?? $item->alamat}}" required>
             </div>
             <div class="form-group">
@@ -64,32 +64,20 @@
             </div>
             <div class="form-group">
                 <label for="role">Role</label>
-                <select id="role" class="form-control" name="role" required>
-                    @if ($item->role->id_role == 1) 
-                        <option value="1" selected>Super Admin</option>
-                        <option value="2">Admin</option>
-                        @elseif ($item->role->id_role == 2)
-                            <option value="1">Super Admin</option>
-                            <option value="2" selected>Admin</option>
-                    @endif
+                <select id="role" class="form-control" name="id_role" required>
+                    @forelse ($role as $item2)
+                        <option value="{{$item2->id_role}}" @if ($item->id_role == $item2->id_role) selected @endif>{{$item2->nama_role}}</option>
+                    @empty
+                        <option value="-">-</option>
+                    @endforelse
                 </select>
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" class="form-control" name="status" required>
-                    @if ($item->status == 0) 
-                        <option value="0" selected>Unverified</option>
-                        <option value="1">Active</option>
-                        <option value="2">Inactive</option>
-                    @elseif ($item->status == 1)
-                        <option value="0">Unverified</option>
-                        <option value="1" selected>Active</option>
-                        <option value="2">Inactive</option>
-                    @elseif ($item->status == 2)
-                        <option value="0">Unverified</option>
-                        <option value="1">Active</option>
-                        <option value="2" selected>Inactive</option>
-                    @endif
+                        <option value="0" @if ($item->status == 0) selected @endif>Unverified</option>
+                        <option value="1" @if ($item->status == 1) selected @endif>Active</option>
+                        <option value="2" @if ($item->status == 2) selected @endif>Inactive</option>
                 </select>
             </div>
             <div class="form-group">

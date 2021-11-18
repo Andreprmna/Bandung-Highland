@@ -47,8 +47,12 @@ class AdminUserController extends Controller
      */
     public function create()
     {
+        $role = Role::paginate();
+
         if (Auth::guard('admin')->check()) {
-            return view('admin.create-user');
+            return view('admin.create-user', [
+                'role' => $role,
+            ]);
         }
         return redirect('cms');
     }
@@ -67,7 +71,8 @@ class AdminUserController extends Controller
             $data['foto_profil'] = $request->file('foto_profil')->store('assets/admin', 'public');
         }
 
-        $check = $this->createUser($data);
+        Admin::create($data);
+        // $check = $this->createUser($data);
 
         return redirect()->route("admins.index")->withSuccess('You have signed-in');
     }
@@ -101,8 +106,6 @@ class AdminUserController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->intended('cms/admin-dashboard')
                 ->withSuccess('Signed in');
-        } else {
-            return $credentials;
         }
 
         return redirect("cms")->withSuccess('Login details are not valid');

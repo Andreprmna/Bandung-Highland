@@ -16,15 +16,11 @@ class ToyController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $toy = Toy::paginate();
+        $toy = Toy::paginate();
 
-            return view('admin.toy.toys', [
-                'toy' => $toy
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.toy.toys', [
+            'toy' => $toy
+        ]);
     }
 
     /**

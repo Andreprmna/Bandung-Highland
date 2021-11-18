@@ -18,15 +18,11 @@ class BukuController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $buku = Buku::with('pengarang', 'penerbit')->paginate();
+        $buku = Buku::with('pengarang', 'penerbit')->paginate();
 
-            return view('admin.buku.bukus', [
-                'buku' => $buku
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.buku.bukus', [
+            'buku' => $buku
+        ]);
     }
 
     /**

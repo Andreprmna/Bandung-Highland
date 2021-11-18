@@ -16,15 +16,11 @@ class PengarangController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $pengarang = Pengarang::paginate();
+        $pengarang = Pengarang::paginate();
 
-            return view('admin.pengarang.pengarangs', [
-                'pengarang' => $pengarang
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.pengarang.pengarangs', [
+            'pengarang' => $pengarang
+        ]);
     }
 
     /**

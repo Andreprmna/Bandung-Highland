@@ -21,15 +21,11 @@ class Pinjam_videoController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $pinjam_video = Pinjam_video::with('member', 'admin', 'video')->paginate();
+        $pinjam_video = Pinjam_video::with('member', 'admin', 'video')->paginate();
 
-            return view('admin.video.list-pinjam-video', [
-                'pinjam_video' => $pinjam_video
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.video.list-pinjam-video', [
+            'pinjam_video' => $pinjam_video
+        ]);
     }
 
     /**

@@ -16,15 +16,11 @@ class atkController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $atk = Atk::paginate();
+        $atk = Atk::paginate();
 
-            return view('admin.atk.atks', [
-                'atk' => $atk
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.atk.atks', [
+            'atk' => $atk
+        ]);
     }
 
     /**

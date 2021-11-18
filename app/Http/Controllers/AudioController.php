@@ -16,15 +16,11 @@ class AudioController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $audio = Audio::paginate();
+        $audio = Audio::paginate();
 
-            return view('admin.audio.audios', [
-                'audio' => $audio
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.audio.audios', [
+            'audio' => $audio
+        ]);
     }
 
     /**

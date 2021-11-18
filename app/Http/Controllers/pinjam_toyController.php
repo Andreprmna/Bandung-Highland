@@ -19,15 +19,11 @@ class pinjam_toyController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $pinjam_toy = pinjam_toy::with('member', 'admin', 'toy')->paginate();
+        $pinjam_toy = pinjam_toy::with('member', 'admin', 'toy')->paginate();
 
-            return view('admin.toy.list-pinjam-toy', [
-                'pinjam_toy' => $pinjam_toy
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.toy.list-pinjam-toy', [
+            'pinjam_toy' => $pinjam_toy
+        ]);
     }
 
     /**

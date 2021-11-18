@@ -30,8 +30,8 @@
                 <input id="email" class="form-control" type="email" name="email" placeholder="Email" :value="old('email')" required>
             </div>
             <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" class="form-control" type="text" name="name" placeholder="Name" :value="old('name')" required>
+                <label for="nama">Nama</label>
+                <input id="nama" class="form-control" type="text" name="nama" placeholder="Nama" :value="old('nama')" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -58,9 +58,14 @@
             </div>
             <div class="form-group">
                 <label for="role">Role</label>
-                <select id="role" class="form-control" name="role" required>
-                    <option value="0">Super Admin</option>
-                    <option value="1">Admin</option>
+                <select id="role" class="form-control" name="id_role" required>
+                    @if (is_array($role) || is_object($role))
+                        @forelse ($role as $item)
+                            <option value="{{$item->id_role}}">{{$item->nama_role}}</option>
+                        @empty
+                            <option value="-">-</option>
+                        @endforelse
+                    @endif
                 </select>
             </div>
             <div class="form-group">

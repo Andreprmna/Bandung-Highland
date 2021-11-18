@@ -21,15 +21,11 @@ class Booking_audioController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $booking_audio = Booking_audio::with('member', 'admin', 'audio')->paginate();
+        $booking_audio = Booking_audio::with('member', 'admin', 'audio')->paginate();
 
-            return view('admin.audio.list-booking-audio', [
-                'booking_audio' => $booking_audio
-            ]);
-        }
-
-        return redirect('cms');
+        return view('admin.audio.list-booking-audio', [
+            'booking_audio' => $booking_audio
+        ]);
     }
 
     /**
