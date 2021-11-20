@@ -20,7 +20,7 @@ class CreatePinjamToysTable extends Migration
             $table->integer('id_toy');
             $table->date('tgl_pinjam');
             $table->date('tgl_pengembalian')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

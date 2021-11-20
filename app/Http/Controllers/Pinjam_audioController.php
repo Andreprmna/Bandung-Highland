@@ -7,6 +7,7 @@ use App\Models\Audio;
 use App\Models\Member;
 use App\Models\Pinjam_audio;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,16 +63,21 @@ class Pinjam_audioController extends Controller
 
     public function createPinjam_audio(array $data)
     {
-        return Pinjam_audio::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_audio'         => $data['id_audio'],
-            'tgl_pinjam'   => $data['tgl_pinjam'],
-            'tgl_kembali'       => $data['tgl_kembali'],
-            'tgl_pengembalian' => $data['tgl_pengembalian'],
-            'denda' => $data['denda']
+        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_pinjam', [$data['tgl_pinjam'], $data['tgl_kembali']])->first();
+        if ($pinjam == null) {
+            return Pinjam_audio::create([
+                'id_member'  => $data['id_member'],
+                'id_admin'   => $data['id_admin'],
+                'id_audio'         => $data['id_audio'],
+                'tgl_pinjam'   => $data['tgl_pinjam'],
+                'tgl_kembali'       => $data['tgl_kembali'],
+                'tgl_pengembalian' => $data['tgl_pengembalian'],
+                'denda' => $data['denda']
 
-        ]);
+            ]);
+        } else {
+            throw new Exception('Audio sudah dipinjam./ tidak ditemukan');
+        }
     }
 
     /**
@@ -113,6 +119,9 @@ class Pinjam_audioController extends Controller
      */
     public function update(Request $request, Pinjam_audio $pinjam_audio)
     {
+        $audio = Audio::where('id_audio', $pinjam_audio['id_audio'])->firstOrFail();
+        $audio->status = 0;
+        $audio->save();
         $data = $request->all();
 
         $pinjam_audio->update($data);

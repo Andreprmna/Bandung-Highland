@@ -22,7 +22,7 @@ class CreatePinjamVideosTable extends Migration
             $table->date('tgl_kembali');
             $table->date('tgl_pengembalian')->nullable();
             $table->float('denda')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

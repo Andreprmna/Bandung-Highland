@@ -7,6 +7,7 @@ use App\Models\Buku;
 use App\Models\Member;
 use App\Models\Pinjam_buku;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,15 +62,20 @@ class Pinjam_bukuController extends Controller
 
     public function createPinjam_Buku(array $data)
     {
-        return Pinjam_buku::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_buku'         => $data['id_buku'],
-            'tgl_pinjam'   => $data['tgl_pinjam'],
-            'tgl_kembali'       => $data['tgl_kembali'],
-            'tgl_pengembalian' => $data['tgl_pengembalian'],
-            'denda' => $data['denda']
-        ]);
+        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_pinjam', [$data['tgl_pinjam'], $data['tgl_kembali']])->first();
+        if ($pinjam == null) {
+            return Pinjam_buku::create([
+                'id_member'  => $data['id_member'],
+                'id_admin'   => $data['id_admin'],
+                'id_buku'         => $data['id_buku'],
+                'tgl_pinjam'   => $data['tgl_pinjam'],
+                'tgl_kembali'       => $data['tgl_kembali'],
+                'tgl_pengembalian' => $data['tgl_pengembalian'],
+                'denda' => $data['denda']
+            ]);
+        } else {
+            throw new Exception('Buku sudah dipinjam./ tidak ditemukan');
+        }
     }
 
     /**
@@ -110,6 +116,9 @@ class Pinjam_bukuController extends Controller
      */
     public function update(Request $request, Pinjam_buku $pinjam_buku)
     {
+        $buku = Buku::where('id_audio', $pinjam_buku['id_buku'])->firstOrFail();
+        $buku->status = 0;
+        $buku->save();
         $data = $request->all();
 
         $pinjam_buku->update($data);

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Booking_video_Request;
 use App\Models\Booking_video;
 use App\Models\Member;
+use App\Models\Pinjam_video;
 use App\Models\User;
 use App\Models\Video;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,14 +62,24 @@ class Booking_video_Controller extends Controller
 
     public function createVideo(array $data)
     {
-        return Booking_video::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_video'    => $data['id_video'],
-            'tgl_mulai'   => $data['tgl_mulai'],
-            'tgl_selesai' => $data['tgl_selesai']
+        $booking = Booking_video::where('id_video', $data['id_video'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        if ($pinjam == null) {
+            if ($booking == null) {
+                return Booking_video::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_video'    => $data['id_video'],
+                    'tgl_mulai'   => $data['tgl_mulai'],
+                    'tgl_selesai' => $data['tgl_selesai']
 
-        ]);
+                ]);
+            } else {
+                throw new Exception('Video sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Video sudah dipinjam./ tidak ditemukan');
+        }
     }
 
     /**
@@ -109,6 +121,10 @@ class Booking_video_Controller extends Controller
      */
     public function update(Request $request, Booking_video $booking_video)
     {
+        $video = Video::where('id_video', $booking_video['id_video'])->firstOrFail();
+        $video->status = 0;
+        $video->save();
+
         $data = $request->all();
 
         $booking_video->update($data);

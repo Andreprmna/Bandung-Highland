@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Booking_toyRequest;
 use App\Models\Booking_toy;
 use App\Models\Member;
+use App\Models\pinjam_toy;
 use App\Models\Toy;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,14 +62,23 @@ class Booking_toyController extends Controller
 
     public function createToy(array $data)
     {
-        return Booking_toy::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_toy'    => $data['id_toy'],
-            'tgl_mulai'   => $data['tgl_mulai']
-        ]);
+        $booking = Booking_toy::where('id_toy', $data['id_toy'])->where('tgl_mulai', $data['tgl_mulai'])->first();
+        $pinjam = pinjam_toy::where('id_toy', $data['id_toy'])->where('tgl_pinjam', $data['tgl_mulai'])->first();
+        if ($pinjam == null) {
+            if ($booking == null) {
+                return Booking_toy::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_toy'     => $data['id_toy'],
+                    'tgl_mulai'   => $data['tgl_mulai']
+                ]);
+            } else {
+                throw new Exception('Toy sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+        }
     }
-
     /**
      * Display the specified resource.
      *
@@ -106,6 +117,9 @@ class Booking_toyController extends Controller
      */
     public function update(Request $request, Booking_toy $booking_toy)
     {
+        $toy = Toy::where('id_toy', $booking_toy['id_toy'])->firstOrFail();
+        $toy->status = 0;
+        $toy->save();
         $data = $request->all();
 
         $booking_toy->update($data);

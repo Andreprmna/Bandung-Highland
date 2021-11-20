@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\pinjam_toy;
 use App\Models\Toy;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,14 +62,19 @@ class pinjam_toyController extends Controller
 
     public function createPinjam_Toy(array $data)
     {
-        return pinjam_toy::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_toy'         => $data['id_toy'],
-            'tgl_pinjam'   => $data['tgl_pinjam'],
-            'tgl_pengembalian'  => $data['tgl_pengembalian']
+        $pinjam = pinjam_toy::where('id_toy', $data['id_toy'])->where('tgl_pinjam', $data['tgl_pinjam'])->first();
+        if ($pinjam == null) {
+            return pinjam_toy::create([
+                'id_member'  => $data['id_member'],
+                'id_admin'   => $data['id_admin'],
+                'id_toy'         => $data['id_toy'],
+                'tgl_pinjam'   => $data['tgl_pinjam'],
+                'tgl_pengembalian'  => $data['tgl_pengembalian']
 
-        ]);
+            ]);
+        } else {
+            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+        }
     }
 
     /**
@@ -109,6 +115,9 @@ class pinjam_toyController extends Controller
      */
     public function update(Request $request, pinjam_toy $pinjam_toy)
     {
+        $toy = Toy::where('id_toy', $pinjam_toy['id_toy'])->firstOrFail();
+        $toy->status = 0;
+        $toy->save();
         $data = $request->all();
 
         $pinjam_toy->update($data);

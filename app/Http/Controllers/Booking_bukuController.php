@@ -6,7 +6,9 @@ use App\Http\Requests\Booking_bukuRequest;
 use App\Models\Booking_buku;
 use App\Models\Buku;
 use App\Models\Member;
+use App\Models\Pinjam_buku;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,14 +62,24 @@ class Booking_bukuController extends Controller
 
     public function createBooking_buku(array $data)
     {
-        return Booking_buku::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_buku'     => $data['id_buku'],
-            'tgl_mulai'   => $data['tgl_mulai'],
-            'tgl_selesai' => $data['tgl_selesai']
+        $booking = Booking_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        if ($pinjam == null) {
+            if ($booking == null) {
+                return Booking_buku::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_buku'     => $data['id_buku'],
+                    'tgl_mulai'   => $data['tgl_mulai'],
+                    'tgl_selesai' => $data['tgl_selesai']
 
-        ]);
+                ]);
+            } else {
+                throw new Exception('Buku sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Buku sudah dipinjam./ tidak ditemukan');
+        }
     }
 
     /**
@@ -108,6 +120,10 @@ class Booking_bukuController extends Controller
      */
     public function update(Request $request, Booking_buku $booking_buku)
     {
+        $buku = Buku::where('id_buku', $booking_buku['id_buku'])->firstOrFail();
+        $buku->status = 0;
+        $buku->save();
+
         $data = $request->all();
 
         $booking_buku->update($data);

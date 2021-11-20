@@ -7,6 +7,7 @@ use App\Models\Booking_Coworking_space;
 use App\Models\Coworking_space;
 use App\Models\Member;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,16 +62,20 @@ class Booking_Coworking_spaceController extends Controller
 
     public function createBCWS(array $data)
     {
-        return Booking_Coworking_space::create([
-            'id_cs' => $data['id_cs'],
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'tgl_mulai'   => $data['tgl_mulai'],
-            'tgl_selesai' => $data['tgl_selesai']
+        $booking = Booking_Coworking_space::where('id_cs', $data['id_cs'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        if ($booking == null) {
+            return Booking_Coworking_space::create([
+                'id_cs' => $data['id_cs'],
+                'id_member'  => $data['id_member'],
+                'id_admin'   => $data['id_admin'],
+                'tgl_mulai'   => $data['tgl_mulai'],
+                'tgl_selesai' => $data['tgl_selesai']
 
-        ]);
+            ]);
+        } else {
+            throw new Exception('Coworking Space sudah dibooking./ tidak ditemukan');
+        }
     }
-
     /**
      * Display the specified resource.
      *
@@ -93,7 +98,7 @@ class Booking_Coworking_spaceController extends Controller
         $member = Member::paginate();
         $user = User::paginate();
         $coworking_space = Coworking_space::paginate();
-        
+
         return view('admin.booking_coworking_space.edit-booking_coworking_space', [
             'item' => $booking_coworking_space,
             'member' => $member,
@@ -110,6 +115,10 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function update(Request $request, Booking_Coworking_space $booking_Coworking_space)
     {
+        $CS = Coworking_space::where('id_cs', $booking_Coworking_space['id_cs'])->firstOrFail();
+        $CS->status = 0;
+        $CS->save();
+
         $data = $request->all();
 
         $booking_Coworking_space->update($data);

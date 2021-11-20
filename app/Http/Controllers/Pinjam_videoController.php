@@ -9,6 +9,7 @@ use App\Models\Pinjam_video;
 use App\Models\Toy;
 use App\Models\User;
 use App\Models\Video;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,16 +64,21 @@ class Pinjam_videoController extends Controller
 
     public function createPinjam_Video(array $data)
     {
-        return Pinjam_video::create([
-            'id_member'  => $data['id_member'],
-            'id_admin'   => $data['id_admin'],
-            'id_video'         => $data['id_video'],
-            'tgl_pinjam'   => $data['tgl_pinjam'],
-            'tgl_kembali'       => $data['tgl_kembali'],
-            'tgl_pengembalian' => $data['tgl_pengembalian'],
-            'denda' => $data['denda']
+        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->wherebetween('tgl_pinjam', [$data['tgl_pinjam'], $data['tgl_kembali']])->first();
+        if ($pinjam == null) {
+            return Pinjam_video::create([
+                'id_member'  => $data['id_member'],
+                'id_admin'   => $data['id_admin'],
+                'id_video'         => $data['id_video'],
+                'tgl_pinjam'   => $data['tgl_pinjam'],
+                'tgl_kembali'       => $data['tgl_kembali'],
+                'tgl_pengembalian' => $data['tgl_pengembalian'],
+                'denda' => $data['denda']
 
-        ]);
+            ]);
+        } else {
+            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+        }
     }
 
     /**
@@ -107,6 +113,10 @@ class Pinjam_videoController extends Controller
      */
     public function update(Request $request, Pinjam_video $pinjam_video)
     {
+        $video = Video::where('id_video', $pinjam_video['id_video'])->firstOrFail();
+        $video->status = 0;
+        $video->save();
+
         $data = $request->all();
 
         $pinjam_video->update($data);

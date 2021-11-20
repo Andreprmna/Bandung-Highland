@@ -104,7 +104,7 @@ class VideoController extends Controller
         if ($request->file('cover') != null) {
             $data['cover'] = $request->file('cover')->store('assets/video', 'public');
         }
-        
+
         $video->update($data);
 
         return redirect()->route('videos.index');

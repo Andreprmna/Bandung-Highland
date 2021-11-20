@@ -20,7 +20,7 @@ class CreateBookingAudiosTable extends Migration
             $table->integer('id_audio');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

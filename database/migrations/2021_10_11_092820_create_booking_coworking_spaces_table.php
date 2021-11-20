@@ -20,7 +20,7 @@ class CreateBookingCoworkingSpacesTable extends Migration
             $table->integer('id_admin');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
-            $table->integer('status');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
