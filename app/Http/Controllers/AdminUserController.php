@@ -67,6 +67,8 @@ class AdminUserController extends Controller
     {
         $data = $request->all();
 
+        $data['password'] = Hash::make($request->password);
+        
         if ($request->file('foto_profil') != null) {
             $data['foto_profil'] = $request->file('foto_profil')->store('assets/admin', 'public');
         }

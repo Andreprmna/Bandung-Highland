@@ -50,16 +50,6 @@ return [
             'driver' => 'token',
             'provider' => 'admin',
         ],
-
-        'member' => [
-          'driver' => 'session',
-          'provider' => 'member',
-        ],
-
-        'member-api' => [
-            'driver' => 'token',
-            'provider' => 'member',
-        ],
     ],
 
     /*
@@ -82,17 +72,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Member::class,
         ],
 
         'admin' => [
           'driver' => 'eloquent',
           'model' => App\Models\Admin::class,
-        ],
-
-        'member' => [
-          'driver' => 'eloquent',
-          'model' => App\Models\Member::class,
         ],
 
         // 'users' => [

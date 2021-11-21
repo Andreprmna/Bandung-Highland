@@ -44,6 +44,8 @@ class MemberController extends Controller
     {
         $data = $request->all();
 
+        $data['password'] = Hash::make($request->password);
+
         if ($request->file('foto_profil') != null) {
             $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
         }
@@ -68,6 +70,23 @@ class MemberController extends Controller
             'foto_profil' => $data['foto_profil'],
 
         ]);
+    }
+
+    public function customMemberLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->intended('/')
+                ->withSuccess('Signed in');
+        }
+
+        return redirect("login")->withSuccess('Login details are not valid');
     }
 
     /**

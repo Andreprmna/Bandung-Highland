@@ -80,6 +80,7 @@ Route::prefix('cms')
 
 Route::get('dashboard', [UserController::class, 'dashboard']);
 Route::get('login', [UserController::class, 'index'])->name('login');
+Route::post('custom-member-login', [MemberController::class, 'customMemberLogin'])->name('login.member');
 Route::post('custom-login', [UserController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [UserController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom');

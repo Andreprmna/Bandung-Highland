@@ -17,6 +17,8 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson() && Auth::guard('admin')) {
             return route('cms');
+        } elseif (! $request->expectsJson() && Auth::guard('web')) {
+            return route('login');
         }
     }
 }

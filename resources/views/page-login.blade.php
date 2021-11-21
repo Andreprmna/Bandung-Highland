@@ -1,5 +1,5 @@
 @section('title') 
-Neon - Login
+Community Center - Login
 @endsection
 @extends('layouts.main')
 @section('style')
@@ -19,7 +19,7 @@ Neon - Login
                     <div class="card">
                         <div class="card-body">
                             <div class="p-3">
-                                <form method="POST" action="{{ route('login.custom') }}">
+                                <form method="POST" action="{{ route('login.member') }}">
                                     @csrf
 
                                     <div class="text-center mb-3">

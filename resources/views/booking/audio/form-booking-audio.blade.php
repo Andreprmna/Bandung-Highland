@@ -31,7 +31,7 @@ Community Center - Audio
     <div class="media py-3">
         <img src="/storage/{{$item->cover}}" class="img-fluid mr-4 mb-4" alt="Responsive image" width="450" height="350">
         <div class="media-body">
-            <h3 class="mt-0">{{$item->judul}}</h3>
+            <h3 class="mt-0" value="">{{$item->judul}}</h3>
             <div class="d-flex justify-content-between">
                 <div class="d-inline-block">
                     <table class="table table-borderless">
