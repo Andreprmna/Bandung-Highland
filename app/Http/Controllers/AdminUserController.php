@@ -98,7 +98,7 @@ class AdminUserController extends Controller
             'password' => $request->get('password'),
         );
 
-        if (Auth::guard('admin')->attemp($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->intended('cms/admin-dashboard')
                 ->withSuccess('Signed in');
         }
