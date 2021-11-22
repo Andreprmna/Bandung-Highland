@@ -116,9 +116,7 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function update(Request $request, Booking_Coworking_space $booking_Coworking_space)
     {
-        $CS = Coworking_space::where('id_cs', $booking_Coworking_space['id_cs'])->firstOrFail();
-        $CS->status = 0;
-        $CS->save();
+
 
         $data = $request->all();
 
@@ -135,7 +133,8 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function destroy(Booking_Coworking_space $booking_coworking_space)
     {
-        $booking_coworking_space->delete();
+        $booking_coworking_space->status = 0;
+        $booking_coworking_space->save();
 
         return redirect()->route('booking_coworking_spaces.index');
     }

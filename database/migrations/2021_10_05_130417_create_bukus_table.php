@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateBukusTable extends Migration
@@ -22,12 +23,12 @@ class CreateBukusTable extends Migration
             $table->integer('halaman');
             $table->string('isbn');
             $table->text('deskripsi')->nullable();
-            $table->binary('sampul')->nullable();
             $table->string('bentuk');
             $table->integer('kondisi')->default(1);
             $table->integer('status')->default(1);
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE buku ADD sampul LONGBLOB");
     }
 
     /**

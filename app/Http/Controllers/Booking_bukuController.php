@@ -121,9 +121,6 @@ class Booking_bukuController extends Controller
      */
     public function update(Request $request, Booking_buku $booking_buku)
     {
-        $buku = Buku::where('id_buku', $booking_buku['id_buku'])->firstOrFail();
-        $buku->status = 0;
-        $buku->save();
 
         $data = $request->all();
 
@@ -140,7 +137,8 @@ class Booking_bukuController extends Controller
      */
     public function destroy(Booking_buku $booking_buku)
     {
-        $booking_buku->delete();
+        $booking_buku->status = 0;
+        $booking_buku->save();
 
         return redirect()->route('booking_bukus.index');
     }

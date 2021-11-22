@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateVideosTable extends Migration
@@ -21,10 +22,10 @@ class CreateVideosTable extends Migration
             $table->string('durasi');
             $table->string('deskripsi');
             $table->string('format');
-            $table->binary('cover')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE video ADD cover LONGBLOB");
     }
 
     /**

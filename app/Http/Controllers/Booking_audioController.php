@@ -133,9 +133,7 @@ class Booking_audioController extends Controller
      */
     public function update(Request $request, Booking_audio $booking_audio)
     {
-        $audio = Audio::where('id_audio', $booking_audio['id_audio'])->firstOrFail();
-        $audio->status = 0;
-        $audio->save();
+
         $data = $request->all();
 
         $booking_audio->update($data);
@@ -151,8 +149,8 @@ class Booking_audioController extends Controller
      */
     public function destroy(Booking_audio $booking_audio)
     {
-        $booking_audio->delete();
-
+        $booking_audio->status = 0;
+        $booking_audio->save();
         return redirect()->route('booking_audios.index');
     }
 }

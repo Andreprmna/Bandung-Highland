@@ -122,9 +122,7 @@ class Booking_video_Controller extends Controller
      */
     public function update(Request $request, Booking_video $booking_video)
     {
-        $video = Video::where('id_video', $booking_video['id_video'])->firstOrFail();
-        $video->status = 0;
-        $video->save();
+
 
         $data = $request->all();
 
@@ -141,7 +139,8 @@ class Booking_video_Controller extends Controller
      */
     public function destroy(Booking_video $booking_video)
     {
-        $booking_video->delete();
+        $booking_video->status = 0;
+        $booking_video->save();
 
         return redirect()->route('booking_videos.index');
     }

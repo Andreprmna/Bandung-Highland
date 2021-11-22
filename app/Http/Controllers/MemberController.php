@@ -122,9 +122,6 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        $members = Member::where('id_member', $member['id_member'])->firstOrFail();
-        $members->status = 0;
-        $members->save();
         $data = $request->all();
 
         if ($request->file('foto_profil') != null) {
@@ -144,7 +141,8 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        $member->delete();
+        $member->status = 0;
+        $member->save();
 
         return redirect()->route('members.index');
     }

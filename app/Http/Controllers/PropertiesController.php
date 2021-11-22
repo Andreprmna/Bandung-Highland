@@ -90,10 +90,7 @@ class PropertiesController extends Controller
      */
     public function update(Request $request, Properties $property)
     {
-        $propertys = Properties::where('id_pengarang', $property['id_pengarang'])->firstOrFail();
-        $propertys->status = 0;
 
-        $propertys->save();
 
         $data = $request->all();
 
@@ -110,7 +107,9 @@ class PropertiesController extends Controller
      */
     public function destroy(Properties $property)
     {
-        $property->delete();
+        $property->status = 0;
+
+        $property->save();
 
         return redirect()->route('properties.index');
     }

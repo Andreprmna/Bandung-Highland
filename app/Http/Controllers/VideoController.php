@@ -99,9 +99,7 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-        $Videos = Video::where('id_video', $video['id_video'])->firstOrFail();
-        $Videos->status = 0;
-        $Videos->save();
+
         $data = $request->all();
 
         if ($request->file('cover') != null) {
@@ -121,7 +119,8 @@ class VideoController extends Controller
      */
     public function destroy(Video $video)
     {
-        $video->delete();
+        $video->status = 0;
+        $video->save();
 
         return redirect()->route('videos.index');
     }

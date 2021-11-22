@@ -89,9 +89,6 @@ class PengarangController extends Controller
      */
     public function update(Request $request, Pengarang $pengarang)
     {
-        $pengarangs = Pengarang::where('id_pengarang', $pengarang['id_pengarang'])->firstOrFail();
-        $pengarangs->status = 0;
-        $pengarangs->save();
         $data = $request->all();
 
         $pengarang->update($data);
@@ -107,7 +104,8 @@ class PengarangController extends Controller
      */
     public function destroy(Pengarang $pengarang)
     {
-        $pengarang->delete();
+        $pengarang->status = 0;
+        $pengarang->save();
 
         return redirect()->route('pengarangs.index');
     }

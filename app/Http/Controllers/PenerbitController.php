@@ -90,9 +90,7 @@ class PenerbitController extends Controller
      */
     public function update(Request $request, Penerbit $penerbit)
     {
-        $penerbits = Penerbit::where('id_penerbit', $penerbit['id_penerbit'])->firstOrFail();
-        $penerbits->status = 0;
-        $penerbits->save();
+
         $data = $request->all();
 
         $penerbit->update($data);
@@ -108,7 +106,8 @@ class PenerbitController extends Controller
      */
     public function destroy(Penerbit $penerbit)
     {
-        $penerbit->delete();
+        $penerbit->status = 0;
+        $penerbit->save();
 
         return redirect()->route('penerbits.index');
     }

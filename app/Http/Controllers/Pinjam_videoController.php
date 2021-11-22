@@ -114,9 +114,7 @@ class Pinjam_videoController extends Controller
      */
     public function update(Request $request, Pinjam_video $pinjam_video)
     {
-        $video = Video::where('id_video', $pinjam_video['id_video'])->firstOrFail();
-        $video->status = 0;
-        $video->save();
+
 
         $data = $request->all();
 
@@ -133,7 +131,8 @@ class Pinjam_videoController extends Controller
      */
     public function destroy(Pinjam_video $pinjam_video)
     {
-        $pinjam_video->delete();
+        $pinjam_video->status = 0;
+        $pinjam_video->save();
 
         return redirect()->route('pinjam_videos.index');
     }

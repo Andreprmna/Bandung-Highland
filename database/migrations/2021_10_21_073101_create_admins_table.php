@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateAdminsTable extends Migration
@@ -22,10 +23,10 @@ class CreateAdminsTable extends Migration
             $table->date('tgl_lahir');
             $table->string('jenis_kelamin');
             $table->text('alamat');
-            $table->binary('foto_profil')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE admin ADD foto_profil LONGBLOB");
     }
 
     /**

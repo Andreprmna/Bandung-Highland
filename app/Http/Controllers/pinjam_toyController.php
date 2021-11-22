@@ -116,9 +116,7 @@ class pinjam_toyController extends Controller
      */
     public function update(Request $request, pinjam_toy $pinjam_toy)
     {
-        $toy = Toy::where('id_toy', $pinjam_toy['id_toy'])->firstOrFail();
-        $toy->status = 0;
-        $toy->save();
+
         $data = $request->all();
 
         $pinjam_toy->update($data);
@@ -134,7 +132,8 @@ class pinjam_toyController extends Controller
      */
     public function destroy(pinjam_toy $pinjam_toy)
     {
-        $pinjam_toy->delete();
+        $pinjam_toy->status = 0;
+        $pinjam_toy->save();
 
         return redirect()->route('pinjam_toys.index');
     }

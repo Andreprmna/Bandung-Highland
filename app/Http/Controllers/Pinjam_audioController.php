@@ -120,9 +120,7 @@ class Pinjam_audioController extends Controller
      */
     public function update(Request $request, Pinjam_audio $pinjam_audio)
     {
-        $audio = Audio::where('id_audio', $pinjam_audio['id_audio'])->firstOrFail();
-        $audio->status = 0;
-        $audio->save();
+
         $data = $request->all();
 
         $pinjam_audio->update($data);
@@ -138,7 +136,8 @@ class Pinjam_audioController extends Controller
      */
     public function destroy(Pinjam_audio $pinjam_audio)
     {
-        $pinjam_audio->delete();
+        $pinjam_audio->status = 0;
+        $pinjam_audio->save();
 
         return redirect()->route('pinjam_audios.index');
     }

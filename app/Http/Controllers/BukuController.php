@@ -114,9 +114,7 @@ class BukuController extends Controller
      */
     public function update(Request $request, Buku $buku)
     {
-        $bukus = Buku::where('id_buku', $buku['id_buku'])->firstOrFail();
-        $bukus->status = 0;
-        $bukus->save();
+
         $data = $request->all();
 
         if ($request->file('sampul') != null) {
@@ -136,7 +134,8 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        $buku->delete();
+        $buku->status = 0;
+        $buku->save();
 
         return redirect()->route('bukus.index');
     }

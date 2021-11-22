@@ -118,9 +118,7 @@ class Booking_toyController extends Controller
      */
     public function update(Request $request, Booking_toy $booking_toy)
     {
-        $toy = Toy::where('id_toy', $booking_toy['id_toy'])->firstOrFail();
-        $toy->status = 0;
-        $toy->save();
+
         $data = $request->all();
 
         $booking_toy->update($data);
@@ -136,7 +134,8 @@ class Booking_toyController extends Controller
      */
     public function destroy(Booking_toy $booking_toy)
     {
-        $booking_toy->delete();
+        $booking_toy->status = 0;
+        $booking_toy->save();
 
         return redirect()->route('booking_toys.index');
     }

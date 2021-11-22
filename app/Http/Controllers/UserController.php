@@ -110,10 +110,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $User = User::where('id', $user['id'])->firstOrFail();
-        $User->status = 0;
-        $User->save();
-
         $data = $request->all();
 
         $user->update($data);
@@ -129,7 +125,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        $user->status = 0;
+        $user->save();
 
         return redirect()->route('users.index');
     }

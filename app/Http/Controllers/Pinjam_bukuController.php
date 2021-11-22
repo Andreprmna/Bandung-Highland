@@ -117,9 +117,7 @@ class Pinjam_bukuController extends Controller
      */
     public function update(Request $request, Pinjam_buku $pinjam_buku)
     {
-        $buku = Buku::where('id_audio', $pinjam_buku['id_buku'])->firstOrFail();
-        $buku->status = 0;
-        $buku->save();
+
         $data = $request->all();
 
         $pinjam_buku->update($data);
@@ -133,9 +131,10 @@ class Pinjam_bukuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pinjam_buku $pinjam_bukus)
+    public function destroy(Pinjam_buku $pinjam_buku)
     {
-        $pinjam_bukus->delete();
+        $pinjam_buku->status = 0;
+        $pinjam_buku->save();
 
         return redirect()->route('pinjam_bukus.index');
     }

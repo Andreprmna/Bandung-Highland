@@ -90,9 +90,7 @@ class ToyController extends Controller
      */
     public function update(Request $request, Toy $toy)
     {
-        $propertys = Toy::where('id_toy', $toy['id_toy'])->firstOrFail();
-        $propertys->status = 0;
-        $propertys->save();
+
         $data = $request->all();
 
         $toy->update($data);
@@ -108,7 +106,8 @@ class ToyController extends Controller
      */
     public function destroy(Toy $toy)
     {
-        $toy->delete();
+        $toy->status = 0;
+        $toy->save();
 
         return redirect()->route('toys.index');
     }

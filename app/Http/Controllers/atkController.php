@@ -93,9 +93,6 @@ class atkController extends Controller
      */
     public function update(Request $request, Atk $atk)
     {
-        $Atks = Atk::where('id_atk', $atk['id_atk'])->firstOrFail();
-        $Atks->status = 0;
-        $Atks->save();
         $data = $request->all();
 
         $atk->update($data);
@@ -111,7 +108,9 @@ class atkController extends Controller
      */
     public function destroy(Atk $atk)
     {
-        $atk->delete();
+        $atk->status = 0;
+        $atk->save();
+
 
         return redirect()->route('atks.index');
     }
