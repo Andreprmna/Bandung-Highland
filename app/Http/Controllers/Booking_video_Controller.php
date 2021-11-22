@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_video_Request;
+use App\Models\Admin;
 use App\Models\Booking_video;
 use App\Models\Member;
 use App\Models\Pinjam_video;
@@ -36,7 +37,7 @@ class Booking_video_Controller extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $video = Video::paginate();
         return view('admin.video.booking-video', [
             'member' => $member,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\pinjam_toyRequest;
+use App\Models\Admin;
 use App\Models\Member;
 use App\Models\pinjam_toy;
 use App\Models\Toy;
@@ -35,7 +36,7 @@ class pinjam_toyController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $toy = Toy::paginate();
         return view('admin.toy.pinjam-toy', [
             'member' => $member,

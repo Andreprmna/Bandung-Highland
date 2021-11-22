@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->member->nama}}</td>
-                                    <td>{{$item->admin->name}}</td>
+                                    <td>{{$item->admin->nama}}</td>
                                     <td>{{$item->video->judul}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_pinjam))}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_kembali))}}</td>

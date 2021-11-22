@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\pinjam_toyRequest;
 use App\Http\Requests\Pinjam_videoRequest;
+use App\Models\Admin;
 use App\Models\Member;
 use App\Models\Pinjam_video;
 use App\Models\Toy;
@@ -37,7 +38,7 @@ class Pinjam_videoController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $video = Video::paginate();
         return view('admin.video.pinjam-video', [
             'member' => $member,

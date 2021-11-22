@@ -25,7 +25,7 @@ class Coworking_spaceRequest extends FormRequest
     {
         return [
             'nomor_cs' => ['required', 'string', 'max:10'],
-            'deskripsi_cs' => ['required', 'text'],
+            'deskripsi_cs' => ['required', 'string'],
             'daya_tampung' => ['required', 'integer']
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_Coworking_spaceRequest;
+use App\Models\Admin;
 use App\Models\Booking_Coworking_space;
 use App\Models\Coworking_space;
 use App\Models\Member;
@@ -35,7 +36,7 @@ class Booking_Coworking_spaceController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $coworking_space = Coworking_space::paginate();
 
         return view('admin.coworking_space.booking-coworking-space', [

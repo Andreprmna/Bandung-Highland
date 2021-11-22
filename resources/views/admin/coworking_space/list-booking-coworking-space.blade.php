@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->member->nama}}</td>
-                                    <td>{{$item->admin->name}}</td>
+                                    <td>{{$item->admin->nama}}</td>
                                     <td>{{$item->coworking_space->nomor_cs}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_selesai))}}</td>

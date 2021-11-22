@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_toyRequest;
+use App\Models\Admin;
 use App\Models\Booking_toy;
 use App\Models\Member;
 use App\Models\pinjam_toy;
@@ -36,7 +37,7 @@ class Booking_toyController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $toy = Toy::paginate();
         return view('admin.toy.booking-toy', [
             'member' => $member,
@@ -99,7 +100,7 @@ class Booking_toyController extends Controller
     public function edit(Booking_toy $booking_toy)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $toy = Toy::paginate();
         return view('admin.booking_toy.edit-booking_toy', [
             'item' => $booking_toy,

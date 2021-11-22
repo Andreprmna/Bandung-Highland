@@ -27,7 +27,7 @@ class ToyRequest extends FormRequest
             'nama_toy'  => ['required', 'string', 'max:255'],
             'jenis'     => ['required', 'string', 'max:255'],
             'genre'     => ['required', 'string', 'max:255'],
-            'deskripsi'   => ['required', 'text', 'max:255']
+            'deskripsi'   => ['required', 'string', 'max:255']
         ];
     }
 }
