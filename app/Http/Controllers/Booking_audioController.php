@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_audioRequest;
+use App\Models\Admin;
 use App\Models\Audio;
 use App\Models\Booking_audio;
 use App\Models\Member;
@@ -36,7 +37,7 @@ class Booking_audioController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $audio = Audio::where('status', 1)->paginate();
 
         return view('admin.audio.booking-audio', [

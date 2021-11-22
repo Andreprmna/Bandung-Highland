@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->member->nama}}</td>
-                                    <td>{{$item->admin->name}}</td>
+                                    <td>{{$item->admin->nama}}</td>
                                     <td>{{$item->atk->nama_atk}}</td>
                                     <td>{{$item->jumlah_pos}}</td>
                                     <td>{{$item->total_harga}}</td>

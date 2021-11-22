@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\point_of_sellRequest;
+use App\Models\Admin;
 use App\Models\Atk;
 use App\Models\Member;
 use App\Models\Point_of_sell;
@@ -34,7 +35,7 @@ class point_of_sellController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $atk = Atk::paginate();
         
         return view('admin.atk.beli-atk', [

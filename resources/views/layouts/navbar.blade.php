@@ -33,12 +33,12 @@
                         <li class="list-inline-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle nav-link" href="#" role="button" id="xp-userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{url('storage/'.auth()->guard('member')->user()->foto_profil)}}" height="40" width="40" alt="user-profile" class="rounded-circle">
+                                    <img src="{{url('storage/'.auth()->guard('web')->user()->foto_profil)}}" height="40" width="40" alt="user-profile" class="rounded-circle">
                                     {{-- <span class="xp-user-live"></span> --}}
                                     {{-- <img src="assets/images/ui-media/media-image-8.jpg" alt="user-profile" width="40" height="40" class="rounded-circle img-fluid"> --}}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-userprofile">
-                                    <a class="dropdown-item py-3 text-center font-16" href="#">Welcome, {{ auth()->guard('member')->user()->nama }}</a>
+                                    <a class="dropdown-item py-3 text-center font-16" href="#">Welcome, {{ auth()->guard('web')->user()->nama }}</a>
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="{{ route('signout') }}">Logout</a>
                                 </div>
@@ -72,7 +72,7 @@
                                     <li class="has-children">
                                         <a href="#" class="nav-link">
                                             <img src="assets/images/ui-media/media-image-8.jpg" alt="user-profile" width="40" height="40" class="rounded-circle img-fluid">
-                                            <span class="ml-2">{{ auth()->guard('member')->user()->nama }}</span>
+                                            <span class="ml-2">{{ auth()->guard('web')->user()->nama }}</span>
                                         </a>
                                         <ul class="dropdown arrow-top">
                                         <li><a href="#" class="nav-link">Profile</a></li>

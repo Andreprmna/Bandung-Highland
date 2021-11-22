@@ -43,7 +43,7 @@
                 <select id="nama_admin" class="form-control" name="id_admin" required>
                     @if (is_array($user) || is_object($user))
                         @forelse ($user as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            <option value="{{$item->id_admin}}">{{$item->nama}}</option>
                         @empty
                             <option value="-">-</option>
                         @endforelse

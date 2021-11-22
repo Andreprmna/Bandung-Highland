@@ -28,7 +28,7 @@ class BukuRequest extends FormRequest
             'tahun_rilis' => ['required', 'integer'],
             'halaman' => ['required', 'integer'],
             'isbn' => ['required', 'string', 'max:255'],
-            'deskripsi' => ['required', 'text', 'max:255'],
+            'deskripsi' => ['required', 'string', 'max:255'],
             'bentuk' => ['required', 'string', 'max:255'],
         ];
     }

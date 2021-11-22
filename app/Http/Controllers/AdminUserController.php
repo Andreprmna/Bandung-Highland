@@ -20,15 +20,11 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        if (Auth::guard('admin')->check()) {
             $admin = Admin::with('role')->paginate();
 
             return view('admin.users', [
                 'user' => $admin
             ]);
-        }
-
-        return redirect('cms');
     }
 
     public function indexAdmin()
@@ -49,12 +45,9 @@ class AdminUserController extends Controller
     {
         $role = Role::paginate();
 
-        if (Auth::guard('admin')->check()) {
             return view('admin.create-user', [
                 'role' => $role,
             ]);
-        }
-        return redirect('cms');
     }
 
     /**

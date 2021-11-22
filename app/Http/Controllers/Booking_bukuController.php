@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking_bukuRequest;
+use App\Models\Admin;
 use App\Models\Booking_buku;
 use App\Models\Buku;
 use App\Models\Member;
@@ -36,7 +37,7 @@ class Booking_bukuController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $buku = Buku::paginate();
         return view('admin.buku.booking-buku', [
             'member' => $member,

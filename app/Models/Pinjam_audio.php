@@ -33,7 +33,7 @@ class Pinjam_audio extends Model
     }
     public function admin()
     {
-        return $this->hasOne(User::class, 'id', 'id_admin');
+        return $this->hasOne(Admin::class, 'id_admin', 'id_admin');
     }
     public function audio()
     {

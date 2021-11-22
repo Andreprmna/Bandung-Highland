@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Pinjam_bukuRequest;
+use App\Models\Admin;
 use App\Models\Buku;
 use App\Models\Member;
 use App\Models\Pinjam_buku;
@@ -35,7 +36,7 @@ class Pinjam_bukuController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $buku = Buku::paginate();
         return view('admin.buku.pinjam-buku', [
             'member' => $member,

@@ -18,7 +18,7 @@ Neon - Register
                     <div class="card">
                         <div class="card-body">
                             <div class="p-3">
-                                <form action="{{ route('register.custom') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('members.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="text-center mb-3">
@@ -29,7 +29,7 @@ Neon - Register
                                         <input id="email" class="form-control" type="email" name="email" placeholder="Email" :value="old('email')" required>
                                     </div>
                                     <div class="form-group">
-                                        <input id="name" class="form-control" type="text" name="name" placeholder="Name" :value="old('name')" required>
+                                        <input id="name" class="form-control" type="text" name="nama" placeholder="Nama" :value="old('nama')" required>
                                     </div>
                                     <div class="form-group">
                                         <input id="password" class="form-control" type="password" name="password" placeholder="Password" required autocomplete="new-password">
@@ -50,7 +50,7 @@ Neon - Register
                                         <input id="address" class="form-control" type="text" name="alamat" placeholder="Alamat" :value="old('alamat')" required>
                                     </div>
                                     <div class="form-group">
-                                        <input id="profile" class="form-control" type="file" name="profile_photo_path">
+                                        <input id="profile" class="form-control" type="file" name="foto_profil">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">

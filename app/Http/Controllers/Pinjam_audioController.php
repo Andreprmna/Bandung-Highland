@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Pinjam_audioRequest;
+use App\Models\Admin;
 use App\Models\Audio;
 use App\Models\Member;
 use App\Models\Pinjam_audio;
@@ -35,7 +36,7 @@ class Pinjam_audioController extends Controller
     public function create()
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $audio = Audio::paginate();
 
         return view('admin.audio.pinjam-audio', [
