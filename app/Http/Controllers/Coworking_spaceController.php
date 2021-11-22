@@ -91,6 +91,9 @@ class Coworking_spaceController extends Controller
      */
     public function update(Request $request, Coworking_space $coworking_space)
     {
+        $cs = Coworking_space::where('id_cs', $coworking_space['id_cs'])->firstOrFail();
+        $cs->status = 0;
+        $cs->save();
         $data = $request->all();
 
         $coworking_space->update($data);

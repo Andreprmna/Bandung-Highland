@@ -18,7 +18,7 @@ class CreateCoworkingSpacesTable extends Migration
             $table->string('nomor_cs');
             $table->text('deskripsi_cs');
             $table->integer('daya_tampung');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

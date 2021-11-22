@@ -90,6 +90,9 @@ class PenerbitController extends Controller
      */
     public function update(Request $request, Penerbit $penerbit)
     {
+        $penerbits = Penerbit::where('id_penerbit', $penerbit['id_penerbit'])->firstOrFail();
+        $penerbits->status = 0;
+        $penerbits->save();
         $data = $request->all();
 
         $penerbit->update($data);

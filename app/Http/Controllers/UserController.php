@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index()
     {
-        if (Auth::guard('web')->check()) {
+        if (Auth::check()) {
             return redirect('/');
         }
 
@@ -77,7 +77,7 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        if (Auth::guard('web')->check()) {
+        if (Auth::check()) {
             return view('index');
         }
 
@@ -88,7 +88,7 @@ class UserController extends Controller
     public function signOut()
     {
         Session::flush();
-        Auth::guard('web')->logout();
+        Auth::logout();
 
         return Redirect('/');
     }
@@ -110,6 +110,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $User = User::where('id', $user['id'])->firstOrFail();
+        $User->status = 0;
+        $User->save();
+
         $data = $request->all();
 
         $user->update($data);

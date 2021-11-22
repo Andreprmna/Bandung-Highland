@@ -90,6 +90,9 @@ class ToyController extends Controller
      */
     public function update(Request $request, Toy $toy)
     {
+        $propertys = Toy::where('id_toy', $toy['id_toy'])->firstOrFail();
+        $propertys->status = 0;
+        $propertys->save();
         $data = $request->all();
 
         $toy->update($data);

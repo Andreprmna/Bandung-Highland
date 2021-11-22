@@ -20,11 +20,11 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-            $admin = Admin::with('role')->paginate();
+        $admin = Admin::with('role')->paginate();
 
-            return view('admin.users', [
-                'user' => $admin
-            ]);
+        return view('admin.users', [
+            'user' => $admin
+        ]);
     }
 
     public function indexAdmin()
@@ -45,9 +45,9 @@ class AdminUserController extends Controller
     {
         $role = Role::paginate();
 
-            return view('admin.create-user', [
-                'role' => $role,
-            ]);
+        return view('admin.create-user', [
+            'role' => $role,
+        ]);
     }
 
     /**
@@ -61,7 +61,7 @@ class AdminUserController extends Controller
         $data = $request->all();
 
         $data['password'] = Hash::make($request->password);
-        
+
         if ($request->file('foto_profil') != null) {
             $data['foto_profil'] = $request->file('foto_profil')->store('assets/admin', 'public');
         }
@@ -98,7 +98,7 @@ class AdminUserController extends Controller
             'password' => $request->get('password'),
         );
 
-        if (Auth::guard('admin')->attempt($credentials)) {
+        if (Auth::guard('admin')->attemp($credentials)) {
             return redirect()->intended('cms/admin-dashboard')
                 ->withSuccess('Signed in');
         }

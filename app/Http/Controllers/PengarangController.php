@@ -89,6 +89,9 @@ class PengarangController extends Controller
      */
     public function update(Request $request, Pengarang $pengarang)
     {
+        $pengarangs = Pengarang::where('id_pengarang', $pengarang['id_pengarang'])->firstOrFail();
+        $pengarangs->status = 0;
+        $pengarangs->save();
         $data = $request->all();
 
         $pengarang->update($data);

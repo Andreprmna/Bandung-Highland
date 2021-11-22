@@ -101,6 +101,9 @@ class AudioController extends Controller
      */
     public function update(Request $request, Audio $audio)
     {
+        $audios = Audio::where('id_audio', $audio['id_audio'])->firstOrFail();
+        $audios->status = 0;
+        $audios->save();
         $data = $request->all();
 
         if ($request->file('cover') != null) {
@@ -120,8 +123,6 @@ class AudioController extends Controller
      */
     public function destroy(Audio $audio)
     {
-        $audio->status = 0;
-        $audio->save();
 
         return redirect()->route('audios.index');
     }

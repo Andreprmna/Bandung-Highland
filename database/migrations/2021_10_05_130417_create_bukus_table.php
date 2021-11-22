@@ -24,8 +24,8 @@ class CreateBukusTable extends Migration
             $table->text('deskripsi')->nullable();
             $table->binary('sampul')->nullable();
             $table->string('bentuk');
-            $table->integer('kondisi')->default(0);
-            $table->integer('status')->default(0);
+            $table->integer('kondisi')->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

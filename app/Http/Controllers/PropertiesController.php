@@ -67,7 +67,7 @@ class PropertiesController extends Controller
         //
     }
 
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -90,6 +90,11 @@ class PropertiesController extends Controller
      */
     public function update(Request $request, Properties $property)
     {
+        $propertys = Properties::where('id_pengarang', $property['id_pengarang'])->firstOrFail();
+        $propertys->status = 0;
+
+        $propertys->save();
+
         $data = $request->all();
 
         $property->update($data);

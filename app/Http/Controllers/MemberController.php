@@ -17,11 +17,11 @@ class MemberController extends Controller
      */
     public function index()
     {
-            $member = Member::paginate();
+        $member = Member::paginate();
 
-            return view('admin.member.members', [
-                'member' => $member
-            ]);
+        return view('admin.member.members', [
+            'member' => $member
+        ]);
     }
 
     /**
@@ -122,6 +122,9 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
+        $members = Member::where('id_member', $member['id_member'])->firstOrFail();
+        $members->status = 0;
+        $members->save();
         $data = $request->all();
 
         if ($request->file('foto_profil') != null) {

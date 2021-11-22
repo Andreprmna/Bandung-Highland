@@ -23,7 +23,7 @@ class CreateAdminsTable extends Migration
             $table->string('jenis_kelamin');
             $table->text('alamat');
             $table->binary('foto_profil')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
