@@ -57,15 +57,14 @@ class Pinjam_videoController extends Controller
     {
         $data = $request->all();
 
-        Pinjam_video::create($data);
-        // $check = $this->createPinjam_Video($data);
+        $check = $this->createPinjam_Video($data);
 
         return redirect()->route("pinjam_videos.index");
     }
 
     public function createPinjam_Video(array $data)
     {
-        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->wherebetween('tgl_pinjam', [$data['tgl_pinjam'], $data['tgl_kembali']])->first();
+        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
             return Pinjam_video::create([
                 'id_member'  => $data['id_member'],

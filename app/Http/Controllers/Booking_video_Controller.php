@@ -63,8 +63,8 @@ class Booking_video_Controller extends Controller
 
     public function createVideo(array $data)
     {
-        $booking = Booking_video::where('id_video', $data['id_video'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
-        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $booking = Booking_video::where('id_video', $data['id_video'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
+        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
             if ($booking == null) {
                 return Booking_video::create([

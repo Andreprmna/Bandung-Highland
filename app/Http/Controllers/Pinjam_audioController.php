@@ -56,28 +56,24 @@ class Pinjam_audioController extends Controller
     {
         $data = $request->all();
 
-        Pinjam_audio::create($data);
-        // $check = $this->createPinjam_audio($data);
+        $check = $this->createPinjam_audio($data);
 
         return redirect()->route("pinjam_audios.index");
     }
 
     public function createPinjam_audio(array $data)
     {
-        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_pinjam', [$data['tgl_pinjam'], $data['tgl_kembali']])->first();
+        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
             return Pinjam_audio::create([
                 'id_member'  => $data['id_member'],
                 'id_admin'   => $data['id_admin'],
                 'id_audio'         => $data['id_audio'],
                 'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_kembali'       => $data['tgl_kembali'],
-                'tgl_pengembalian' => $data['tgl_pengembalian'],
-                'denda' => $data['denda']
-
+                'tgl_kembali'       => $data['tgl_kembali']
             ]);
         } else {
-            throw new Exception('Audio sudah dipinjam./ tidak ditemukan');
+            throw new Exception($pinjam);
         }
     }
 

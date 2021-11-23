@@ -63,7 +63,7 @@ class Booking_Coworking_spaceController extends Controller
 
     public function createBCWS(array $data)
     {
-        $booking = Booking_Coworking_space::where('id_cs', $data['id_cs'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $booking = Booking_Coworking_space::where('id_cs', $data['id_cs'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
         if ($booking == null) {
             return Booking_Coworking_space::create([
                 'id_cs' => $data['id_cs'],

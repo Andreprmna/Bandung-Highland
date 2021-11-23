@@ -55,24 +55,21 @@ class Pinjam_bukuController extends Controller
     {
         $data = $request->all();
 
-        Pinjam_buku::create($data);
-        // $check = $this->createPinjam_Buku($data);
+        $check = $this->createPinjam_Buku($data);
 
         return redirect()->route("pinjam_bukus.index");
     }
 
     public function createPinjam_Buku(array $data)
     {
-        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_pinjam', [$data['tgl_pinjam'], $data['tgl_kembali']])->first();
+        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
             return Pinjam_buku::create([
                 'id_member'  => $data['id_member'],
                 'id_admin'   => $data['id_admin'],
                 'id_buku'         => $data['id_buku'],
                 'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_kembali'       => $data['tgl_kembali'],
-                'tgl_pengembalian' => $data['tgl_pengembalian'],
-                'denda' => $data['denda']
+                'tgl_kembali'       => $data['tgl_kembali']
             ]);
         } else {
             throw new Exception('Buku sudah dipinjam./ tidak ditemukan');

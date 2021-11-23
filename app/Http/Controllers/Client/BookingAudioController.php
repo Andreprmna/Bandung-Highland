@@ -51,8 +51,8 @@ class BookingAudioController extends Controller
         $data['id_member'] = Auth::guard('web')->id();
         $data['id_admin'] = 0;
 
-        $booking = Booking_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
-        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $booking = Booking_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
+        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
 
         if ($pinjam == null) {
             if ($booking == null) {

@@ -63,8 +63,8 @@ class Booking_bukuController extends Controller
 
     public function createBooking_buku(array $data)
     {
-        $booking = Booking_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
-        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $booking = Booking_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
+        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
             if ($booking == null) {
                 return Booking_buku::create([
