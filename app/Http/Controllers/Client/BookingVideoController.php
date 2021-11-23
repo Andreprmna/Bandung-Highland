@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Booking_video_Request;
 use App\Models\Audio;
+use App\Models\Booking_video;
+use App\Models\Pinjam_video;
 use App\Models\Video;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,9 +44,32 @@ class BookingVideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Booking_video_Request $request)
     {
-        //
+        $data = $request->all();
+        $data['id_member'] = Auth::guard('web')->id();
+        $data['id_admin'] = 0;
+
+        $booking = Booking_video::where('id_video', $data['id_video'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+
+        if ($pinjam == null) {
+            if ($booking == null) {
+                if (Auth::guard('web')->check()) {
+                    Booking_video::create($data);
+
+                    return redirect()->route("video.index");
+                }
+                
+                return redirect()->route("login");
+            } else {
+                throw new Exception('Video sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Video sudah dipinjam./ tidak ditemukan');
+        }
+
+        return redirect()->route("video.index");
     }
 
     /**

@@ -86,7 +86,9 @@ Community Center - Video
             </div>
             
             <h3>Booking</h3>
-            <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('video.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input name="id_video" value="{{$item->id_video}}" hidden>
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>

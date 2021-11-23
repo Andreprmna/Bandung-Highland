@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Booking_toyRequest;
+use App\Models\Booking_toy;
+use App\Models\pinjam_toy;
 use App\Models\Toy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingToyController extends Controller
 {
@@ -38,9 +42,32 @@ class BookingToyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Booking_toyRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['id_member'] = Auth::guard('web')->id();
+        $data['id_admin'] = 0;
+
+        $booking = Booking_toy::where('id_toy', $data['id_toy'])->where('tgl_mulai', [$data['tgl_mulai']])->first();
+        $pinjam = pinjam_toy::where('id_toy', $data['id_toy'])->where('tgl_pinjam', [$data['tgl_mulai']])->first();
+
+        if ($pinjam == null) {
+            if ($booking == null) {
+                if (Auth::guard('web')->check()) {
+                    Booking_toy::create($data);
+
+                    return redirect()->route("toy.index");
+                }
+                
+                return redirect()->route("login");
+            } else {
+                throw new Exception('Toy sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+        }
+
+        return redirect()->route("toy.index");
     }
 
     /**

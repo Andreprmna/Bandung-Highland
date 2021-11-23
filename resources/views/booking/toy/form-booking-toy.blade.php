@@ -69,15 +69,13 @@ Community Center - Mainan
                 </div>
             </div>
             <h3>Booking</h3>
-            <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('toy.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input name="id_toy" value="{{$item->id_toy}}" hidden>
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>
                     <input type="date" class="form-control" placeholder="Tanggal Mulai" name="tgl_mulai">
-                    </div>
-                    <div class="col">
-                        <label for="date">Tanggal Selesai</label>
-                    <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai">
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-4">

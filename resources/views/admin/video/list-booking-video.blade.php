@@ -27,9 +27,14 @@
                             @forelse ($booking_video as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->member->nama}}</td>
-                                    <td>{{$item->admin->nama}}</td>
-                                    <td>{{$item->video->judul}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->member->nama}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">@if ($item->id_admin != null)
+                                            {{$item->admin->nama}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->video->judul}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_selesai))}}</td>
                                     <td>{{$item->status}}</td>

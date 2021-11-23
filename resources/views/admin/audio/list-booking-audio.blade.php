@@ -28,7 +28,12 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->member->nama}}</td>
-                                    <td>{{$item->admin->nama}}</td>
+                                    <td>@if ($item->id_admin != null)
+                                            {{$item->admin->nama}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
                                     <td>{{$item->audio->judul}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_selesai))}}</td>

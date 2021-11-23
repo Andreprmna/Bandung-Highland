@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Booking_bukuRequest;
+use App\Models\Booking_buku;
 use App\Models\Buku;
-use App\Models\Member;
+use App\Models\Pinjam_buku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingBukuController extends Controller
 {
@@ -39,9 +42,32 @@ class BookingBukuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Booking_bukuRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['id_member'] = Auth::guard('web')->id();
+        $data['id_admin'] = 0;
+
+        $booking = Booking_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+
+        if ($pinjam == null) {
+            if ($booking == null) {
+                if (Auth::guard('web')->check()) {
+                    Booking_buku::create($data);
+
+                    return redirect()->route("buku.index");
+                }
+                
+                return redirect()->route("login");
+            } else {
+                throw new Exception('Buku sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Buku sudah dipinjam./ tidak ditemukan');
+        }
+
+        return redirect()->route("buku.index");
     }
 
     /**

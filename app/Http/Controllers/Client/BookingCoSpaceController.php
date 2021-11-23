@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Booking_Coworking_spaceRequest;
+use App\Models\Booking_coworking_space;
 use App\Models\Coworking_space;
 use App\Models\Member;
 use Illuminate\Http\Request;
@@ -40,9 +42,27 @@ class BookingCoSpaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Booking_Coworking_spaceRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['id_member'] = Auth::guard('web')->id();
+        $data['id_admin'] = 0;
+
+        $booking = Booking_coworking_space::where('id_cs', $data['id_cs'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+
+        if ($booking == null) {
+            if (Auth::guard('web')->check()) {
+                Booking_coworking_space::create($data);
+
+                return redirect()->route("coworking-space.index");
+            }
+            
+            return redirect()->route("login");
+        } else {
+            throw new Exception('Coworking Space sudah dibooking./ tidak ditemukan');
+        }
+
+        return redirect()->route("coworking-space.index");
     }
 
     /**

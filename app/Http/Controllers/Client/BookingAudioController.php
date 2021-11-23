@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Booking_audioRequest;
 use App\Models\Audio;
 use App\Models\Booking_audio;
 use App\Models\Buku;
@@ -44,22 +45,49 @@ class BookingAudioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Booking_audioRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['id_member'] = Auth::guard('web')->id();
+        $data['id_admin'] = 0;
+
+        $booking = Booking_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+
+        if ($pinjam == null) {
+            if ($booking == null) {
+                if (Auth::guard('web')->check()) {
+                    Booking_audio::create($data);
+
+                    return redirect()->route("audio.index");
+                }
+                
+                return redirect()->route("login");
+            } else {
+                throw new Exception('Audio sudah dibooking./ tidak ditemukan');
+            }
+        } else {
+            throw new Exception('Audio sudah dipinjam./ tidak ditemukan');
+        }
+
+        return redirect()->route("audio.index");
     }
 
     public function CreateBooking_audio(array $data)
     {
-        $booking = Booking_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
-        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $idmember = Auth::guard('web')->id();
+        $idaudio = $request->route('id');
+
+        $booking = Booking_audio::where('id_audio', $idaudio)->wherebetween('tgl_mulai', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+        $pinjam = Pinjam_audio::where('id_audio', $idaudio)->wherebetween('tgl_pinjam', [$data['tgl_mulai'], $data['tgl_selesai']])->first();
+
         if ($pinjam == null) {
             if ($booking == null) {
 
                 return Booking_audio::create([
-                    'id_member'  => $data['id_member'],
+                    'id_member'  => $idmember,
                     'id_admin'   => 0,
-                    'id_audio'     => $data['id_audio'],
+                    'id_audio'     => $idaudio,
                     'tgl_mulai'   => $data['tgl_mulai'],
                     'tgl_selesai' => $data['tgl_selesai']
 

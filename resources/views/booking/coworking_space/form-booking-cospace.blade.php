@@ -64,7 +64,9 @@ Community Center - Coworking Space
                 </div>
             </div>
             <h3>Booking</h3>
-            <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('coworking-space.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input name="id_cs" value="{{$item->id_cs}}" hidden>
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>

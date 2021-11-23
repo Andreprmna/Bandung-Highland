@@ -177,7 +177,7 @@ class AdminUserController extends Controller
 
     public function signOutAdmin()
     {
-        Session::flush();
+        // Session::flush();
         Auth::guard('admin')->logout();
 
         return Redirect('cms');

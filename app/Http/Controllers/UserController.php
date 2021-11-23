@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index()
     {
-        if (Auth::check()) {
+        if (Auth::guard('web')->check()) {
             return redirect('/');
         }
 
@@ -31,7 +31,7 @@ class UserController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
             return redirect()->intended('/')
                 ->withSuccess('Signed in');
         }
@@ -77,7 +77,7 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        if (Auth::check()) {
+        if (Auth::guard('web')->check()) {
             return view('index');
         }
 
@@ -87,10 +87,10 @@ class UserController extends Controller
 
     public function signOut()
     {
-        Session::flush();
-        Auth::logout();
+        // Session::flush();
+        Auth::guard('web')->logout();
 
-        return Redirect('/');
+        return redirect()->back();
     }
     public function getuser()
     {

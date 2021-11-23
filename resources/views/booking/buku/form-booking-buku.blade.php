@@ -110,7 +110,9 @@ Community Center - Buku
                 </div>
             </div>
             <h3>Booking</h3>
-            <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input name="id_buku" value="{{$item->id_buku}}" hidden>
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>

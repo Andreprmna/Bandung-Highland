@@ -93,14 +93,16 @@ Community Center - Audio
             </div>
             <h3>Booking</h3>
             <form action="{{route('audio.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input name="id_audio" value="{{$item->id_audio}}" hidden>
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>
-                    <input type="date" class="form-control" placeholder="Tanggal Mulai" name="tgl_mulai">
+                    <input type="date" class="form-control" placeholder="Tanggal Mulai" name="tgl_mulai" required>
                     </div>
                     <div class="col">
                         <label for="date">Tanggal Selesai</label>
-                    <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai">
+                    <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai" required>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-4">
