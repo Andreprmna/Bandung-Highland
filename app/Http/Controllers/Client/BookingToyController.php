@@ -9,6 +9,7 @@ use App\Models\pinjam_toy;
 use App\Models\Toy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class BookingToyController extends Controller
 {
@@ -61,10 +62,10 @@ class BookingToyController extends Controller
                 
                 return redirect()->route("login");
             } else {
-                throw new Exception('Toy sudah dibooking./ tidak ditemukan');
+                throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dibooking']);
             }
         } else {
-            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dipinjam']);
         }
 
         return redirect()->route("toy.index");

@@ -11,6 +11,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Pinjam_audioController extends Controller
 {
@@ -73,7 +74,7 @@ class Pinjam_audioController extends Controller
                 'tgl_kembali'       => $data['tgl_kembali']
             ]);
         } else {
-            throw new Exception($pinjam);
+            throw ValidationException::withMessages(['Audio dengan tanggal terpilih telah dipinjam']);
         }
     }
 

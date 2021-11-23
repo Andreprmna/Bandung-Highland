@@ -74,7 +74,7 @@ class Booking_Coworking_spaceController extends Controller
 
             ]);
         } else {
-            throw new Exception('Coworking Space sudah dibooking./ tidak ditemukan');
+            throw ValidationException::withMessages(['Coworking Space dengan tanggal terpilih telah dibooking']);
         }
     }
     /**

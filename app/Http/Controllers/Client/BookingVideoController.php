@@ -11,6 +11,7 @@ use App\Models\Video;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class BookingVideoController extends Controller
 {
@@ -51,7 +52,7 @@ class BookingVideoController extends Controller
         $data['id_admin'] = 0;
 
         $booking = Booking_video::where('id_video', $data['id_video'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
-        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
+        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
 
         if ($pinjam == null) {
             if ($booking == null) {
@@ -63,10 +64,10 @@ class BookingVideoController extends Controller
                 
                 return redirect()->route("login");
             } else {
-                throw new Exception('Video sudah dibooking./ tidak ditemukan');
+                throw ValidationException::withMessages(['Video dengan tanggal terpilih telah dibooking']);
             }
         } else {
-            throw new Exception('Video sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Video dengan tanggal terpilih telah dipinjam']);
         }
 
         return redirect()->route("video.index");

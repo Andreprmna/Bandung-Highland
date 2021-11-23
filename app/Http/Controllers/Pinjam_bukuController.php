@@ -11,6 +11,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Pinjam_bukuController extends Controller
 {
@@ -72,7 +73,7 @@ class Pinjam_bukuController extends Controller
                 'tgl_kembali'       => $data['tgl_kembali']
             ]);
         } else {
-            throw new Exception('Buku sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Buku dengan tanggal terpilih telah dipinjam']);
         }
     }
 

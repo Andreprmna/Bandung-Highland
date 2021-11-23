@@ -12,6 +12,7 @@ use App\Models\Pinjam_audio;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class BookingAudioController extends Controller
 {
@@ -52,7 +53,7 @@ class BookingAudioController extends Controller
         $data['id_admin'] = 0;
 
         $booking = Booking_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
-        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
+        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
 
         if ($pinjam == null) {
             if ($booking == null) {
@@ -64,10 +65,10 @@ class BookingAudioController extends Controller
                 
                 return redirect()->route("login");
             } else {
-                throw new Exception('Audio sudah dibooking./ tidak ditemukan');
+                throw ValidationException::withMessages(['Audio dengan tanggal terpilih telah dibooking']);
             }
         } else {
-            throw new Exception('Audio sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Audio dengan tanggal terpilih telah dipinjam']);
         }
 
         return redirect()->route("audio.index");

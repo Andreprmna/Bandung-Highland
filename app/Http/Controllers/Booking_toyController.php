@@ -12,6 +12,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Booking_toyController extends Controller
 {
@@ -74,10 +75,10 @@ class Booking_toyController extends Controller
                     'tgl_mulai'   => $data['tgl_mulai']
                 ]);
             } else {
-                throw new Exception('Toy sudah dibooking./ tidak ditemukan');
+                throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dibooking']);
             }
         } else {
-            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dipinjam']);
         }
     }
     /**

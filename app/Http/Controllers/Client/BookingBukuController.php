@@ -9,6 +9,7 @@ use App\Models\Buku;
 use App\Models\Pinjam_buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class BookingBukuController extends Controller
 {
@@ -49,7 +50,7 @@ class BookingBukuController extends Controller
         $data['id_admin'] = 0;
 
         $booking = Booking_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
-        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
+        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
 
         if ($pinjam == null) {
             if ($booking == null) {
@@ -61,10 +62,10 @@ class BookingBukuController extends Controller
                 
                 return redirect()->route("login");
             } else {
-                throw new Exception('Buku sudah dibooking./ tidak ditemukan');
+                throw ValidationException::withMessages(['Buku dengan tanggal terpilih telah dibooking']);
             }
         } else {
-            throw new Exception('Buku sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Buku dengan tanggal terpilih telah dipinjam']);
         }
 
         return redirect()->route("buku.index");

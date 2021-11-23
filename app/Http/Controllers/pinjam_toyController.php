@@ -11,6 +11,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class pinjam_toyController extends Controller
 {
@@ -73,7 +74,7 @@ class pinjam_toyController extends Controller
 
             ]);
         } else {
-            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dipinjam']);
         }
     }
 

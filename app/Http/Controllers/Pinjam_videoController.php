@@ -13,6 +13,7 @@ use App\Models\Video;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Pinjam_videoController extends Controller
 {
@@ -77,7 +78,7 @@ class Pinjam_videoController extends Controller
 
             ]);
         } else {
-            throw new Exception('Toy sudah dipinjam./ tidak ditemukan');
+            throw ValidationException::withMessages(['Video dengan tanggal terpilih telah dipinjam']);
         }
     }
 

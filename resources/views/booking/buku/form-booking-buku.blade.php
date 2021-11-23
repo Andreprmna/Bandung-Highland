@@ -112,6 +112,15 @@ Community Center - Buku
             <h3>Booking</h3>
             <form action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <input name="id_buku" value="{{$item->id_buku}}" hidden>
                 <div class="row">
                     <div class="col">

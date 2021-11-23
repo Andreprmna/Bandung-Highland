@@ -9,6 +9,7 @@ use App\Models\Coworking_space;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class BookingCoSpaceController extends Controller
 {
@@ -59,7 +60,7 @@ class BookingCoSpaceController extends Controller
             
             return redirect()->route("login");
         } else {
-            throw new Exception('Coworking Space sudah dibooking./ tidak ditemukan');
+            throw ValidationException::withMessages(['Video dengan tanggal terpilih telah dibooking']);
         }
 
         return redirect()->route("coworking-space.index");

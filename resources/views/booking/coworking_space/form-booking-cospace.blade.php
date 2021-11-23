@@ -66,6 +66,15 @@ Community Center - Coworking Space
             <h3>Booking</h3>
             <form action="{{route('coworking-space.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <input name="id_cs" value="{{$item->id_cs}}" hidden>
                 <div class="row">
                     <div class="col">
