@@ -103,7 +103,7 @@ class Booking_toyController extends Controller
         $member = Member::paginate();
         $user = Admin::paginate();
         $toy = Toy::paginate();
-        return view('admin.booking_toy.edit-booking_toy', [
+        return view('admin.toy.update-booking-toy', [
             'item' => $booking_toy,
             'member' => $member,
             'user' => $user,
@@ -120,9 +120,14 @@ class Booking_toyController extends Controller
     public function update(Request $request, Booking_toy $booking_toy)
     {
 
-        $data = $request->all();
-
-        $booking_toy->update($data);
+        if ($booking_toy->status == 1) {
+            $booking_toy->status = $request->status;
+            $booking_toy->save();
+        } elseif ($booking_toy->status == 0) {
+            $booking_toy->status = 1;
+            $booking_toy->id_admin = Auth::guard('admin')->id();
+            $booking_toy->save();
+        }
 
         return redirect()->route('booking_toys.index');
     }
@@ -135,8 +140,7 @@ class Booking_toyController extends Controller
      */
     public function destroy(Booking_toy $booking_toy)
     {
-        $booking_toy->status = 0;
-        $booking_toy->save();
+        $booking_toy->delete();
 
         return redirect()->route('booking_toys.index');
     }

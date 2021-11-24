@@ -113,10 +113,10 @@ class Booking_audioController extends Controller
     public function edit(Booking_audio $booking_audio)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $audio = Audio::paginate();
 
-        return view('admin.booking_audio.edit-booking_audio', [
+        return view('admin.audio.update-booking-audio', [
             'item' => $booking_audio,
             'member' => $member,
             'user' => $user,
@@ -134,10 +134,14 @@ class Booking_audioController extends Controller
      */
     public function update(Request $request, Booking_audio $booking_audio)
     {
-
-        $data = $request->all();
-
-        $booking_audio->update($data);
+        if ($booking_audio->status == 1) {
+            $booking_audio->status = $request->status;
+            $booking_audio->save();
+        } elseif ($booking_audio->status == 0) {
+            $booking_audio->status = 1;
+            $booking_audio->id_admin = Auth::guard('admin')->id();
+            $booking_audio->save();
+        }
 
         return redirect()->route('booking_audios.index');
     }
@@ -150,8 +154,8 @@ class Booking_audioController extends Controller
      */
     public function destroy(Booking_audio $booking_audio)
     {
-        $booking_audio->status = 0;
-        $booking_audio->save();
+        $booking_audio->delete();
+        
         return redirect()->route('booking_audios.index');
     }
 }

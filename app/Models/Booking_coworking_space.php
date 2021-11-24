@@ -17,7 +17,8 @@ class Booking_coworking_space extends Model
         'id_member',
         'id_admin',
         'tgl_mulai',
-        'tgl_selesai'
+        'tgl_selesai',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

@@ -16,6 +16,7 @@ class Booking_toy extends Model
         'id_admin',
         'id_toy',
         'tgl_mulai',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

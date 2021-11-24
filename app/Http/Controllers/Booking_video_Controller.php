@@ -104,9 +104,9 @@ class Booking_video_Controller extends Controller
     public function edit(Booking_video $booking_video)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $video = Video::paginate();
-        return view('admin.booking_video.edit-booking_video', [
+        return view('admin.video.update-booking-video', [
             'item' => $booking_video,
             'member' => $member,
             'user' => $user,
@@ -123,11 +123,14 @@ class Booking_video_Controller extends Controller
      */
     public function update(Request $request, Booking_video $booking_video)
     {
-
-
-        $data = $request->all();
-
-        $booking_video->update($data);
+        if ($booking_video->status == 1) {
+            $booking_video->status = $request->status;
+            $booking_video->save();
+        } elseif ($booking_video->status == 0) {
+            $booking_video->status = 1;
+            $booking_video->id_admin = Auth::guard('admin')->id();
+            $booking_video->save();
+        }
 
         return redirect()->route('booking_videos.index');
     }
@@ -140,8 +143,7 @@ class Booking_video_Controller extends Controller
      */
     public function destroy(Booking_video $booking_video)
     {
-        $booking_video->status = 0;
-        $booking_video->save();
+        $booking_video->delete();
 
         return redirect()->route('booking_videos.index');
     }

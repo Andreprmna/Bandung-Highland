@@ -11,6 +11,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Booking_Coworking_spaceController extends Controller
 {
@@ -97,10 +98,10 @@ class Booking_Coworking_spaceController extends Controller
     public function edit(Booking_Coworking_space $booking_coworking_space)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $coworking_space = Coworking_space::paginate();
 
-        return view('admin.booking_coworking_space.edit-booking_coworking_space', [
+        return view('admin.coworking_space.update-booking-coworking-space', [
             'item' => $booking_coworking_space,
             'member' => $member,
             'user' => $user,
@@ -114,13 +115,16 @@ class Booking_Coworking_spaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking_Coworking_space $booking_Coworking_space)
+    public function update(Request $request, Booking_Coworking_space $booking_coworking_space)
     {
-
-
-        $data = $request->all();
-
-        $booking_Coworking_space->update($data);
+        if ($booking_coworking_space->status == 1) {
+            $booking_coworking_space->status = $request->status;
+            $booking_coworking_space->save();
+        } elseif ($booking_coworking_space->status == 0) {
+            $booking_coworking_space->status = 1;
+            $booking_coworking_space->id_admin = Auth::guard('admin')->id();
+            $booking_coworking_space->save();
+        }
 
         return redirect()->route('booking_coworking_spaces.index');
     }
@@ -133,8 +137,7 @@ class Booking_Coworking_spaceController extends Controller
      */
     public function destroy(Booking_Coworking_space $booking_coworking_space)
     {
-        $booking_coworking_space->status = 0;
-        $booking_coworking_space->save();
+        $booking_coworking_space->delete();
 
         return redirect()->route('booking_coworking_spaces.index');
     }

@@ -48,6 +48,7 @@ class BookingCoSpaceController extends Controller
         $data = $request->all();
         $data['id_member'] = Auth::guard('web')->id();
         $data['id_admin'] = 0;
+        $data['status'] = 0;
 
         $booking = Booking_Coworking_space::where('id_cs', $data['id_cs'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
 

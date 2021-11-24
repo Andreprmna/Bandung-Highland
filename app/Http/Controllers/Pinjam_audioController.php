@@ -98,10 +98,10 @@ class Pinjam_audioController extends Controller
     public function edit(Pinjam_audio $pinjam_audio)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $audio = Audio::paginate();
 
-        return view('admin.pinjam_audio.edit-pinjam_audio', [
+        return view('admin.audio.return-pinjam-audio', [
             'item' => $pinjam_audio,
             'member' => $member,
             'user' => $user,
@@ -117,10 +117,10 @@ class Pinjam_audioController extends Controller
      */
     public function update(Request $request, Pinjam_audio $pinjam_audio)
     {
-
-        $data = $request->all();
-
-        $pinjam_audio->update($data);
+        $pinjam_audio->tgl_pengembalian = $request->tgl_pengembalian;
+        $pinjam_audio->denda = $request->denda;
+        $pinjam_audio->status = 2;
+        $pinjam_audio->save();
 
         return redirect()->route('pinjam_audios.index');
     }

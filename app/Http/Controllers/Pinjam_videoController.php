@@ -72,9 +72,7 @@ class Pinjam_videoController extends Controller
                 'id_admin'   => $data['id_admin'],
                 'id_video'         => $data['id_video'],
                 'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_kembali'       => $data['tgl_kembali'],
-                'tgl_pengembalian' => $data['tgl_pengembalian'],
-                'denda' => $data['denda']
+                'tgl_kembali'       => $data['tgl_kembali']
 
             ]);
         } else {
@@ -101,8 +99,15 @@ class Pinjam_videoController extends Controller
      */
     public function edit(Pinjam_video $pinjam_video)
     {
-        return view('admin.pinjam_toy.edit-pinjam_toy', [
-            'item' => $pinjam_video
+        $member = Member::paginate();
+        $user = Admin::paginate();
+        $video = Video::paginate();
+
+        return view('admin.video.return-pinjam-video', [
+            'item' => $pinjam_video,
+            'member' => $member,
+            'user' => $user,
+            'video' => $video
         ]);
     }
     /**
@@ -114,11 +119,10 @@ class Pinjam_videoController extends Controller
      */
     public function update(Request $request, Pinjam_video $pinjam_video)
     {
-
-
-        $data = $request->all();
-
-        $pinjam_video->update($data);
+        $pinjam_video->tgl_pengembalian = $request->tgl_pengembalian;
+        $pinjam_video->denda = $request->denda;
+        $pinjam_video->status = 2;
+        $pinjam_video->save();
 
         return redirect()->route('pinjam_videos.index');
     }

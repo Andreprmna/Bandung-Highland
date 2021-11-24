@@ -16,7 +16,8 @@ class Booking_buku extends Model
         'id_admin',
         'id_buku',
         'tgl_mulai',
-        'tgl_selesai'
+        'tgl_selesai',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

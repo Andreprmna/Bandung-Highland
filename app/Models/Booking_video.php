@@ -16,7 +16,8 @@ class Booking_video extends Model
         'id_admin',
         'id_video',
         'tgl_mulai',
-        'tgl_selesai'
+        'tgl_selesai',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

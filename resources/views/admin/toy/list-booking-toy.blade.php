@@ -35,18 +35,39 @@
                                     </td>
                                     <td>{{$item->toy->nama_toy}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
-                                    <td>{{$item->status}}</td>
+                                    <td>
+                                        @if ($item->status == 0)
+                                            Verifying
+                                        @elseif ($item->status == 1)
+                                            Active
+                                        @elseif ($item->status == 2)
+                                            Booked
+                                        @endif
+                                    </td>
+                                    @if ($item->status == 0)
                                     <td>
                                         <div class="row">
-                                        <form action="{{ route('booking_toys.edit', $item->id_booking_toy) }}" class="inline-block px-2">
-                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
-                                        </form>
-                                        <form action="{{ route('booking_toys.destroy', $item->id_booking_toy) }}" method="POST" class="inline-block">
-                                            {!! method_field('delete') . csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                        </form>
+                                            <form action="{{route('booking_toys.update', $item->id_booking_toy)}}" method="POST" enctype="multipart/form-data" class="inline-block px-2">
+                                                {!! method_field('put') . csrf_field() !!}
+                                                <button type="submit" class="btn btn-success"><i class="far fa-check-circle"></i></button>
+                                            </form>
+                                            <form action="{{ route('booking_toys.destroy', $item->id_booking_toy) }}" method="POST" class="inline-block">
+                                                {!! method_field('delete') . csrf_field() !!}
+                                                <button type="submit" class="btn btn-danger"><i class="far fa-times-circle"></i></button>
+                                            </form>
                                         </div>
                                     </td>
+                                    @elseif ($item->status == 1)
+                                    <td>
+                                        <div class="text-center">
+                                            <form action="{{ route('booking_toys.edit', $item->id_booking_toy) }}" class="inline-block px-2">
+                                            <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    @elseif ($item->status == 2)
+                                    <td class="text-center">-</td>
+                                    @endif
                                 </tr>
                             @empty
                                 <tr>

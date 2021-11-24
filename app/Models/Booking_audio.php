@@ -16,7 +16,8 @@ class Booking_audio extends Model
         'id_admin',
         'id_audio',
         'tgl_mulai',
-        'tgl_selesai'
+        'tgl_selesai',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

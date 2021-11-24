@@ -48,6 +48,7 @@ class BookingBukuController extends Controller
         $data = $request->all();
         $data['id_member'] = Auth::guard('web')->id();
         $data['id_admin'] = 0;
+        $data['status'] = 0;
 
         $booking = Booking_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
         $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();

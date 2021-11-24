@@ -69,8 +69,7 @@ class pinjam_toyController extends Controller
                 'id_member'  => $data['id_member'],
                 'id_admin'   => $data['id_admin'],
                 'id_toy'         => $data['id_toy'],
-                'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_pengembalian'  => $data['tgl_pengembalian']
+                'tgl_pinjam'   => $data['tgl_pinjam']
 
             ]);
         } else {
@@ -98,9 +97,9 @@ class pinjam_toyController extends Controller
     public function edit(pinjam_toy $pinjam_toy)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $toy = Toy::paginate();
-        return view('admin.pinjam_toy.edit-pinjam_toy', [
+        return view('admin.toy.return-pinjam-toy', [
             'item' => $pinjam_toy,
             'member' => $member,
             'user' => $user,
@@ -117,9 +116,9 @@ class pinjam_toyController extends Controller
     public function update(Request $request, pinjam_toy $pinjam_toy)
     {
 
-        $data = $request->all();
-
-        $pinjam_toy->update($data);
+        $pinjam_toy->tgl_pengembalian = $request->tgl_pengembalian;
+        $pinjam_toy->status = 2;
+        $pinjam_toy->save();
 
         return redirect()->route('pinjam_toys.index');
     }

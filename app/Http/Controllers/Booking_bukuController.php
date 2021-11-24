@@ -104,9 +104,9 @@ class Booking_bukuController extends Controller
     public function edit(Booking_buku $booking_buku)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $buku = Buku::paginate();
-        return view('admin.booking_buku.edit-booking_buku', [
+        return view('admin.buku.update-booking-buku', [
             'item' => $booking_buku,
             'member' => $member,
             'user' => $user,
@@ -123,9 +123,14 @@ class Booking_bukuController extends Controller
     public function update(Request $request, Booking_buku $booking_buku)
     {
 
-        $data = $request->all();
-
-        $booking_buku->update($data);
+        if ($booking_buku->status == 1) {
+            $booking_buku->status = $request->status;
+            $booking_buku->save();
+        } elseif ($booking_buku->status == 0) {
+            $booking_buku->status = 1;
+            $booking_buku->id_admin = Auth::guard('admin')->id();
+            $booking_buku->save();
+        }
 
         return redirect()->route('booking_bukus.index');
     }
@@ -138,8 +143,7 @@ class Booking_bukuController extends Controller
      */
     public function destroy(Booking_buku $booking_buku)
     {
-        $booking_buku->status = 0;
-        $booking_buku->save();
+        $booking_buku->delete();
 
         return redirect()->route('booking_bukus.index');
     }

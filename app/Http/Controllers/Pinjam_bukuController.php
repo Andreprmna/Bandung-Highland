@@ -97,9 +97,9 @@ class Pinjam_bukuController extends Controller
     public function edit(Pinjam_buku $pinjam_buku)
     {
         $member = Member::paginate();
-        $user = User::paginate();
+        $user = Admin::paginate();
         $buku = Buku::paginate();
-        return view('admin.pinjam_buku.edit-pinjam_buku', [
+        return view('admin.buku.return-pinjam-buku', [
             'item' => $pinjam_buku,
             'member' => $member,
             'user' => $user,
@@ -116,9 +116,10 @@ class Pinjam_bukuController extends Controller
     public function update(Request $request, Pinjam_buku $pinjam_buku)
     {
 
-        $data = $request->all();
-
-        $pinjam_buku->update($data);
+        $pinjam_buku->tgl_pengembalian = $request->tgl_pengembalian;
+        $pinjam_buku->denda = $request->denda;
+        $pinjam_buku->status = 2;
+        $pinjam_buku->save();
 
         return redirect()->route('pinjam_bukus.index');
     }

@@ -38,20 +38,22 @@
                                             -
                                         @endif
                                     </td>
-                                    <td>{{$item->status}}</td>
                                     <td>
+                                        @if ($item->status == 1)
+                                            Active
+                                        @else
+                                            Returned
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
                                         @if ($item->status != 2)
-                                            <div class="row">
+                                            <div class="text-center">
                                             <form action="{{ route('pinjam_toys.edit', $item->id_pinjam_toy) }}" class="inline-block px-2">
                                                 <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                             </form>
-                                            {{-- <form action="{{ route('pinjam_bukus.destroy', $item->id_pinjam_buku) }}" method="POST" class="inline-block">
-                                                {!! method_field('delete') . csrf_field() !!}
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form> --}}
                                             </div>
                                         @else
-                                            Returned
+                                            -
                                         @endif
                                     </td>
                                 </tr>
