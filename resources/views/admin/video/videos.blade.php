@@ -13,7 +13,6 @@
                         <tr>
                             <th>No</th>
                             <th>Judul</th>
-                            <th>Tahun Rilis</th>
                             <th>Genre</th>
                             <th>Durasi</th>
                             <th>Deskripsi</th>
@@ -30,7 +29,6 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->judul}}</td>
-                                    <td>{{$item->tahun_rilis}}</td>
                                     <td>{{$item->genre}}</td>
                                     <td>{{$item->durasi}}</td>
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->deskripsi}}</td>
@@ -43,7 +41,11 @@
                                         @elseif ($item->format == 3)
                                         <td>mkv</td>
                                     @endif
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td><img src="{{url('storage/'.$item->cover)}}" width="100px"></td>
                                     <td>
                                         <div class="d-flex justify-content-around">

@@ -15,7 +15,6 @@
                             <th>Judul</th>
                             <th>Pengisi Suara</th>
                             <th>Tahun Rilis</th>
-                            <th>Genre</th>
                             <th>Durasi</th>
                             <th>Format</th>
                             <th>Status</th>
@@ -31,17 +30,20 @@
                                     <td>{{$no++}}</td>
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->judul}}</td>
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->pengisi_suara}}</td>
-                                    <td >{{$item->tahun_rilis}}</td>
-                                    <td class="text-truncate" style="max-width: 8rem">{{$item->genre}}</td>
-                                    <td>{{$item->durasi}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->tahun_rilis}}</td>
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->durasi}}</td>
                                     @if ($item->format == 0)
-                                        <td>Kaset</td>
+                                        <td class="text-truncate" style="max-width: 8rem">Kaset</td>
                                         @elseif ($item->format == 1)
-                                        <td>VCD</td>
+                                        <td class="text-truncate" style="max-width: 8rem">VCD</td>
                                         @elseif ($item->format == 2)
-                                        <td>Mp3</td>
+                                        <td class="text-truncate" style="max-width: 8rem">Mp3</td>
                                     @endif
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td><img src="{{url('storage/'.$item->cover)}}" width="100px"></td>
                                     <td>
                                         <div class="row">

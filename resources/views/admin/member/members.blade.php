@@ -30,11 +30,9 @@
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->jenis_kelamin}}</td>
                                     @if ($item->status == 0)
-                                        <td>Unverified</td>
+                                        <td>Inactive</td>
                                         @elseif ($item->status == 1)
                                         <td>Active</td>
-                                        @elseif ($item->status == 2)
-                                        <td>Inactive</td>
                                     @endif
                                     <td><img src="{{url('storage/'.$item->foto_profil)}}" width="100px"></td>
                                     <td>

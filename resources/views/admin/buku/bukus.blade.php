@@ -37,7 +37,11 @@
                                         @elseif ($item->bentuk == 1)
                                         <td>E-Book</td>
                                     @endif
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td><img src="{{url('storage/'.$item->sampul)}}" width="100px"></td>
                                     <td>
                                         <div class="d-flex justify-content-around">

@@ -28,7 +28,11 @@
                                     <td>{{$item->nomor_cs}}</td>
                                     <td>{{$item->daya_tampung}}</td>
                                     <td>{{$item->deskripsi_cs}}</td>
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('coworking_spaces.edit', $item->id_cs) }}" class="inline-block px-2">

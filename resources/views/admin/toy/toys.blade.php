@@ -30,7 +30,11 @@
                                     <td>{{$item->jenis}}</td>
                                     <td>{{$item->genre}}</td>
                                     <td>{{$item->deskripsi}}</td>
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('toys.edit', $item->id_toy) }}" class="inline-block px-2">

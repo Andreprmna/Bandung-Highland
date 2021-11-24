@@ -24,7 +24,11 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->nama_penerbit}}</td>
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Inactive</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Active</td>
+                                    @endif
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('penerbits.edit', $item->id_penerbit) }}" class="inline-block px-2">

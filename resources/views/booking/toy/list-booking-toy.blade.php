@@ -46,7 +46,15 @@ Community Center - Mainan
                         </div>
                         <span class="px-0"><p>Jenis: {{$item->jenis}}</p></span>
                         <span class="px-0"><p>Genre: {{$item->genre}}</p></span>
-                        <span class="px-0"><p>Status: {{$item->status}}</p></span>
+                        <span class="px-0">
+                            <p>
+                                Status: @if ($item->status == 1)
+                                    Tersedia
+                                    @else
+                                    Tidak Tersedia
+                                @endif
+                            </p>
+                        </span>
                     </div>
                 </a>
             </div>

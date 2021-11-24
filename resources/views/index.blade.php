@@ -54,14 +54,14 @@ Community Center - Home
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card-body">
                     <div class="row">
-                        <span class="service-icon"><i class="nav-icon fas fa-users fa-2x"></i></span>
+                        <span class="service-icon"><i class="nav-icon fas fa-audio-description fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="my-1 font-20">Kursus</h3>
+                            <h3 class="my-1 font-20">Booking Audio</h3>
                             <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam commodi minima quis ad nostrum rem soluta ducimus, reiciendis eligendi, aliquid corrupti ea nisi alias labore expedita aspernatur.
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">See More</button>
+                    <a href="{{ route('audio.index') }}"><button type="button" class="btn btn-primary my-3">See More</button></a>
                     <hr class="service-hr">
                 </div>
             </div>
@@ -70,14 +70,14 @@ Community Center - Home
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card-body">
                     <div class="row">
-                        <span class="service-icon"><i class="nav-icon fas fa-book fa-2x"></i></span>
+                        <span class="service-icon"><i class="nav-icon fas fa-book-open fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="my-1 font-20">Perpustakaan</h3>
+                            <h3 class="my-1 font-20">Booking Buku</h3>
                             <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore praesentium magni reprehenderit facilis, molestias exercitationem minus suscipit aliquam corrupti deserunt alias.
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">See More</button>
+                    <a href="{{ route('buku.index') }}"><button type="button" class="btn btn-primary my-3">See More</button></a>
                     <hr class="service-hr">
                 </div>
             </div>
@@ -85,31 +85,47 @@ Community Center - Home
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card-body">
                     <div class="row">
-                        <span class="service-icon"><i class="nav-icon fas fa-building fa-2x"></i></span>
+                        <span class="service-icon"><i class="nav-icon fas fa-laptop-house fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="my-1 font-20">Ruang Belajar</h3>
+                            <h3 class="my-1 font-20">Booking Coworking Space</h3>
                             <p class="mb-3 mt-3 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam voluptatem, minima commodi tempora quia necessitatibus consequatur, doloremque magnam voluptatum dicta ipsum architecto Eaque?
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">See More</button>
+                    <a href="{{ route('coworking-space.index') }}"><button type="button" class="btn btn-primary my-3">See More</button></a>
                     <hr class="service-hr">
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card-body">
                     <div class="row">
-                        <span class="service-icon"><i class="nav-icon fas fa-user-plus fa-2x"></i></span>
+                        <span class="service-icon"><i class="nav-icon fas fa-gamepad fa-2x"></i></span>
                         <div class="col text-left">
-                            <h3 class="my-1 font-20">Pelatihan Guru</h3>
+                            <h3 class="my-1 font-20">Booking Mainan</h3>
                             <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cumque eum saepe fugit dolores at ullam veritatis quisquam modi odit? Corrupti quod quaerat animi veritatis nemo officia?
                             </p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3">See More</button>
+                    <a href="{{ route('toy.index') }}"><button type="button" class="btn btn-primary my-3">See More</button></a>
                     <hr class="service-hr">
                 </div>
             </div>
+        </div>
+        <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6 col-xl-6">
+            <div class="card-body">
+                <div class="row">
+                    <span class="service-icon"><i class="nav-icon fas fa-video fa-2x"></i></span>
+                    <div class="col text-left">
+                        <h3 class="my-1 font-20">Booking Video</h3>
+                        <p class="mb-3 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cumque eum saepe fugit dolores at ullam veritatis quisquam modi odit? Corrupti quod quaerat animi veritatis nemo officia?
+                        </p>
+                    </div>
+                </div>
+                <a href="{{ route('video.index') }}"><button type="button" class="btn btn-primary my-3">See More</button></a>
+                <hr class="service-hr">
+            </div>
+        </div>
         </div>
     </div>
     <hr>

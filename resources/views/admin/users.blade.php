@@ -31,11 +31,9 @@
                                     <td>{{$item->role->nama_role}}</td>
                                     <td>{{$item->jenis_kelamin}}</td>
                                     @if ($item->status == 0)
-                                        <td>Unverified</td>
+                                        <td>Inactive</td>
                                         @elseif ($item->status == 1)
                                         <td>Active</td>
-                                        @elseif ($item->status == 2)
-                                        <td>Inactive</td>
                                     @endif
                                     <td>
                                         <div class="row">

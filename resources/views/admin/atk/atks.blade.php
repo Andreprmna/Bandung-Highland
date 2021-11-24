@@ -30,7 +30,11 @@
                                     <td>{{$item->harga}}</td>
                                     <td>{{$item->jumlah}}</td>
                                     <td>{{$item->deskripsi_atk}}</td>
-                                    <td>{{$item->status_atk}}</td>
+                                    @if ($item->status_atk == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status_atk == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('atks.edit', $item->id_atk) }}" class="inline-block px-2">

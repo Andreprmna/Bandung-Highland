@@ -52,12 +52,20 @@ Community Center - Buku
                             <tr>
                                 <td class="p-0 pb-2 head-info">Bentuk</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->bentuk}}</td>
+                                @if ($item->bentuk == 0)
+                                    <td class="p-0">Fisik</td>
+                                    @elseif ($item->bentuk == 1)
+                                    <td class="p-0">E-Book</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td class="p-0 pb-2 head-info">Kondisi</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->kondisi}}</td>
+                                @if ($item->kondisi == 0)
+                                    <td class="p-0">Bekas</td>
+                                    @elseif ($item->kondisi == 1)
+                                    <td class="p-0">Baru</td>
+                                @endif
                             </tr>
                             <tr class="d-lg-none">
                                 <td class="p-0 pb-2 head-info">ISBN</td>
@@ -77,7 +85,11 @@ Community Center - Buku
                             <tr class="d-lg-none">
                                 <td class="p-0 pb-2 head-info">Status</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->status}}</td>
+                                @if ($item->status == 1)
+                                    <td class="p-0">Tersedia</td>
+                                    @else
+                                    <td class="p-0">Tidak Tersedia</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -103,7 +115,11 @@ Community Center - Buku
                             <tr>
                                 <td class="p-0 pb-2 head-info">Status</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->status}}</td>
+                                @if ($item->status == 1)
+                                    <td class="p-0">Tersedia</td>
+                                    @else
+                                    <td class="p-0">Tidak Tersedia</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -125,15 +141,15 @@ Community Center - Buku
                 <div class="row">
                     <div class="col">
                     <label for="date">Tanggal Mulai</label>
-                    <input type="date" class="form-control" placeholder="Tanggal Mulai" name="tgl_mulai">
+                    <input type="date" class="form-control" placeholder="Tanggal Mulai" name="tgl_mulai" @if ($item->status != 1) readonly @endif required>
                     </div>
                     <div class="col">
                         <label for="date">Tanggal Selesai</label>
-                    <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai">
+                    <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai" @if ($item->status != 1) readonly @endif required>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-4">
-                    <button type="submit" class="btn btn-primary">Book</button>    
+                    <button type="submit" class="btn btn-primary" @if ($item->status != 1) disabled @endif>Book</button>    
                 </div>
             </form>
         </div>

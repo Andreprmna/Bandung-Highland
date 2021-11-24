@@ -24,7 +24,11 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$item->nama_property}}</td>
-                                    <td>{{$item->status}}</td>
+                                    @if ($item->status == 0)
+                                        <td>Tidak Tersedia</td>
+                                        @elseif ($item->status == 1)
+                                        <td>Tersedia</td>
+                                    @endif
                                     <td>
                                         <div class="row">
                                         <form action="{{ route('properties.edit', $item->id_property) }}" class="inline-block px-2">

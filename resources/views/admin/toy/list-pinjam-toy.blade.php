@@ -2,8 +2,13 @@
 @section('title', 'List Pinjam Toy')
 
 @section('content')
-    <div class="px-4 py-10">
-        <a class="btn btn-success" href="{{ route('pinjam_toys.create') }}" role="button">+ Pinjam Toy</a>
+    <div class="d-flex justify-content-between">
+        <div class="px-4 py-10">
+            <a class="btn btn-success" href="{{ route('pinjam_toys.create') }}" role="button">+ Pinjam Toy</a>
+        </div>
+        <div class="px-4 py-10">
+            <a class="btn btn-success" href="#" role="button">Export</a>
+        </div>
     </div>
     <div class="py-12 my-4">
         <div class="overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">

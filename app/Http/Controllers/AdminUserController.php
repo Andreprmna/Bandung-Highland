@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\Admin;
+use App\Models\Booking_audio;
+use App\Models\Booking_buku;
+use App\Models\Booking_coworking_space;
+use App\Models\Booking_toy;
+use App\Models\Booking_video;
+use App\Models\Member;
 use App\Models\Role;
 use Error;
 use Illuminate\Http\Request;
@@ -108,8 +114,22 @@ class AdminUserController extends Controller
 
     public function dashboardAdmin()
     {
+        $member = Member::count();
+        $audio = Booking_audio::count();
+        $buku = Booking_buku::count();
+        $cospace = Booking_coworking_space::count();
+        $toy = Booking_toy::count();
+        $video = Booking_video::count();
+
         if (Auth::guard('admin')->check()) {
-            return view('admin.dashboard');
+            return view('admin.dashboard', [
+                'member' => $member,
+                'audio' => $audio,
+                'buku' => $buku,
+                'cospace' => $cospace,
+                'toy' => $toy,
+                'video' => $video,
+            ]);
         }
 
         return redirect("cms")->withSuccess('You are not allowed to access');

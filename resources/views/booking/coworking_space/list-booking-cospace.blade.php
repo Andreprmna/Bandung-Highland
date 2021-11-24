@@ -45,7 +45,15 @@ Community Center - Coworking Space
                             <p>{{$item->deskripsi_cs}}</p>
                         </div>
                         <span class="px-0"><p>Daya Tampung: {{$item->daya_tampung}}</p></span>
-                        <span class="px-0"><p>Status: {{$item->status}}</p></span>
+                        <span class="px-0">
+                            <p>
+                                Status: @if ($item->status == 1)
+                                    Tersedia
+                                    @else
+                                    Tidak Tersedia
+                                @endif
+                            </p>
+                        </span>
                     </div>
                 </a>
             </div>

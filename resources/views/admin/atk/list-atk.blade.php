@@ -2,8 +2,13 @@
 @section('title', 'List Transaksi Alat Tulis Kantor')
 
 @section('content')
-    <div class="px-4 py-10">
-        <a class="btn btn-success" href="{{ route('point_of_sells.create') }}" role="button">+ Beli Alat Tulis Kantor</a>
+    <div class="d-flex justify-content-between">
+        <div class="px-4 py-10">
+            <a class="btn btn-success" href="{{ route('point_of_sells.create') }}" role="button">+ Beli Alat Tulis Kantor</a>
+        </div>
+        <div class="px-4 py-10">
+            <a class="btn btn-success" href="#" role="button">Export</a>
+        </div>
     </div>
     <div class="py-12 my-4">
         <div class="overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">
