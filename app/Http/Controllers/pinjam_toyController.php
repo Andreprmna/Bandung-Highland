@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Pinjam_toyExport;
 use App\Http\Requests\pinjam_toyRequest;
 use App\Models\Admin;
 use App\Models\Member;
@@ -12,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class pinjam_toyController extends Controller
 {
@@ -135,5 +137,9 @@ class pinjam_toyController extends Controller
         $pinjam_toy->save();
 
         return redirect()->route('pinjam_toys.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Pinjam_toyExport, 'Pinjam_toy.xlsx');
     }
 }

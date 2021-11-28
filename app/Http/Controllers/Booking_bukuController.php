@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\booking_bukuExport;
 use App\Http\Requests\Booking_bukuRequest;
 use App\Models\Admin;
 use App\Models\Booking_buku;
@@ -13,6 +14,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Booking_bukuController extends Controller
 {
@@ -146,5 +148,9 @@ class Booking_bukuController extends Controller
         $booking_buku->delete();
 
         return redirect()->route('booking_bukus.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new booking_bukuExport, 'Booking_buku.xlsx');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Booking_videoExport;
 use App\Http\Requests\Booking_video_Request;
 use App\Models\Admin;
 use App\Models\Booking_video;
@@ -13,6 +14,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Booking_video_Controller extends Controller
 {
@@ -146,5 +148,9 @@ class Booking_video_Controller extends Controller
         $booking_video->delete();
 
         return redirect()->route('booking_videos.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Booking_videoExport, 'Booking_video.xlsx');
     }
 }

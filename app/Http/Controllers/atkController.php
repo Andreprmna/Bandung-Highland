@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AtkExport;
 use App\Http\Requests\atkRequest;
 use App\Models\Atk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class atkController extends Controller
 {
@@ -113,5 +115,9 @@ class atkController extends Controller
 
 
         return redirect()->route('atks.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new AtkExport, 'Atk.xlsx');
     }
 }

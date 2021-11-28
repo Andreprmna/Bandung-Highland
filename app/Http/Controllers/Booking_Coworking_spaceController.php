@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Booking_Coworking_spaceExport;
 use App\Http\Requests\Booking_Coworking_spaceRequest;
 use App\Models\Admin;
 use App\Models\Booking_Coworking_space;
@@ -12,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Booking_Coworking_spaceController extends Controller
 {
@@ -140,5 +142,9 @@ class Booking_Coworking_spaceController extends Controller
         $booking_coworking_space->delete();
 
         return redirect()->route('booking_coworking_spaces.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Booking_Coworking_spaceExport, 'Booking_CSP.xlsx');
     }
 }

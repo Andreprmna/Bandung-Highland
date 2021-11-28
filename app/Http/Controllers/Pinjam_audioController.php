@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Pinjam_audioExport;
 use App\Http\Requests\Pinjam_audioRequest;
 use App\Models\Admin;
 use App\Models\Audio;
@@ -12,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Pinjam_audioController extends Controller
 {
@@ -137,5 +139,9 @@ class Pinjam_audioController extends Controller
         $pinjam_audio->save();
 
         return redirect()->route('pinjam_audios.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Pinjam_audioExport, 'Pinjam_audio.xlsx');
     }
 }

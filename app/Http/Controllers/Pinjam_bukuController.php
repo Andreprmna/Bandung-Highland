@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Pinjam_bukuExport;
 use App\Http\Requests\Pinjam_bukuRequest;
 use App\Models\Admin;
 use App\Models\Buku;
@@ -12,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Pinjam_bukuController extends Controller
 {
@@ -136,5 +138,9 @@ class Pinjam_bukuController extends Controller
         $pinjam_buku->save();
 
         return redirect()->route('pinjam_bukus.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Pinjam_bukuExport, 'Pinjam_buku.xlsx');
     }
 }

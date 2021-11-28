@@ -163,6 +163,6 @@ class Booking_audioController extends Controller
 
     public function export_excel()
     {
-        return Excel::download(new booking_audioExport, 'Booking_xlsx');
+        return Excel::download(new booking_audioExport, 'Booking_audio.xlsx');
     }
 }

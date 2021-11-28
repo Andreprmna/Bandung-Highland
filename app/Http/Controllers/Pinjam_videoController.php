@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Pinjam_videoExport;
 use App\Http\Requests\pinjam_toyRequest;
 use App\Http\Requests\Pinjam_videoRequest;
 use App\Models\Admin;
@@ -14,6 +15,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Pinjam_videoController extends Controller
 {
@@ -139,5 +141,9 @@ class Pinjam_videoController extends Controller
         $pinjam_video->save();
 
         return redirect()->route('pinjam_videos.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Pinjam_videoExport, 'Pinjam_audio.xlsx');
     }
 }

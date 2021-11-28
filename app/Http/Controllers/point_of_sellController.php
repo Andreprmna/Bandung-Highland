@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Point_of_sellExport;
 use App\Http\Requests\point_of_sellRequest;
 use App\Models\Admin;
 use App\Models\Atk;
@@ -10,6 +11,7 @@ use App\Models\Point_of_sell;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class point_of_sellController extends Controller
 {
@@ -37,7 +39,7 @@ class point_of_sellController extends Controller
         $member = Member::paginate();
         $user = Admin::paginate();
         $atk = Atk::paginate();
-        
+
         return view('admin.atk.beli-atk', [
             'member' => $member,
             'user' => $user,
@@ -130,5 +132,9 @@ class point_of_sellController extends Controller
         // $point_of_sell->delete();
 
         // return redirect()->route('point_of_sells.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Point_of_sellExport, 'Point_of_sell.xlsx');
     }
 }

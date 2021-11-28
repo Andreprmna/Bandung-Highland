@@ -13,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Booking_toyController extends Controller
 {
@@ -143,5 +144,9 @@ class Booking_toyController extends Controller
         $booking_toy->delete();
 
         return redirect()->route('booking_toys.index');
+    }
+    public function export_excel()
+    {
+        return Excel::download(new Booking_toy, 'Booking_toy.xlsx');
     }
 }
