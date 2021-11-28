@@ -39,7 +39,7 @@ Community Center - Home
         <h1>Selamat Datang</h1>
     </div>
     <div class="my-4 welcome-intro">
-        <video class="video-fluid" width="600" controls>
+        <video class="video-fluid welcome-video" width="600" controls>
             <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" />
         </video>
         <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, culpa.</p>

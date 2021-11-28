@@ -6286,6 +6286,9 @@ table.focus-on tfoot tr.focused td {
     .breadcrumb-post {
         display: inline-block;
     }
+    .welcome-video {
+        width: 340px;
+    }
 }
 @media (max-width: 620px) {
     .xp-main-logo {
@@ -6294,6 +6297,11 @@ table.focus-on tfoot tr.focused td {
 
     .xp-small-logo {
         display: block;
+    }
+}
+@media (max-width: 350px) {
+    .welcome-video {
+        width: 280px;
     }
 }
 
