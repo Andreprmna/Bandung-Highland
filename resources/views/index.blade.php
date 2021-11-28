@@ -35,13 +35,16 @@ Community Center - Home
     </a>
 </div>
 <div class="container my-5 welcome">
-    <div class="">
-        <h3>Selamat Datang</h3>
+    <div class="text-center">
+        <h1>Selamat Datang</h1>
     </div>
     <div class="my-4 welcome-intro">
+        <video class="video-fluid" width="600" controls>
+            <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" />
+        </video>
         <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, culpa.</p>
-        <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ad debitis cum voluptate obcaecati, velit numquam tenetur error ex corporis? Nulla tempora porro accusantium laudantium explicabo nemo obcaecati ratione. Ratione.</p>
-        <button type="button" class="btn btn-primary my-3">See More</button>
+        <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ad debitis cum voluptate obcaecati, velit numquam tenetur error ex corporis? Nulla tempora porro accusantium laudantium explicabo nemo obcaecati ratione. Ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, ipsa Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, nihil!</p>
+        
         <hr>
     </div>
 </div>

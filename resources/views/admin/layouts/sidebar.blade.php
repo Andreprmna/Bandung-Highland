@@ -25,7 +25,7 @@
                 @endif">
                     <i class="nav-icon fas fa-mail-bulk"></i>
                     <p>
-                    Point Of Sell
+                    Alat Tulis Kantor
                     <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -270,7 +270,7 @@
 
             <li class="nav-header">ACCOUNT</li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.profile') }}" class="nav-link">
                 <i class="nav-icon fas fa-id-card-alt"></i>
                 <p>Profile</p>
             </a>

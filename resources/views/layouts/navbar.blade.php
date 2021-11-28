@@ -12,13 +12,13 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex mr-auto">
-                    <a href="#" class="d-flex align-items-center mr-4 top-nav">
+                    <a href="mailto:someone@example.com" target="_blank" class="d-flex align-items-center mr-4 top-nav">
                         <span class="icon-envelope mr-2"></span>
-                        <span class="d-none d-md-inline-block">info@domain.com</span>
+                        <span class="d-none d-md-inline-block">highlandcc@domain.com</span>
                     </a>
-                    <a href="#" class="d-flex align-items-center mr-auto top-nav">
+                    <a href="https://wa.me/6282221211211?text=Halo%20Didi%2C%20saya%20ingin%20bertanya-tanya%20seputar%20teknologi.%20%3A%29" class="d-flex align-items-center mr-auto top-nav" target="_blank">
                         <span class="icon-phone mr-2"></span>
-                        <span class="d-none d-md-inline-block">+1 234 4567 8910</span>
+                        <span class="d-none d-md-inline-block">+62 234 4567 8910</span>
                     </a>
                 </div>
                 <div class="d-flex justify-content-end align-items-center">
@@ -39,7 +39,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-userprofile">
                                     <a class="dropdown-item py-3 text-center font-16" href="#">Welcome, {{ auth()->guard('web')->user()->nama }}</a>
-                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('update.profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ route('signout') }}">Logout</a>
                                 </div>
                             </div>                                   
@@ -75,7 +75,7 @@
                                             <span class="ml-2">{{ auth()->guard('web')->user()->nama }}</span>
                                         </a>
                                         <ul class="dropdown arrow-top">
-                                        <li><a href="#" class="nav-link">Profile</a></li>
+                                        <li><a href="{{ route('update.profile') }}" class="nav-link">Profile</a></li>
                                         <li><a href="{{ route('signout') }}" class="nav-link">Logout</a></li>
                                         </ul>
                                     </li>

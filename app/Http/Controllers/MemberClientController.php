@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MemberRequest;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class MemberController extends Controller
+class MemberClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +16,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $member = Member::paginate();
-
-        return view('admin.member.members', [
-            'member' => $member
-        ]);
-        return redirect()->route('cms');
+        //
     }
 
     /**
@@ -32,9 +26,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('admin.member.create-member');
-
-        return redirect()->route('cms');
+        //
     }
 
     /**
@@ -43,36 +35,34 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MemberRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-
-        $data['password'] = Hash::make($request->password);
-
-        if ($request->file('foto_profil') != null) {
-            $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
-        }
-
-        Member::create($data);
-
-        // $check = $this->createUser($data);
-
-        return redirect()->route("members.index")->withSuccess('You have signed-in');
+        //
     }
 
-
-    public function createUser(array $data)
+    public function customMemberLogin(Request $request)
     {
-        return Member::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'nama' => $data['nama'],
-            'tgl_lahir' => $data['tgl_lahir'],
-            'jenis_kelamin' => $data['jenis_kelamin'],
-            'alamat' => $data['alamat'],
-            'foto_profil' => $data['foto_profil'],
-
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
         ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->intended('/')
+                ->withSuccess('Signed in');
+        }
+
+        return redirect("login")->withSuccess('Login details are not valid');
+    }
+
+    public function profile()
+    {
+        if (Auth::guard('web')->check()) {
+            return view('update-profile');
+        }
+        return redirect()->route('login');
     }
 
     /**
@@ -92,13 +82,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit($id)
     {
-        return view('admin.member.edit-member', [
-            'item' => $member
-        ]);
-
-        return redirect()->route('cms');
+        //
     }
 
     /**
@@ -118,7 +104,29 @@ class MemberController extends Controller
 
         $member->update($data);
 
-        return redirect()->route('members.index');
+        return redirect()->route('update.profile');
+    }
+
+    public function changePassword(Request $request) {
+        $user = Auth::guard('web')->user();
+    
+        $userPassword = $user->password;
+        
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|same:confirm_password|min:6',
+            'confirm_password' => 'required',
+        ]);
+
+        if (!Hash::check($request->current_password, $userPassword)) {
+            return back()->withErrors(['current_password'=>'password not match']);
+        }
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return redirect()->back()->with('success','password successfully updated');
     }
 
     /**
@@ -127,11 +135,8 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
+    public function destroy($id)
     {
-        $member->status = 0;
-        $member->save();
-
-        return redirect()->route('members.index');
+        //
     }
 }

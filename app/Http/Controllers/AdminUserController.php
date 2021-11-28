@@ -26,7 +26,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $admin = Admin::with('role')->paginate();
+        $admin = Admin::with('role')->paginate()->except(Auth::guard('admin')->user()->id_admin);
 
         return view('admin.users', [
             'user' => $admin
@@ -162,6 +162,15 @@ class AdminUserController extends Controller
         ]);
     }
 
+    public function editProfile()
+    {
+        $role = Role::paginate();
+
+        return view('admin.profile-page', [
+            'role' => $role
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -179,7 +188,33 @@ class AdminUserController extends Controller
 
         $admin->update($data);
 
+        if ($admin->id_admin == Auth::guard('admin')->user()->id_admin) {
+            return redirect()->route('admin.profile');
+        }
+
         return redirect()->route('admins.index');
+    }
+
+    public function changePassword(Request $request) {
+        $user = Auth::guard('admin')->user();
+    
+        $userPassword = $user->password;
+        
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|same:confirm_password|min:6',
+            'confirm_password' => 'required',
+        ]);
+
+        if (!Hash::check($request->current_password, $userPassword)) {
+            return back()->withErrors(['current_password'=>'password not match']);
+        }
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return redirect()->back()->with('success','password successfully updated');
     }
 
     /**

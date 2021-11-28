@@ -28,7 +28,7 @@ Community Center - Video
 <!-- End XP Breadcrumbbar -->
 <!-- Start List Card -->
 <div class="container my-3 pb-5">
-    <div class="media py-3">
+    <div class="d-block d-lg-flex py-3">
         <img src="/storage/{{$item->cover}}" class="img-fluid mr-4 mb-4" alt="Responsive image" width="450" height="350">
         <div class="media-body">
             <h3 class="mt-0">{{$item->judul}}</h3>
@@ -47,7 +47,15 @@ Community Center - Video
                             <tr>
                                 <td class="p-0 pb-2 head-info">Format</td>
                                 <td class="p-0 px-3">:</td>
-                                <td class="p-0">{{$item->format}}</td>
+                                @if ($item->format == 0)
+                                    <td class="p-0">Kaset</td>
+                                    @elseif ($item->format == 1)
+                                    <td class="p-0">VCD</td>
+                                    @elseif ($item->format == 2)
+                                    <td class="p-0">Mp4</td>
+                                    @elseif ($item->format == 3)
+                                    <td class="p-0">mkv</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td class="p-0 pb-2 head-info">Durasi</td>
@@ -116,7 +124,7 @@ Community Center - Video
                     <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai" @if ($item->status != 1) readonly @endif required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end mt-4">
+                <div class="d-flex justify-content-end mt-4 mb-4 mb-md-0 mb-lg-0">
                     <button type="submit" class="btn btn-primary" @if ($item->status != 1) disabled @endif>Book</button>    
                 </div>
             </form>

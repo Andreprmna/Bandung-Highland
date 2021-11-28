@@ -49,7 +49,17 @@ Community Center - Video
                         </div>
                         <div class="d-block d-sm-flex">
                             <p class="px-0">Genre: {{$item->genre}}</p>
-                            <p class="pl-sm-3">Format: {{$item->format}}</p>
+                            <p class="pl-sm-3">Format: 
+                            @if ($item->format == 0)
+                                Kaset
+                                @elseif ($item->format == 1)
+                                VCD
+                                @elseif ($item->format == 2)
+                                Mp4
+                                @elseif ($item->format == 3)
+                                mkv
+                            @endif    
+                            </p>
                             <p class="pl-sm-3">Durasi: {{$item->durasi}}</p>
                             <p class="pl-sm-3">Tahun Rilis: {{$item->tahun_rilis}}</p>
                         </div>

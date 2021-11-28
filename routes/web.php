@@ -18,6 +18,7 @@ use App\Http\Controllers\Client\BookingToyController;
 use App\Http\Controllers\Client\BookingVideoController;
 use App\Http\Controllers\Coworking_space_propertiesController;
 use App\Http\Controllers\Coworking_spaceController;
+use App\Http\Controllers\MemberClientController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\Pinjam_audioController;
@@ -52,6 +53,8 @@ Route::prefix('cms')
         Route::get('admin-dashboard', [AdminUserController::class, 'dashboardAdmin'])->middleware('auth:admin');
         Route::post('custom-admin-login', [AdminUserController::class, 'customAdminLogin'])->name('login.admin');
         Route::get('admin-signout', [AdminUserController::class, 'signOutAdmin'])->name('signout.admin');
+        Route::get('admin-profile', [AdminUserController::class, 'editProfile'])->name('admin.profile')->middleware('auth:admin');
+        Route::post('admin-password',  [adminUserController::class,'changePassword'])->name('admin.password');
 
         Route::resource('penerbits', PenerbitController::class)->middleware('auth:admin');
         Route::resource('pengarangs', PengarangController::class)->middleware('auth:admin');
@@ -73,18 +76,24 @@ Route::prefix('cms')
         Route::resource('properties', PropertiesController::class)->middleware('auth:admin');
         Route::resource('toys', ToyController::class)->middleware('auth:admin');
         Route::resource('members', MemberController::class)->middleware('auth:admin');
-        // Route::resource('Users', UserController::class);
         Route::resource('videos', VideoController::class)->middleware('auth:admin');
     });
 
 
 Route::get('dashboard', [UserController::class, 'dashboard']);
 Route::get('login', [UserController::class, 'index'])->name('login');
-Route::post('custom-member-login', [MemberController::class, 'customMemberLogin'])->name('login.member');
+Route::post('custom-member-login', [MemberClientController::class, 'customMemberLogin'])->name('login.member');
 Route::post('custom-login', [UserController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [UserController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
+Route::get('update-profile', [MemberClientController::class, 'profile'])->name('update.profile');
+Route::post('change-password',  [MemberClientController::class,'changePassword'])->name('change.password');
+
+Route::prefix('profile')
+    ->group(function () {
+        Route::resource('member', MemberClientController::class);
+    });
 
 Route::prefix('layanan')
     ->group(function () {

@@ -28,7 +28,7 @@ Community Center - Buku
 <!-- End XP Breadcrumbbar -->
 <!-- Start List Card -->
 <div class="container my-3 pb-5">
-    <div class="media py-3">
+    <div class="d-block d-lg-flex py-3">
         <img src="/storage/{{$item->sampul}}" class="img-fluid mr-4 mb-4" alt="Responsive image" width="450" height="350">
         <div class="media-body">
             <h3 class="mt-0">{{$item->judul}}</h3>
@@ -148,7 +148,7 @@ Community Center - Buku
                     <input type="date" class="form-control" placeholder="Tanggal Selesai" name="tgl_selesai" @if ($item->status != 1) readonly @endif required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end mt-4">
+                <div class="d-flex justify-content-end mt-4 mb-4 mb-md-0 mb-lg-0">
                     <button type="submit" class="btn btn-primary" @if ($item->status != 1) disabled @endif>Book</button>    
                 </div>
             </form>

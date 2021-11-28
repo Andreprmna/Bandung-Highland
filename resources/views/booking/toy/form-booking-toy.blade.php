@@ -95,7 +95,7 @@ Community Center - Mainan
                     <input type="date" class="form-control" placeholder="Tanggal Mulai" name="tgl_mulai" @if ($item->status != 1) readonly @endif required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end mt-4">
+                <div class="d-flex justify-content-end mt-4 mb-4 mb-md-0 mb-lg-0">
                     <button type="submit" class="btn btn-primary @if ($item->status != 1) disabled @endif">Book</button>    
                 </div>
             </form>

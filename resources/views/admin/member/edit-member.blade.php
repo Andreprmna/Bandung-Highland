@@ -50,6 +50,18 @@
                 <label for="gender">Address</label>
                 <input id="address" class="form-control" type="text" name="alamat" placeholder="Alamat" value="{{old('alamat') ?? $item->alamat}}" required>
             </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control" name="jenis_kelamin" required>
+                    @if ($item->jenis_kelamin == 'Male') 
+                        <option value="Male" selected>Male</option>
+                        <option value="Female">Female</option>
+                        @elseif ($item->jenis_kelamin == 'Female')
+                            <option value="Male">Male</option>
+                            <option value="Female" selected>Female</option>
+                    @endif
+                </select>
+            </div>
             @if ($item->role == 2) 
                 <div class="form-group">
                 <label for="status">Status</label>
