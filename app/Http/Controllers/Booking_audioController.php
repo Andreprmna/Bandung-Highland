@@ -13,6 +13,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Exports\booking_audioExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Booking_audioController extends Controller
 {
@@ -155,7 +157,12 @@ class Booking_audioController extends Controller
     public function destroy(Booking_audio $booking_audio)
     {
         $booking_audio->delete();
-        
+
         return redirect()->route('booking_audios.index');
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new booking_audioExport, 'Booking_xlsx');
     }
 }
