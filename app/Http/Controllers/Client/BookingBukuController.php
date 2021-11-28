@@ -10,6 +10,7 @@ use App\Models\Pinjam_buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingBukuController extends Controller
 {
@@ -58,6 +59,7 @@ class BookingBukuController extends Controller
                 if (Auth::guard('web')->check()) {
                     Booking_buku::create($data);
 
+                    Alert::success('Booked', 'Booking Successful!');
                     return redirect()->route("buku.index");
                 }
                 

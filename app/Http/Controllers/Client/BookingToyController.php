@@ -10,6 +10,7 @@ use App\Models\Toy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingToyController extends Controller
 {
@@ -58,6 +59,7 @@ class BookingToyController extends Controller
                 if (Auth::guard('web')->check()) {
                     Booking_toy::create($data);
 
+                    Alert::success('Booked', 'Booking Successful!');
                     return redirect()->route("toy.index");
                 }
                 

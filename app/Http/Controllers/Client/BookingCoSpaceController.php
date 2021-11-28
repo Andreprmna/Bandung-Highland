@@ -10,6 +10,7 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingCoSpaceController extends Controller
 {
@@ -56,6 +57,7 @@ class BookingCoSpaceController extends Controller
             if (Auth::guard('web')->check()) {
                 Booking_coworking_space::create($data);
 
+                Alert::success('Booked', 'Booking Successful!');
                 return redirect()->route("coworking-space.index");
             }
             

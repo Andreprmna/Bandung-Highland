@@ -31,6 +31,7 @@
         <!-- End CSS -->
     </head>
     <body class="xp-horizontal">
+        @include('sweetalert::alert')
         <!-- Start XP Container -->
         <div id="xp-container">
             <!-- Start XP Rightbar -->

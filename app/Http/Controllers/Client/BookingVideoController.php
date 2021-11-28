@@ -12,6 +12,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingVideoController extends Controller
 {
@@ -60,6 +61,7 @@ class BookingVideoController extends Controller
                 if (Auth::guard('web')->check()) {
                     Booking_video::create($data);
 
+                    Alert::success('Booked', 'Booking Successful!');
                     return redirect()->route("video.index");
                 }
                 

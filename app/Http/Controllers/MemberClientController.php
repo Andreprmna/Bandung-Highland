@@ -103,6 +103,8 @@ class MemberClientController extends Controller
         }
 
         $member->update($data);
+        
+        toast('Profile updated!','success');
 
         return redirect()->route('update.profile');
     }
@@ -125,6 +127,8 @@ class MemberClientController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
+
+        toast('Password changed!','success');
 
         return redirect()->back()->with('success','password successfully updated');
     }
