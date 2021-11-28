@@ -7,7 +7,7 @@
             <a class="btn btn-success" href="{{ route('booking_coworking_spaces.create') }}" role="button">+ Booking Coworking Space</a>
         </div>
         <div class="px-4 py-10">
-            <a class="btn btn-success" href="#" role="button">Export</a>
+            <a class="btn btn-success" href="{{ route('export.booking.cospace') }}" role="button">Export</a>
         </div>
     </div>
     <div class="py-12 my-4">

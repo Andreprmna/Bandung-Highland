@@ -56,6 +56,17 @@ Route::prefix('cms')
         Route::get('admin-profile', [AdminUserController::class, 'editProfile'])->name('admin.profile')->middleware('auth:admin');
         Route::post('admin-password',  [adminUserController::class,'changePassword'])->name('admin.password');
 
+        Route::get('booking-audio-export', [Booking_audioController::class, 'export_excel'])->name('export.booking.audio');
+        Route::get('booking-buku-export', [Booking_bukuController::class, 'export_excel'])->name('export.booking.buku');
+        Route::get('booking-cospace-export', [Booking_Coworking_spaceController::class, 'export_excel'])->name('export.booking.cospace');
+        Route::get('booking-toy-export', [Booking_toyController::class, 'export_excel'])->name('export.booking.toy');
+        Route::get('booking-video-export', [Booking_video_Controller::class, 'export_excel'])->name('export.booking.video');
+
+        Route::get('pinjam-audio-export', [Pinjam_audioController::class, 'export_excel'])->name('export.pinjam.audio');
+        Route::get('pinjam-buku-export', [Pinjam_bukuController::class, 'export_excel'])->name('export.pinjam.buku');
+        Route::get('pinjam-toy-export', [Pinjam_toyController::class, 'export_excel'])->name('export.pinjam.toy');
+        Route::get('pinjam-video-export', [Pinjam_videoController::class, 'export_excel'])->name('export.pinjam.video');
+
         Route::resource('penerbits', PenerbitController::class)->middleware('auth:admin');
         Route::resource('pengarangs', PengarangController::class)->middleware('auth:admin');
         Route::resource('atks', atkController::class)->middleware('auth:admin');
