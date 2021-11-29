@@ -18,7 +18,8 @@ class Audio extends Model
         'genre',
         'durasi',
         'format',
-        'cover'
+        'cover',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

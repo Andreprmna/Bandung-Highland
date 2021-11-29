@@ -42,6 +42,13 @@
                 <label for="deskripsi">Deskripsi</label>
                 <input id="deskripsi" class="form-control" type="text" name="deskripsi" placeholder="Deskripsi" value="{{old('deskripsi') ?? $item->deskripsi}}" required>
             </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" class="form-control" name="status" required>
+                        <option value="1" @if ($item->status == 1) selected @endif>Tersedia</option>
+                        <option value="0" @if ($item->status == 0) selected @endif>Tidak Tersedia</option>
+                </select>
+            </div>
                       
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Update</button>    

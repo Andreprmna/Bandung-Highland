@@ -15,7 +15,8 @@ class Atk extends Model
         'nama_atk',
         'harga',
         'jumlah',
-        'deskripsi_atk'
+        'deskripsi_atk',
+        'status_atk'
     ];
     public function getCreatedAtAttribute($value)
     {

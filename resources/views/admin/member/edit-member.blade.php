@@ -62,28 +62,13 @@
                     @endif
                 </select>
             </div>
-            @if ($item->role == 2) 
-                <div class="form-group">
+            <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" class="form-control" name="status" required>
-                    @if ($item->status == 0) 
-                        <option value="0" selected>Unverified</option>
-                        <option value="1">Active</option>
-                        <option value="2">Inactive</option>
-                        @elseif ($item->status == 1)
-                            <option value="0">Unverified</option>
-                            <option value="1" selected>Active</option>
-                            <option value="2">Inactive</option>
-                        @elseif ($item->status == 2)
-                            <option value="0">Unverified</option>
-                            <option value="1">Active</option>
-                            <option value="2" selected>Inactive</option>
-                    @endif
-                    
+                        <option value="1" @if ($item->status == 1) selected @endif>Active</option>
+                        <option value="0" @if ($item->status == 0) selected @endif>Inactive</option>
                 </select>
             </div>
-                
-            @endif
             <div class="form-group">
                 <label for="gender">Photo Profile</label>
                 <input id="profile" class="form-control" type="file" name="foto_profil">

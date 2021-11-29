@@ -14,7 +14,8 @@ class Coworking_space extends Model
     protected $fillable = [
         'nomor_cs',
         'deskripsi_cs',
-        'daya_tampung'
+        'daya_tampung',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

@@ -75,9 +75,8 @@
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" class="form-control" name="status" required>
-                        <option value="0" @if ($item->status == 0) selected @endif>Unverified</option>
                         <option value="1" @if ($item->status == 1) selected @endif>Active</option>
-                        <option value="2" @if ($item->status == 2) selected @endif>Inactive</option>
+                        <option value="0" @if ($item->status == 0) selected @endif>Inactive</option>
                 </select>
             </div>
             <div class="form-group">

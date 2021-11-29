@@ -110,7 +110,7 @@ class atkController extends Controller
      */
     public function destroy(Atk $atk)
     {
-        $atk->status = 0;
+        $atk->status_atk = 0;
         $atk->save();
 
 

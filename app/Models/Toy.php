@@ -15,7 +15,8 @@ class Toy extends Model
         'nama_toy',
         'jenis',
         'genre',
-        'deskripsi'
+        'deskripsi',
+        'status'
 
     ];
     public function getCreatedAtAttribute($value)

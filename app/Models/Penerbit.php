@@ -12,7 +12,8 @@ class Penerbit extends Model
     protected $primaryKey = 'id_penerbit';
     use HasFactory;
     protected $fillable = [
-        'nama_penerbit'
+        'nama_penerbit',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

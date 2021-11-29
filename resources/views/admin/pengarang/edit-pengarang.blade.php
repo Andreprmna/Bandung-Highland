@@ -30,7 +30,13 @@
                 <label for="name">Name</label>
                 <input id="name" class="form-control" type="text" name="nama_pengarang" placeholder="Name" value="{{old('name') ?? $item->nama_pengarang}}" required>
             </div>
-                      
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" class="form-control" name="status" required>
+                        <option value="1" @if ($item->status == 1) selected @endif>Active</option>
+                        <option value="0" @if ($item->status == 0) selected @endif>Inactive</option>
+                </select>
+            </div>
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Update</button>    
             </div>

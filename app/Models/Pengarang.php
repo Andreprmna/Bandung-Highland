@@ -12,7 +12,8 @@ class Pengarang extends Model
     protected $primaryKey = 'id_pengarang';
     use HasFactory;
     protected $fillable = [
-        'nama_pengarang'
+        'nama_pengarang',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

@@ -11,7 +11,8 @@ class properties extends Model
     protected $primaryKey = 'id_property';
     use HasFactory;
     protected $fillable = [
-        'nama_property'
+        'nama_property',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {

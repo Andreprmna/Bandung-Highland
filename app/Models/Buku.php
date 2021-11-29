@@ -21,6 +21,7 @@ class Buku extends Model
         'deskripsi',
         'sampul',
         'bentuk',
+        'status'
     ];
     public function getCreatedAtAttribute($value)
     {
