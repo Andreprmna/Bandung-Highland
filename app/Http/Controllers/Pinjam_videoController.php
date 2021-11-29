@@ -144,6 +144,6 @@ class Pinjam_videoController extends Controller
     }
     public function export_excel()
     {
-        return Excel::download(new Pinjam_videoExport, 'Pinjam_audio.xlsx');
+        return Excel::download(new Pinjam_videoExport, 'Pinjam_video.xlsx');
     }
 }
