@@ -28,7 +28,7 @@
                     {{-- <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a> --}}
                     @guest
                     <a href="/login" class="top-nav ml-4">LOGIN</a>
-                    <a href="/registration" class="nav-link top-nav">REGISTER</a>
+                    <a href="{{route('register-user')}}" class="nav-link top-nav">REGISTER</a>
                     @else
                         <li class="list-inline-item">
                             <div class="dropdown">

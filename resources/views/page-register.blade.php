@@ -18,7 +18,7 @@ Neon - Register
                     <div class="card">
                         <div class="card-body">
                             <div class="p-3">
-                                <form action="{{route('members.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('member.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="text-center mb-3">
@@ -51,13 +51,7 @@ Neon - Register
                                     </div>
                                     <div class="form-group">
                                         <input id="profile" class="form-control" type="file" name="foto_profil">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="terms">
-                                          <label class="custom-control-label" for="terms">I Agree to Terms & Conditions of Neon</label>
-                                        </div> 
-                                    </div>                          
+                                    </div>                      
                                   <button type="submit" class="btn btn-primary btn-rounded btn-lg btn-block">Create an Account</button>
                                 </form>
                             </div>

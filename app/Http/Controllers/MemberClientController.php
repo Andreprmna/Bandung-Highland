@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberRequest;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,19 @@ class MemberClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemberRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['password'] = Hash::make($request->password);
+
+        if ($request->file('foto_profil') != null) {
+            $data['foto_profil'] = $request->file('foto_profil')->store('assets/member', 'public');
+        }
+
+        Member::create($data);
+
+        return redirect('/')->withSuccess('You have signed-in');
     }
 
     public function customMemberLogin(Request $request)
