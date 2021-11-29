@@ -46,9 +46,6 @@
                                     <td>
                                         <div class="d-flex justify-content-around">
                                         <form action="{{ route('bukus.edit', $item->id_buku) }}">
-                                            <button type="submit" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                                        </form>
-                                        <form action="{{ route('bukus.edit', $item->id_buku) }}">
                                             <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('bukus.destroy', $item->id_buku) }}" method="POST">

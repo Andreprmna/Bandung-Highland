@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Video &raquo; {{ $item->name }} &raquo; Edit
+            Video &raquo; {{ $item->judul }} &raquo; Edit
         </h1>
     </div><!-- /.col -->
     

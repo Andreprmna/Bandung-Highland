@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Coworking Space &raquo; {{ $item->name }} &raquo; Edit
+            Coworking Space &raquo; {{ $item->nomor_cs }} &raquo; Edit
         </h1>
     </div><!-- /.col -->
     
