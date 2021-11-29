@@ -53,12 +53,12 @@
             <div class="form-group">
                 <label for="gender">Gender</label>
                 <select id="gender" class="form-control" name="jenis_kelamin" required>
-                    @if ($item->jenis_kelamin == 'Male') 
-                        <option value="Male" selected>Male</option>
-                        <option value="Female">Female</option>
-                        @elseif ($item->jenis_kelamin == 'Female')
-                            <option value="Male">Male</option>
-                            <option value="Female" selected>Female</option>
+                    @if ($item->jenis_kelamin == 'Laki-laki') 
+                        <option value="Laki-laki" selected>Male</option>
+                        <option value="Laki-laki">Female</option>
+                        @elseif ($item->jenis_kelamin == 'Wanita')
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Wanita" selected>Wanita</option>
                     @endif
                 </select>
             </div>

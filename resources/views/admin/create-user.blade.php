@@ -52,8 +52,8 @@
             <div class="form-group">
                 <label for="gender">Gender</label>
                 <select id="gender" class="form-control" name="jenis_kelamin" required>
-                    <option value="Male">Laki-laki</option>
-                    <option value="Female">Wanita</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Wanita">Wanita</option>
                 </select>
             </div>
             <div class="form-group">
