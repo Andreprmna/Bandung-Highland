@@ -55,7 +55,12 @@ class point_of_sellController extends Controller
      */
     public function store(point_of_sellRequest $request)
     {
+        $atk = Atk::where('id_atk', $request->id_atk)->first();
+
         $data = $request->all();
+
+        $atk->jumlah = $atk->jumlah - $request->jumlah_pos;
+        $atk->save();
 
         $check = $this->createPOS($data);
 

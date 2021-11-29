@@ -7,7 +7,7 @@
             <a class="btn btn-success" href="{{ route('point_of_sells.create') }}" role="button">+ Beli Alat Tulis Kantor</a>
         </div>
         <div class="px-4 py-10">
-            <a class="btn btn-success" href="#" role="button">Export</a>
+            <a class="btn btn-success" href="{{ route('export.pos') }}" role="button">Export</a>
         </div>
     </div>
     <div class="py-12 my-4">

@@ -61,6 +61,7 @@ Route::prefix('cms')
         Route::get('booking-cospace-export', [Booking_Coworking_spaceController::class, 'export_excel'])->name('export.booking.cospace');
         Route::get('booking-toy-export', [Booking_toyController::class, 'export_excel'])->name('export.booking.toy');
         Route::get('booking-video-export', [Booking_video_Controller::class, 'export_excel'])->name('export.booking.video');
+        Route::get('pos-export', [point_of_sellController::class, 'export_excel'])->name('export.pos');
 
         Route::get('pinjam-audio-export', [Pinjam_audioController::class, 'export_excel'])->name('export.pinjam.audio');
         Route::get('pinjam-buku-export', [Pinjam_bukuController::class, 'export_excel'])->name('export.pinjam.buku');
