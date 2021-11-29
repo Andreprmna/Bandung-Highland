@@ -73,8 +73,8 @@
             <div class="form-group">
                 <label for="bentuk">Bentuk</label>
                 <select id="bentuk" class="form-control" name="bentuk" required>
-                    <option value="0">Fisik</option>
-                    <option value="1">E-Book</option>
+                    <option value="Fisik">Fisik</option>
+                    <option value="E-Book">E-Book</option>
                 </select>
             </div>
             <div class="form-group">

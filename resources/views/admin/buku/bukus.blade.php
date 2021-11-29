@@ -32,11 +32,7 @@
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->pengarang->nama_pengarang}}</td>
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->penerbit->nama_penerbit}}</td>
                                     <td class="text-truncate" style="max-width: 8rem">{{$item->deskripsi}}</td>
-                                    @if ($item->bentuk == 0)
-                                        <td>Fisik</td>
-                                        @elseif ($item->bentuk == 1)
-                                        <td>E-Book</td>
-                                    @endif
+                                    <td class="text-truncate" style="max-width: 8rem">{{$item->bentuk}}</td>
                                     @if ($item->status == 0)
                                         <td>Tidak Tersedia</td>
                                         @elseif ($item->status == 1)

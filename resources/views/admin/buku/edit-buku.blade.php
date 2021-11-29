@@ -69,12 +69,12 @@
             <div class="form-group">
                 <label for="bentuk">Bentuk</label>
                 <select id="bentuk" class="form-control" name="bentuk" required>
-                    @if ($item->bentuk == 0)
-                        <option value="0" selected>Fisik</option>
-                        <option value="1">E-Book</option>
-                        @elseif ($item->bentuk == 1)
-                            <option value="0">Fisik</option>
-                            <option value="1" selected>E-Book</option>
+                    @if ($item->bentuk == "Fisik")
+                        <option value="Fisik" selected>Fisik</option>
+                        <option value="E-Book">E-Book</option>
+                        @elseif ($item->bentuk == "E-Book")
+                            <option value="Fisik">Fisik</option>
+                            <option value="E-Book" selected>E-Book</option>
                     @endif
                 </select>
             </div>
