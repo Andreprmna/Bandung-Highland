@@ -54,11 +54,11 @@
                 <label for="gender">Gender</label>
                 <select id="gender" class="form-control" name="jenis_kelamin" required>
                     @if ($item->jenis_kelamin == 'Laki-laki') 
-                        <option value="Laki-laki" selected>Male</option>
-                        <option value="Laki-laki">Female</option>
-                        @elseif ($item->jenis_kelamin == 'Wanita')
+                        <option value="Laki-laki" selected>Laki-laki</option>
+                        <option value="Laki-laki">Perempuan</option>
+                        @elseif ($item->jenis_kelamin == 'Perempuan')
                             <option value="Laki-laki">Laki-laki</option>
-                            <option value="Wanita" selected>Wanita</option>
+                            <option value="Perempuan" selected>Perempuan</option>
                     @endif
                 </select>
             </div>

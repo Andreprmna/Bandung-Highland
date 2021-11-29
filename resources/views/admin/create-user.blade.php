@@ -53,7 +53,7 @@
                 <label for="gender">Gender</label>
                 <select id="gender" class="form-control" name="jenis_kelamin" required>
                     <option value="Laki-laki">Laki-laki</option>
-                    <option value="Wanita">Wanita</option>
+                    <option value="Perempuan">Perempuan</option>
                 </select>
             </div>
             <div class="form-group">

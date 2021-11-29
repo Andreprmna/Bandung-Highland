@@ -40,10 +40,10 @@
                 <select id="gender" class="form-control" name="jenis_kelamin" required>
                     @if (Auth::guard('admin')->user()->jenis_kelamin == 'Laki-laki') 
                         <option value="Laki-laki" selected>Laki-laki</option>
-                        <option value="Wanita">Wanita</option>
-                        @elseif (Auth::guard('admin')->user()->jenis_kelamin == 'Wanita')
+                        <option value="Perempuan">Perempuan</option>
+                        @elseif (Auth::guard('admin')->user()->jenis_kelamin == 'Perempuan')
                             <option value="Laki-laki">Laki-laki</option>
-                            <option value="Wanita" selected>Wanita</option>
+                            <option value="Perempuan" selected>Perempuan</option>
                     @endif
                 </select>
             </div>

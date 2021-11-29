@@ -66,12 +66,12 @@ Community Center - Update Profile
                         <div class="col-md-6">
                             <label for="date">Jenis Kelamin</label>
                             <select id="gender" class="form-control" name="jenis_kelamin" required>
-                                @if (Auth::guard('web')->user()->jenis_kelamin == 'Male') 
-                                    <option value="Male" selected>Male</option>
-                                    <option value="Female">Female</option>
-                                    @elseif (Auth::guard('web')->user()->jenis_kelamin == 'Female')
-                                        <option value="Male">Male</option>
-                                        <option value="Female" selected>Female</option>
+                                @if (Auth::guard('web')->user()->jenis_kelamin == 'Laki-laki') 
+                                    <option value="Laki-laki" selected>Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                    @elseif (Auth::guard('web')->user()->jenis_kelamin == 'Perempuan')
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan" selected>Perempuan</option>
                                 @endif
                             </select>
                         </div>
