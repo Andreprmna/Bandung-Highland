@@ -6,6 +6,7 @@ use App\Exports\Pinjam_videoExport;
 use App\Http\Requests\pinjam_toyRequest;
 use App\Http\Requests\Pinjam_videoRequest;
 use App\Models\Admin;
+use App\Models\Booking_video;
 use App\Models\Member;
 use App\Models\Pinjam_video;
 use App\Models\Toy;
@@ -67,16 +68,21 @@ class Pinjam_videoController extends Controller
 
     public function createPinjam_Video(array $data)
     {
-        $pinjam = Pinjam_video::where('id_video', $data['id_video'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
+        $booking = Booking_video::where('status', 1)->where('id_video', $data['id_video'])->whereDate('tgl_mulai', '<=', $data['tgl_pinjam'])->whereDate('tgl_selesai', '>=', $data['tgl_pinjam'])->first();
+        $pinjam = Pinjam_video::where('status', 1)->where('id_video', $data['id_video'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
-            return Pinjam_video::create([
-                'id_member'  => $data['id_member'],
-                'id_admin'   => $data['id_admin'],
-                'id_video'         => $data['id_video'],
-                'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_kembali'       => $data['tgl_kembali']
+            if ($booking == null) {
+                return Pinjam_video::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_video'         => $data['id_video'],
+                    'tgl_pinjam'   => $data['tgl_pinjam'],
+                    'tgl_kembali'       => $data['tgl_kembali']
 
-            ]);
+                ]);
+            } else {
+                throw ValidationException::withMessages(['Video dengan tanggal terpilih telah dibooking']);
+            }
         } else {
             throw ValidationException::withMessages(['Video dengan tanggal terpilih telah dipinjam']);
         }
@@ -123,7 +129,7 @@ class Pinjam_videoController extends Controller
     {
         $pinjam_video->tgl_pengembalian = $request->tgl_pengembalian;
         $pinjam_video->denda = $request->denda;
-        $pinjam_video->status = 2;
+        $pinjam_video->status = 0;
         $pinjam_video->save();
 
         return redirect()->route('pinjam_videos.index');

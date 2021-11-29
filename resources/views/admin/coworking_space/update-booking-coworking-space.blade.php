@@ -30,10 +30,10 @@
                 <select id="status" class="form-control" name="status" required>
                     @if ($item->status == 1)
                             <option value="1" selected>Active</option>
-                            <option value="2">Booked</option>
-                        @elseif ($item->status == 2)
+                            <option value="0">Booked</option>
+                        @elseif ($item->status == 0)
                             <option value="1">Active</option>
-                            <option value="2" selected>Booked</option>
+                            <option value="0" selected>Booked</option>
                     @endif
                 </select>
             </div>

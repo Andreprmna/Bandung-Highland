@@ -68,8 +68,8 @@ class Booking_audioController extends Controller
 
     public function CreateBooking_audio(array $data)
     {
-        $booking = Booking_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
-        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
+        $booking = Booking_audio::where('status', 1)->where('id_audio', $data['id_audio'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
+        $pinjam = Pinjam_audio::where('status', 1)->where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
         if ($pinjam == null) {
             if ($booking == null) {
 
@@ -87,12 +87,6 @@ class Booking_audioController extends Controller
         } else {
             throw ValidationException::withMessages(['Audio dengan tanggal terpilih telah dipinjam']);
         }
-    }
-    public function BookingSelesai(array $data)
-    {
-        $audio = Audio::where('id_audio', $data['id_audio'])->firstOrFail();
-        $audio->status = 0;
-        $audio->save();
     }
 
     /**
@@ -139,7 +133,7 @@ class Booking_audioController extends Controller
         if ($booking_audio->status == 1) {
             $booking_audio->status = $request->status;
             $booking_audio->save();
-        } elseif ($booking_audio->status == 0) {
+        } elseif ($booking_audio->status == 2) {
             $booking_audio->status = 1;
             $booking_audio->id_admin = Auth::guard('admin')->id();
             $booking_audio->save();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\Pinjam_bukuExport;
 use App\Http\Requests\Pinjam_bukuRequest;
 use App\Models\Admin;
+use App\Models\Booking_buku;
 use App\Models\Buku;
 use App\Models\Member;
 use App\Models\Pinjam_buku;
@@ -65,15 +66,20 @@ class Pinjam_bukuController extends Controller
 
     public function createPinjam_Buku(array $data)
     {
-        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
+        $booking = Booking_buku::where('status', 1)->where('id_buku', $data['id_buku'])->whereDate('tgl_mulai', '<=', $data['tgl_pinjam'])->whereDate('tgl_selesai', '>=', $data['tgl_pinjam'])->first();
+        $pinjam = Pinjam_buku::where('status', 1)->where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
-            return Pinjam_buku::create([
-                'id_member'  => $data['id_member'],
-                'id_admin'   => $data['id_admin'],
-                'id_buku'         => $data['id_buku'],
-                'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_kembali'       => $data['tgl_kembali']
-            ]);
+            if ($booking == null) {
+                return Pinjam_buku::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_buku'         => $data['id_buku'],
+                    'tgl_pinjam'   => $data['tgl_pinjam'],
+                    'tgl_kembali'       => $data['tgl_kembali']
+                ]);
+            } else {
+                throw ValidationException::withMessages(['Buku dengan tanggal terpilih telah dibooking']);
+            }
         } else {
             throw ValidationException::withMessages(['Buku dengan tanggal terpilih telah dipinjam']);
         }
@@ -120,7 +126,7 @@ class Pinjam_bukuController extends Controller
 
         $pinjam_buku->tgl_pengembalian = $request->tgl_pengembalian;
         $pinjam_buku->denda = $request->denda;
-        $pinjam_buku->status = 2;
+        $pinjam_buku->status = 0;
         $pinjam_buku->save();
 
         return redirect()->route('pinjam_bukus.index');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\Pinjam_toyExport;
 use App\Http\Requests\pinjam_toyRequest;
 use App\Models\Admin;
+use App\Models\Booking_toy;
 use App\Models\Member;
 use App\Models\pinjam_toy;
 use App\Models\Toy;
@@ -65,15 +66,20 @@ class pinjam_toyController extends Controller
 
     public function createPinjam_Toy(array $data)
     {
-        $pinjam = pinjam_toy::where('id_toy', $data['id_toy'])->where('tgl_pinjam', $data['tgl_pinjam'])->first();
+        $booking = Booking_toy::where('status', 1)->where('id_toy', $data['id_toy'])->where('tgl_mulai', $data['tgl_pinjam'])->first();
+        $pinjam = pinjam_toy::where('status', 1)->where('id_toy', $data['id_toy'])->where('tgl_pinjam', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
-            return pinjam_toy::create([
-                'id_member'  => $data['id_member'],
-                'id_admin'   => $data['id_admin'],
-                'id_toy'         => $data['id_toy'],
-                'tgl_pinjam'   => $data['tgl_pinjam']
+            if ($booking == null) {
+                return pinjam_toy::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_toy'         => $data['id_toy'],
+                    'tgl_pinjam'   => $data['tgl_pinjam']
 
-            ]);
+                ]);
+            } else {
+                throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dibooking']);
+            }
         } else {
             throw ValidationException::withMessages(['Toy dengan tanggal terpilih telah dipinjam']);
         }
@@ -119,7 +125,7 @@ class pinjam_toyController extends Controller
     {
 
         $pinjam_toy->tgl_pengembalian = $request->tgl_pengembalian;
-        $pinjam_toy->status = 2;
+        $pinjam_toy->status = 0;
         $pinjam_toy->save();
 
         return redirect()->route('pinjam_toys.index');

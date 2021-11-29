@@ -66,8 +66,8 @@ class Booking_bukuController extends Controller
 
     public function createBooking_buku(array $data)
     {
-        $booking = Booking_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
-        $pinjam = Pinjam_buku::where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
+        $booking = Booking_buku::where('status', 1)->where('id_buku', $data['id_buku'])->whereDate('tgl_mulai', '<=', $data['tgl_mulai'])->whereDate('tgl_selesai', '>=', $data['tgl_mulai'])->first();
+        $pinjam = Pinjam_buku::where('status', 1)->where('id_buku', $data['id_buku'])->whereDate('tgl_pinjam', '<=', $data['tgl_mulai'])->whereDate('tgl_kembali', '>=', $data['tgl_mulai'])->first();
         if ($pinjam == null) {
             if ($booking == null) {
                 return Booking_buku::create([
@@ -128,7 +128,7 @@ class Booking_bukuController extends Controller
         if ($booking_buku->status == 1) {
             $booking_buku->status = $request->status;
             $booking_buku->save();
-        } elseif ($booking_buku->status == 0) {
+        } elseif ($booking_buku->status == 2) {
             $booking_buku->status = 1;
             $booking_buku->id_admin = Auth::guard('admin')->id();
             $booking_buku->save();

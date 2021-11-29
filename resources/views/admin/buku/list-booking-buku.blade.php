@@ -43,15 +43,15 @@
                                     <td>{{date("d M Y", strtotime($item->tgl_mulai))}}</td>
                                     <td>{{date("d M Y", strtotime($item->tgl_selesai))}}</td>
                                     <td>
-                                        @if ($item->status == 0)
+                                        @if ($item->status == 2)
                                             Verifying
                                         @elseif ($item->status == 1)
                                             Active
-                                        @elseif ($item->status == 2)
+                                        @elseif ($item->status == 0)
                                             Booked
                                         @endif
                                     </td>
-                                    @if ($item->status == 0)
+                                    @if ($item->status == 2)
                                         <td>
                                             <div class="row">
                                                 <form action="{{route('booking_bukus.update', $item->id_booking_buku)}}" method="POST" enctype="multipart/form-data" class="inline-block px-2">
@@ -72,7 +72,7 @@
                                                 </form>
                                             </div>
                                         </td>
-                                    @elseif ($item->status == 2)
+                                    @elseif ($item->status == 0)
                                         <td class="text-center">-</td>
                                     @endif
                                 </tr>

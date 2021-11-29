@@ -60,7 +60,7 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        @if ($item->status != 2)
+                                        @if ($item->status != 0)
                                             <div class="text-center">
                                             <form action="{{ route('pinjam_videos.edit', $item->id_pinjam_video) }}" class="inline-block px-2">
                                                 <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>

@@ -65,8 +65,8 @@ class Booking_toyController extends Controller
 
     public function createToy(array $data)
     {
-        $booking = Booking_toy::where('id_toy', $data['id_toy'])->where('tgl_mulai', $data['tgl_mulai'])->first();
-        $pinjam = pinjam_toy::where('id_toy', $data['id_toy'])->where('tgl_pinjam', $data['tgl_mulai'])->first();
+        $booking = Booking_toy::where('status', 1)->where('id_toy', $data['id_toy'])->where('tgl_mulai', $data['tgl_mulai'])->first();
+        $pinjam = pinjam_toy::where('status', 1)->where('id_toy', $data['id_toy'])->where('tgl_pinjam', $data['tgl_mulai'])->first();
         if ($pinjam == null) {
             if ($booking == null) {
                 return Booking_toy::create([
@@ -124,7 +124,7 @@ class Booking_toyController extends Controller
         if ($booking_toy->status == 1) {
             $booking_toy->status = $request->status;
             $booking_toy->save();
-        } elseif ($booking_toy->status == 0) {
+        } elseif ($booking_toy->status == 2) {
             $booking_toy->status = 1;
             $booking_toy->id_admin = Auth::guard('admin')->id();
             $booking_toy->save();

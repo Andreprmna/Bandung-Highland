@@ -1,5 +1,5 @@
 @section('title') 
-Neon - Register
+Community Center - Register
 @endsection
 @extends('layouts.main')
 @section('style')

@@ -6,6 +6,7 @@ use App\Exports\Pinjam_audioExport;
 use App\Http\Requests\Pinjam_audioRequest;
 use App\Models\Admin;
 use App\Models\Audio;
+use App\Models\Booking_audio;
 use App\Models\Member;
 use App\Models\Pinjam_audio;
 use App\Models\User;
@@ -66,15 +67,20 @@ class Pinjam_audioController extends Controller
 
     public function createPinjam_audio(array $data)
     {
-        $pinjam = Pinjam_audio::where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
+        $booking = Booking_audio::where('status', 1)->where('id_audio', $data['id_audio'])->whereDate('tgl_mulai', '<=', $data['tgl_pinjam'])->whereDate('tgl_selesai', '>=', $data['tgl_pinjam'])->first();
+        $pinjam = Pinjam_audio::where('status', 1)->where('id_audio', $data['id_audio'])->whereDate('tgl_pinjam', '<=', $data['tgl_pinjam'])->whereDate('tgl_kembali', '>=', $data['tgl_pinjam'])->first();
         if ($pinjam == null) {
-            return Pinjam_audio::create([
-                'id_member'  => $data['id_member'],
-                'id_admin'   => $data['id_admin'],
-                'id_audio'         => $data['id_audio'],
-                'tgl_pinjam'   => $data['tgl_pinjam'],
-                'tgl_kembali'       => $data['tgl_kembali']
-            ]);
+            if ($booking == null) {
+                return Pinjam_audio::create([
+                    'id_member'  => $data['id_member'],
+                    'id_admin'   => $data['id_admin'],
+                    'id_audio'         => $data['id_audio'],
+                    'tgl_pinjam'   => $data['tgl_pinjam'],
+                    'tgl_kembali'       => $data['tgl_kembali']
+                ]);
+            } else {
+                throw ValidationException::withMessages(['Audio dengan tanggal terpilih telah dibooking']);
+            }
         } else {
             throw ValidationException::withMessages(['Audio dengan tanggal terpilih telah dipinjam']);
         }
@@ -121,7 +127,7 @@ class Pinjam_audioController extends Controller
     {
         $pinjam_audio->tgl_pengembalian = $request->tgl_pengembalian;
         $pinjam_audio->denda = $request->denda;
-        $pinjam_audio->status = 2;
+        $pinjam_audio->status = 0;
         $pinjam_audio->save();
 
         return redirect()->route('pinjam_audios.index');
