@@ -13,7 +13,7 @@ class CreatePenerbitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('penerbits', function (Blueprint $table) {
+        Schema::create('penerbit', function (Blueprint $table) {
             $table->id('id_penerbit');
             $table->string('nama_penerbit');
             $table->integer('status')->default(1);
