@@ -57,7 +57,7 @@
                             <option value="0">Kaset</option>
                             <option value="1" selected>VCD</option>
                             <option value="2">Mp3</option>
-                        @elseif ($item->role == 2)
+                        @elseif ($item->format == 2)
                             <option value="0">Kaset</option>
                             <option value="1">VCD</option>
                             <option value="2" selected>Mp3</option>

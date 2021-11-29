@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:admin,email'],
             'nama' => ['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
             'tgl_lahir' => ['required', 'date'],

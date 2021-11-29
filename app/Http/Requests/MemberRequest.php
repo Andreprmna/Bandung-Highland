@@ -26,7 +26,7 @@ class MemberRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:member,email'],
             'nama' => ['required', 'string', 'max:255'],
             'tgl_lahir' => ['required', 'date'],
             'jenis_kelamin' => ['required', 'string'],

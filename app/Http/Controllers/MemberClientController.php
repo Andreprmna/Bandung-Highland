@@ -48,7 +48,7 @@ class MemberClientController extends Controller
 
         Member::create($data);
 
-        return redirect('/')->withSuccess('You have signed-in');
+        return redirect('login')->withSuccess('You have signed-in');
     }
 
     public function customMemberLogin(Request $request)
