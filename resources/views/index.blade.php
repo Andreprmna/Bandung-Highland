@@ -1,5 +1,5 @@
 @section('title') 
-Community Center - Home
+Community Center - Beranda
 @endsection 
 @extends('layouts.main')
 @section('style')

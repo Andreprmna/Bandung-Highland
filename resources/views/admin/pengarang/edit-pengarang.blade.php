@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Pengarang &raquo; {{ $item->name }} &raquo; Edit
+            Pengarang &raquo; {{ $item->nama_pengarang }} &raquo; Edit
         </h1>
     </div><!-- /.col -->
     

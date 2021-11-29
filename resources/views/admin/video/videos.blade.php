@@ -50,9 +50,6 @@
                                     <td>
                                         <div class="d-flex justify-content-around">
                                         <form action="{{ route('videos.edit', $item->id_video) }}">
-                                            <button type="submit" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                                        </form>
-                                        <form action="{{ route('videos.edit', $item->id_video) }}">
                                             <button type="submit" class="btn btn-success"><i class="far fa-edit"></i></button>
                                         </form>
                                         <form action="{{ route('videos.destroy', $item->id_video) }}" method="POST">

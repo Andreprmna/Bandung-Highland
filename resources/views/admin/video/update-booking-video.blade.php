@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Update Booking Video
+            Update Booking Video &raquo; {{ $item->video->judul }}
     </div><!-- /.col -->
     
     </div><!-- /.row -->

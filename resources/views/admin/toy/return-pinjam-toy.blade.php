@@ -6,7 +6,7 @@
     <div class="row mb-2">
     <div class="col-sm-6">
         <h1 class="m-0">
-            Pengembalian Toy
+            Pengembalian Toy &raquo; {{ $item->toy->nama_toy }}
     </div><!-- /.col -->
     
     </div><!-- /.row -->
